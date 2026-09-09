@@ -1,0 +1,5485 @@
+{
+  "files": [
+    {
+      "file_name": "clean_post_model.dart",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "contents_service.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_formatBytes",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 8
+            }
+          ]
+        },
+        {
+          "function_name": "_getFilesystemId",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "err",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "high",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 33
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "low",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "pc",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "vol",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_getWindowsProps",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "comentarios",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 37
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "marcas",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "pc",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "pkey",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "props",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "titulo",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_log",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_pollTimer",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_running",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_watcher",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "enableCom",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "err",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_controller",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_timer",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "extractAudioMetadata",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 30
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "extractImageMetadata",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "found",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 50
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "usefulKeys",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "fullScan",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "audioExtensions",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "changed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "entry",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "extension",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "fileCount",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fileId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "finalFileCount",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "finalFolderCount",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "folderCount",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 136
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "imageExtensions",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "low",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "mediaMetadata",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "modified",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "relPath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "relativePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "root",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "scanTimestamp",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sizeBytes",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "sourceDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "sourceFolder",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "winProps",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "init",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "enableCom",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 19
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "sourceFolder",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sqliteFile",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "targetFolder",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "isRunning",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_running",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "lastResult",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_lastResult",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "logs",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "saveJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "contents",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "fileCount",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "folderCount",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 36
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "jsonMap",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "root",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "scanTimestamp",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "sourceFolder",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "targetDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "targetFolder",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "saveToSqlite",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "fileCount",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "folderCount",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 22
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "jsonMap",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "root",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "scanTimestamp",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "sourceFolder",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "scan",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_lastResult",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "sourceFolder",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "sqliteFile",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sqliteTable",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "targetFolder",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "scanDirectory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "audioExtensions",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "changed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "dirPath",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "entry",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "extension",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fileId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 103
+            },
+            {
+              "variable_name": "imageExtensions",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "low",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "mediaMetadata",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "modified",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "relPath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "relativePath",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "sizeBytes",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "winProps",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "startWatching",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_pollTimer",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_running",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_watcher",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "hasChanges",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sourceFolder",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "stopWatching",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_pollTimer",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_running",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_watcher",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_buildSnapshot",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dirPath",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "entry",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 28
+            },
+            {
+              "variable_name": "low",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "modified",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "_checkChanges",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_controller",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_snapshot",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "changed",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_start",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_snapshot",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_timer",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "onEvent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_controller",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "toJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "extension",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "fileId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 29
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaMetadata",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "modified",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "props",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "relativePath",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sizeBytes",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "winProps",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "relativePath",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comentarios",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "marcas",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "titulo",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "isEmpty",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "comentarios",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "marcas",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "titulo",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "models/post_models.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_formatTimestamp",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 19
+            }
+          ]
+        },
+        {
+          "function_name": "_loadBody",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "assetsDir",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "entry",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 64
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "startIdx",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "assetsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "assetsEntry",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 31
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "parseFrontmatter",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 70
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 6
+            }
+          ]
+        },
+        {
+          "function_name": "parseTimestamp",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "datePart",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 38
+            },
+            {
+              "variable_name": "timePart",
+              "variable_description": "",
+              "variable_count": 5
+            }
+          ]
+        },
+        {
+          "function_name": "scanAssets",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "assetsDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "entry",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "groups",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "hasMedia",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 130
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 8
+            }
+          ]
+        },
+        {
+          "function_name": "postsConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 44
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "imagePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "scheduledPublishTime",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "videoPath",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "toPostsConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "assetsDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "entry",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fullPath",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "groups",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 110
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "imagePath",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "scheduledPublishTime",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "videoPath",
+              "variable_description": "",
+              "variable_count": 5
+            }
+          ]
+        },
+        {
+          "function_name": "_textFieldFor",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "description",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 27
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "postsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 48
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "imagePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "scheduledPublishTime",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "videoPath",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "toPostsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 73
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 15
+            },
+            {
+              "variable_name": "imagePath",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "output",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "scheduledPublishTime",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tv",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "videoPath",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_fbBody",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 26
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "description",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fb",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 116
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "isPublished",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_igBody",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 37
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "postsPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 25
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "postContent",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "toPostsPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "fb",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 55
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "output",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "postContent",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "post_builder.dart",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "posts_service_get.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_apiGet",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "attempt",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "err",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 35
+            },
+            {
+              "variable_name": "queryParams",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_buildFileName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 17
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "storyId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_delay",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "requestDelayMs",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_downloadMedia",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 35
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "mediaUrl",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "targetDir",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_formatBytes",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 8
+            }
+          ]
+        },
+        {
+          "function_name": "_getPageToken",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_userToken",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "accounts",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 16
+            },
+            {
+              "variable_name": "page",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "userToken",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_isWithin24h",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_loadIndex",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "description",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "downloaded",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 29
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_log",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_paginateWithCursor",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "afterCursor",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "allItems",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "cursors",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 78
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "newAfter",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "newCount",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "page",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "paging",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "queryParams",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "seenIds",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_resolveFbPhotoUrls",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "firstAtt",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 78
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "images",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "photoId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "postId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "resolved",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 5
+            }
+          ]
+        },
+        {
+          "function_name": "_resolveToken",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_pageToken",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_userToken",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "accessToken",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "envValue",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 16
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "page",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "userToken",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_saveFacebookJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 53
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "output",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "postsTargetFolderFacebook",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "storyPosts",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "targetDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_saveInstagramJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 47
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "output",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "postsTargetFolderInstagram",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "target",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "targetDir",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_saveToSqlite",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 51
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sqliteFile",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sqliteTable",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_transformFbPost",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "commentsCount",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "firstAtt",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 92
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "likeCount",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 15
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaUrl",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "reactions",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "thumbnailUrl",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_transformFbReel",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "description",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 38
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "permalinkUrl",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_transformFbStory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 31
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "mediaDetails",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_transformIgPost",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 35
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "_transformIgStory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 43
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "localPath",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "err",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "init",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "facebookPageId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "instagramAccountId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "page",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "requestDelayMs",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "logs",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "scan",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fb",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "fbAll",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fbJson",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 77
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "igJson",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "igStoriesJson",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "storiesTargetFolderInstagram",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "scanFacebookFeed",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "facebookPageId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 31
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPagesFbFeed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPostsPerFetchFb",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "reactions",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "scanFacebookStories",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "facebookPageId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 55
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "maxPagesFbStories",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPostsPerFetchFb",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "mediaDetails",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "mediaId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "transformed",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "scanFacebookVideos",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "description",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "facebookPageId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 33
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPagesFbVideos",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPostsPerFetchFb",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "source",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "scanInstagramFeed",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "children",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 36
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "instagramAccountId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "map",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPagesIgFeed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPostsPerFetchIg",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "scanInstagramStories",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "activeCount",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "activeIds",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "assetsDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "caption",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "downloaded",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "existingIdx",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "existingStories",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "expiredCount",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 240
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "indexDirObj",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "instagramAccountId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "localPath",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "maxPagesIgStories",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "maxPostsPerFetchIg",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "mediaUrl",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "newlyExpired",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "permalink",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "postId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "skipped",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "storiesAssetsFolderInstagram",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "storiesTargetFolderInstagram",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "storyId",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "transformed",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "posts_service_post.dart",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "publish/post_builder.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "resolveAssetsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "assetsDir",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "scan",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "requestPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "config",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "content",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "endpointTemplate",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "ext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 73
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "low",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "media",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "uploadFlow",
+              "variable_description": "",
+              "variable_count": 11
+            }
+          ]
+        },
+        {
+          "function_name": "resolveFinalPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "output",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "savePostsPayloadToJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "resolvePostsConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "assetsDir",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "groups",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "savePostsConfigToJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 15
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "ig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "resolvePostsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 17
+            },
+            {
+              "variable_name": "output",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "savePostsContentToJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "posts",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "resumable_upload_service.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "createSession",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_apiVersion",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_baseGraph",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_userToken",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "appId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "created",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "err",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 39
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "name",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sessionId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "userToken",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "publishVideo",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_apiVersion",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_baseGraph",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_baseGraphVideo",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_pageToken",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "description",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fb",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "handle",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 83
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "page",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "pageId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "post",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "scheduledPublishTime",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "url",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "videoId",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "updateNewsFeed",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_apiVersion",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_baseGraph",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_pageToken",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "err",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 37
+            },
+            {
+              "variable_name": "id",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "page",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "published",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "subcode",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "token",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "videoId",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "uploadFile",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_apiVersion",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_baseGraph",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_userToken",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "att",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "attempt",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "body",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "bytesToSend",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "checkBody",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "currentOffset",
+              "variable_description": "",
+              "variable_count": 15
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 20
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "found",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "handle",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 129
+            },
+            {
+              "variable_name": "maxAttempts",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "newOffset",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "sessionId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "status",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "uploadUrl",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "userToken",
+              "variable_description": "",
+              "variable_count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "services/posts_service_post.dart",
+      "file_description": "",
+      "functions": []
+    }
+  ]
+}

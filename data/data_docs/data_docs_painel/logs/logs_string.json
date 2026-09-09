@@ -1,0 +1,144 @@
+[
+  {
+    "log_name": "loadData",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "action": {"source": "runtime", "key": "action", "value": "${action.name}"},
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "selectedOrderField": {"source": "runtime", "key": "selectedOrderField", "value": "${dataContext.selectedOrderField}"},
+      "isAscending": {"source": "runtime", "key": "isAscending", "value": "${dataContext.isAscending}"},
+      "filterField": {"source": "runtime", "key": "filterField", "value": "${dataContext.selectedFilterField}"},
+      "searchString": {"source": "runtime", "key": "searchString", "value": "${dataContext.currentSearchString}"},
+      "itemsPerPage": {"source": "runtime", "key": "itemsPerPage", "value": "${dataContext.itemsPerPage}"},
+      "isLoading": {"source": "runtime", "key": "isLoading", "value": "${dataState.isLoading}"},
+      "hasMoreData": {"source": "runtime", "key": "hasMoreData", "value": "${dataContext.hasMoreData}"},
+      "currentTableData": {"source": "runtime", "key": "currentTableData", "value": "${dataStore.currentTableDataForDisplay.length}"},
+      "currentTableDataInitial": {"source": "runtime", "key": "currentTableDataInitial", "value": "${dataStore.currentTableDataInitial.length}"},
+      "currentTableDataIsFullLoaded": {"source": "runtime", "key": "currentTableDataIsFullLoaded", "value": "${dataState.currentTableDataIsFullLoaded}"},
+      "showCurrentTableDataFinalOnScreen": {"source": "runtime", "key": "showCurrentTableDataFinalOnScreen", "value": "${dataState.showCurrentTableDataFinalOnScreen}"},
+      "showWithScroll": {"source": "runtime", "key": "showWithScroll", "value": "${showWithScroll}"}
+    }
+  },
+  {
+    "log_name": "sortData",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "field": {"source": "runtime", "key": "field", "value": "${field}"},
+      "ascending": {"source": "runtime", "key": "ascending", "value": "${ascending}"},
+      "selectedOrderField": {"source": "runtime", "key": "selectedOrderField", "value": "${dataContext.selectedOrderField}"},
+      "isAscending": {"source": "runtime", "key": "isAscending", "value": "${dataContext.isAscending}"},
+      "currentTableDataInitial": {"source": "runtime","key": "currentTableDataInitial","value": "${dataStore.currentTableDataInitial.length}"},
+      "currentTableData": {"source": "runtime", "key": "currentTableData", "value": "${dataStore.currentTableDataForDisplay.length}"}
+    }
+  },
+  {
+    "log_name": "filterData",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "field": {"source": "runtime", "key": "field", "value": "${field}"},
+      "searchString": {"source": "runtime", "key": "searchString", "value": "${searchString}"},
+      "selectedFilterField": {"source": "runtime", "key": "selectedFilterField", "value": "${dataContext.selectedFilterField}"},
+      "currentSearchString": {"source": "runtime", "key": "currentSearchString", "value": "${dataContext.currentSearchString}"},
+      "currentTableData": {"source": "runtime", "key": "currentTableData", "value": "${dataStore.currentTableDataForDisplay.length}"},
+      "currentTableDataInitial": {"source": "runtime", "key": "currentTableDataInitial", "value": "${dataStore.currentTableDataInitial.length}"},
+      "originalTableData": {"source": "runtime", "key": "originalTableData", "value": "${dataStore.originalTableData.length}"}
+    }
+  },
+  {
+    "log_name": "loadData_service_call",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "limit": {"source": "runtime", "key": "limit", "value": "${dataContext.itemsPerPage}"},
+      "offset": {"source": "runtime", "key": "offset", "value": "${dataContext.itemsPerPage}"}
+    }
+  },
+  {
+    "log_name": "loadData_success",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "count": {"source": "runtime", "key": "count", "value": "${result.data.length}"},
+      "hasMore": {"source": "runtime", "key": "hasMore", "value": "${result.hasMoreData}"}
+    }
+  },
+  {
+    "log_name": "loadData_error",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "error": {"source": "runtime", "key": "error", "value": "${e.toString()}"}
+    }
+  },
+  {
+    "log_name": "loadData_background_start",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"}
+    }
+  },
+  {
+    "log_name": "loadData_background_complete",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "total": {"source": "runtime", "key": "total", "value": "${dataStore.currentTableDataFinal.length}"}
+    }
+  },
+  {
+    "log_name": "loadData_scroll",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "total": {"source": "runtime", "key": "total", "value": "${dataStore.currentTableDataFinal.length}"}
+    }
+  },
+  {
+    "log_name": "loadData_reload",
+    "placeholders_txt": {
+      "log_type": {"source": "tag_map", "key": "log_type"},
+      "tag_name": {"source": "tag_map", "key": "tag_name"},
+      "script_action": {"source": "tag_map", "key": "script_action"}
+    },
+    "placeholders_var": {
+      "tableName": {"source": "runtime", "key": "tableName", "value": "${dataContext.selectedTableName}"},
+      "preserve": {"source": "runtime", "key": "preserve", "value": "${showWithScroll}"}
+    }
+  }
+]

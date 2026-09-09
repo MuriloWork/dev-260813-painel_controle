@@ -1,0 +1,17 @@
+{
+    "type": "blocks",
+    "table_name": "tb_json_md_ast_blocks",
+    "fields": [
+        {"name": "file_path", "source": "entry"},
+        {"name": "start_line", "source": "ast.node.start_line"},
+        {"name": "type", "source": "ast.node.type"},
+        {"name": "depth", "source": "ast.node.depth", "default": 0},
+        {"name": "h1", "source": "ast.node.h1", "default": ""},
+        {"name": "h2", "source": "ast.node.h2", "default": ""},
+        {"name": "h3", "source": "ast.node.h3", "default": ""},
+        {"name": "h4", "source": "ast.node.h4", "default": ""},
+        {"name": "h5", "source": "ast.node.h5", "default": ""},
+        {"name": "h6", "source": "ast.node.h6", "default": ""},
+        {"name": "value", "source": "ast", "method": "collect_text"}
+    ]
+}

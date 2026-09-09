@@ -1,0 +1,51 @@
+digraph "packages_meuprojeto" {
+rankdir=BT
+charset="utf-8"
+"src" [color="black", label=<src>, shape="box", style="solid"];
+"src.config" [color="black", label=<src.config>, shape="box", style="solid"];
+"src.controllers" [color="black", label=<src.controllers>, shape="box", style="solid"];
+"src.controllers.parse_controller" [color="black", label=<src.controllers.parse_controller>, shape="box", style="solid"];
+"src.controllers.session_controller" [color="black", label=<src.controllers.session_controller>, shape="box", style="solid"];
+"src.controllers.sync_controller" [color="black", label=<src.controllers.sync_controller>, shape="box", style="solid"];
+"src.delete" [color="black", label=<src.delete>, shape="box", style="solid"];
+"src.delete.parse_model_pydantic" [color="black", label=<src.delete.parse_model_pydantic>, shape="box", style="solid"];
+"src.models" [color="black", label=<src.models>, shape="box", style="solid"];
+"src.models.ast_dart_model" [color="black", label=<src.models.ast_dart_model>, shape="box", style="solid"];
+"src.models.ast_md_model" [color="black", label=<src.models.ast_md_model>, shape="box", style="solid"];
+"src.models.export_model" [color="black", label=<src.models.export_model>, shape="box", style="solid"];
+"src.models.import_model" [color="black", label=<src.models.import_model>, shape="box", style="solid"];
+"src.models.raw_script_model" [color="black", label=<src.models.raw_script_model>, shape="box", style="solid"];
+"src.repositories" [color="black", label=<src.repositories>, shape="box", style="solid"];
+"src.repositories.ast_repo" [color="black", label=<src.repositories.ast_repo>, shape="box", style="solid"];
+"src.repositories.config_repo" [color="black", label=<src.repositories.config_repo>, shape="box", style="solid"];
+"src.services" [color="black", label=<src.services>, shape="box", style="solid"];
+"src.services.logs" [color="black", label=<src.services.logs>, shape="box", style="solid"];
+"src.services.logs.analyze_logs" [color="black", label=<src.services.logs.analyze_logs>, shape="box", style="solid"];
+"src.services.logs.logs_dart" [color="black", label=<src.services.logs.logs_dart>, shape="box", style="solid"];
+"src.services.parse" [color="black", label=<src.services.parse>, shape="box", style="solid"];
+"src.services.parse.md_ast_parser" [color="black", label=<src.services.parse.md_ast_parser>, shape="box", style="solid"];
+"src.services.parse.md_ast_runner" [color="black", label=<src.services.parse.md_ast_runner>, shape="box", style="solid"];
+"src.services.parse.parse_md_ast" [color="black", label=<src.services.parse.parse_md_ast>, shape="box", style="solid"];
+"src.services.parse.parse_script_dart_ast" [color="black", label=<src.services.parse.parse_script_dart_ast>, shape="box", style="solid"];
+"src.services.parse.parse_script_raw" [color="black", label=<src.services.parse.parse_script_raw>, shape="box", style="solid"];
+"src.utils" [color="black", label=<src.utils>, shape="box", style="solid"];
+"src.utils.init_utils" [color="black", label=<src.utils.init_utils>, shape="box", style="solid"];
+"src.utils.init_utils.env_loader" [color="black", label=<src.utils.init_utils.env_loader>, shape="box", style="solid"];
+"src.utils.init_utils.painel_settings" [color="black", label=<src.utils.init_utils.painel_settings>, shape="box", style="solid"];
+"src.utils.io_utils" [color="black", label=<src.utils.io_utils>, shape="box", style="solid"];
+"src.utils.io_utils.config_io" [color="black", label=<src.utils.io_utils.config_io>, shape="box", style="solid"];
+"src.utils.io_utils.md_ast_io" [color="black", label=<src.utils.io_utils.md_ast_io>, shape="box", style="solid"];
+"src.utils.io_utils.md_ast_persistence" [color="black", label=<src.utils.io_utils.md_ast_persistence>, shape="box", style="solid"];
+"src.utils.io_utils.painel_sqlite_export" [color="black", label=<src.utils.io_utils.painel_sqlite_export>, shape="box", style="solid"];
+"src.utils.io_utils.painel_sqlite_import" [color="black", label=<src.utils.io_utils.painel_sqlite_import>, shape="box", style="solid"];
+"src.utils.io_utils.parse_export" [color="black", label=<src.utils.io_utils.parse_export>, shape="box", style="solid"];
+"src.utils.io_utils.parse_utils" [color="black", label=<src.utils.io_utils.parse_utils>, shape="box", style="solid"];
+"src.utils.parse_utils" [color="black", label=<src.utils.parse_utils>, shape="box", style="solid"];
+"src.utils.parse_utils.path_resolver" [color="black", label=<src.utils.parse_utils.path_resolver>, shape="box", style="solid"];
+"src.utils.parse_utils.string_utils" [color="black", label=<src.utils.parse_utils.string_utils>, shape="box", style="solid"];
+"src.view_shell" [color="black", label=<src.view_shell>, shape="box", style="solid"];
+"src.services.parse.md_ast_runner" -> "src.services.parse.md_ast_parser" [arrowhead="open", arrowtail="none"];
+"src.services.parse.parse_md_ast" -> "src.services.parse.md_ast_runner" [arrowhead="open", arrowtail="none"];
+"src.utils.io_utils.md_ast_io" -> "src.utils.io_utils.parse_utils" [arrowhead="open", arrowtail="none"];
+"src.utils.io_utils.md_ast_persistence" -> "src.utils.io_utils.parse_export" [arrowhead="open", arrowtail="none"];
+}

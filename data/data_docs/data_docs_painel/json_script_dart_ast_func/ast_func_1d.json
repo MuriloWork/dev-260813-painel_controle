@@ -1,0 +1,1452 @@
+{
+  "files": [
+    {
+      "file_name": "controller_controller_second_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "setDataStore",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "snackBarEvents",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "emitSnackBarEvent",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "getItemExpansionState",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "setItemExpansionState",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "getCardColor",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "setCardColor",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "getCardColorById",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "currentItem",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "hasPendingUpdates",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "updateDataContext",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "updatePaginationContext",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "updateSortFilterContext",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "hasPendingDeletes",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "initialize",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "setSelectedTableName",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "loadData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "defaultAscending",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "showWithScroll",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "checkTimer",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "sortData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "sortedData",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "filterData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "filteredData",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "manageTempRecord",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newRecordData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "itemIndex",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingItem",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "currentItem",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newAction",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "toggleDeleteMark",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "itemIndex",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "currentItem",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newAction",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "isMarkedForDelete",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "item",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "getMarkedForDeleteCount",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "count",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "manageBatchUpdate",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "hasRealUpdates",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "pendingUpsert",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "pendingDelete",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "primaryKeysToDelete",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "convertedKeys",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "keyValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "item",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "main",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": []
+        }
+      ]
+    },
+    {
+      "file_name": "models_app_models",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "getTableConfig",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "isValidField",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "id",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "displayName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "toJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "copyWith",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newData",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "tableName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "getValue",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "setValue",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "crudAction",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "setCrudAction",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "isExpanded",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "getDataFields",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "models_ui_models",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "screens_home_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "initState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dataStore",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "menuItems",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_expansionCallback",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "createState",
+          "function_description": "",
+          "variables": []
+        }
+      ]
+    },
+    {
+      "file_name": "screens_second_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_getTextController",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "controllerKey",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "initState",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_getSnackBarColor",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_showDeleteConfirmationDialog",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_updateStateWithScrollPreservation",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "accumulatedHeight",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "closedCardHeight",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "expandedCardHeight",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "getDisplayTableFields",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "confirmed",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "item",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "expansionTileChildren",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "displayTableFields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "displayValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "textFieldController",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "orderFieldValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "filterFieldValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "titleText",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "itemData",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "createState",
+          "function_description": "",
+          "variables": []
+        }
+      ]
+    },
+    {
+      "file_name": "screens_third_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "createState",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "initState",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_updateState",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": []
+        }
+      ]
+    },
+    {
+      "file_name": "services_data_service",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "client",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "parseMenuItems",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "menuItems",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "currentCategory",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "lines",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "categoryTitle",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "subItemTitle",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedSubItems",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "index",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "tableItemFromJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "tableItem",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "loadData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "query",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "response",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "data",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableItem",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableFields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "hasMoreData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "processedData",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "loadAllTableDataInBackground",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "response",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "data",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "allData",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "sortData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dataToSort",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sortedData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "aValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "bValue",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "filterData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dataToFilter",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "filteredData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "value",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "upsertSupabase",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dataList",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "validationResult",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "errorCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "successCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "processedDataList",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "itemData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "allowedFields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "filteredData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fieldStr",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "inserts",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updates",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "item",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "totalProcessed",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "failureCount",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "deleteSupabase",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "insertTableRow",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "updateTableRow",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "batchUpdateTableRows",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "updatedRows",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "batchSize",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "end",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "batch",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "primaryKeyValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dataToUpdate",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "response",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "errorTime",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "performBatchUpdate",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "updatesList",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "convertedItemId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatesWithoutPk",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "itemUpdate",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tableDataFromStore",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedTableData",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "getErrorsForField",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "violations",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "hasErrorsForField",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "toJson",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "convertValidationErrorsToBatchErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "errors",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "field",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "violations",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "matchingItems",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "toString",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "notifyInfo",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "notifySuccess",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "notifyWarning",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "notifyError",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": null,
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "services_table_validator",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "getConstraints",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "invalidate",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_loadConstraintsFromConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "constraints",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "validate",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "validateWithExistingData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "report",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "validateBatch",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "results",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "validRecords",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "invalidRecords",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "record",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "recordId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "otherRecords",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "report",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "combinedErrorsByField",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "combinedGeneralErrors",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "allErrorsEmpty",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_validateConstraints",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "fieldConstraints",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "value",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_validatePrimaryKey",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "uuidRegex",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_validateUnique",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "duplicates",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_validateRequired",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_validateEnum",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "allowedValues",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "effectiveValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_validateRegex",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "pattern",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "regex",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "testValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_validateForeignKey",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "refTable",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "refColumn",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "uuidRegex",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "numericRegex",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_addError",
+          "function_description": "",
+          "variables": []
+        }
+      ]
+    },
+    {
+      "file_name": "services_validation_logger",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_getLogFilePath",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "directory",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "logsDir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "projectDir",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_findProjectDirectory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "currentDir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "pubspecFile",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "parentDir",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "getExternalLogPath",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "directory",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "logsDir",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "logValidationReport",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "logValidationErrors",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "logDetailedErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "logFieldValidation",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "logBatchValidationErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_appendToLogFile",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "filePath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileSize",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_copyToPublicStorage",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "appDir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sourceFile",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "publicDir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "targetFile",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_rotateLogFile",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "rotatedPath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "currentFile",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "supabase_config",
+      "file_description": "",
+      "functions": []
+    }
+  ]
+}

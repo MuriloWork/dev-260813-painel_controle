@@ -1,0 +1,21 @@
+{
+  "projeto": "script_parsing",
+  "descricao": "",
+  "folders": [
+    {
+      "folder_path": "dev/parse_docs/",
+      "descricao": "(historico) scripts execução, config, model - arquivos movidos para dev/src/painel/",
+      "files": []
+    },
+    {
+      "folder_path": "dev/parse_docs/",
+      "descricao": "(historico) ast dart scripts - arquivos movidos para dev/src/painel/dart_tools/",
+      "files": []
+    },
+    {
+      "folder_path": "dev/parse_docs/json_script_raw",
+      "descricao": "saidas json de parse_dart_raw.py",
+      "files": []
+    }
+  ]
+}

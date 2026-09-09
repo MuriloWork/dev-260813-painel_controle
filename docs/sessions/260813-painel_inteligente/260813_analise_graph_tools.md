@@ -1,0 +1,10 @@
+Comparação das Opções
+
+| Critério | SQLite + JSON | Neo4j | RDF (Triplestore) |
+| :--- | :--- | :--- | :--- |
+| **Complexidade** | **Baixa**. Banco de dados em arquivo, "zero configuração". Não precisa de servidor separado . | **Média/Alta**. Requer instalação e gerenciamento de um servidor próprio (em Java) . | **Alta**. Curva de aprendizado íngreme. Exige conhecimento de ontologias (OWL), SPARQL e padrões da web semântica . |
+| **Custo/Portabilidade** | **Gratuito e portável**. É um arquivo `.db` que você pode copiar, versionar e mover . | **Gratuito (Community)** , mas a versão Enterprise é paga . | **Gratuito (Open Source)** , como GraphDB e Apache Jena . |
+| **Escalabilidade** | Adequado para MVPs e **até algumas dezenas de milhares de nós**. Não foi feito para altíssima concorrência . | **Excelente**. Projetado para grandes volumes de dados e alta performance em consultas complexas . | **Bom**. Eficiente para dados altamente interconectados, mas a performance em consultas pode ser um desafio . |
+| **Linguagem de Consulta** | **SQL com CTEs Recursivos**. Muito poderoso, mas a sintaxe para navegar no grafo é menos intuitiva que a de um banco de grafos nativo . | **Cypher**. Linguagem declarativa e **intuitiva**, feita especificamente para grafos. É a mais fácil para começar a fazer consultas . | **SPARQL**. Padrão W3C para consultas, muito flexível, mas com complexidade própria e risco de queries que nunca terminam . |
+| **Schema e Validação** | **Você controla**. Cria as tabelas e define as regras de validação na sua aplicação . | Suporte nativo a **schemas e validação** (`GRAPH TYPE`), o que garante a integridade dos dados logo na escrita . | Requer uma camada extra como **SHACL** para fazer validação, o que adiciona complexidade . |
+| **Casos de Uso** | Projetos pequenos, MVPs, ferramentas locais, "side projects" . | Aplicações empresariais com dados complexos e muitos relacionamentos (ex: redes sociais, fraudes) . | Cenários que exigem inferência lógica sobre os dados e integração com a web semântica . |

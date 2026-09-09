@@ -1,0 +1,695 @@
+{
+  "type": "CompilationUnitImpl",
+  "offset": 0,
+  "length": 927,
+  "line": 1,
+  "column": 1,
+  "source_text": "import 'on_hold/models/post_models.dart'; import 'on_hold/publish/post_builder.dart' as builder; import 'on_hold/publish/post_builder_facebook.dart'; export 'on_hold/models/post_models.dart'; export 'on_hold/publish/post_builder.dart' show BuildJsonPostConfig, BuildJsonPostContent, BuildFinalPayload; export 'on_hold/publish/post_builder_facebook.dart' show FbBuilder; export 'on_hold/publish/post_builder_instagram.dart'; PostContent resolveContent(Map<String, dynamic> sourceContent, Map<String, dynamic> postContent) {return FbBuilder.resolveContent(postContent);} PostType resolvePostType(String contentType, String? mediaType) {return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook');} PostType resolveIgPostType(String contentType, String? mediaType) {return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram');}",
+  "children": [
+    {
+      "type": "ImportDirectiveImpl",
+      "offset": 0,
+      "length": 41,
+      "line": 1,
+      "column": 1,
+      "source_text": "import 'on_hold/models/post_models.dart';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 7,
+          "length": 33,
+          "line": 1,
+          "column": 8,
+          "source_text": "'on_hold/models/post_models.dart'",
+          "staticType": "String",
+          "value": "on_hold/models/post_models.dart"
+        }
+      ]
+    },
+    {
+      "type": "ImportDirectiveImpl",
+      "offset": 43,
+      "length": 54,
+      "line": 2,
+      "column": 1,
+      "source_text": "import 'on_hold/publish/post_builder.dart' as builder;",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 50,
+          "length": 35,
+          "line": 2,
+          "column": 8,
+          "source_text": "'on_hold/publish/post_builder.dart'",
+          "staticType": "String",
+          "value": "on_hold/publish/post_builder.dart"
+        },
+        {
+          "type": "SimpleIdentifierImpl",
+          "offset": 89,
+          "length": 7,
+          "line": 2,
+          "column": 47,
+          "source_text": "builder",
+          "staticType": null,
+          "value": "builder"
+        }
+      ]
+    },
+    {
+      "type": "ImportDirectiveImpl",
+      "offset": 99,
+      "length": 52,
+      "line": 3,
+      "column": 1,
+      "source_text": "import 'on_hold/publish/post_builder_facebook.dart';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 106,
+          "length": 44,
+          "line": 3,
+          "column": 8,
+          "source_text": "'on_hold/publish/post_builder_facebook.dart'",
+          "staticType": "String",
+          "value": "on_hold/publish/post_builder_facebook.dart"
+        }
+      ]
+    },
+    {
+      "type": "ExportDirectiveImpl",
+      "offset": 155,
+      "length": 41,
+      "line": 5,
+      "column": 1,
+      "source_text": "export 'on_hold/models/post_models.dart';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 162,
+          "length": 33,
+          "line": 5,
+          "column": 8,
+          "source_text": "'on_hold/models/post_models.dart'",
+          "staticType": "String",
+          "value": "on_hold/models/post_models.dart"
+        }
+      ]
+    },
+    {
+      "type": "ExportDirectiveImpl",
+      "offset": 198,
+      "length": 114,
+      "line": 6,
+      "column": 1,
+      "source_text": "export 'on_hold/publish/post_builder.dart' show BuildJsonPostConfig, BuildJsonPostContent, BuildFinalPayload;",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 205,
+          "length": 35,
+          "line": 6,
+          "column": 8,
+          "source_text": "'on_hold/publish/post_builder.dart'",
+          "staticType": "String",
+          "value": "on_hold/publish/post_builder.dart"
+        },
+        {
+          "type": "SimpleIdentifierImpl",
+          "offset": 251,
+          "length": 19,
+          "line": 7,
+          "column": 5,
+          "source_text": "BuildJsonPostConfig",
+          "staticType": null,
+          "value": "BuildJsonPostConfig"
+        },
+        {
+          "type": "SimpleIdentifierImpl",
+          "offset": 272,
+          "length": 20,
+          "line": 7,
+          "column": 26,
+          "source_text": "BuildJsonPostContent",
+          "staticType": null,
+          "value": "BuildJsonPostContent"
+        },
+        {
+          "type": "SimpleIdentifierImpl",
+          "offset": 294,
+          "length": 17,
+          "line": 7,
+          "column": 48,
+          "source_text": "BuildFinalPayload",
+          "staticType": null,
+          "value": "BuildFinalPayload"
+        }
+      ]
+    },
+    {
+      "type": "ExportDirectiveImpl",
+      "offset": 314,
+      "length": 67,
+      "line": 8,
+      "column": 1,
+      "source_text": "export 'on_hold/publish/post_builder_facebook.dart' show FbBuilder;",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 321,
+          "length": 44,
+          "line": 8,
+          "column": 8,
+          "source_text": "'on_hold/publish/post_builder_facebook.dart'",
+          "staticType": "String",
+          "value": "on_hold/publish/post_builder_facebook.dart"
+        },
+        {
+          "type": "SimpleIdentifierImpl",
+          "offset": 371,
+          "length": 9,
+          "line": 8,
+          "column": 58,
+          "source_text": "FbBuilder",
+          "staticType": null,
+          "value": "FbBuilder"
+        }
+      ]
+    },
+    {
+      "type": "ExportDirectiveImpl",
+      "offset": 383,
+      "length": 53,
+      "line": 9,
+      "column": 1,
+      "source_text": "export 'on_hold/publish/post_builder_instagram.dart';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 390,
+          "length": 45,
+          "line": 9,
+          "column": 8,
+          "source_text": "'on_hold/publish/post_builder_instagram.dart'",
+          "staticType": "String",
+          "value": "on_hold/publish/post_builder_instagram.dart"
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclarationImpl",
+      "offset": 440,
+      "length": 156,
+      "line": 11,
+      "column": 1,
+      "source_text": "PostContent resolveContent(Map<String, dynamic> sourceContent, Map<String, dynamic> postContent) {return FbBuilder.resolveContent(postContent);}",
+      "name": "resolveContent",
+      "returnType": "PostContent",
+      "children": [
+        {
+          "type": "FunctionExpressionImpl",
+          "offset": 466,
+          "length": 130,
+          "line": 11,
+          "column": 27,
+          "source_text": "(Map<String, dynamic> sourceContent, Map<String, dynamic> postContent) {return FbBuilder.resolveContent(postContent);}",
+          "staticType": "InvalidType Function(Map<String, dynamic>, Map<String, dynamic>)",
+          "children": [
+            {
+              "type": "FormalParameterListImpl",
+              "offset": 466,
+              "length": 76,
+              "line": 11,
+              "column": 27,
+              "source_text": "(Map<String, dynamic> sourceContent, Map<String, dynamic> postContent)",
+              "children": [
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 473,
+                  "length": 34,
+                  "line": 12,
+                  "column": 5,
+                  "source_text": "Map<String, dynamic> sourceContent",
+                  "children": [
+                    {
+                      "type": "TypeArgumentListImpl",
+                      "offset": 476,
+                      "length": 17,
+                      "line": 12,
+                      "column": 8,
+                      "source_text": "<String, dynamic>"
+                    }
+                  ]
+                },
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 509,
+                  "length": 32,
+                  "line": 12,
+                  "column": 41,
+                  "source_text": "Map<String, dynamic> postContent",
+                  "children": [
+                    {
+                      "type": "TypeArgumentListImpl",
+                      "offset": 512,
+                      "length": 17,
+                      "line": 12,
+                      "column": 44,
+                      "source_text": "<String, dynamic>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BlockFunctionBodyImpl",
+              "offset": 543,
+              "length": 53,
+              "line": 12,
+              "column": 75,
+              "source_text": "{return FbBuilder.resolveContent(postContent);}",
+              "children": [
+                {
+                  "type": "BlockImpl",
+                  "offset": 543,
+                  "length": 53,
+                  "line": 12,
+                  "column": 75,
+                  "source_text": "{return FbBuilder.resolveContent(postContent);}",
+                  "children": [
+                    {
+                      "type": "ReturnStatementImpl",
+                      "offset": 548,
+                      "length": 45,
+                      "line": 13,
+                      "column": 3,
+                      "source_text": "return FbBuilder.resolveContent(postContent);",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 555,
+                          "length": 37,
+                          "line": 13,
+                          "column": 10,
+                          "source_text": "FbBuilder.resolveContent(postContent)",
+                          "staticType": "InvalidType",
+                          "methodName": "resolveContent",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 555,
+                              "length": 9,
+                              "line": 13,
+                              "column": 10,
+                              "source_text": "FbBuilder",
+                              "staticType": "InvalidType",
+                              "value": "FbBuilder"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 565,
+                              "length": 14,
+                              "line": 13,
+                              "column": 20,
+                              "source_text": "resolveContent",
+                              "staticType": "InvalidType",
+                              "value": "resolveContent"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 579,
+                              "length": 13,
+                              "line": 13,
+                              "column": 34,
+                              "source_text": "(postContent)",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 580,
+                                  "length": 11,
+                                  "line": 13,
+                                  "column": 35,
+                                  "source_text": "postContent",
+                                  "staticType": "Map<String, dynamic>",
+                                  "value": "postContent"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclarationImpl",
+      "offset": 600,
+      "length": 159,
+      "line": 16,
+      "column": 1,
+      "source_text": "PostType resolvePostType(String contentType, String? mediaType) {return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook');}",
+      "name": "resolvePostType",
+      "returnType": "PostType",
+      "children": [
+        {
+          "type": "FunctionExpressionImpl",
+          "offset": 624,
+          "length": 135,
+          "line": 16,
+          "column": 25,
+          "source_text": "(String contentType, String? mediaType) {return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook');}",
+          "staticType": "InvalidType Function(String, String?)",
+          "children": [
+            {
+              "type": "FormalParameterListImpl",
+              "offset": 624,
+              "length": 39,
+              "line": 16,
+              "column": 25,
+              "source_text": "(String contentType, String? mediaType)",
+              "children": [
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 625,
+                  "length": 18,
+                  "line": 16,
+                  "column": 26,
+                  "source_text": "String contentType"
+                },
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 645,
+                  "length": 17,
+                  "line": 16,
+                  "column": 46,
+                  "source_text": "String? mediaType"
+                }
+              ]
+            },
+            {
+              "type": "BlockFunctionBodyImpl",
+              "offset": 664,
+              "length": 95,
+              "line": 16,
+              "column": 65,
+              "source_text": "{return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook');}",
+              "children": [
+                {
+                  "type": "BlockImpl",
+                  "offset": 664,
+                  "length": 95,
+                  "line": 16,
+                  "column": 65,
+                  "source_text": "{return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook');}",
+                  "children": [
+                    {
+                      "type": "ReturnStatementImpl",
+                      "offset": 669,
+                      "length": 87,
+                      "line": 17,
+                      "column": 3,
+                      "source_text": "return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 676,
+                          "length": 79,
+                          "line": 17,
+                          "column": 10,
+                          "source_text": "BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'facebook')",
+                          "staticType": "InvalidType",
+                          "methodName": "resolvePostType",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 676,
+                              "length": 17,
+                              "line": 17,
+                              "column": 10,
+                              "source_text": "BuildFinalPayload",
+                              "staticType": "InvalidType",
+                              "value": "BuildFinalPayload"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 694,
+                              "length": 15,
+                              "line": 17,
+                              "column": 28,
+                              "source_text": "resolvePostType",
+                              "staticType": "InvalidType",
+                              "value": "resolvePostType"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 709,
+                              "length": 46,
+                              "line": 17,
+                              "column": 43,
+                              "source_text": "(contentType, mediaType, platform: 'facebook')",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 710,
+                                  "length": 11,
+                                  "line": 17,
+                                  "column": 44,
+                                  "source_text": "contentType",
+                                  "staticType": "String",
+                                  "value": "contentType"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 723,
+                                  "length": 9,
+                                  "line": 17,
+                                  "column": 57,
+                                  "source_text": "mediaType",
+                                  "staticType": "String?",
+                                  "value": "mediaType"
+                                },
+                                {
+                                  "type": "NamedExpressionImpl",
+                                  "offset": 734,
+                                  "length": 20,
+                                  "line": 17,
+                                  "column": 68,
+                                  "source_text": "platform: 'facebook'",
+                                  "staticType": "String",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 734,
+                                      "length": 8,
+                                      "line": 17,
+                                      "column": 68,
+                                      "source_text": "platform",
+                                      "staticType": null,
+                                      "value": "platform"
+                                    },
+                                    {
+                                      "type": "SimpleStringLiteralImpl",
+                                      "offset": 744,
+                                      "length": 10,
+                                      "line": 17,
+                                      "column": 78,
+                                      "source_text": "'facebook'",
+                                      "staticType": "String",
+                                      "value": "facebook"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclarationImpl",
+      "offset": 763,
+      "length": 162,
+      "line": 20,
+      "column": 1,
+      "source_text": "PostType resolveIgPostType(String contentType, String? mediaType) {return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram');}",
+      "name": "resolveIgPostType",
+      "returnType": "PostType",
+      "children": [
+        {
+          "type": "FunctionExpressionImpl",
+          "offset": 789,
+          "length": 136,
+          "line": 20,
+          "column": 27,
+          "source_text": "(String contentType, String? mediaType) {return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram');}",
+          "staticType": "InvalidType Function(String, String?)",
+          "children": [
+            {
+              "type": "FormalParameterListImpl",
+              "offset": 789,
+              "length": 39,
+              "line": 20,
+              "column": 27,
+              "source_text": "(String contentType, String? mediaType)",
+              "children": [
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 790,
+                  "length": 18,
+                  "line": 20,
+                  "column": 28,
+                  "source_text": "String contentType"
+                },
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 810,
+                  "length": 17,
+                  "line": 20,
+                  "column": 48,
+                  "source_text": "String? mediaType"
+                }
+              ]
+            },
+            {
+              "type": "BlockFunctionBodyImpl",
+              "offset": 829,
+              "length": 96,
+              "line": 20,
+              "column": 67,
+              "source_text": "{return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram');}",
+              "children": [
+                {
+                  "type": "BlockImpl",
+                  "offset": 829,
+                  "length": 96,
+                  "line": 20,
+                  "column": 67,
+                  "source_text": "{return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram');}",
+                  "children": [
+                    {
+                      "type": "ReturnStatementImpl",
+                      "offset": 834,
+                      "length": 88,
+                      "line": 21,
+                      "column": 3,
+                      "source_text": "return BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 841,
+                          "length": 80,
+                          "line": 21,
+                          "column": 10,
+                          "source_text": "BuildFinalPayload.resolvePostType(contentType, mediaType, platform: 'instagram')",
+                          "staticType": "InvalidType",
+                          "methodName": "resolvePostType",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 841,
+                              "length": 17,
+                              "line": 21,
+                              "column": 10,
+                              "source_text": "BuildFinalPayload",
+                              "staticType": "InvalidType",
+                              "value": "BuildFinalPayload"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 859,
+                              "length": 15,
+                              "line": 21,
+                              "column": 28,
+                              "source_text": "resolvePostType",
+                              "staticType": "InvalidType",
+                              "value": "resolvePostType"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 874,
+                              "length": 47,
+                              "line": 21,
+                              "column": 43,
+                              "source_text": "(contentType, mediaType, platform: 'instagram')",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 875,
+                                  "length": 11,
+                                  "line": 21,
+                                  "column": 44,
+                                  "source_text": "contentType",
+                                  "staticType": "String",
+                                  "value": "contentType"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 888,
+                                  "length": 9,
+                                  "line": 21,
+                                  "column": 57,
+                                  "source_text": "mediaType",
+                                  "staticType": "String?",
+                                  "value": "mediaType"
+                                },
+                                {
+                                  "type": "NamedExpressionImpl",
+                                  "offset": 899,
+                                  "length": 21,
+                                  "line": 21,
+                                  "column": 68,
+                                  "source_text": "platform: 'instagram'",
+                                  "staticType": "String",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 899,
+                                      "length": 8,
+                                      "line": 21,
+                                      "column": 68,
+                                      "source_text": "platform",
+                                      "staticType": null,
+                                      "value": "platform"
+                                    },
+                                    {
+                                      "type": "SimpleStringLiteralImpl",
+                                      "offset": 909,
+                                      "length": 11,
+                                      "line": 21,
+                                      "column": 78,
+                                      "source_text": "'instagram'",
+                                      "staticType": "String",
+                                      "value": "instagram"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

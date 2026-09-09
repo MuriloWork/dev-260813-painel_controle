@@ -1,0 +1,50 @@
+[
+  {
+    "tag_name": "loadData",
+    "file_path": "controller_controller_second_screen",
+    "class": "DataController",
+    "method": "loadData",
+    "log_name": "loadData",
+    "placeholders_txt": {
+      "log_type": "DataFlow",
+      "script_action": "executando loadData"
+    },
+    "placeholders_var_remove": ["showWithScroll"]
+  },
+  {
+    "tag_name": "loadData.LoadAction.reload",
+    "file_path": "controller_controller_second_screen",
+    "class": "DataController",
+    "method": "loadData",
+    "log_name": "loadData",
+    "placeholders_txt": {
+      "log_type": "DataFlow",
+      "script_action": "executando loadData.LoadAction.reload"
+    },
+    "placeholders_var_remove": null
+  },
+  {
+    "tag_name": "sortData",
+    "file_path": "controller_controller_second_screen",
+    "class": "DataController",
+    "method": "sortData",
+    "log_name": "sortData",
+    "placeholders_txt": {
+      "log_type": "DataFlow",
+      "script_action": "executando sortData"
+    },
+    "placeholders_var_remove": ["field"]
+  },
+  {
+    "tag_name": "filterData",
+    "file_path": "controller_controller_second_screen",
+    "class": "DataController",
+    "method": "filterData",
+    "log_name": "filterData",
+    "placeholders_txt": {
+      "log_type": "DataFlow",
+      "script_action": "executando filterData"
+    },
+    "placeholders_var_remove": ["field"]
+  }
+]

@@ -1,0 +1,498 @@
+[
+  {
+    "line": 1,
+    "column": 1,
+    "script_string": "import 'dart:convert';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 2,
+    "column": 1,
+    "script_string": "import 'dart:io';",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 3,
+    "column": 1,
+    "script_string": "import '../publish/post_builder.dart';",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 4,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 5,
+    "column": 1,
+    "script_string": "/// Orquestra pipeline completo: assets → config → content → payload → request.",
+    "comment": "",
+    "tag": "",
+    "length": 79
+  },
+  {
+    "line": 6,
+    "column": 1,
+    "script_string": "/// [auditDir] é obrigatório — usado como repositório dos JSONs intermediários.",
+    "comment": "",
+    "tag": "",
+    "length": 79
+  },
+  {
+    "line": 7,
+    "column": 1,
+    "script_string": "/// Retorna lista de requests prontos para envio pela camada de API.",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 8,
+    "column": 1,
+    "script_string": "Future<List<Map<String, dynamic>>> runPipeline(",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 9,
+    "column": 3,
+    "script_string": "String assetsDir,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 10,
+    "column": 3,
+    "script_string": "String auditDir,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 11,
+    "column": 1,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 12,
+    "column": 3,
+    "script_string": "print('=== PIPELINE ===\\n');",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 13,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 14,
+    "column": 3,
+    "script_string": "// etapa 1: scan",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 15,
+    "column": 3,
+    "script_string": "print('--- etapa 1: scanAssets ---');",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 16,
+    "column": 3,
+    "script_string": "final groups = await BuildAssetsContent.resolveAssetsContent(assetsDir);",
+    "comment": "",
+    "tag": "",
+    "length": 72
+  },
+  {
+    "line": 17,
+    "column": 3,
+    "script_string": "print('Groups: ${groups.length}');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 18,
+    "column": 3,
+    "script_string": "print('');",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 19,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 20,
+    "column": 3,
+    "script_string": "// etapa 2: config",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 21,
+    "column": 3,
+    "script_string": "print('--- etapa 2: resolvePostsConfig ---');",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 22,
+    "column": 3,
+    "script_string": "final postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir);",
+    "comment": "",
+    "tag": "",
+    "length": 78
+  },
+  {
+    "line": 23,
+    "column": 3,
+    "script_string": "print('Configs: ${postsConfig.length}');",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 24,
+    "column": 3,
+    "script_string": "await BuildJsonPostConfig.savePostsConfigToJson(",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 25,
+    "column": 5,
+    "script_string": "'$auditDir\\\\posts_config.json', postsConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 26,
+    "column": 3,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 27,
+    "column": 3,
+    "script_string": "print('');",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 28,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 29,
+    "column": 3,
+    "script_string": "// etapa 3: content (JSON→JSON)",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 30,
+    "column": 3,
+    "script_string": "print('--- etapa 3: resolvePostsContent ---');",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 31,
+    "column": 3,
+    "script_string": "final postsContent = await BuildJsonPostContent.resolvePostsContent(",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 32,
+    "column": 5,
+    "script_string": "'$auditDir\\\\posts_config.json',",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 33,
+    "column": 5,
+    "script_string": "'$auditDir\\\\posts_content.json',",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 34,
+    "column": 3,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 35,
+    "column": 3,
+    "script_string": "print('Contents: ${postsContent.length}');",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 36,
+    "column": 3,
+    "script_string": "print('');",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 37,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 38,
+    "column": 3,
+    "script_string": "// etapa 4: payload (JSON→JSON)",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 39,
+    "column": 3,
+    "script_string": "print('--- etapa 4: resolveFinalPayload ---');",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 40,
+    "column": 3,
+    "script_string": "final postsPayload = await BuildFinalPayload.resolveFinalPayload(",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 41,
+    "column": 5,
+    "script_string": "'$auditDir\\\\posts_content.json',",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 42,
+    "column": 5,
+    "script_string": "'$auditDir\\\\posts_payload.json',",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 43,
+    "column": 3,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 44,
+    "column": 3,
+    "script_string": "print('Payloads: ${postsPayload.length}');",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 45,
+    "column": 3,
+    "script_string": "print('');",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 46,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 47,
+    "column": 3,
+    "script_string": "// etapa 4b: save payload copy for testing",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 48,
+    "column": 3,
+    "script_string": "// TODO: remove savePostsPayloadToJson after testing",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 49,
+    "column": 3,
+    "script_string": "await BuildFinalPayload.savePostsPayloadToJson(",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 50,
+    "column": 5,
+    "script_string": "'$auditDir\\\\post_model_NN_payload.json', postsPayload,",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 51,
+    "column": 3,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 52,
+    "column": 3,
+    "script_string": "print('');",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 53,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 54,
+    "column": 3,
+    "script_string": "// etapa 5: request",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 55,
+    "column": 3,
+    "script_string": "print('--- etapa 5: requestPayload ---');",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 56,
+    "column": 3,
+    "script_string": "final requests = postsPayload.map(BuildFinalPayload.requestPayload).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 77
+  },
+  {
+    "line": 57,
+    "column": 3,
+    "script_string": "print('Requests: ${requests.length}');",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 58,
+    "column": 3,
+    "script_string": "print('');",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 59,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 60,
+    "column": 3,
+    "script_string": "print('=== PIPELINE CONCLUÍDO ===');",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 61,
+    "column": 3,
+    "script_string": "return requests;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 62,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  }
+]

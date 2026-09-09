@@ -1,0 +1,2955 @@
+{
+  "files": [
+    {
+      "file_name": "clean_post_model.dart",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "contents_service.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "toJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_description": ""
+            },
+            {
+              "variable_name": "map",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "created.toIso8601String()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "modified.toIso8601String()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "winProps.toJson()",
+              "variable_description": ""
+            },
+            {
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children.map((c) => c.toJson()).toList()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "isEmpty",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_start",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_buildSnapshot()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_checkChanges()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_buildSnapshot",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.list(recursive: true, followLinks: false)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "name",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(name).startsWith('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entry.stat()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_checkChanges",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_buildSnapshot()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "changed",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_snapshot.containsKey(key)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_controller.add('change')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "onEvent",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_timer?.cancel()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_controller.close()",
+              "variable_description": ""
+            },
+            {
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_pollTimer?.cancel()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_watcher?.dispose()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "CoUninitialize()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_logController.close()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SERVICE] Encerrado')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "logs",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "lastResult",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "isRunning",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_log",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController.add(msg)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "init",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "CoInitializeEx(COINIT_APARTMENTTHREADED)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "FAILED(hr)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SERVICE] Iniciado')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[CONFIG] sqlite: $sqliteFile')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[CONFIG] source: $sourceFolder')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[CONFIG] target: $targetFolder')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scan",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "fullScan(sourceFolder)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "saveJson(result, targetFolder, sourceFolder)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "saveToSqlite(result, sqliteFile, sqliteTable, sourceFolder)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "startWatching",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "hasChanges",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_watcher!.onEvent.listen((event) {hasChanges = true; _log('[WATCHER] Alteração detectada');})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[WATCHER] Alteração detectada')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scan()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[ERRO] Falha no re-scan: $e')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[WATCHER] Monitorando alterações (poll: ${pollInterval.inSeconds}s)')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "stopWatching",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_pollTimer?.cancel()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_watcher?.dispose()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[WATCHER] Monitoramento parado')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_getWindowsProps",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "props",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "using((arena) {try {final pItem = SHCreateItemFromParsingName<IShellItem2>(arena.pcwstr(filePath), null); try {String? safeGetString(IShellItem2 item, GUID fmtid, int pid, Arena a) {try {final pkey = _createPkey(a, fmtid, pid); final pStr = item.getString(pkey); if (!pStr.isEmpty) {final dartStr = pStr.toDartString(); CoTaskMemFree(pStr); return dartStr.trim();}} catch (_) {} return null;} props.titulo = safeGetString(pItem, _pkeyTitleFmtid, 2, arena) ?? ''; props.marcas = safeGetString(pItem, _pkeyKeywordsFmtid, 5, arena) ?? ''; props.comentarios = safeGetString(pItem, _pkeyCommentFmtid, 6, arena) ?? '';} finally {pItem.release();}} catch (_) {}})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "SHCreateItemFromParsingName<IShellItem2>(arena.pcwstr(filePath), null)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "arena.pcwstr(filePath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "InvalidType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_createPkey(a, fmtid, pid)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "item.getString(pkey)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "pStr.toDartString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "CoTaskMemFree(pStr)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dartStr.trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "safeGetString(pItem, _pkeyTitleFmtid, 2, arena)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "safeGetString(pItem, _pkeyKeywordsFmtid, 5, arena)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "safeGetString(pItem, _pkeyCommentFmtid, 6, arena)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "pItem.release()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_getFilesystemId",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "using((arena) {try {final Win32Result(value: hFile, : error) = CreateFile(arena.pcwstr(filePath), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, null); if (!hFile.isValid) {return;} try {final pInfo = calloc<BY_HANDLE_FILE_INFORMATION>(); try {final res = GetFileInformationByHandle(hFile, pInfo); if (res.value) {final low = pInfo.ref.nFileIndexLow; final high = pInfo.ref.nFileIndexHigh; final vol = pInfo.ref.dwVolumeSerialNumber; result = '$vol-$high-$low';}} finally {free(pInfo);}} finally {CloseHandle(hFile);}} catch (_) {}})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "CreateFile(arena.pcwstr(filePath), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, null)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "arena.pcwstr(filePath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "calloc<BY_HANDLE_FILE_INFORMATION>()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "GetFileInformationByHandle(hFile, pInfo)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "low",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "high",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "vol",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "free(pInfo)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "CloseHandle(hFile)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "extractImageMetadata",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "file.readAsBytes()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "readExifFromBytes(bytes)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "usefulKeys",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "found",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "exifData.containsKey(key)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "exifData[key]!.toString()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "extractAudioMetadata",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "file.readAsBytesSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "AudioMeta.fromBytes(bytes)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "meta.type.toString().split('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "meta.duration.toString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "meta.encoding.toString().split('.')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scanDirectory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.relative(dirPath, from: sourceRoot)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.listSync(followLinks: false).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entries.sort((a, b) {final aName = path.basename(a.path); final bName = path.basename(b.path); if (a is Directory && b is File) return -1; if (a is File && b is Directory) return 1; return aName.compareTo(bName);})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(a.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(b.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "aName.compareTo(bName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(entry.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "name.startsWith('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanDirectory(entry.path, sourceRoot)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children.add(child)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.extension(name).toLowerCase()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entry.statSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.relative(entry.path, from: sourceRoot)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_getWindowsProps(entry.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_getFilesystemId(entry.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaMetadata",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "imageExtensions.contains(ext)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "extractImageMetadata(entry)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "audioExtensions.contains(ext)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "extractAudioMetadata(entry)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children.add(FileNode(name: name, relativePath: relPath, extension: ext, sizeBytes: stat.size, created: stat.changed, modified: stat.modified, fileId: fileId, winProps: winProps, mediaMetadata: mediaMetadata))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(sourceRoot)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(dirPath)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "fullScan",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "..start()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('\\n[SCAN] Iniciando scan completo...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  source: $sourceFolder')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sourceDir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sourceDir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(sourceFolder)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sourceDir.listSync(followLinks: false).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entries.sort((a, b) {final aName = path.basename(a.path); final bName = path.basename(b.path); if (a is Directory && b is File) return -1; if (a is File && b is Directory) return 1; return aName.compareTo(bName);})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(a.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(b.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "aName.compareTo(bName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.basename(entry.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "name.startsWith('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanDirectory(entry.path, sourceFolder)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children.add(child)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.extension(name).toLowerCase()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entry.statSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "relPath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_getWindowsProps(entry.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_getFilesystemId(entry.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaMetadata",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "imageExtensions.contains(ext)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "extractImageMetadata(entry)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "audioExtensions.contains(ext)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "extractAudioMetadata(entry)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "children.add(FileNode(name: name, relativePath: relPath, extension: ext, sizeBytes: stat.size, created: stat.changed, modified: stat.modified, fileId: fileId, winProps: winProps, mediaMetadata: mediaMetadata))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "root",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "finalFileCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "finalFolderCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "countAll",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "countAll(child)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "countAll(root)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "stopwatch.stop()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SCAN] Concluído em ${stopwatch.elapsedMilliseconds}ms')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  arquivos: $finalFileCount | pastas: $finalFolderCount')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toIso8601String()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "saveJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "targetDir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "targetDir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "targetDir.createSync(recursive: true)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result.scanTimestamp.replaceAll(':', '').replaceAll('-', '').replaceAll('T', '_').split('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.join(targetFolder, fileName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonMap",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result.root.toJson()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "JsonEncoder.withIndent('  ').convert(jsonMap)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(filePath).writeAsString(jsonStr)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[JSON] Salvo: $fileName (${_formatBytes(jsonStr.length)})')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "saveToSqlite",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "sqlite3.open(dbPath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.execute('''\r\n      CREATE TABLE IF NOT EXISTS $tableName (\r\n        id INTEGER PRIMARY KEY AUTOINCREMENT,\r\n        map_type TEXT DEFAULT 'content',\r\n        json_data TEXT NOT NULL,\r\n        source_folder TEXT NOT NULL,\r\n        scan_timestamp TEXT NOT NULL,\r\n        file_count INTEGER DEFAULT 0,\r\n        folder_count INTEGER DEFAULT 0,\r\n        created_at TEXT DEFAULT CURRENT_TIMESTAMP\r\n      )\r\n    ''')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonMap",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result.root.toJson()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonEncode(jsonMap)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.execute('DELETE FROM $tableName')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.execute('INSERT INTO $tableName (map_type, json_data, source_folder, scan_timestamp, file_count, folder_count) VALUES (?, ?, ?, ?, ?, ?)', ['content', jsonStr, sourceFolder, result.scanTimestamp, result.fileCount, result.folderCount])",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.dispose()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SQLITE] Inserido em $tableName')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_formatBytes",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "(bytes / 1024).toStringAsFixed(1)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(bytes / (1024 * 1024)).toStringAsFixed(1)",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "models/post_models.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "assetsEntry",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "assetsContent",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "scanAssets",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "groups",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.list().toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sub.path.split('\\\\')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "name.contains('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "name.split('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "Directory(sub.path).list().toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.path.split('\\\\')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileName.split('.').last.toLowerCase()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "AssetsEntries.parseTimestamp(fileName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "type",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "title",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "AssetsEntries.parseFrontmatter(file.path)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "hasMedia",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "assetsEntry(fileName: fileName, timestamp: timestamp, type: type, mediaType: mediaType, title: title, mediaFile: mediaFile)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_loadBody(entry, assetsDir, platform, contentType)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entries.add(entry)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entries.sort((a, b) => (a['timestamp'] as DateTime).compareTo(b['timestamp'] as DateTime))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(a['timestamp'] as DateTime).compareTo(b['timestamp'] as DateTime)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "groups.add(assetsContent(platform: platform, contentType: contentType, entries: entries))",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "parseTimestamp",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "fileName.split('_')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "datePart",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "timePart",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "int.parse(datePart.substring(0, 4))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "int.parse(datePart.substring(4, 6))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "int.parse(datePart.substring(6, 8))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "int.parse(timePart.substring(0, 2))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "int.parse(timePart.substring(2, 4))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "int.parse(timePart.substring(4, 6))",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "parseFrontmatter",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "file",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.readAsString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "content.split('\\n')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "lines[0].trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "title",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "lines[i].trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "line.startsWith('title:')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "line.substring(6).trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "line.startsWith('media_file:')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "line.substring(11).trim()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_loadBody",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "title",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.readAsString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "content.split('\\n')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "startIdx",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "lines[0].trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "lines[i].trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "lines.skip(startIdx).join('\\n').trim()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_formatTimestamp",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "dt.year.toString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dt.month.toString().padLeft(2, '0')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dt.day.toString().padLeft(2, '0')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dt.hour.toString().padLeft(2, '0')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dt.minute.toString().padLeft(2, '0')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dt.second.toString().padLeft(2, '0')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "postsConfig",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "toPostsConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "result",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "entries",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "type",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().add(const Duration(minutes: 10))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "timestamp.isBefore(nowPlus10)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "timestamp.isAtSameMomentAs(nowPlus10)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "title",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "body",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaFile",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "imagePath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "videoPath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fullPath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "postsConfig(platform: platform, contentType: contentType, mediaType: mediaType, published: isPast, title: title, body: body, imagePath: imagePath, videoPath: videoPath, scheduledPublishTime: isPast ? null : AssetsEntries._formatTimestamp(timestamp))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "AssetsEntries._formatTimestamp(timestamp)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result.add({'post_config' : config, 'post_content' : <String, dynamic>{}})",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "postsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_textFieldFor(platform, contentType, mediaType)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "toPostsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "jsonDecode(await File(inputPath).readAsString())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(raw['posts'] as List<dynamic>).map((e) => e as Map<String, dynamic>).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "items.map((item) {final config = item['post_config'] as Map<String, dynamic>; final tv = config['text_values'] as Map<String, dynamic>?; final content = postsContent(platform: config['platform'] as String, contentType: config['content_type'] as String, mediaType: config['media_type'] as String, published: config['published'] as bool, title: tv?['title'] as String?, body: tv?['body'] as String?, imagePath: config['image_path'] as String?, videoPath: config['video_path'] as String?, scheduledPublishTime: config['scheduled_publish_time'] as String?, retryConfig: config['retry_config'] as Map<String, dynamic>?); return {'post_config' : config, 'post_content' : content};}).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "config",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "tv",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "postsContent(platform: config['platform'] as String, contentType: config['content_type'] as String, mediaType: config['media_type'] as String, published: config['published'] as bool, title: tv?['title'] as String?, body: tv?['body'] as String?, imagePath: config['image_path'] as String?, videoPath: config['video_path'] as String?, scheduledPublishTime: config['scheduled_publish_time'] as String?, retryConfig: config['retry_config'] as Map<String, dynamic>?)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(outputPath).writeAsString(const JsonEncoder.withIndent('  ').convert({'posts' : result}))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "const JsonEncoder.withIndent('  ').convert({'posts' : result})",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_textFieldFor",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "postsPayload",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "toPostsPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "jsonDecode(await File(inputPath).readAsString())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(raw['posts'] as List<dynamic>).map((e) => e as Map<String, dynamic>).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "items.map((item) {final config = item['post_config'] as Map<String, dynamic>; final content = item['post_content'] as Map<String, dynamic>; final platform = config['platform'] as String; final contentType = config['content_type'] as String; final mediaType = config['media_type'] as String; final body = platform == 'facebook' ? _fbBody(contentType, mediaType, content) : _igBody(contentType, mediaType, content); return postsPayload(platform: platform, contentType: contentType, mediaType: mediaType, body: body, postConfig: config, postContent: content);}).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "config",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "content",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "platform",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "body",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_fbBody(contentType, mediaType, content)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_igBody(contentType, mediaType, content)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "postsPayload(platform: platform, contentType: contentType, mediaType: mediaType, body: body, postConfig: config, postContent: content)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(outputPath).writeAsString(const JsonEncoder.withIndent('  ').convert({'posts' : result}))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "const JsonEncoder.withIndent('  ').convert({'posts' : result})",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_fbBody",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "isPublished",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_toUnix(content['scheduled_publish_time']).toString()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_igBody",
+          "function_description": "",
+          "variables": []
+        }
+      ]
+    },
+    {
+      "file_name": "post_builder.dart",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "posts_service_get.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "logs",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_log",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController.add(msg)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "init",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_log('[SERVICE] Iniciado')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[CONFIG] FB page: ${config.facebookPageId}')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[CONFIG] IG account: ${config.instagramAccountId}')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[CONFIG] Delay: ${config.requestDelayMs}ms')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logController.close()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SERVICE] Encerrado')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_resolveToken",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "token",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "token.startsWith('env:')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "token.substring(4)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "envValue",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_getPageToken(_userToken!)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_getPageToken",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "Uri.parse('https://graph.facebook.com/v25.0/me').replace(queryParameters: {'access_token' : userToken, 'fields' : 'accounts{access_token}'})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.get(uri)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(resp.body)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "accounts",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_apiGet",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "queryParams",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "Uri.parse('https://graph.facebook.com/v25.0$endpoint').replace(queryParameters: queryParams)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "attempt",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.get(uri)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(resp.body)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "delay",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('    [RETRY] ${resp.statusCode} em $endpoint, aguardando ${delay.inSeconds}s...')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_delay",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_paginateWithCursor",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "allItems",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "seenIds",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "afterCursor",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "page",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "queryParams",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_apiGet(endpoint, token, params: queryParams)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "data.containsKey('data')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(data['data'] as List).cast<Map<String, dynamic>>()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "id",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "seenIds.contains(id)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "seenIds.add(id)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "allItems.add(item)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('    Page $page: ${items.length} items, $newCount new (total: ${allItems.length})')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_delay()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "data.containsKey('paging')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "paging",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "paging.containsKey('cursors')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "cursors",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newAfter",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_transformFbPost",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "mediaUrl",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "thumbnailUrl",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "raw.containsKey('attachments')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "att",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "att.containsKey('data')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "firstAtt",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "firstAtt.containsKey('media')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "media",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "media.containsKey('image')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "likeCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "raw.containsKey('reactions')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "reactions",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "reactions.containsKey('summary')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "commentsCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "raw.containsKey('comments')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "comments",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "comments.containsKey('summary')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_transformFbReel",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "permalinkUrl",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "permalinkUrl.contains('/reel/')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "status",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "permalinkUrl?.toString()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_transformFbStory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "raw['post_id']?.toString()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_transformIgPost",
+          "function_description": "",
+          "variables": []
+        },
+        {
+          "function_name": "_transformIgStory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "path.join('..', '..', 'assets', 'instagram_stories', localPath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toUtc().toIso8601String()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_resolveFbPhotoUrls",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "posts.where((p) => p['media_type'] == 'photo' && p['media_url'] == null && p['post_id'] != null).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Resolving media_url for ${photoPosts.length} photo posts...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "resolved",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "i",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "post",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "postId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_apiGet('/$postId', token, params: {'fields' : 'attachments{target}'})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "data.containsKey('attachments')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "att",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "att.containsKey('data')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "firstAtt",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "firstAtt.containsKey('target')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "target",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "photoId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_apiGet('/$photoId', token, params: {'fields' : 'source,images'})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "source",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "photoData.containsKey('images')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "images",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_delay()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('    Resolved: $resolved, Failed: $failed')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scanFacebookFeed",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_log('\\n[FB FEED] Iniciando scan...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_resolveToken()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_paginateWithCursor('/${config.facebookPageId}/feed', token, params: {'fields' : fields}, maxPages: config.maxPagesFbFeed, limit: config.maxPostsPerFetchFb)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "rawPosts.map(_transformFbPost).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Resolving photo URLs...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_resolveFbPhotoUrls(posts, token)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[FB FEED] Concluído: ${posts.length} posts')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scanFacebookVideos",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_log('\\n[FB VIDEOS] Iniciando scan...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_resolveToken()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_paginateWithCursor('/${config.facebookPageId}/videos', token, params: {'fields' : fields}, maxPages: config.maxPagesFbVideos, limit: config.maxPostsPerFetchFb)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "rawVideos.map(_transformFbReel).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[FB VIDEOS] Concluído: ${reels.length} videos')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scanFacebookStories",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_log('\\n[FB STORIES] Iniciando scan...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_resolveToken()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_paginateWithCursor('/${config.facebookPageId}/stories', token, params: {'fields' : 'post_id,status,creation_time,media_type,media_id,url'}, maxPages: config.maxPagesFbStories, limit: config.maxPostsPerFetchFb)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "transformed",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaDetails",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_apiGet('/$mediaId', token, params: {'fields' : 'id,source,created_time'})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_delay()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "transformed.add(_transformFbStory(story, mediaDetails))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[FB STORIES] Concluído: ${transformed.length} stories')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scanInstagramFeed",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_log('\\n[IG FEED] Iniciando scan...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_resolveToken()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_paginateWithCursor('/${config.instagramAccountId}/media', token, params: {'fields' : fields}, maxPages: config.maxPagesIgFeed, limit: config.maxPostsPerFetchIg)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "rawPosts.map(_transformIgPost).toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[IG FEED] Concluído: ${posts.length} posts')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scanInstagramStories",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_log('\\n[IG STORIES] Iniciando scan...')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_resolveToken()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "['id', 'media_type', 'media_url', 'timestamp', 'owner', 'permalink', 'thumbnail_url', 'like_count', 'comments_count', 'shortcode', 'caption'].join(',')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_paginateWithCursor('/${config.instagramAccountId}/stories', token, params: {'fields' : fields}, maxPages: config.maxPagesIgStories, limit: config.maxPostsPerFetchIg)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.normalize(path.join(path.dirname(Platform.script.toFilePath()), config.storiesAssetsFolderInstagram))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.dirname(Platform.script.toFilePath())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.normalize(path.join(path.dirname(Platform.script.toFilePath()), config.storiesTargetFolderInstagram))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "indexDirObj",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "indexDirObj.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.join(indexDir, 'ig_stories_index.json')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_loadIndex(indexPath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingStories",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(index['stories'] as List).cast<Map<String, dynamic>>()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "activeIds",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "downloaded",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "skipped",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "failed",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "storyId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaUrl",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "activeIds.add(storyId)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "localPath",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_buildFileName(storyId, mediaType, timestamp)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_isWithin24h(timestamp)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_downloadMedia(mediaUrl, fileName, assetsDir, within24h)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_transformIgStory(story, localPath, false)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingIdx",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingStories.indexWhere((s) => s['post_id'] == storyId)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingStories.add(transformed)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newlyExpired",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "postId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "activeIds.contains(postId)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "activeCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingStories.where((s) => !(s['expired'] as bool? ?? false))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "expiredCount",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "existingStories.where((s) => s['expired'] as bool? ?? false)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toUtc().toIso8601String()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "JsonEncoder.withIndent('  ').convert(index)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(indexPath).writeAsString(jsonStr)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[IG STORIES] Concluído:')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Active: ${rawStories.length}')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Downloaded: $downloaded')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Skipped: $skipped')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Failed: $failed')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Newly expired: $newlyExpired')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Total: ${existingStories.length} ($activeCount active, $expiredCount expired)')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_loadIndex",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "file",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(file.readAsStringSync())",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_buildFileName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "ext",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "timestamp.replaceAll(':', '').replaceAll('-', '').replaceAll('T', '_').split('.').first.split('+')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_isWithin24h",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "DateTime.parse(timestamp.replaceAll('+0000', '+00:00'))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toUtc()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "now.difference(storyTime)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_downloadMedia",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "path.join(targetDir, fileName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.get(Uri.parse(mediaUrl))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.writeAsBytes(response.bodyBytes)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('    Saved: $fileName (${_formatBytes(file.lengthSync())})')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('    Failed: HTTP ${response.statusCode}')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('    Error: $e')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_saveFacebookJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "path.normalize(path.join(path.dirname(Platform.script.toFilePath()), config.postsTargetFolderFacebook))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.dirname(Platform.script.toFilePath())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "posts.where((p) => p['content_type'] == 'feed').toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "posts.where((p) => p['content_type'] == 'reels').toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "storyPosts",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "posts.where((p) => p['content_type'] == 'stories').toList()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "output",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toIso8601String()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toIso8601String().replaceAll(':', '').replaceAll('-', '').replaceAll('T', '_').split('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.join(targetDir, fileName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "JsonEncoder.withIndent('  ').convert(output)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(filePath).writeAsString(jsonStr)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[JSON] Salvo: $fileName (${_formatBytes(jsonStr.length)})')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_saveInstagramJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "path.normalize(path.join(path.dirname(Platform.script.toFilePath()), config.postsTargetFolderInstagram))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.dirname(Platform.script.toFilePath())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "dir.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "output",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toIso8601String()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toIso8601String().replaceAll(':', '').replaceAll('-', '').replaceAll('T', '_').split('.')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fileName",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.join(targetDir, fileName)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "JsonEncoder.withIndent('  ').convert(output)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(filePath).writeAsString(jsonStr)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[JSON] Salvo: $fileName (${_formatBytes(jsonStr.length)})')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_saveToSqlite",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "path.normalize(path.join(path.dirname(Platform.script.toFilePath()), config.sqliteFile))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.dirname(Platform.script.toFilePath())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sqlite3.open(dbPath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonEncode(jsonData)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "DateTime.now().toIso8601String()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.select('SELECT id FROM ${config.sqliteTable} WHERE map_type = ?', [mapType])",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "id",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.execute('UPDATE ${config.sqliteTable} SET json_data = ?, scan_timestamp = ?, created_at = ? WHERE id = ?', [jsonStr, now, now, id])",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SQLITE] Atualizado: $mapType (id=$id)')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.execute('INSERT INTO ${config.sqliteTable} (map_type, json_data, source_folder, scan_timestamp, file_count, folder_count) VALUES (?, ?, ?, ?, ?, ?)', [mapType, jsonStr, 'meta_api', now, 0, 0])",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('[SQLITE] Inserido: $mapType')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "db.dispose()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "scan",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_resolveToken()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanFacebookFeed()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanFacebookVideos()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanFacebookStories()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fbAll",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_saveFacebookJson(fbAll)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "fbJson",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(File(fbJsonPath).readAsStringSync())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_saveToSqlite('facebook_posts', fbJson)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanInstagramFeed()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_saveInstagramJson(igFeed)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "igJson",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(File(igJsonPath).readAsStringSync())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_saveToSqlite('instagram_posts', igJson)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "scanInstagramStories()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.normalize(path.join(path.dirname(Platform.script.toFilePath()), config.storiesTargetFolderInstagram))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.dirname(Platform.script.toFilePath())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "path.join(indexDir, 'ig_stories_index.json')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "igStoriesJson",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(File(indexPath).readAsStringSync())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_saveToSqlite('instagram_stories', igStoriesJson)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('\\n[SCAN] Concluído')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Facebook: ${fbAll.length} posts')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "_log('  Instagram: ${igFeed.length} posts')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "_formatBytes",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "(bytes / 1024).toStringAsFixed(1)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(bytes / (1024 * 1024)).toStringAsFixed(1)",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "posts_service_post.dart",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "publish/post_builder.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "resolveAssetsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "AssetsEntries.scanAssets(assetsDir)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "resolvePostsConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "PostsConfig.toPostsConfig(groups, assetsDir)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "savePostsConfigToJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(modelPath).writeAsString(const JsonEncoder.withIndent('  ').convert(data))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "const JsonEncoder.withIndent('  ').convert(data)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "resolvePostsContent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "PostsContent.toPostsContent(inputPath, outputPath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(await File(outputPath).readAsString())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(raw['posts'] as List<dynamic>).cast<Map<String, dynamic>>()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "savePostsContentToJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(modelPath).writeAsString(const JsonEncoder.withIndent('  ').convert(data))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "const JsonEncoder.withIndent('  ').convert(data)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "resolveFinalPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "PostsPayload.toPostsPayload(inputPath, outputPath)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(await File(outputPath).readAsString())",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "(raw['posts'] as List<dynamic>).cast<Map<String, dynamic>>()",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "savePostsPayloadToJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "File(modelPath).writeAsString(const JsonEncoder.withIndent('  ').convert(data))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "const JsonEncoder.withIndent('  ').convert(data)",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "requestPayload",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "platform",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "contentType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "mediaType",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "body",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "endpointTemplate",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "uploadFlow",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "resumable_upload_service.dart",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "createSession",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "Uri.parse('$_baseGraph/$_apiVersion/$appId/uploads' '?file_name=$fileName&file_length=$fileLength' '&file_type=video/mp4&access_token=$userToken')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.post(uri)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(resp.body)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "body.containsKey('error')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "sessionId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Session created: $sessionId')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "uploadFile",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "file",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.existsSync()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.length()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "Uri.parse('$_baseGraph/$_apiVersion/$sessionId')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "currentOffset",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.get(uploadUrl, headers: {'Authorization' : 'OAuth $userToken'})",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(checkResp.body)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "checkBody.containsKey('file_offset')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Resume from offset: $currentOffset / $fileSize')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] New session, offset 0')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Session complete, re-POST to get handle')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "file.readAsBytes()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "maxAttempts",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "handle",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "attempt",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "bytesToSend",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Attempt $attempt: offset=$currentOffset' ' send=$bytesToSend / $fileSize')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "bytes.sublist(currentOffset, fileSize)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.Request('POST', uploadUrl)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.Client().send(request)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "streamed.stream.bytesToString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Request failed: $responseBody')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "checkBody",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "newOffset",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Server offset: $newOffset')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(responseBody)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "parsed.containsKey('h')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "raw",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "raw.split('\\n')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "allHandles[0].trim()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Handle OK (${handle.length} chars)')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Could not parse handle response')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "publishVideo",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "url",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.MultipartRequest('POST', Uri.parse(url))",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Publish: no_story=$noStory published=$published')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "request.send()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "streamed.stream.bytesToString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(responseBody)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "videoId",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] Published! ID: $videoId')",
+              "variable_description": ""
+            }
+          ]
+        },
+        {
+          "function_name": "updateNewsFeed",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "Uri.parse('$_baseGraph/$_apiVersion/$videoId')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "http.MultipartRequest('POST', uri)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "request.send()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "streamed.stream.bytesToString()",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "jsonDecode(responseBody)",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "result.containsKey('error')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "subcode",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] STEP 4: Post already published')",
+              "variable_description": ""
+            },
+            {
+              "variable_name": "print('    [RUS] STEP 4: publish_to_news_feed=true OK')",
+              "variable_description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "services/posts_service_post.dart",
+      "file_description": "",
+      "functions": []
+    }
+  ]
+}

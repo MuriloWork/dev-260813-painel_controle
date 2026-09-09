@@ -1,0 +1,7714 @@
+[
+  {
+    "line": 1,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 2,
+    "column": 1,
+    "script_string": "// POSTS SERVICE - CRM CDD (Meta Graph API)",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 3,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 4,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 5,
+    "column": 1,
+    "script_string": "// === IMPORTS =================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 6,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 7,
+    "column": 1,
+    "script_string": "import 'dart:async';",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 8,
+    "column": 1,
+    "script_string": "import 'dart:convert';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 9,
+    "column": 1,
+    "script_string": "import 'dart:io';",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 10,
+    "column": 1,
+    "script_string": "import 'package:http/http.dart' as http;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 11,
+    "column": 1,
+    "script_string": "import 'package:path/path.dart' as path;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 12,
+    "column": 1,
+    "script_string": "import 'package:sqlite3/sqlite3.dart';",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 13,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 14,
+    "column": 1,
+    "script_string": "// === MODELS ==================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 15,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 16,
+    "column": 1,
+    "script_string": "class PostsConfig {",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 17,
+    "column": 3,
+    "script_string": "final String sqliteFile;",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 18,
+    "column": 3,
+    "script_string": "final String sqliteTable;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 19,
+    "column": 3,
+    "script_string": "final String accessToken;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 20,
+    "column": 3,
+    "script_string": "final String facebookPageId;",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 21,
+    "column": 3,
+    "script_string": "final String instagramAccountId;",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 22,
+    "column": 3,
+    "script_string": "final String postsTargetFolderFacebook;",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 23,
+    "column": 3,
+    "script_string": "final String postsTargetFolderInstagram;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 24,
+    "column": 3,
+    "script_string": "final String storiesTargetFolderInstagram;",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 25,
+    "column": 3,
+    "script_string": "final String storiesAssetsFolderInstagram;",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 26,
+    "column": 3,
+    "script_string": "final int maxPostsPerFetchFb;",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 27,
+    "column": 3,
+    "script_string": "final int maxPostsPerFetchIg;",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 28,
+    "column": 3,
+    "script_string": "final int maxPagesFbFeed;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 29,
+    "column": 3,
+    "script_string": "final int maxPagesFbVideos;",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 30,
+    "column": 3,
+    "script_string": "final int maxPagesFbStories;",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 31,
+    "column": 3,
+    "script_string": "final int maxPagesIgFeed;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 32,
+    "column": 3,
+    "script_string": "final int maxPagesIgStories;",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 33,
+    "column": 3,
+    "script_string": "final int requestDelayMs;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 34,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 35,
+    "column": 3,
+    "script_string": "PostsConfig({",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 36,
+    "column": 5,
+    "script_string": "required this.sqliteFile,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 37,
+    "column": 5,
+    "script_string": "required this.sqliteTable,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 38,
+    "column": 5,
+    "script_string": "required this.accessToken,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 39,
+    "column": 5,
+    "script_string": "required this.facebookPageId,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 40,
+    "column": 5,
+    "script_string": "required this.instagramAccountId,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 41,
+    "column": 5,
+    "script_string": "required this.postsTargetFolderFacebook,",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 42,
+    "column": 5,
+    "script_string": "required this.postsTargetFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 43,
+    "column": 5,
+    "script_string": "required this.storiesTargetFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 44,
+    "column": 5,
+    "script_string": "required this.storiesAssetsFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 45,
+    "column": 5,
+    "script_string": "required this.maxPostsPerFetchFb,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 46,
+    "column": 5,
+    "script_string": "required this.maxPostsPerFetchIg,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 47,
+    "column": 5,
+    "script_string": "required this.maxPagesFbFeed,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 48,
+    "column": 5,
+    "script_string": "required this.maxPagesFbVideos,",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 49,
+    "column": 5,
+    "script_string": "required this.maxPagesFbStories,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 50,
+    "column": 5,
+    "script_string": "required this.maxPagesIgFeed,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 51,
+    "column": 5,
+    "script_string": "required this.maxPagesIgStories,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 52,
+    "column": 5,
+    "script_string": "required this.requestDelayMs,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 53,
+    "column": 3,
+    "script_string": "});",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 54,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 55,
+    "column": 3,
+    "script_string": "factory PostsConfig.fromJson(Map<String, dynamic> json, String token) {",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 56,
+    "column": 5,
+    "script_string": "final scan = json['scan'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 57,
+    "column": 5,
+    "script_string": "final contents = json['contents'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 58,
+    "column": 5,
+    "script_string": "final fb = scan['facebook'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 59,
+    "column": 5,
+    "script_string": "final ig = scan['instagram'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 60,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 61,
+    "column": 5,
+    "script_string": "return PostsConfig(",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 62,
+    "column": 7,
+    "script_string": "sqliteFile: (json['sqlite'] as Map)['file'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 63,
+    "column": 7,
+    "script_string": "sqliteTable: (json['sqlite'] as Map)['table'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 64,
+    "column": 7,
+    "script_string": "accessToken: token,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 65,
+    "column": 7,
+    "script_string": "facebookPageId: fb['page_id'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 66,
+    "column": 7,
+    "script_string": "instagramAccountId: ig['account_id'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 67,
+    "column": 7,
+    "script_string": "postsTargetFolderFacebook:",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 68,
+    "column": 11,
+    "script_string": "contents['posts_target_folder_facebook'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 69,
+    "column": 7,
+    "script_string": "postsTargetFolderInstagram:",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 70,
+    "column": 11,
+    "script_string": "contents['posts_target_folder_instagram'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 71,
+    "column": 7,
+    "script_string": "storiesTargetFolderInstagram: ig['stories_target_folder'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 72,
+    "column": 7,
+    "script_string": "storiesAssetsFolderInstagram: ig['stories_assets_folder'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 73,
+    "column": 7,
+    "script_string": "maxPostsPerFetchFb: fb['max_posts_per_fetch'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 74,
+    "column": 7,
+    "script_string": "maxPostsPerFetchIg: ig['max_posts_per_fetch'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 75,
+    "column": 7,
+    "script_string": "maxPagesFbFeed: fb['max_pages_feed'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 76,
+    "column": 7,
+    "script_string": "maxPagesFbVideos: fb['max_pages_videos'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 77,
+    "column": 7,
+    "script_string": "maxPagesFbStories: fb['max_pages_stories'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 78,
+    "column": 7,
+    "script_string": "maxPagesIgFeed: ig['max_pages_feed'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 79,
+    "column": 7,
+    "script_string": "maxPagesIgStories: ig['max_pages_stories'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 80,
+    "column": 7,
+    "script_string": "requestDelayMs: scan['request_delay_ms'] as int,",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 81,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 82,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 83,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 84,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 85,
+    "column": 1,
+    "script_string": "// === SERVICE =================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 86,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 87,
+    "column": 1,
+    "script_string": "class PostsService {",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 88,
+    "column": 3,
+    "script_string": "final PostsConfig config;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 89,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 90,
+    "column": 3,
+    "script_string": "final _logController = StreamController<String>.broadcast();",
+    "comment": "",
+    "tag": "",
+    "length": 60
+  },
+  {
+    "line": 91,
+    "column": 3,
+    "script_string": "String? _pageToken;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 92,
+    "column": 3,
+    "script_string": "String? _userToken;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 93,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 94,
+    "column": 3,
+    "script_string": "PostsService({required this.config});",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 95,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 96,
+    "column": 3,
+    "script_string": "Stream<String> get logs => _logController.stream;",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 97,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 98,
+    "column": 3,
+    "script_string": "void _log(String msg) {",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 99,
+    "column": 5,
+    "script_string": "if (!_logController.isClosed) {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 100,
+    "column": 7,
+    "script_string": "_logController.add(msg);",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 101,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 102,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 103,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 104,
+    "column": 3,
+    "script_string": "// === INIT ====================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 105,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 106,
+    "column": 3,
+    "script_string": "Future<void> init() async {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 107,
+    "column": 5,
+    "script_string": "_log('[SERVICE] Iniciado');",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 108,
+    "column": 5,
+    "script_string": "_log('[CONFIG] FB page: ${config.facebookPageId}');",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 109,
+    "column": 5,
+    "script_string": "_log('[CONFIG] IG account: ${config.instagramAccountId}');",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 110,
+    "column": 5,
+    "script_string": "_log('[CONFIG] Delay: ${config.requestDelayMs}ms');",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 111,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 112,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 113,
+    "column": 3,
+    "script_string": "Future<void> dispose() async {",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 114,
+    "column": 5,
+    "script_string": "await _logController.close();",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 115,
+    "column": 5,
+    "script_string": "_log('[SERVICE] Encerrado');",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 116,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 117,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 118,
+    "column": 3,
+    "script_string": "// === TOKEN RESOLUTION ========================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 119,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 120,
+    "column": 3,
+    "script_string": "Future<String> _resolveToken() async {",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 121,
+    "column": 5,
+    "script_string": "if (_pageToken != null) return _pageToken!;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 122,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 123,
+    "column": 5,
+    "script_string": "final token = config.accessToken;",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 124,
+    "column": 5,
+    "script_string": "if (token.startsWith('env:')) {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 125,
+    "column": 7,
+    "script_string": "final envVar = token.substring(4);",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 126,
+    "column": 7,
+    "script_string": "final envValue = Platform.environment[envVar];",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 127,
+    "column": 7,
+    "script_string": "if (envValue == null || envValue.isEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 128,
+    "column": 9,
+    "script_string": "throw Exception('Variável de ambiente $envVar não encontrada');",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 129,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 130,
+    "column": 7,
+    "script_string": "_userToken = envValue;",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 131,
+    "column": 5,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 132,
+    "column": 7,
+    "script_string": "_userToken = token;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 133,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 134,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 135,
+    "column": 5,
+    "script_string": "_pageToken = await _getPageToken(_userToken!);",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 136,
+    "column": 5,
+    "script_string": "return _pageToken!;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 137,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 138,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 139,
+    "column": 3,
+    "script_string": "Future<String> _getPageToken(String userToken) async {",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 140,
+    "column": 5,
+    "script_string": "final uri = Uri.parse('https://graph.facebook.com/v25.0/me').replace(",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 141,
+    "column": 7,
+    "script_string": "queryParameters: {",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 142,
+    "column": 9,
+    "script_string": "'access_token': userToken,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 143,
+    "column": 9,
+    "script_string": "'fields': 'accounts{access_token}',",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 144,
+    "column": 7,
+    "script_string": "},",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 145,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 146,
+    "column": 5,
+    "script_string": "final resp = await http.get(uri);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 147,
+    "column": 5,
+    "script_string": "if (resp.statusCode != 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 148,
+    "column": 7,
+    "script_string": "throw Exception('Erro ao obter page token: ${resp.body}');",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 149,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 150,
+    "column": 5,
+    "script_string": "final data = jsonDecode(resp.body) as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 151,
+    "column": 5,
+    "script_string": "final accounts = (data['accounts'] as Map)['data'] as List;",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 152,
+    "column": 5,
+    "script_string": "return (accounts.first as Map)['access_token'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 153,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 154,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 155,
+    "column": 3,
+    "script_string": "// === API HELPER ==============================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 156,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 157,
+    "column": 3,
+    "script_string": "Future<Map<String, dynamic>> _apiGet(",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 158,
+    "column": 5,
+    "script_string": "String endpoint,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 159,
+    "column": 5,
+    "script_string": "String token, {",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 160,
+    "column": 5,
+    "script_string": "Map<String, String>? params,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 161,
+    "column": 5,
+    "script_string": "int retries = 3,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 162,
+    "column": 3,
+    "script_string": "}) async {",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 163,
+    "column": 5,
+    "script_string": "final queryParams = {'access_token': token, ...?params};",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 164,
+    "column": 5,
+    "script_string": "final uri = Uri.parse('https://graph.facebook.com/v25.0$endpoint')",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 165,
+    "column": 9,
+    "script_string": ".replace(queryParameters: queryParams);",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 166,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 167,
+    "column": 5,
+    "script_string": "for (int attempt = 1; attempt <= retries; attempt++) {",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 168,
+    "column": 7,
+    "script_string": "final resp = await http.get(uri);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 169,
+    "column": 7,
+    "script_string": "if (resp.statusCode == 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 170,
+    "column": 9,
+    "script_string": "return jsonDecode(resp.body) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 171,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 172,
+    "column": 7,
+    "script_string": "if (resp.statusCode >= 500 && attempt < retries) {",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 173,
+    "column": 9,
+    "script_string": "final delay = Duration(seconds: attempt * 2);",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 174,
+    "column": 9,
+    "script_string": "_log(",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 175,
+    "column": 13,
+    "script_string": "'    [RETRY] ${resp.statusCode} em $endpoint, aguardando ${delay.inSeconds}s...');",
+    "comment": "",
+    "tag": "",
+    "length": 82
+  },
+  {
+    "line": 176,
+    "column": 9,
+    "script_string": "await Future.delayed(delay);",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 177,
+    "column": 9,
+    "script_string": "continue;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 178,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 179,
+    "column": 7,
+    "script_string": "throw Exception('API error ${resp.statusCode}: ${resp.body}');",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 180,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 181,
+    "column": 5,
+    "script_string": "throw Exception('API error after $retries retries');",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 182,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 183,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 184,
+    "column": 3,
+    "script_string": "Future<void> _delay() async {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 185,
+    "column": 5,
+    "script_string": "await Future.delayed(Duration(milliseconds: config.requestDelayMs));",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 186,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 187,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 188,
+    "column": 3,
+    "script_string": "// === PAGINATION ==============================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 189,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 190,
+    "column": 3,
+    "script_string": "Future<List<Map<String, dynamic>>> _paginateWithCursor(",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 191,
+    "column": 5,
+    "script_string": "String endpoint,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 192,
+    "column": 5,
+    "script_string": "String token, {",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 193,
+    "column": 5,
+    "script_string": "Map<String, String>? params,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 194,
+    "column": 5,
+    "script_string": "int maxPages = 50,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 195,
+    "column": 5,
+    "script_string": "int limit = 25,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 196,
+    "column": 3,
+    "script_string": "}) async {",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 197,
+    "column": 5,
+    "script_string": "final allItems = <Map<String, dynamic>>[];",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 198,
+    "column": 5,
+    "script_string": "final seenIds = <String>{};",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 199,
+    "column": 5,
+    "script_string": "String? afterCursor;",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 200,
+    "column": 5,
+    "script_string": "var page = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 201,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 202,
+    "column": 5,
+    "script_string": "while (page < maxPages) {",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 203,
+    "column": 7,
+    "script_string": "page++;",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 204,
+    "column": 7,
+    "script_string": "final queryParams = {...?params, 'limit': '$limit'};",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 205,
+    "column": 7,
+    "script_string": "if (afterCursor != null) queryParams['after'] = afterCursor;",
+    "comment": "",
+    "tag": "",
+    "length": 60
+  },
+  {
+    "line": 206,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 207,
+    "column": 7,
+    "script_string": "final data = await _apiGet(endpoint, token, params: queryParams);",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 208,
+    "column": 7,
+    "script_string": "if (!data.containsKey('data')) break;",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 209,
+    "column": 7,
+    "script_string": "final items = (data['data'] as List).cast<Map<String, dynamic>>();",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 210,
+    "column": 7,
+    "script_string": "if (items.isEmpty) break;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 211,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 212,
+    "column": 7,
+    "script_string": "var newCount = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 213,
+    "column": 7,
+    "script_string": "for (final item in items) {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 214,
+    "column": 9,
+    "script_string": "final id = item['id'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 215,
+    "column": 9,
+    "script_string": "if (id != null && !seenIds.contains(id)) {",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 216,
+    "column": 11,
+    "script_string": "seenIds.add(id);",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 217,
+    "column": 11,
+    "script_string": "allItems.add(item);",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 218,
+    "column": 11,
+    "script_string": "newCount++;",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 219,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 220,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 221,
+    "column": 7,
+    "script_string": "_log(",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 222,
+    "column": 11,
+    "script_string": "'    Page $page: ${items.length} items, $newCount new (total: ${allItems.length})');",
+    "comment": "",
+    "tag": "",
+    "length": 84
+  },
+  {
+    "line": 223,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 224,
+    "column": 7,
+    "script_string": "if (newCount == 0) break;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 225,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 226,
+    "column": 7,
+    "script_string": "await _delay();",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 227,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 228,
+    "column": 7,
+    "script_string": "if (data.containsKey('paging') && data['paging'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 229,
+    "column": 9,
+    "script_string": "final paging = data['paging'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 230,
+    "column": 9,
+    "script_string": "if (paging.containsKey('cursors') && paging['cursors'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 231,
+    "column": 11,
+    "script_string": "final cursors = paging['cursors'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 232,
+    "column": 11,
+    "script_string": "final newAfter = cursors['after'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 233,
+    "column": 11,
+    "script_string": "if (newAfter != null && newAfter != afterCursor) {",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 234,
+    "column": 13,
+    "script_string": "afterCursor = newAfter;",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 235,
+    "column": 11,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 236,
+    "column": 13,
+    "script_string": "break;",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 237,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 238,
+    "column": 9,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 239,
+    "column": 11,
+    "script_string": "break;",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 240,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 241,
+    "column": 7,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 242,
+    "column": 9,
+    "script_string": "break;",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 243,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 244,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 245,
+    "column": 5,
+    "script_string": "return allItems;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 246,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 247,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 248,
+    "column": 3,
+    "script_string": "// === TRANSFORMS ==============================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 249,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 250,
+    "column": 3,
+    "script_string": "Map<String, dynamic> _transformFbPost(Map<String, dynamic> raw) {",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 251,
+    "column": 5,
+    "script_string": "String? mediaUrl;",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 252,
+    "column": 5,
+    "script_string": "String? thumbnailUrl;",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 253,
+    "column": 5,
+    "script_string": "String? mediaType;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 254,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 255,
+    "column": 5,
+    "script_string": "if (raw.containsKey('attachments') && raw['attachments'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 256,
+    "column": 7,
+    "script_string": "final att = raw['attachments'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 257,
+    "column": 7,
+    "script_string": "if (att.containsKey('data') && (att['data'] as List).isNotEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 258,
+    "column": 9,
+    "script_string": "final firstAtt = (att['data'] as List).first as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 259,
+    "column": 9,
+    "script_string": "if (firstAtt.containsKey('media')) {",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 260,
+    "column": 11,
+    "script_string": "final media = firstAtt['media'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 261,
+    "column": 11,
+    "script_string": "mediaUrl = media['source'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 262,
+    "column": 11,
+    "script_string": "if (media.containsKey('image')) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 263,
+    "column": 13,
+    "script_string": "thumbnailUrl = (media['image'] as Map)['src'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 264,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 265,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 266,
+    "column": 9,
+    "script_string": "mediaType = firstAtt['media_type'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 267,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 268,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 269,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 270,
+    "column": 5,
+    "script_string": "int? likeCount;",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 271,
+    "column": 5,
+    "script_string": "if (raw.containsKey('reactions') && raw['reactions'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 272,
+    "column": 7,
+    "script_string": "final reactions = raw['reactions'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 273,
+    "column": 7,
+    "script_string": "if (reactions.containsKey('summary') && reactions['summary'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 70
+  },
+  {
+    "line": 274,
+    "column": 9,
+    "script_string": "likeCount = (reactions['summary'] as Map)['total_count'] as int?;",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 275,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 276,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 277,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 278,
+    "column": 5,
+    "script_string": "int? commentsCount;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 279,
+    "column": 5,
+    "script_string": "if (raw.containsKey('comments') && raw['comments'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 60
+  },
+  {
+    "line": 280,
+    "column": 7,
+    "script_string": "final comments = raw['comments'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 281,
+    "column": 7,
+    "script_string": "if (comments.containsKey('summary') && comments['summary'] is Map) {",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 282,
+    "column": 9,
+    "script_string": "commentsCount = (comments['summary'] as Map)['total_count'] as int?;",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 283,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 284,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 285,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 286,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 287,
+    "column": 7,
+    "script_string": "'platform': 'facebook',",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 288,
+    "column": 7,
+    "script_string": "'content_type': 'feed',",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 289,
+    "column": 7,
+    "script_string": "'post_id': raw['id'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 290,
+    "column": 7,
+    "script_string": "'message': raw['message'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 291,
+    "column": 7,
+    "script_string": "'media_url': mediaUrl,",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 292,
+    "column": 7,
+    "script_string": "'thumbnail_url': thumbnailUrl,",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 293,
+    "column": 7,
+    "script_string": "'permalink': raw['permalink_url'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 294,
+    "column": 7,
+    "script_string": "'timestamp': raw['created_time'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 295,
+    "column": 7,
+    "script_string": "'like_count': likeCount,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 296,
+    "column": 7,
+    "script_string": "'comments_count': commentsCount,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 297,
+    "column": 7,
+    "script_string": "'media_type': mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 298,
+    "column": 7,
+    "script_string": "'owner_id': null,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 299,
+    "column": 7,
+    "script_string": "'children': null,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 300,
+    "column": 7,
+    "script_string": "'status': null,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 301,
+    "column": 7,
+    "script_string": "'local_path': null,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 302,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 303,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 304,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 305,
+    "column": 3,
+    "script_string": "Map<String, dynamic> _transformFbReel(Map<String, dynamic> raw) {",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 306,
+    "column": 5,
+    "script_string": "final permalinkUrl = raw['permalink_url'];",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 307,
+    "column": 5,
+    "script_string": "final isReel = permalinkUrl is String && permalinkUrl.contains('/reel/');",
+    "comment": "",
+    "tag": "",
+    "length": 73
+  },
+  {
+    "line": 308,
+    "column": 5,
+    "script_string": "final status = raw['status'];",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 309,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 310,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 311,
+    "column": 7,
+    "script_string": "'platform': 'facebook',",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 312,
+    "column": 7,
+    "script_string": "'content_type': isReel ? 'reels' : 'feed',",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 313,
+    "column": 7,
+    "script_string": "'post_id': raw['id'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 314,
+    "column": 7,
+    "script_string": "'message': raw['description'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 315,
+    "column": 7,
+    "script_string": "'media_url': raw['source'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 316,
+    "column": 7,
+    "script_string": "'thumbnail_url': null,",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 317,
+    "column": 7,
+    "script_string": "'permalink': permalinkUrl?.toString(),",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 318,
+    "column": 7,
+    "script_string": "'timestamp': raw['created_time'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 319,
+    "column": 7,
+    "script_string": "'like_count': null,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 320,
+    "column": 7,
+    "script_string": "'comments_count': null,",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 321,
+    "column": 7,
+    "script_string": "'media_type': 'video',",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 322,
+    "column": 7,
+    "script_string": "'owner_id': null,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 323,
+    "column": 7,
+    "script_string": "'children': null,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 324,
+    "column": 7,
+    "script_string": "'status': status is String ? status : null,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 325,
+    "column": 7,
+    "script_string": "'local_path': null,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 326,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 327,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 328,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 329,
+    "column": 3,
+    "script_string": "Map<String, dynamic> _transformFbStory(",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 330,
+    "column": 7,
+    "script_string": "Map<String, dynamic> raw, Map<String, dynamic>? mediaDetails) {",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 331,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 332,
+    "column": 7,
+    "script_string": "'platform': 'facebook',",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 333,
+    "column": 7,
+    "script_string": "'content_type': 'stories',",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 334,
+    "column": 7,
+    "script_string": "'post_id': raw['post_id']?.toString(),",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 335,
+    "column": 7,
+    "script_string": "'message': null,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 336,
+    "column": 7,
+    "script_string": "'media_url': mediaDetails?['source'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 337,
+    "column": 7,
+    "script_string": "'thumbnail_url': null,",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 338,
+    "column": 7,
+    "script_string": "'permalink': raw['url'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 339,
+    "column": 7,
+    "script_string": "'timestamp': mediaDetails?['created_time'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 340,
+    "column": 7,
+    "script_string": "'like_count': null,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 341,
+    "column": 7,
+    "script_string": "'comments_count': null,",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 342,
+    "column": 7,
+    "script_string": "'media_type': raw['media_type'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 343,
+    "column": 7,
+    "script_string": "'owner_id': null,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 344,
+    "column": 7,
+    "script_string": "'children': null,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 345,
+    "column": 7,
+    "script_string": "'status': raw['status'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 346,
+    "column": 7,
+    "script_string": "'local_path': null,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 347,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 348,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 349,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 350,
+    "column": 3,
+    "script_string": "Map<String, dynamic> _transformIgPost(Map<String, dynamic> raw) {",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 351,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 352,
+    "column": 7,
+    "script_string": "'platform': 'instagram',",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 353,
+    "column": 7,
+    "script_string": "'content_type': 'feed',",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 354,
+    "column": 7,
+    "script_string": "'post_id': raw['id'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 355,
+    "column": 7,
+    "script_string": "'message': raw['caption'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 356,
+    "column": 7,
+    "script_string": "'media_url': raw['media_url'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 357,
+    "column": 7,
+    "script_string": "'thumbnail_url': raw['thumbnail_url'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 358,
+    "column": 7,
+    "script_string": "'permalink': raw['permalink'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 359,
+    "column": 7,
+    "script_string": "'timestamp': raw['timestamp'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 360,
+    "column": 7,
+    "script_string": "'like_count': raw['like_count'] as int?,",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 361,
+    "column": 7,
+    "script_string": "'comments_count': raw['comments_count'] as int?,",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 362,
+    "column": 7,
+    "script_string": "'media_type': raw['media_type'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 363,
+    "column": 7,
+    "script_string": "'owner_id':",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 364,
+    "column": 11,
+    "script_string": "raw['owner'] != null ? (raw['owner'] as Map)['id'] as String? : null,",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 365,
+    "column": 7,
+    "script_string": "'children':",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 366,
+    "column": 11,
+    "script_string": "raw['children'] != null ? (raw['children'] as Map)['data'] : null,",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 367,
+    "column": 7,
+    "script_string": "'status': null,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 368,
+    "column": 7,
+    "script_string": "'local_path': null,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 369,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 370,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 371,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 372,
+    "column": 3,
+    "script_string": "Map<String, dynamic> _transformIgStory(",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 373,
+    "column": 7,
+    "script_string": "Map<String, dynamic> raw, String? localPath, bool expired) {",
+    "comment": "",
+    "tag": "",
+    "length": 60
+  },
+  {
+    "line": 374,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 375,
+    "column": 7,
+    "script_string": "'post_id': raw['id'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 376,
+    "column": 7,
+    "script_string": "'shortcode': raw['shortcode'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 377,
+    "column": 7,
+    "script_string": "'media_type': raw['media_type'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 378,
+    "column": 7,
+    "script_string": "'caption': raw['caption'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 379,
+    "column": 7,
+    "script_string": "'media_url': raw['media_url'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 380,
+    "column": 7,
+    "script_string": "'thumbnail_url': raw['thumbnail_url'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 381,
+    "column": 7,
+    "script_string": "'permalink': raw['permalink'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 382,
+    "column": 7,
+    "script_string": "'timestamp': raw['timestamp'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 383,
+    "column": 7,
+    "script_string": "'like_count': raw['like_count'] as int?,",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 384,
+    "column": 7,
+    "script_string": "'comments_count': raw['comments_count'] as int?,",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 385,
+    "column": 7,
+    "script_string": "'owner_id':",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 386,
+    "column": 11,
+    "script_string": "raw['owner'] != null ? (raw['owner'] as Map)['id'] as String? : null,",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 387,
+    "column": 7,
+    "script_string": "'local_path': localPath != null",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 388,
+    "column": 11,
+    "script_string": "? path.join('..', '..', 'assets', 'instagram_stories', localPath)",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 389,
+    "column": 11,
+    "script_string": ": null,",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 390,
+    "column": 7,
+    "script_string": "'expired': expired,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 391,
+    "column": 7,
+    "script_string": "'synced_at': expired ? null : DateTime.now().toUtc().toIso8601String(),",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 392,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 393,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 394,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 395,
+    "column": 3,
+    "script_string": "// === RESOLVE FB PHOTO URLS (2-step) ==========================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 396,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 397,
+    "column": 3,
+    "script_string": "Future<void> _resolveFbPhotoUrls(",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 398,
+    "column": 7,
+    "script_string": "List<Map<String, dynamic>> posts, String token) async {",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 399,
+    "column": 5,
+    "script_string": "final photoPosts = posts",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 400,
+    "column": 9,
+    "script_string": ".where((p) =>",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 401,
+    "column": 13,
+    "script_string": "p['media_type'] == 'photo' &&",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 402,
+    "column": 13,
+    "script_string": "p['media_url'] == null &&",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 403,
+    "column": 13,
+    "script_string": "p['post_id'] != null)",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 404,
+    "column": 9,
+    "script_string": ".toList();",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 405,
+    "column": 5,
+    "script_string": "if (photoPosts.isEmpty) return;",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 406,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 407,
+    "column": 5,
+    "script_string": "_log('  Resolving media_url for ${photoPosts.length} photo posts...');",
+    "comment": "",
+    "tag": "",
+    "length": 70
+  },
+  {
+    "line": 408,
+    "column": 5,
+    "script_string": "var resolved = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 409,
+    "column": 5,
+    "script_string": "var failed = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 410,
+    "column": 5,
+    "script_string": "for (int i = 0; i < photoPosts.length; i++) {",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 411,
+    "column": 7,
+    "script_string": "final post = photoPosts[i];",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 412,
+    "column": 7,
+    "script_string": "final postId = post['post_id'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 413,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 414,
+    "column": 7,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 415,
+    "column": 9,
+    "script_string": "final data = await _apiGet('/$postId', token,",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 416,
+    "column": 13,
+    "script_string": "params: {'fields': 'attachments{target}'});",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 417,
+    "column": 9,
+    "script_string": "if (data.containsKey('attachments')) {",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 418,
+    "column": 11,
+    "script_string": "final att = data['attachments'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 419,
+    "column": 11,
+    "script_string": "if (att.containsKey('data') && (att['data'] as List).isNotEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 420,
+    "column": 13,
+    "script_string": "final firstAtt = (att['data'] as List).first as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 421,
+    "column": 13,
+    "script_string": "if (firstAtt.containsKey('target')) {",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 422,
+    "column": 15,
+    "script_string": "final target = firstAtt['target'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 423,
+    "column": 15,
+    "script_string": "final photoId = target['id'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 424,
+    "column": 15,
+    "script_string": "if (photoId != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 425,
+    "column": 17,
+    "script_string": "final photoData = await _apiGet('/$photoId', token,",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 426,
+    "column": 21,
+    "script_string": "params: {'fields': 'source,images'});",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 427,
+    "column": 17,
+    "script_string": "final source = photoData['source'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 428,
+    "column": 17,
+    "script_string": "if (source != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 429,
+    "column": 19,
+    "script_string": "post['media_url'] = source;",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 430,
+    "column": 19,
+    "script_string": "resolved++;",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 431,
+    "column": 17,
+    "script_string": "} else if (photoData.containsKey('images')) {",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 432,
+    "column": 19,
+    "script_string": "final images = photoData['images'] as List;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 433,
+    "column": 19,
+    "script_string": "if (images.isNotEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 434,
+    "column": 21,
+    "script_string": "post['media_url'] =",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 435,
+    "column": 25,
+    "script_string": "(images.first as Map)['source'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 436,
+    "column": 21,
+    "script_string": "resolved++;",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 437,
+    "column": 19,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 438,
+    "column": 17,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 439,
+    "column": 15,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 440,
+    "column": 13,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 441,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 442,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 443,
+    "column": 9,
+    "script_string": "if (post['media_url'] == null) failed++;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 444,
+    "column": 7,
+    "script_string": "} catch (_) {",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 445,
+    "column": 9,
+    "script_string": "failed++;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 446,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 447,
+    "column": 7,
+    "script_string": "await _delay();",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 448,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 449,
+    "column": 5,
+    "script_string": "_log('    Resolved: $resolved, Failed: $failed');",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 450,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 451,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 452,
+    "column": 3,
+    "script_string": "// === SCANS ===================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 453,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 454,
+    "column": 3,
+    "script_string": "Future<List<Map<String, dynamic>>> scanFacebookFeed() async {",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 455,
+    "column": 5,
+    "script_string": "_log('\\n[FB FEED] Iniciando scan...');",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 456,
+    "column": 5,
+    "script_string": "final token = await _resolveToken();",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 457,
+    "column": 5,
+    "script_string": "final fields =",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 458,
+    "column": 9,
+    "script_string": "'id,message,created_time,permalink_url,attachments{media{source,image{src}},media_type,type},reactions.summary(true),comments.summary(true)';",
+    "comment": "",
+    "tag": "",
+    "length": 141
+  },
+  {
+    "line": 459,
+    "column": 5,
+    "script_string": "final rawPosts = await _paginateWithCursor(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 460,
+    "column": 7,
+    "script_string": "'/${config.facebookPageId}/feed',",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 461,
+    "column": 7,
+    "script_string": "token,",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 462,
+    "column": 7,
+    "script_string": "params: {'fields': fields},",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 463,
+    "column": 7,
+    "script_string": "maxPages: config.maxPagesFbFeed,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 464,
+    "column": 7,
+    "script_string": "limit: config.maxPostsPerFetchFb,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 465,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 466,
+    "column": 5,
+    "script_string": "final posts = rawPosts.map(_transformFbPost).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 467,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 468,
+    "column": 5,
+    "script_string": "_log('  Resolving photo URLs...');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 469,
+    "column": 5,
+    "script_string": "await _resolveFbPhotoUrls(posts, token);",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 470,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 471,
+    "column": 5,
+    "script_string": "_log('[FB FEED] Concluído: ${posts.length} posts');",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 472,
+    "column": 5,
+    "script_string": "return posts;",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 473,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 474,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 475,
+    "column": 3,
+    "script_string": "Future<List<Map<String, dynamic>>> scanFacebookVideos() async {",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 476,
+    "column": 5,
+    "script_string": "_log('\\n[FB VIDEOS] Iniciando scan...');",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 477,
+    "column": 5,
+    "script_string": "final token = await _resolveToken();",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 478,
+    "column": 5,
+    "script_string": "final fields = 'id,created_time,permalink_url,source,description,status';",
+    "comment": "",
+    "tag": "",
+    "length": 73
+  },
+  {
+    "line": 479,
+    "column": 5,
+    "script_string": "final rawVideos = await _paginateWithCursor(",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 480,
+    "column": 7,
+    "script_string": "'/${config.facebookPageId}/videos',",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 481,
+    "column": 7,
+    "script_string": "token,",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 482,
+    "column": 7,
+    "script_string": "params: {'fields': fields},",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 483,
+    "column": 7,
+    "script_string": "maxPages: config.maxPagesFbVideos,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 484,
+    "column": 7,
+    "script_string": "limit: config.maxPostsPerFetchFb,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 485,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 486,
+    "column": 5,
+    "script_string": "final reels = rawVideos.map(_transformFbReel).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 487,
+    "column": 5,
+    "script_string": "_log('[FB VIDEOS] Concluído: ${reels.length} videos');",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 488,
+    "column": 5,
+    "script_string": "return reels;",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 489,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 490,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 491,
+    "column": 3,
+    "script_string": "Future<List<Map<String, dynamic>>> scanFacebookStories() async {",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 492,
+    "column": 5,
+    "script_string": "_log('\\n[FB STORIES] Iniciando scan...');",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 493,
+    "column": 5,
+    "script_string": "final token = await _resolveToken();",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 494,
+    "column": 5,
+    "script_string": "final rawStories = await _paginateWithCursor(",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 495,
+    "column": 7,
+    "script_string": "'/${config.facebookPageId}/stories',",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 496,
+    "column": 7,
+    "script_string": "token,",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 497,
+    "column": 7,
+    "script_string": "params: {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 498,
+    "column": 9,
+    "script_string": "'fields': 'post_id,status,creation_time,media_type,media_id,url'",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 499,
+    "column": 7,
+    "script_string": "},",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 500,
+    "column": 7,
+    "script_string": "maxPages: config.maxPagesFbStories,",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 501,
+    "column": 7,
+    "script_string": "limit: config.maxPostsPerFetchFb,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 502,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 503,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 504,
+    "column": 5,
+    "script_string": "final transformed = <Map<String, dynamic>>[];",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 505,
+    "column": 5,
+    "script_string": "for (final story in rawStories) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 506,
+    "column": 7,
+    "script_string": "final mediaId = story['media_id'];",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 507,
+    "column": 7,
+    "script_string": "Map<String, dynamic>? mediaDetails;",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 508,
+    "column": 7,
+    "script_string": "if (mediaId != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 509,
+    "column": 9,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 510,
+    "column": 11,
+    "script_string": "mediaDetails = await _apiGet('/$mediaId', token,",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 511,
+    "column": 15,
+    "script_string": "params: {'fields': 'id,source,created_time'});",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 512,
+    "column": 11,
+    "script_string": "await _delay();",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 513,
+    "column": 9,
+    "script_string": "} catch (_) {}",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 514,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 515,
+    "column": 7,
+    "script_string": "transformed.add(_transformFbStory(story, mediaDetails));",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 516,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 517,
+    "column": 5,
+    "script_string": "_log('[FB STORIES] Concluído: ${transformed.length} stories');",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 518,
+    "column": 5,
+    "script_string": "return transformed;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 519,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 520,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 521,
+    "column": 3,
+    "script_string": "Future<List<Map<String, dynamic>>> scanInstagramFeed() async {",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 522,
+    "column": 5,
+    "script_string": "_log('\\n[IG FEED] Iniciando scan...');",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 523,
+    "column": 5,
+    "script_string": "final token = await _resolveToken();",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 524,
+    "column": 5,
+    "script_string": "final fields =",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 525,
+    "column": 9,
+    "script_string": "'id,media_type,media_url,permalink,caption,timestamp,like_count,comments_count,thumbnail_url,children{media_type,media_url,thumbnail_url},owner';",
+    "comment": "",
+    "tag": "",
+    "length": 145
+  },
+  {
+    "line": 526,
+    "column": 5,
+    "script_string": "final rawPosts = await _paginateWithCursor(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 527,
+    "column": 7,
+    "script_string": "'/${config.instagramAccountId}/media',",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 528,
+    "column": 7,
+    "script_string": "token,",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 529,
+    "column": 7,
+    "script_string": "params: {'fields': fields},",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 530,
+    "column": 7,
+    "script_string": "maxPages: config.maxPagesIgFeed,",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 531,
+    "column": 7,
+    "script_string": "limit: config.maxPostsPerFetchIg,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 532,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 533,
+    "column": 5,
+    "script_string": "final posts = rawPosts.map(_transformIgPost).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 534,
+    "column": 5,
+    "script_string": "_log('[IG FEED] Concluído: ${posts.length} posts');",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 535,
+    "column": 5,
+    "script_string": "return posts;",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 536,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 537,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 538,
+    "column": 3,
+    "script_string": "Future<List<Map<String, dynamic>>> scanInstagramStories() async {",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 539,
+    "column": 5,
+    "script_string": "_log('\\n[IG STORIES] Iniciando scan...');",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 540,
+    "column": 5,
+    "script_string": "final token = await _resolveToken();",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 541,
+    "column": 5,
+    "script_string": "final fields = [",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 542,
+    "column": 7,
+    "script_string": "'id',",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 543,
+    "column": 7,
+    "script_string": "'media_type',",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 544,
+    "column": 7,
+    "script_string": "'media_url',",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 545,
+    "column": 7,
+    "script_string": "'timestamp',",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 546,
+    "column": 7,
+    "script_string": "'owner',",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 547,
+    "column": 7,
+    "script_string": "'permalink',",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 548,
+    "column": 7,
+    "script_string": "'thumbnail_url',",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 549,
+    "column": 7,
+    "script_string": "'like_count',",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 550,
+    "column": 7,
+    "script_string": "'comments_count',",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 551,
+    "column": 7,
+    "script_string": "'shortcode',",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 552,
+    "column": 7,
+    "script_string": "'caption',",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 553,
+    "column": 5,
+    "script_string": "].join(',');",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 554,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 555,
+    "column": 5,
+    "script_string": "final rawStories = await _paginateWithCursor(",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 556,
+    "column": 7,
+    "script_string": "'/${config.instagramAccountId}/stories',",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 557,
+    "column": 7,
+    "script_string": "token,",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 558,
+    "column": 7,
+    "script_string": "params: {'fields': fields},",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 559,
+    "column": 7,
+    "script_string": "maxPages: config.maxPagesIgStories,",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 560,
+    "column": 7,
+    "script_string": "limit: config.maxPostsPerFetchIg,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 561,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 562,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 563,
+    "column": 5,
+    "script_string": "final assetsDir = path.normalize(path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 564,
+    "column": 7,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 565,
+    "column": 7,
+    "script_string": "config.storiesAssetsFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 566,
+    "column": 5,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 567,
+    "column": 5,
+    "script_string": "final dir = Directory(assetsDir);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 568,
+    "column": 5,
+    "script_string": "if (!dir.existsSync()) dir.createSync(recursive: true);",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 569,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 570,
+    "column": 5,
+    "script_string": "final indexDir = path.normalize(path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 571,
+    "column": 7,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 572,
+    "column": 7,
+    "script_string": "config.storiesTargetFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 573,
+    "column": 5,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 574,
+    "column": 5,
+    "script_string": "final indexDirObj = Directory(indexDir);",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 575,
+    "column": 5,
+    "script_string": "if (!indexDirObj.existsSync()) indexDirObj.createSync(recursive: true);",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 576,
+    "column": 5,
+    "script_string": "final indexPath = path.join(indexDir, 'ig_stories_index.json');",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 577,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 578,
+    "column": 5,
+    "script_string": "final index = _loadIndex(indexPath);",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 579,
+    "column": 5,
+    "script_string": "final existingStories =",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 580,
+    "column": 9,
+    "script_string": "(index['stories'] as List).cast<Map<String, dynamic>>();",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 581,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 582,
+    "column": 5,
+    "script_string": "final activeIds = <String>{};",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 583,
+    "column": 5,
+    "script_string": "var downloaded = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 584,
+    "column": 5,
+    "script_string": "var skipped = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 585,
+    "column": 5,
+    "script_string": "var failed = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 586,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 587,
+    "column": 5,
+    "script_string": "for (final story in rawStories) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 588,
+    "column": 7,
+    "script_string": "final storyId = story['id'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 589,
+    "column": 7,
+    "script_string": "final mediaUrl = story['media_url'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 590,
+    "column": 7,
+    "script_string": "final mediaType = story['media_type'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 591,
+    "column": 7,
+    "script_string": "final timestamp = story['timestamp'] as String? ?? '';",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 592,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 593,
+    "column": 7,
+    "script_string": "activeIds.add(storyId);",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 594,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 595,
+    "column": 7,
+    "script_string": "String? localPath;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 596,
+    "column": 7,
+    "script_string": "if (mediaUrl != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 597,
+    "column": 9,
+    "script_string": "final fileName = _buildFileName(storyId, mediaType, timestamp);",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 598,
+    "column": 9,
+    "script_string": "final within24h = _isWithin24h(timestamp);",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 599,
+    "column": 9,
+    "script_string": "localPath =",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 600,
+    "column": 13,
+    "script_string": "await _downloadMedia(mediaUrl, fileName, assetsDir, within24h);",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 601,
+    "column": 9,
+    "script_string": "if (localPath != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 602,
+    "column": 11,
+    "script_string": "downloaded++;",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 603,
+    "column": 9,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 604,
+    "column": 11,
+    "script_string": "failed++;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 605,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 606,
+    "column": 7,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 607,
+    "column": 9,
+    "script_string": "skipped++;",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 608,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 609,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 610,
+    "column": 7,
+    "script_string": "final transformed = _transformIgStory(story, localPath, false);",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 611,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 612,
+    "column": 7,
+    "script_string": "final existingIdx =",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 613,
+    "column": 11,
+    "script_string": "existingStories.indexWhere((s) => s['post_id'] == storyId);",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 614,
+    "column": 7,
+    "script_string": "if (existingIdx >= 0) {",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 615,
+    "column": 9,
+    "script_string": "existingStories[existingIdx] = transformed;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 616,
+    "column": 7,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 617,
+    "column": 9,
+    "script_string": "existingStories.add(transformed);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 618,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 619,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 620,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 621,
+    "column": 5,
+    "script_string": "var newlyExpired = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 622,
+    "column": 5,
+    "script_string": "for (final story in existingStories) {",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 623,
+    "column": 7,
+    "script_string": "final postId = story['post_id'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 624,
+    "column": 7,
+    "script_string": "if (postId != null && !activeIds.contains(postId)) {",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 625,
+    "column": 9,
+    "script_string": "if (!(story['expired'] as bool? ?? false)) {",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 626,
+    "column": 11,
+    "script_string": "story['expired'] = true;",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 627,
+    "column": 11,
+    "script_string": "story['synced_at'] = null;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 628,
+    "column": 11,
+    "script_string": "newlyExpired++;",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 629,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 630,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 631,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 632,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 633,
+    "column": 5,
+    "script_string": "final activeCount =",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 634,
+    "column": 9,
+    "script_string": "existingStories.where((s) => !(s['expired'] as bool? ?? false)).length;",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 635,
+    "column": 5,
+    "script_string": "final expiredCount =",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 636,
+    "column": 9,
+    "script_string": "existingStories.where((s) => s['expired'] as bool? ?? false).length;",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 637,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 638,
+    "column": 5,
+    "script_string": "index['last_sync'] = DateTime.now().toUtc().toIso8601String();",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 639,
+    "column": 5,
+    "script_string": "index['total_stories'] = existingStories.length;",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 640,
+    "column": 5,
+    "script_string": "index['active_stories'] = activeCount;",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 641,
+    "column": 5,
+    "script_string": "index['expired_stories'] = expiredCount;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 642,
+    "column": 5,
+    "script_string": "index['stories'] = existingStories;",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 643,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 644,
+    "column": 5,
+    "script_string": "final jsonStr = JsonEncoder.withIndent('  ').convert(index);",
+    "comment": "",
+    "tag": "",
+    "length": 60
+  },
+  {
+    "line": 645,
+    "column": 5,
+    "script_string": "await File(indexPath).writeAsString(jsonStr);",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 646,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 647,
+    "column": 5,
+    "script_string": "_log('[IG STORIES] Concluído:');",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 648,
+    "column": 5,
+    "script_string": "_log('  Active: ${rawStories.length}');",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 649,
+    "column": 5,
+    "script_string": "_log('  Downloaded: $downloaded');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 650,
+    "column": 5,
+    "script_string": "_log('  Skipped: $skipped');",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 651,
+    "column": 5,
+    "script_string": "_log('  Failed: $failed');",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 652,
+    "column": 5,
+    "script_string": "_log('  Newly expired: $newlyExpired');",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 653,
+    "column": 5,
+    "script_string": "_log(",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 654,
+    "column": 9,
+    "script_string": "'  Total: ${existingStories.length} ($activeCount active, $expiredCount expired)');",
+    "comment": "",
+    "tag": "",
+    "length": 83
+  },
+  {
+    "line": 655,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 656,
+    "column": 5,
+    "script_string": "return existingStories;",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 657,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 658,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 659,
+    "column": 3,
+    "script_string": "// === IG STORIES HELPERS ======================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 660,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 661,
+    "column": 3,
+    "script_string": "Map<String, dynamic> _loadIndex(String indexPath) {",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 662,
+    "column": 5,
+    "script_string": "final file = File(indexPath);",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 663,
+    "column": 5,
+    "script_string": "if (file.existsSync()) {",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 664,
+    "column": 7,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 665,
+    "column": 9,
+    "script_string": "return jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 67
+  },
+  {
+    "line": 666,
+    "column": 7,
+    "script_string": "} catch (_) {}",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 667,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 668,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 669,
+    "column": 7,
+    "script_string": "'platform': 'instagram',",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 670,
+    "column": 7,
+    "script_string": "'content_type': 'stories',",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 671,
+    "column": 7,
+    "script_string": "'description': 'Cumulative IG stories archive - media downloaded locally',",
+    "comment": "",
+    "tag": "",
+    "length": 74
+  },
+  {
+    "line": 672,
+    "column": 7,
+    "script_string": "'total_stories': 0,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 673,
+    "column": 7,
+    "script_string": "'active_stories': 0,",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 674,
+    "column": 7,
+    "script_string": "'expired_stories': 0,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 675,
+    "column": 7,
+    "script_string": "'last_sync': null,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 676,
+    "column": 7,
+    "script_string": "'stories': [],",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 677,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 678,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 679,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 680,
+    "column": 3,
+    "script_string": "String _buildFileName(String storyId, String mediaType, String timestamp) {",
+    "comment": "",
+    "tag": "",
+    "length": 75
+  },
+  {
+    "line": 681,
+    "column": 5,
+    "script_string": "final ext = mediaType == 'VIDEO' ? 'mp4' : 'jpg';",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 682,
+    "column": 5,
+    "script_string": "final ts = timestamp",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 683,
+    "column": 9,
+    "script_string": ".replaceAll(':', '')",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 684,
+    "column": 9,
+    "script_string": ".replaceAll('-', '')",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 685,
+    "column": 9,
+    "script_string": ".replaceAll('T', '_')",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 686,
+    "column": 9,
+    "script_string": ".split('.')",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 687,
+    "column": 9,
+    "script_string": ".first",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 688,
+    "column": 9,
+    "script_string": ".split('+')",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 689,
+    "column": 9,
+    "script_string": ".first;",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 690,
+    "column": 5,
+    "script_string": "return '${ts}_${storyId}_$mediaType.$ext';",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 691,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 692,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 693,
+    "column": 3,
+    "script_string": "bool _isWithin24h(String timestamp) {",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 694,
+    "column": 5,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 695,
+    "column": 7,
+    "script_string": "final storyTime = DateTime.parse(timestamp.replaceAll('+0000', '+00:00'));",
+    "comment": "",
+    "tag": "",
+    "length": 74
+  },
+  {
+    "line": 696,
+    "column": 7,
+    "script_string": "final now = DateTime.now().toUtc();",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 697,
+    "column": 7,
+    "script_string": "return now.difference(storyTime).inHours < 24;",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 698,
+    "column": 5,
+    "script_string": "} catch (_) {",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 699,
+    "column": 7,
+    "script_string": "return false;",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 700,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 701,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 702,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 703,
+    "column": 3,
+    "script_string": "Future<String?> _downloadMedia(String mediaUrl, String fileName,",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 704,
+    "column": 7,
+    "script_string": "String targetDir, bool overwrite) async {",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 705,
+    "column": 5,
+    "script_string": "final filePath = path.join(targetDir, fileName);",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 706,
+    "column": 5,
+    "script_string": "final file = File(filePath);",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 707,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 708,
+    "column": 5,
+    "script_string": "if (file.existsSync() && !overwrite) {",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 709,
+    "column": 7,
+    "script_string": "return fileName;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 710,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 711,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 712,
+    "column": 5,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 713,
+    "column": 7,
+    "script_string": "final response = await http.get(Uri.parse(mediaUrl));",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 714,
+    "column": 7,
+    "script_string": "if (response.statusCode == 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 715,
+    "column": 9,
+    "script_string": "await file.writeAsBytes(response.bodyBytes);",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 716,
+    "column": 9,
+    "script_string": "_log('    Saved: $fileName (${_formatBytes(file.lengthSync())})');",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 717,
+    "column": 9,
+    "script_string": "return fileName;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 718,
+    "column": 7,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 719,
+    "column": 9,
+    "script_string": "_log('    Failed: HTTP ${response.statusCode}');",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 720,
+    "column": 9,
+    "script_string": "return null;",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 721,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 722,
+    "column": 5,
+    "script_string": "} catch (e) {",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 723,
+    "column": 7,
+    "script_string": "_log('    Error: $e');",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 724,
+    "column": 7,
+    "script_string": "return null;",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 725,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 726,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 727,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 728,
+    "column": 3,
+    "script_string": "// === SAVE JSON ===============================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 729,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 730,
+    "column": 3,
+    "script_string": "Future<String> _saveFacebookJson(List<Map<String, dynamic>> posts) async {",
+    "comment": "",
+    "tag": "",
+    "length": 74
+  },
+  {
+    "line": 731,
+    "column": 5,
+    "script_string": "final targetDir = path.normalize(path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 732,
+    "column": 7,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 733,
+    "column": 7,
+    "script_string": "config.postsTargetFolderFacebook,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 734,
+    "column": 5,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 735,
+    "column": 5,
+    "script_string": "final dir = Directory(targetDir);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 736,
+    "column": 5,
+    "script_string": "if (!dir.existsSync()) dir.createSync(recursive: true);",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 737,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 738,
+    "column": 5,
+    "script_string": "final feedPosts = posts.where((p) => p['content_type'] == 'feed').toList();",
+    "comment": "",
+    "tag": "",
+    "length": 75
+  },
+  {
+    "line": 739,
+    "column": 5,
+    "script_string": "final reelPosts = posts.where((p) => p['content_type'] == 'reels').toList();",
+    "comment": "",
+    "tag": "",
+    "length": 76
+  },
+  {
+    "line": 740,
+    "column": 5,
+    "script_string": "final storyPosts =",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 741,
+    "column": 9,
+    "script_string": "posts.where((p) => p['content_type'] == 'stories').toList();",
+    "comment": "",
+    "tag": "",
+    "length": 60
+  },
+  {
+    "line": 742,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 743,
+    "column": 5,
+    "script_string": "final output = {",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 744,
+    "column": 7,
+    "script_string": "'synced_at': DateTime.now().toIso8601String(),",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 745,
+    "column": 7,
+    "script_string": "'platform': 'facebook',",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 746,
+    "column": 7,
+    "script_string": "'total_posts': posts.length,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 747,
+    "column": 7,
+    "script_string": "'summary': {",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 748,
+    "column": 9,
+    "script_string": "'feed': feedPosts.length,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 749,
+    "column": 9,
+    "script_string": "'reels': reelPosts.length,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 750,
+    "column": 9,
+    "script_string": "'stories': storyPosts.length,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 751,
+    "column": 7,
+    "script_string": "},",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 752,
+    "column": 7,
+    "script_string": "'posts': posts,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 753,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 754,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 755,
+    "column": 5,
+    "script_string": "final ts = DateTime.now()",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 756,
+    "column": 9,
+    "script_string": ".toIso8601String()",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 757,
+    "column": 9,
+    "script_string": ".replaceAll(':', '')",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 758,
+    "column": 9,
+    "script_string": ".replaceAll('-', '')",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 759,
+    "column": 9,
+    "script_string": ".replaceAll('T', '_')",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 760,
+    "column": 9,
+    "script_string": ".split('.')",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 761,
+    "column": 9,
+    "script_string": ".first;",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 762,
+    "column": 5,
+    "script_string": "final fileName = '${ts}_facebook_posts.json';",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 763,
+    "column": 5,
+    "script_string": "final filePath = path.join(targetDir, fileName);",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 764,
+    "column": 5,
+    "script_string": "final jsonStr = JsonEncoder.withIndent('  ').convert(output);",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 765,
+    "column": 5,
+    "script_string": "await File(filePath).writeAsString(jsonStr);",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 766,
+    "column": 5,
+    "script_string": "_log('[JSON] Salvo: $fileName (${_formatBytes(jsonStr.length)})');",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 767,
+    "column": 5,
+    "script_string": "return filePath;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 768,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 769,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 770,
+    "column": 3,
+    "script_string": "Future<String> _saveInstagramJson(List<Map<String, dynamic>> posts) async {",
+    "comment": "",
+    "tag": "",
+    "length": 75
+  },
+  {
+    "line": 771,
+    "column": 5,
+    "script_string": "final targetDir = path.normalize(path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 772,
+    "column": 7,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 773,
+    "column": 7,
+    "script_string": "config.postsTargetFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 774,
+    "column": 5,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 775,
+    "column": 5,
+    "script_string": "final dir = Directory(targetDir);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 776,
+    "column": 5,
+    "script_string": "if (!dir.existsSync()) dir.createSync(recursive: true);",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 777,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 778,
+    "column": 5,
+    "script_string": "final output = {",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 779,
+    "column": 7,
+    "script_string": "'synced_at': DateTime.now().toIso8601String(),",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 780,
+    "column": 7,
+    "script_string": "'platform': 'instagram',",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 781,
+    "column": 7,
+    "script_string": "'total_posts': posts.length,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 782,
+    "column": 7,
+    "script_string": "'posts': posts,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 783,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 784,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 785,
+    "column": 5,
+    "script_string": "final ts = DateTime.now()",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 786,
+    "column": 9,
+    "script_string": ".toIso8601String()",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 787,
+    "column": 9,
+    "script_string": ".replaceAll(':', '')",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 788,
+    "column": 9,
+    "script_string": ".replaceAll('-', '')",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 789,
+    "column": 9,
+    "script_string": ".replaceAll('T', '_')",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 790,
+    "column": 9,
+    "script_string": ".split('.')",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 791,
+    "column": 9,
+    "script_string": ".first;",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 792,
+    "column": 5,
+    "script_string": "final fileName = '${ts}_instagram_posts.json';",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 793,
+    "column": 5,
+    "script_string": "final filePath = path.join(targetDir, fileName);",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 794,
+    "column": 5,
+    "script_string": "final jsonStr = JsonEncoder.withIndent('  ').convert(output);",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 795,
+    "column": 5,
+    "script_string": "await File(filePath).writeAsString(jsonStr);",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 796,
+    "column": 5,
+    "script_string": "_log('[JSON] Salvo: $fileName (${_formatBytes(jsonStr.length)})');",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 797,
+    "column": 5,
+    "script_string": "return filePath;",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 798,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 799,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 800,
+    "column": 3,
+    "script_string": "// === SAVE SQLITE =============================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 801,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 802,
+    "column": 3,
+    "script_string": "Future<void> _saveToSqlite(",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 803,
+    "column": 7,
+    "script_string": "String mapType, Map<String, dynamic> jsonData) async {",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 804,
+    "column": 5,
+    "script_string": "final dbPath = path.normalize(path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 805,
+    "column": 7,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 806,
+    "column": 7,
+    "script_string": "config.sqliteFile,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 807,
+    "column": 5,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 808,
+    "column": 5,
+    "script_string": "final db = sqlite3.open(dbPath);",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 809,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 810,
+    "column": 5,
+    "script_string": "final jsonStr = jsonEncode(jsonData);",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 811,
+    "column": 5,
+    "script_string": "final now = DateTime.now().toIso8601String();",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 812,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 813,
+    "column": 5,
+    "script_string": "final existing = db.select(",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 814,
+    "column": 7,
+    "script_string": "'SELECT id FROM ${config.sqliteTable} WHERE map_type = ?',",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 815,
+    "column": 7,
+    "script_string": "[mapType],",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 816,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 817,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 818,
+    "column": 5,
+    "script_string": "if (existing.isNotEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 819,
+    "column": 7,
+    "script_string": "final id = existing.first['id'];",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 820,
+    "column": 7,
+    "script_string": "db.execute(",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 821,
+    "column": 9,
+    "script_string": "'UPDATE ${config.sqliteTable} SET json_data = ?, scan_timestamp = ?, created_at = ? WHERE id = ?',",
+    "comment": "",
+    "tag": "",
+    "length": 98
+  },
+  {
+    "line": 822,
+    "column": 9,
+    "script_string": "[jsonStr, now, now, id],",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 823,
+    "column": 7,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 824,
+    "column": 7,
+    "script_string": "_log('[SQLITE] Atualizado: $mapType (id=$id)');",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 825,
+    "column": 5,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 826,
+    "column": 7,
+    "script_string": "db.execute(",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 827,
+    "column": 9,
+    "script_string": "'INSERT INTO ${config.sqliteTable} (map_type, json_data, source_folder, scan_timestamp, file_count, folder_count) VALUES (?, ?, ?, ?, ?, ?)',",
+    "comment": "",
+    "tag": "",
+    "length": 141
+  },
+  {
+    "line": 828,
+    "column": 9,
+    "script_string": "[mapType, jsonStr, 'meta_api', now, 0, 0],",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 829,
+    "column": 7,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 830,
+    "column": 7,
+    "script_string": "_log('[SQLITE] Inserido: $mapType');",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 831,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 832,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 833,
+    "column": 5,
+    "script_string": "db.dispose();",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 834,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 835,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 836,
+    "column": 3,
+    "script_string": "// === FULL SCAN ===============================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 837,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 838,
+    "column": 3,
+    "script_string": "Future<void> scan() async {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 839,
+    "column": 5,
+    "script_string": "await _resolveToken();",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 840,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 841,
+    "column": 5,
+    "script_string": "// Facebook: feed + videos + stories",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 842,
+    "column": 5,
+    "script_string": "final fbFeed = await scanFacebookFeed();",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 843,
+    "column": 5,
+    "script_string": "final fbVideos = await scanFacebookVideos();",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 844,
+    "column": 5,
+    "script_string": "final fbStories = await scanFacebookStories();",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 845,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 846,
+    "column": 5,
+    "script_string": "final fbAll = [...fbFeed, ...fbVideos, ...fbStories];",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 847,
+    "column": 5,
+    "script_string": "final fbJsonPath = await _saveFacebookJson(fbAll);",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 848,
+    "column": 5,
+    "script_string": "final fbJson =",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 849,
+    "column": 9,
+    "script_string": "jsonDecode(File(fbJsonPath).readAsStringSync()) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 72
+  },
+  {
+    "line": 850,
+    "column": 5,
+    "script_string": "await _saveToSqlite('facebook_posts', fbJson);",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 851,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 852,
+    "column": 5,
+    "script_string": "// Instagram feed",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 853,
+    "column": 5,
+    "script_string": "final igFeed = await scanInstagramFeed();",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 854,
+    "column": 5,
+    "script_string": "final igJsonPath = await _saveInstagramJson(igFeed);",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 855,
+    "column": 5,
+    "script_string": "final igJson =",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 856,
+    "column": 9,
+    "script_string": "jsonDecode(File(igJsonPath).readAsStringSync()) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 72
+  },
+  {
+    "line": 857,
+    "column": 5,
+    "script_string": "await _saveToSqlite('instagram_posts', igJson);",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 858,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 859,
+    "column": 5,
+    "script_string": "// Instagram stories (separate, cumulative)",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 860,
+    "column": 5,
+    "script_string": "await scanInstagramStories();",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 861,
+    "column": 5,
+    "script_string": "final indexDir = path.normalize(path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 862,
+    "column": 7,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 863,
+    "column": 7,
+    "script_string": "config.storiesTargetFolderInstagram,",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 864,
+    "column": 5,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 865,
+    "column": 5,
+    "script_string": "final indexPath = path.join(indexDir, 'ig_stories_index.json');",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 866,
+    "column": 5,
+    "script_string": "final igStoriesJson =",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 867,
+    "column": 9,
+    "script_string": "jsonDecode(File(indexPath).readAsStringSync()) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 868,
+    "column": 5,
+    "script_string": "await _saveToSqlite('instagram_stories', igStoriesJson);",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 869,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 870,
+    "column": 5,
+    "script_string": "_log('\\n[SCAN] Concluído');",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 871,
+    "column": 5,
+    "script_string": "_log('  Facebook: ${fbAll.length} posts');",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 872,
+    "column": 5,
+    "script_string": "_log('  Instagram: ${igFeed.length} posts');",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 873,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 874,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 875,
+    "column": 3,
+    "script_string": "// === UTILS ===================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 876,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 877,
+    "column": 3,
+    "script_string": "String _formatBytes(int bytes) {",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 878,
+    "column": 5,
+    "script_string": "if (bytes < 1024) return '$bytes B';",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 879,
+    "column": 5,
+    "script_string": "if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';",
+    "comment": "",
+    "tag": "",
+    "length": 74
+  },
+  {
+    "line": 880,
+    "column": 5,
+    "script_string": "return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 881,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 882,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 883,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 884,
+    "column": 1,
+    "script_string": "// === CONFIG HELPER ===========================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 885,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 886,
+    "column": 1,
+    "script_string": "Future<Map<String, String>> _loadEnv() async {",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 887,
+    "column": 3,
+    "script_string": "final envPath = path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 888,
+    "column": 5,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 889,
+    "column": 5,
+    "script_string": "'..',",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 890,
+    "column": 5,
+    "script_string": "'..',",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 891,
+    "column": 5,
+    "script_string": "'.env',",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 892,
+    "column": 3,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 893,
+    "column": 3,
+    "script_string": "final file = File(envPath);",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 894,
+    "column": 3,
+    "script_string": "if (!file.existsSync()) return {};",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 895,
+    "column": 3,
+    "script_string": "final result = <String, String>{};",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 896,
+    "column": 3,
+    "script_string": "for (final line in await file.readAsLines()) {",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 897,
+    "column": 5,
+    "script_string": "final trimmed = line.trim();",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 898,
+    "column": 5,
+    "script_string": "if (trimmed.isEmpty || trimmed.startsWith('#')) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 899,
+    "column": 5,
+    "script_string": "final eqIndex = trimmed.indexOf('=');",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 900,
+    "column": 5,
+    "script_string": "if (eqIndex == -1) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 901,
+    "column": 5,
+    "script_string": "result[trimmed.substring(0, eqIndex).trim()] =",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 902,
+    "column": 9,
+    "script_string": "trimmed.substring(eqIndex + 1).trim();",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 903,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 904,
+    "column": 3,
+    "script_string": "return result;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 905,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 906,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 907,
+    "column": 1,
+    "script_string": "Future<PostsConfig> loadPostsConfig() async {",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 908,
+    "column": 3,
+    "script_string": "final configPath = path.join(",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 909,
+    "column": 5,
+    "script_string": "path.dirname(Platform.script.toFilePath()),",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 910,
+    "column": 5,
+    "script_string": "'config.json',",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 911,
+    "column": 3,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 912,
+    "column": 3,
+    "script_string": "final configFile = File(configPath);",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 913,
+    "column": 3,
+    "script_string": "if (!configFile.existsSync()) {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 914,
+    "column": 5,
+    "script_string": "throw Exception('config.json não encontrado em $configPath');",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 915,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 916,
+    "column": 3,
+    "script_string": "final json = jsonDecode(await configFile.readAsString());",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 917,
+    "column": 3,
+    "script_string": "final scan = json['scan'] as Map;",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 918,
+    "column": 3,
+    "script_string": "final token = scan['access_token'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 919,
+    "column": 3,
+    "script_string": "String resolvedToken = token;",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 920,
+    "column": 3,
+    "script_string": "if (token.startsWith('env:')) {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 921,
+    "column": 5,
+    "script_string": "final envVar = token.substring(4);",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 922,
+    "column": 5,
+    "script_string": "String? envValue = Platform.environment[envVar];",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 923,
+    "column": 5,
+    "script_string": "if (envValue == null || envValue.isEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 924,
+    "column": 7,
+    "script_string": "final envFile = await _loadEnv();",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 925,
+    "column": 7,
+    "script_string": "envValue = envFile[envVar];",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 926,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 927,
+    "column": 5,
+    "script_string": "if (envValue == null || envValue.isEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 928,
+    "column": 7,
+    "script_string": "throw Exception('Variável de ambiente $envVar não encontrada');",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 929,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 930,
+    "column": 5,
+    "script_string": "resolvedToken = envValue;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 931,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 932,
+    "column": 3,
+    "script_string": "return PostsConfig.fromJson(json, resolvedToken);",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 933,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 934,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 935,
+    "column": 1,
+    "script_string": "// === MAIN ====================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 936,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 937,
+    "column": 1,
+    "script_string": "void main() async {",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 938,
+    "column": 3,
+    "script_string": "print('=' * 60);",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 939,
+    "column": 3,
+    "script_string": "print('POSTS SERVICE - CRM CDD (Meta Graph API)');",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 940,
+    "column": 3,
+    "script_string": "print('=' * 60);",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 941,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 942,
+    "column": 3,
+    "script_string": "final config = await loadPostsConfig();",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 943,
+    "column": 3,
+    "script_string": "final service = PostsService(config: config);",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 944,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 945,
+    "column": 3,
+    "script_string": "service.logs.listen((msg) => print(msg));",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 946,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 947,
+    "column": 3,
+    "script_string": "await service.init();",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 948,
+    "column": 3,
+    "script_string": "await service.scan();",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 949,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 950,
+    "column": 3,
+    "script_string": "print('\\n[SCAN] Pressione Enter para re-scan manual');",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 951,
+    "column": 3,
+    "script_string": "print('[SCAN] Ctrl+C para sair');",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 952,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 953,
+    "column": 3,
+    "script_string": "stdin.listen((data) {",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 954,
+    "column": 5,
+    "script_string": "final input = String.fromCharCodes(data).trim();",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 955,
+    "column": 5,
+    "script_string": "if (input.isEmpty) {",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 956,
+    "column": 7,
+    "script_string": "print('\\n[SCAN] Re-scan manual solicitado...');",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 957,
+    "column": 7,
+    "script_string": "service.scan();",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 958,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 959,
+    "column": 3,
+    "script_string": "});",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 960,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 961,
+    "column": 3,
+    "script_string": "while (true) {",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 962,
+    "column": 5,
+    "script_string": "await Future.delayed(Duration(seconds: 1));",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 963,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 964,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  }
+]

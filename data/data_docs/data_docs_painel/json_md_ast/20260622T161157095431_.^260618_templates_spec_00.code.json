@@ -1,0 +1,44 @@
+[
+  {
+    "file_path": "260618_templates_spec_00.md",
+    "start_line": 320,
+    "type": "code",
+    "depth": 0,
+    "h1": "1. Template PRD",
+    "h2": "1.5. arquitetura de dados",
+    "h3": "1.5.1. dados de negocio",
+    "h4": "1.5.1.1. dados fonte, armazenamento fisico",
+    "h5": "1.5.1.1.1. fonte de dados de negocio data_source_path",
+    "h6": "",
+    "lang": "json",
+    "value": "{\n  \"type\": \"root\",\n  \"children\": [\n    {\"type\": \"heading\", \"fields\": {\"depth\": \"int\", \"start_line\": \"int\", \"end_line\": \"int\"},\n     \"children\": [{\"type\": \"text\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}}]},\n    {\"type\": \"paragraph\", \"children\": [\n      {\"type\": \"text\"}, {\"type\": \"strong\"}, {\"type\": \"em\"},\n      {\"type\": \"inlineCode\"}, {\"type\": \"link\", \"fields\": {\"url\": \"str\", \"title\": \"str\"}\n    }]},\n    {\"type\": \"code\", \"fields\": {\"lang\": \"str\", \"value\": \"str\", \"start_line\": \"int\", \"end_line\": \"int\"}},\n    {\"type\": \"list\", \"fields\": {\"ordered\": \"bool\"},\n     \"children\": [{\"type\": \"listItem\", \"children\": [{\"type\": \"paragraph\"}]}]},\n    {\"type\": \"blockquote\", \"children\": [{\"type\": \"paragraph\"}]},\n    {\"type\": \"thematicBreak\"},\n    {\"type\": \"table\", \"children\": [\n      {\"type\": \"tableRow\", \"children\": [{\"type\": \"tableCell\", \"children\": [{\"type\": \"text\"}]}]}\n    ]}\n  ]\n}\n"
+  },
+  {
+    "file_path": "260618_templates_spec_00.md",
+    "start_line": 399,
+    "type": "code",
+    "depth": 0,
+    "h1": "1. Template PRD",
+    "h2": "1.5. arquitetura de dados",
+    "h3": "1.5.2. dados de controle",
+    "h4": "1.5.2.1. dados de controle, armazenamento fisico",
+    "h5": "1.5.2.1.1. fonte de dados de controle data_source_path",
+    "h6": "",
+    "lang": "json",
+    "value": "{\n  \"type\": \"root\",\n  \"children\": [\n    {\"type\": \"heading\", \"fields\": {\"depth\": \"int\", \"start_line\": \"int\", \"end_line\": \"int\"},\n     \"children\": [{\"type\": \"text\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}}]},\n    {\"type\": \"paragraph\", \"children\": [\n      {\"type\": \"text\"}, {\"type\": \"strong\"}, {\"type\": \"em\"},\n      {\"type\": \"inlineCode\"}, {\"type\": \"link\", \"fields\": {\"url\": \"str\", \"title\": \"str\"}\n    }]},\n    {\"type\": \"code\", \"fields\": {\"lang\": \"str\", \"value\": \"str\", \"start_line\": \"int\", \"end_line\": \"int\"}},\n    {\"type\": \"list\", \"fields\": {\"ordered\": \"bool\"},\n     \"children\": [{\"type\": \"listItem\", \"children\": [{\"type\": \"paragraph\"}]}]},\n    {\"type\": \"blockquote\", \"children\": [{\"type\": \"paragraph\"}]},\n    {\"type\": \"thematicBreak\"},\n    {\"type\": \"table\", \"children\": [\n      {\"type\": \"tableRow\", \"children\": [{\"type\": \"tableCell\", \"children\": [{\"type\": \"text\"}]}]}\n    ]}\n  ]\n}\n"
+  },
+  {
+    "file_path": "260618_templates_spec_00.md",
+    "start_line": 671,
+    "type": "code",
+    "depth": 0,
+    "h1": "2. Template SRD",
+    "h2": "2.5. arquitetura de dados",
+    "h3": "2.5.1. dados de negocio",
+    "h4": "2.5.1.1. dados fonte, armazenamento fisico",
+    "h5": "2.5.1.1.1. fonte de dados de negocio data_source_path",
+    "h6": "",
+    "lang": "json",
+    "value": "{\n  \"type\": \"root\",\n  \"children\": [\n    {\"type\": \"heading\", \"fields\": {\"depth\": \"int\", \"start_line\": \"int\", \"end_line\": \"int\"},\n     \"children\": [{\"type\": \"text\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}}]},\n    {\"type\": \"paragraph\", \"children\": [\n      {\"type\": \"text\"}, {\"type\": \"strong\"}, {\"type\": \"em\"},\n      {\"type\": \"inlineCode\"}, {\"type\": \"link\", \"fields\": {\"url\": \"str\", \"title\": \"str\"}\n    }]},\n    {\"type\": \"code\", \"fields\": {\"lang\": \"str\", \"value\": \"str\", \"start_line\": \"int\", \"end_line\": \"int\"}},\n    {\"type\": \"list\", \"fields\": {\"ordered\": \"bool\"},\n     \"children\": [{\"type\": \"listItem\", \"children\": [{\"type\": \"paragraph\"}]}]},\n    {\"type\": \"blockquote\", \"children\": [{\"type\": \"paragraph\"}]},\n    {\"type\": \"thematicBreak\"},\n    {\"type\": \"table\", \"children\": [\n      {\"type\": \"tableRow\", \"children\": [{\"type\": \"tableCell\", \"children\": [{\"type\": \"text\"}]}]}\n    ]}\n  ]\n}\n"
+  }
+]

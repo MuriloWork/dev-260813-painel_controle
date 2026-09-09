@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meta-api.local/schemas/set_painel_actions_data_paths.json",
+  "title": "Painel Actions and Data Paths",
+  "description": "Unifica data_paths, sqlite_tables, sql_paths e actions. absolute_paths salvo por painel_settings.py",
+  "type": "object",
+  "required": ["data_paths", "sqlite_tables", "sql_paths", "actions", "absolute_paths"],
+  "properties": {
+    "data_paths": {
+      "type": "object",
+      "required": ["database", "sources", "targets"],
+      "properties": {
+        "database": {
+          "type": "object",
+          "propertyNames": { "pattern": "^REL_PATH_DB_[A-Z_]+$" },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_\\\\\\.\\-]*\\.db$"
+          },
+          "minProperties": 1
+        },
+        "sources": {
+          "type": "object",
+          "propertyNames": { "pattern": "^REL_PATH_SOURCE_[A-Z_]+$" },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_\\\\\\.\\-]*$"
+          },
+          "minProperties": 1
+        },
+        "targets": {
+          "type": "object",
+          "propertyNames": { "pattern": "^REL_PATH_TARGET_[A-Z_]+$" },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_\\\\\\.\\-]*$"
+          },
+          "minProperties": 1
+        }
+      }
+    },
+    "sqlite_tables": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z_]+$" },
+      "additionalProperties": {
+        "type": "object",
+        "propertyNames": { "pattern": "^REL_PATH_DB_[A-Z]+_TB_[A-Z_]+$" },
+        "additionalProperties": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+          "minLength": 1
+        },
+        "minProperties": 1
+      },
+      "minProperties": 1
+    },
+    "sql_paths": {
+      "description": "Paths completos para cada arquivo SQL utilizado (1 var por arquivo, sem composicao dinamica)",
+      "type": "object",
+      "propertyNames": { "pattern": "^REL_PATH_SQL_[A-Z_]+$" },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-zA-Z_][a-zA-Z0-9_\\\\\\.\\-]*\\.sql$"
+      },
+      "minProperties": 1
+    },
+    "actions": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*\\.py$" },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["action", "child_action"],
+          "properties": {
+            "action": { "type": "string", "pattern": "^[a-z_]+$" },
+            "child_action": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^[a-z_]+$" },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "input": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["input_name", "var_ref"],
+                "properties": {
+                  "input_name": { "type": "string", "pattern": "^[a-z_]+$" },
+                  "var_ref": { "type": "string", "pattern": "^REL_PATH_[A-Z_]+$" }
+                }
+              },
+              "uniqueItems": true
+            },
+            "output": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["output_name", "var_ref"],
+                "properties": {
+                  "output_name": { "type": "string", "pattern": "^[a-z_]+$" },
+                  "var_ref": { "type": "string", "pattern": "^REL_PATH_[A-Z_]+$" }
+                }
+              },
+              "uniqueItems": true
+            },
+            "optional_settings": { "type": "object" }
+          }
+        },
+        "minItems": 1
+      },
+      "minProperties": 1
+    },
+    "absolute_paths": {
+      "type": "object",
+      "properties": {
+        "data_paths": {
+          "type": "object",
+          "properties": {
+            "database": {
+              "type": "object",
+              "additionalProperties": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" }
+            },
+            "sources": {
+              "type": "object",
+              "additionalProperties": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" }
+            },
+            "targets": {
+              "type": "object",
+              "additionalProperties": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" }
+            }
+          }
+        },
+        "sql_paths": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" }
+        },
+        "sqlite_tables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

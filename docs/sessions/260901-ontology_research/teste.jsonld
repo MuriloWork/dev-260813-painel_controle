@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "skos": "http://w3.org",
+    "owl": "http://w3.org",
+    "rdfs": "http://w3.org",
+    "xsd": "http://w3.org",
+    "ex": "http://exemplo.org",
+    "id": "@id",
+    "type": "@type",
+    "prefLabel": { "@id": "skos:prefLabel", "@language": "pt" },
+    "altLabel": { "@id": "skos:altLabel", "@language": "pt" },
+    "definition": { "@id": "skos:definition", "@language": "pt" },
+    "broader": { "@id": "skos:broader", "@type": "@id" },
+    "subClassOf": { "@id": "rdfs:subClassOf", "@type": "@id" }
+  },
+  "@graph": [
+    {
+      "id": "ex:TAX_030",
+      "type": ["skos:Concept", "owl:Class"],
+      "prefLabel": "Cachorro",
+      "altLabel": ["Cão", "Canino"],
+      "definition": "Mamífero doméstico da família dos canídeos.",
+      "broader": "ex:TAX_020",
+      "subClassOf": "ex:TAX_020",
+      "rdfs:subClassOf": {
+        "@type": "owl:Restriction",
+        "owl:onProperty": "ex:temDono",
+        "owl:maxCardinality": 1
+      }
+    },
+    {
+      "id": "ex:temDono",
+      "type": "owl:ObjectProperty",
+      "rdfs:domain": "ex:TAX_030",
+      "rdfs:range": "ex:Pessoa"
+    }
+  ]
+}

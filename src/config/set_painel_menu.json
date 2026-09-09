@@ -1,0 +1,154 @@
+{
+  "shell": {
+    "description": "Shell / Terminal",
+    "commands": [
+      {
+        "name": "search_files",
+        "description": "Pesquisar arquivos recursivamente",
+        "command": "powershell",
+        "arguments": "Get-ChildItem -Path \"$DIRETORIO\" -Recurse -File -Force -Filter \"*$SEARCH_STRING*\" -ErrorAction SilentlyContinue | ForEach-Object { Write-Host \"$($_.FullName)\" }",
+        "type": "shell",
+        "placeholders": [
+          { "name": "DIRETORIO", "prompt": "Diretório inicial:", "default": "." },
+          { "name": "SEARCH_STRING", "prompt": "String de busca:", "default": "" }
+        ]
+      },
+      {
+        "name": "open_config",
+        "description": "Abrir set_painel_menu.json",
+        "command": "code",
+        "arguments": ".\\src\\config\\set_painel_menu.json",
+        "type": "code",
+        "placeholders": []
+      },
+      {
+        "name": "supabase_query",
+        "description": "Consultar API Supabase via PostgREST",
+        "command": "powershell",
+        "arguments": "$url = 'https://drezioycqhgsmpcqwskw.supabase.co/rest/v1/' + '$TABELA'; if ('$LIMIT' -ne '') { $url += '?limit=' + '$LIMIT' }; Invoke-RestMethod $url -Headers @{'apikey'='sb_publishable_jeCcglmvDlLlPtxyQz5Vxw_cb_f_X55'; 'Authorization'='Bearer sb_publishable_jeCcglmvDlLlPtxyQz5Vxw_cb_f_X55'; 'Accept-Profile'='$SCHEMA'} | ConvertTo-Json | Out-File -FilePath '$JSON_PATH' -Encoding UTF8",
+        "type": "shell",
+        "placeholders": [
+          { "name": "SCHEMA", "prompt": "Schema (public, flutter_data, flutter_config):", "default": "flutter_config" },
+          { "name": "TABELA", "prompt": "Tabela:", "default": "data_models_supabase" },
+          { "name": "LIMIT", "prompt": "Limite de registros (deixe vazio para todos):", "default": "" },
+          { "name": "JSON_PATH", "prompt": "Caminho do arquivo JSON de saída:", "default": "sprints/supabase.json" }
+        ]
+      },
+      {
+        "name": "heaper",
+        "description": "Heaper: Abrir Docker + Heaper + Iniciar servidor",
+        "command": "powershell",
+        "arguments": ".\\src\\delete\\.old\\heaper.ps1 $ACAO",
+        "type": "shell",
+        "placeholders": [
+          { "name": "ACAO", "prompt": "Ação (run/start/stop/restart/status/logs/db-info/docker-start/app/open/help):", "default": "run" }
+        ]
+      },
+      {
+        "name": "joplin_md_sync",
+        "description": "Joplin MD Sync: start-sync (carga inicial), push/pull (direcional), upsert-sync (incremental), watch (automático)",
+        "command": "powershell",
+        "arguments": "cd .\\joplin-md-sync; node dist/index.js $COMANDO $ACAO",
+        "type": "shell",
+        "placeholders": [
+          { "name": "COMANDO", "prompt": "Comando:", "default": "upsert-sync" },
+          { "name": "ACAO", "prompt": "Opções:", "default": "" }
+        ]
+      }
+    ]
+  },
+  "parse": {
+    "description": "Parse / Processamento",
+    "commands": [
+      {
+        "name": "parse_script_dart_ast",
+        "description": "Executar parse_script_dart_ast.py - Parser AST de arquivos Dart",
+        "command": ".\\src\\services\\parse\\parse_script_dart_ast.py",
+        "arguments": "--action $ACTION",
+        "type": "python",
+        "placeholders": [
+          { "name": "ACTION", "prompt": "Ação:\n  ast = DART_DIR → JSON+SQLITE\n  ast_json = DART_DIR → JSON_AST\n  ast_sqlite = JSON_AST → SQLITE\n  sqlite_ast = JSON_AST → SQLITE(tb_ast)\n  sqlite_ast_func = JSON_AST → SQLITE(tb_ast+func)\n  sqlite_ast_1d = JSON_AST → SQLITE(tb_ast+func+map_1d):", "default": "ast" },
+          {
+            "name": "INPUT",
+            "prompt": "Arquivo/diretório de entrada:",
+            "default": "",
+            "default_var_ref": "SOURCE_DART"
+          }
+        ]
+      },
+      {
+        "name": "parse_script_raw",
+        "description": "Executar parse_script_raw.py - Parser raw de scripts Dart",
+        "command": "services.parse.parse_script_raw",
+        "arguments": "--action $ACAO",
+        "type": "module",
+        "chdir": ".\\src",
+        "placeholders": [
+          { "name": "ACAO", "prompt": "Ação (raw):", "default": "raw" }
+        ]
+      },
+      {
+        "name": "sqlite_import",
+        "description": "SYNC: Copiar tb_ast_func_map_2d para painel_tkinter",
+        "command": ".\\src\\utils\\io_utils\\painel_sqlite_import.py",
+        "arguments": "$ACAO",
+        "type": "python",
+        "placeholders": [
+          { "name": "ACAO", "prompt": "Ação (upsert/triggers/sync_ast_func_map_2d/upsert_tag_map/upsert_logs_string):", "default": "sync_ast_func_map_2d" }
+        ]
+      },
+      {
+        "name": "convert_pdf_to_md",
+        "description": "docling convert pdf to md",
+        "command": ".\\src\\services\\parse\\convert_pdf_to_md.py",
+        "arguments": "",
+        "type": "python",
+        "placeholders": []
+      },
+      {
+        "name": "normalize_md",
+        "description": "normalize_md.ts - Numerar seções e gerar TOC em documento Markdown",
+        "command": "npx tsx",
+        "arguments": ".\\src\\services\\parse\\normalize_md.ts $ARQUIVO",
+        "type": "npm",
+        "placeholders": [
+          { "name": "ARQUIVO", "prompt": "Caminho do arquivo Markdown (.md):", "default": "" }
+        ]
+      },
+      {
+        "name": "parse_md_ast",
+        "description": "parse_md_ast.py - Parse AST de arquivos Markdown",
+        "command": ".\\src\\services\\parse\\parse_md_ast.py",
+        "arguments": "--action $ACTION --input $INPUT",
+        "type": "python",
+        "placeholders": [
+          { "name": "ACTION", "prompt": "Ação:\n  md_ast = .md → JSON+SQLITE (diretório)\n  md_json = .md → JSON_AST\n  md_sqlite = JSON_AST → SQLITE:", "default": "md_ast" },
+          { "name": "INPUT", "prompt": "Arquivo/diretório de entrada:", "default": "", "default_var_ref": "SOURCE_MD" }
+        ]
+      }
+    ]
+  },
+  "logs": {
+    "description": "Logs / Depuração",
+    "commands": [
+      {
+        "name": "android_logs",
+        "description": "Exibir logs no emulador android",
+        "command": "powershell",
+        "arguments": "adb shell run-as com.example.flutter_app_251130 ls -la app_flutter/app_logs/",
+        "type": "shell",
+        "placeholders": []
+      },
+      {
+        "name": "analyze_logs",
+        "description": "Analyze Logs: Baixar e converter logs do emulador para CSV",
+        "command": ".\\src\\services\\logs\\analyze_logs.py",
+        "arguments": "$ACAO",
+        "type": "python",
+        "placeholders": [
+          { "name": "ACAO", "prompt": "Ações (pull list csv, all):", "default": "pull csv" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,827 @@
+DROP VIEW IF EXISTS vw_data_flow_flat_mu;
+CREATE VIEW vw_data_flow_flat_mu AS
+
+SELECT *
+-- SELECT count(*)
+
+FROM (
+    SELECT DISTINCT
+        -- project_name
+        -- ,version
+        -- ,file_path
+        
+        json_each_01.key AS file
+        ,json_extract(json_each_02.value, '$.line_number') AS line_01
+        ,json_extract(json_each_02.value, '$.type') AS type
+        ,json_each_02.key AS function
+        ,json_extract(json_each_02.value, '$.from_function') AS from_function
+        ,json_extract(json_each_02.value, '$.to_function') AS to_function
+        ,json_extract(json_each_03.value, '$.to') AS 'to'
+        ,json_extract(json_each_03.value, '$.to_file') AS to_file
+        ,json_extract(json_each_03.value, '$.line_number') AS line_02
+        ,json_extract(json_each_02.value, '$.ast_type') AS ast_type
+        ,json_extract(json_each_03.value, '$.data_type') AS data_type
+    FROM 
+        data_flow
+        ,json_each(data_flow.json_data, '$.files') AS json_each_01
+    LEFT JOIN
+        json_each(json_each_01.value, '$.functions') AS json_each_02
+    LEFT JOIN
+        json_each(json_each_02.value, '$.connections') AS json_each_03
+    -- WHERE
+    --     json_each_03.type = 'object'
+    --     AND json_each_03.path LIKE '$.functions.%'
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,NULL AS offset_02
+    --     ,NULL AS line_02
+    --     ,NULL AS source_text_02
+    --     ,NULL AS value_02
+    --     ,NULL AS type_02
+    --     ,NULL AS static_type_02
+    --     ,NULL AS offset_03
+    --     ,NULL AS line_03
+    --     ,NULL AS source_text_03
+    --     ,NULL AS value_03
+    --     ,NULL AS type_03
+    --     ,NULL AS static_type_03
+    --     ,NULL AS offset_04
+    --     ,NULL AS line_04
+    --     ,NULL AS source_text_04
+    --     ,NULL AS value_04
+    --     ,NULL AS type_04
+    --     ,NULL AS static_type_04
+    --     ,NULL AS offset_05
+    --     ,NULL AS line_05
+    --     ,NULL AS source_text_05
+    --     ,NULL AS value_05
+    --     ,NULL AS type_05
+    --     ,NULL AS static_type_05
+    --     ,NULL AS offset_06
+    --     ,NULL AS line_06
+    --     ,NULL AS source_text_06
+    --     ,NULL AS value_06
+    --     ,NULL AS type_06
+    --     ,NULL AS static_type_06
+    --     ,NULL AS offset_07
+    --     ,NULL AS line_07
+    --     ,NULL AS source_text_07
+    --     ,NULL AS value_07
+    --     ,NULL AS type_07
+    --     ,NULL AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,NULL AS offset_03
+    --     ,NULL AS line_03
+    --     ,NULL AS source_text_03
+    --     ,NULL AS value_03
+    --     ,NULL AS type_03
+    --     ,NULL AS static_type_03
+    --     ,NULL AS offset_04
+    --     ,NULL AS line_04
+    --     ,NULL AS source_text_04
+    --     ,NULL AS value_04
+    --     ,NULL AS type_04
+    --     ,NULL AS static_type_04
+    --     ,NULL AS offset_05
+    --     ,NULL AS line_05
+    --     ,NULL AS source_text_05
+    --     ,NULL AS value_05
+    --     ,NULL AS type_05
+    --     ,NULL AS static_type_05
+    --     ,NULL AS offset_06
+    --     ,NULL AS line_06
+    --     ,NULL AS source_text_06
+    --     ,NULL AS value_06
+    --     ,NULL AS type_06
+    --     ,NULL AS static_type_06
+    --     ,NULL AS offset_07
+    --     ,NULL AS line_07
+    --     ,NULL AS source_text_07
+    --     ,NULL AS value_07
+    --     ,NULL AS type_07
+    --     ,NULL AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,NULL AS offset_04
+    --     ,NULL AS line_04
+    --     ,NULL AS source_text_04
+    --     ,NULL AS value_04
+    --     ,NULL AS type_04
+    --     ,NULL AS static_type_04
+    --     ,NULL AS offset_05
+    --     ,NULL AS line_05
+    --     ,NULL AS source_text_05
+    --     ,NULL AS value_05
+    --     ,NULL AS type_05
+    --     ,NULL AS static_type_05
+    --     ,NULL AS offset_06
+    --     ,NULL AS line_06
+    --     ,NULL AS source_text_06
+    --     ,NULL AS value_06
+    --     ,NULL AS type_06
+    --     ,NULL AS static_type_06
+    --     ,NULL AS offset_07
+    --     ,NULL AS line_07
+    --     ,NULL AS source_text_07
+    --     ,NULL AS value_07
+    --     ,NULL AS type_07
+    --     ,NULL AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,NULL AS offset_05
+    --     ,NULL AS line_05
+    --     ,NULL AS source_text_05
+    --     ,NULL AS value_05
+    --     ,NULL AS type_05
+    --     ,NULL AS static_type_05
+    --     ,NULL AS offset_06
+    --     ,NULL AS line_06
+    --     ,NULL AS source_text_06
+    --     ,NULL AS value_06
+    --     ,NULL AS type_06
+    --     ,NULL AS static_type_06
+    --     ,NULL AS offset_07
+    --     ,NULL AS line_07
+    --     ,NULL AS source_text_07
+    --     ,NULL AS value_07
+    --     ,NULL AS type_07
+    --     ,NULL AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,json_extract(json_each_05.value, '$.offset') AS offset_05
+    --     ,json_extract(json_each_05.value, '$.line') AS line_05
+    --     ,json_extract(json_each_05.value, '$.source_text') AS source_text_05
+    --     ,json_extract(json_each_05.value, '$.value') AS value_05
+    --     ,json_extract(json_each_05.value, '$.type') AS type_05
+    --     ,json_extract(json_each_05.value, '$.staticType') AS static_type_05
+    --     ,NULL AS offset_06
+    --     ,NULL AS line_06
+    --     ,NULL AS source_text_06
+    --     ,NULL AS value_06
+    --     ,NULL AS type_06
+    --     ,NULL AS static_type_06
+    --     ,NULL AS offset_07
+    --     ,NULL AS line_07
+    --     ,NULL AS source_text_07
+    --     ,NULL AS value_07
+    --     ,NULL AS type_07
+    --     ,NULL AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- LEFT JOIN
+    --     json_each(json_each_04.value, '$.children') AS json_each_05
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,json_extract(json_each_05.value, '$.offset') AS offset_05
+    --     ,json_extract(json_each_05.value, '$.line') AS line_05
+    --     ,json_extract(json_each_05.value, '$.source_text') AS source_text_05
+    --     ,json_extract(json_each_05.value, '$.value') AS value_05
+    --     ,json_extract(json_each_05.value, '$.type') AS type_05
+    --     ,json_extract(json_each_05.value, '$.staticType') AS static_type_05
+    --     ,json_extract(json_each_06.value, '$.offset') AS offset_06
+    --     ,json_extract(json_each_06.value, '$.line') AS line_06
+    --     ,json_extract(json_each_06.value, '$.source_text') AS source_text_06
+    --     ,json_extract(json_each_06.value, '$.value') AS value_06
+    --     ,json_extract(json_each_06.value, '$.type') AS type_06
+    --     ,json_extract(json_each_06.value, '$.staticType') AS static_type_06
+    --     ,NULL AS offset_07
+    --     ,NULL AS line_07
+    --     ,NULL AS source_text_07
+    --     ,NULL AS value_07
+    --     ,NULL AS type_07
+    --     ,NULL AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- LEFT JOIN
+    --     json_each(json_each_04.value, '$.children') AS json_each_05
+    -- LEFT JOIN
+    --     json_each(json_each_05.value, '$.children') AS json_each_06
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,json_extract(json_each_05.value, '$.offset') AS offset_05
+    --     ,json_extract(json_each_05.value, '$.line') AS line_05
+    --     ,json_extract(json_each_05.value, '$.source_text') AS source_text_05
+    --     ,json_extract(json_each_05.value, '$.value') AS value_05
+    --     ,json_extract(json_each_05.value, '$.type') AS type_05
+    --     ,json_extract(json_each_05.value, '$.staticType') AS static_type_05
+    --     ,json_extract(json_each_06.value, '$.offset') AS offset_06
+    --     ,json_extract(json_each_06.value, '$.line') AS line_06
+    --     ,json_extract(json_each_06.value, '$.source_text') AS source_text_06
+    --     ,json_extract(json_each_06.value, '$.value') AS value_06
+    --     ,json_extract(json_each_06.value, '$.type') AS type_06
+    --     ,json_extract(json_each_06.value, '$.staticType') AS static_type_06
+    --     ,json_extract(json_each_07.value, '$.offset') AS offset_07
+    --     ,json_extract(json_each_07.value, '$.line') AS line_07
+    --     ,json_extract(json_each_07.value, '$.source_text') AS source_text_07
+    --     ,json_extract(json_each_07.value, '$.value') AS value_07
+    --     ,json_extract(json_each_07.value, '$.type') AS type_07
+    --     ,json_extract(json_each_07.value, '$.staticType') AS static_type_07
+    --     ,NULL AS offset_08
+    --     ,NULL AS line_08
+    --     ,NULL AS source_text_08
+    --     ,NULL AS value_08
+    --     ,NULL AS type_08
+    --     ,NULL AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- LEFT JOIN
+    --     json_each(json_each_04.value, '$.children') AS json_each_05
+    -- LEFT JOIN
+    --     json_each(json_each_05.value, '$.children') AS json_each_06
+    -- LEFT JOIN
+    --     json_each(json_each_06.value, '$.children') AS json_each_07
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,json_extract(json_each_05.value, '$.offset') AS offset_05
+    --     ,json_extract(json_each_05.value, '$.line') AS line_05
+    --     ,json_extract(json_each_05.value, '$.source_text') AS source_text_05
+    --     ,json_extract(json_each_05.value, '$.value') AS value_05
+    --     ,json_extract(json_each_05.value, '$.type') AS type_05
+    --     ,json_extract(json_each_05.value, '$.staticType') AS static_type_05
+    --     ,json_extract(json_each_06.value, '$.offset') AS offset_06
+    --     ,json_extract(json_each_06.value, '$.line') AS line_06
+    --     ,json_extract(json_each_06.value, '$.source_text') AS source_text_06
+    --     ,json_extract(json_each_06.value, '$.value') AS value_06
+    --     ,json_extract(json_each_06.value, '$.type') AS type_06
+    --     ,json_extract(json_each_06.value, '$.staticType') AS static_type_06
+    --     ,json_extract(json_each_07.value, '$.offset') AS offset_07
+    --     ,json_extract(json_each_07.value, '$.line') AS line_07
+    --     ,json_extract(json_each_07.value, '$.source_text') AS source_text_07
+    --     ,json_extract(json_each_07.value, '$.value') AS value_07
+    --     ,json_extract(json_each_07.value, '$.type') AS type_07
+    --     ,json_extract(json_each_07.value, '$.staticType') AS static_type_07
+    --     ,json_extract(json_each_08.value, '$.offset') AS offset_08
+    --     ,json_extract(json_each_08.value, '$.line') AS line_08
+    --     ,json_extract(json_each_08.value, '$.source_text') AS source_text_08
+    --     ,json_extract(json_each_08.value, '$.value') AS value_08
+    --     ,json_extract(json_each_08.value, '$.type') AS type_08
+    --     ,json_extract(json_each_08.value, '$.staticType') AS static_type_08
+    --     ,NULL AS offset_09
+    --     ,NULL AS line_09
+    --     ,NULL AS source_text_09
+    --     ,NULL AS value_09
+    --     ,NULL AS type_09
+    --     ,NULL AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- LEFT JOIN
+    --     json_each(json_each_04.value, '$.children') AS json_each_05
+    -- LEFT JOIN
+    --     json_each(json_each_05.value, '$.children') AS json_each_06
+    -- LEFT JOIN
+    --     json_each(json_each_06.value, '$.children') AS json_each_07
+    -- LEFT JOIN
+    --     json_each(json_each_07.value, '$.children') AS json_each_08
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,json_extract(json_each_05.value, '$.offset') AS offset_05
+    --     ,json_extract(json_each_05.value, '$.line') AS line_05
+    --     ,json_extract(json_each_05.value, '$.source_text') AS source_text_05
+    --     ,json_extract(json_each_05.value, '$.value') AS value_05
+    --     ,json_extract(json_each_05.value, '$.type') AS type_05
+    --     ,json_extract(json_each_05.value, '$.staticType') AS static_type_05
+    --     ,json_extract(json_each_06.value, '$.offset') AS offset_06
+    --     ,json_extract(json_each_06.value, '$.line') AS line_06
+    --     ,json_extract(json_each_06.value, '$.source_text') AS source_text_06
+    --     ,json_extract(json_each_06.value, '$.value') AS value_06
+    --     ,json_extract(json_each_06.value, '$.type') AS type_06
+    --     ,json_extract(json_each_06.value, '$.staticType') AS static_type_06
+    --     ,json_extract(json_each_07.value, '$.offset') AS offset_07
+    --     ,json_extract(json_each_07.value, '$.line') AS line_07
+    --     ,json_extract(json_each_07.value, '$.source_text') AS source_text_07
+    --     ,json_extract(json_each_07.value, '$.value') AS value_07
+    --     ,json_extract(json_each_07.value, '$.type') AS type_07
+    --     ,json_extract(json_each_07.value, '$.staticType') AS static_type_07
+    --     ,json_extract(json_each_08.value, '$.offset') AS offset_08
+    --     ,json_extract(json_each_08.value, '$.line') AS line_08
+    --     ,json_extract(json_each_08.value, '$.source_text') AS source_text_08
+    --     ,json_extract(json_each_08.value, '$.value') AS value_08
+    --     ,json_extract(json_each_08.value, '$.type') AS type_08
+    --     ,json_extract(json_each_08.value, '$.staticType') AS static_type_08
+    --     ,json_extract(json_each_09.value, '$.offset') AS offset_09
+    --     ,json_extract(json_each_09.value, '$.line') AS line_09
+    --     ,json_extract(json_each_09.value, '$.source_text') AS source_text_09
+    --     ,json_extract(json_each_09.value, '$.value') AS value_09
+    --     ,json_extract(json_each_09.value, '$.type') AS type_09
+    --     ,json_extract(json_each_09.value, '$.staticType') AS static_type_09
+    --     ,NULL AS offset_10
+    --     ,NULL AS line_10
+    --     ,NULL AS source_text_10
+    --     ,NULL AS value_10
+    --     ,NULL AS type_10
+    --     ,NULL AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- LEFT JOIN
+    --     json_each(json_each_04.value, '$.children') AS json_each_05
+    -- LEFT JOIN
+    --     json_each(json_each_05.value, '$.children') AS json_each_06
+    -- LEFT JOIN
+    --     json_each(json_each_06.value, '$.children') AS json_each_07
+    -- LEFT JOIN
+    --     json_each(json_each_07.value, '$.children') AS json_each_08
+    -- LEFT JOIN
+    --     json_each(json_each_08.value, '$.children') AS json_each_09
+    -- UNION
+    -- SELECT DISTINCT
+    --     project_name
+    --     ,version
+    --     ,file_path
+    --     -- ,json_extract(json_data, '$.offset') AS offset_00
+    --     -- ,json_extract(json_data, '$.line') AS line_00
+    --     -- ,json_extract(json_data, '$.type') AS type_00
+    --     ,json_extract(json_each_01.value, '$.offset') AS offset_01
+    --     ,json_extract(json_each_01.value, '$.line') AS line_01
+    --     ,json_extract(json_each_01.value, '$.source_text') AS source_text_01
+    --     ,json_extract(json_each_01.value, '$.type') AS type_01
+    --     ,json_extract(json_each_02.value, '$.offset') AS offset_02
+    --     ,json_extract(json_each_02.value, '$.line') AS line_02
+    --     ,json_extract(json_each_02.value, '$.source_text') AS source_text_02
+    --     ,json_extract(json_each_02.value, '$.value') AS value_02
+    --     ,json_extract(json_each_02.value, '$.type') AS type_02
+    --     ,json_extract(json_each_02.value, '$.staticType') AS static_type_02
+    --     ,json_extract(json_each_03.value, '$.offset') AS offset_03
+    --     ,json_extract(json_each_03.value, '$.line') AS line_03
+    --     ,json_extract(json_each_03.value, '$.source_text') AS source_text_03
+    --     ,json_extract(json_each_03.value, '$.value') AS value_03
+    --     ,json_extract(json_each_03.value, '$.type') AS type_03
+    --     ,json_extract(json_each_03.value, '$.staticType') AS static_type_03
+    --     ,json_extract(json_each_04.value, '$.offset') AS offset_04
+    --     ,json_extract(json_each_04.value, '$.line') AS line_04
+    --     ,json_extract(json_each_04.value, '$.source_text') AS source_text_04
+    --     ,json_extract(json_each_04.value, '$.value') AS value_04
+    --     ,json_extract(json_each_04.value, '$.type') AS type_04
+    --     ,json_extract(json_each_04.value, '$.staticType') AS static_type_04
+    --     ,json_extract(json_each_05.value, '$.offset') AS offset_05
+    --     ,json_extract(json_each_05.value, '$.line') AS line_05
+    --     ,json_extract(json_each_05.value, '$.source_text') AS source_text_05
+    --     ,json_extract(json_each_05.value, '$.value') AS value_05
+    --     ,json_extract(json_each_05.value, '$.type') AS type_05
+    --     ,json_extract(json_each_05.value, '$.staticType') AS static_type_05
+    --     ,json_extract(json_each_06.value, '$.offset') AS offset_06
+    --     ,json_extract(json_each_06.value, '$.line') AS line_06
+    --     ,json_extract(json_each_06.value, '$.source_text') AS source_text_06
+    --     ,json_extract(json_each_06.value, '$.value') AS value_06
+    --     ,json_extract(json_each_06.value, '$.type') AS type_06
+    --     ,json_extract(json_each_06.value, '$.staticType') AS static_type_06
+    --     ,json_extract(json_each_07.value, '$.offset') AS offset_07
+    --     ,json_extract(json_each_07.value, '$.line') AS line_07
+    --     ,json_extract(json_each_07.value, '$.source_text') AS source_text_07
+    --     ,json_extract(json_each_07.value, '$.value') AS value_07
+    --     ,json_extract(json_each_07.value, '$.type') AS type_07
+    --     ,json_extract(json_each_07.value, '$.staticType') AS static_type_07
+    --     ,json_extract(json_each_08.value, '$.offset') AS offset_08
+    --     ,json_extract(json_each_08.value, '$.line') AS line_08
+    --     ,json_extract(json_each_08.value, '$.source_text') AS source_text_08
+    --     ,json_extract(json_each_08.value, '$.value') AS value_08
+    --     ,json_extract(json_each_08.value, '$.type') AS type_08
+    --     ,json_extract(json_each_08.value, '$.staticType') AS static_type_08
+    --     ,json_extract(json_each_09.value, '$.offset') AS offset_09
+    --     ,json_extract(json_each_09.value, '$.line') AS line_09
+    --     ,json_extract(json_each_09.value, '$.source_text') AS source_text_09
+    --     ,json_extract(json_each_09.value, '$.value') AS value_09
+    --     ,json_extract(json_each_09.value, '$.type') AS type_09
+    --     ,json_extract(json_each_09.value, '$.staticType') AS static_type_09
+    --     ,json_extract(json_each_10.value, '$.offset') AS offset_10
+    --     ,json_extract(json_each_10.value, '$.line') AS line_10
+    --     ,json_extract(json_each_10.value, '$.source_text') AS source_text_10
+    --     ,json_extract(json_each_10.value, '$.value') AS value_10
+    --     ,json_extract(json_each_10.value, '$.type') AS type_10
+    --     ,json_extract(json_each_10.value, '$.staticType') AS static_type_10
+    -- FROM 
+    --     flutter_app_ast
+    --     ,json_each(flutter_app_ast.json_data, '$.children') AS json_each_01
+    -- LEFT JOIN
+    --     json_each(json_each_01.value, '$.children') AS json_each_02
+    -- LEFT JOIN
+    --     json_each(json_each_02.value, '$.children') AS json_each_03
+    -- LEFT JOIN
+    --     json_each(json_each_03.value, '$.children') AS json_each_04
+    -- LEFT JOIN
+    --     json_each(json_each_04.value, '$.children') AS json_each_05
+    -- LEFT JOIN
+    --     json_each(json_each_05.value, '$.children') AS json_each_06
+    -- LEFT JOIN
+    --     json_each(json_each_06.value, '$.children') AS json_each_07
+    -- LEFT JOIN
+    --     json_each(json_each_07.value, '$.children') AS json_each_08
+    -- LEFT JOIN
+    --     json_each(json_each_08.value, '$.children') AS json_each_09
+    -- LEFT JOIN
+    --     json_each(json_each_09.value, '$.children') AS json_each_10
+) AS r
+-- SELECT 
+    -- 	count(*),
+-- WHERE 
+--     r.project_name = 'flutter_app_251130'
+--     AND r.version LIKE '2025-12-10T08:4%'
+--     AND r.file_path = 'lib\main.dart'
+--     -- AND r.linha_00 = 258
+--     -- AND string_02 = NULL
+ORDER BY
+    file
+    ,line_01
+    ,line_02
+;

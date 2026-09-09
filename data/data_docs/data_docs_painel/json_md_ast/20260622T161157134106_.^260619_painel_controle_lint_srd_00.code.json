@@ -1,0 +1,44 @@
+[
+  {
+    "file_path": "260619_painel_controle_lint_srd_00.md",
+    "start_line": 67,
+    "type": "code",
+    "depth": 0,
+    "h1": "4. arquitetura de funções",
+    "h2": "4.3. automatic functions",
+    "h3": "4.3.1. script painel\\test_parse_md_ast.py",
+    "h4": "4.3.1.1. classe Initialize [coordenação]",
+    "h5": "",
+    "h6": "",
+    "lang": "",
+    "value": "run()\n  → load_environment()\n  → parse_args()\n  → dispatch(args.action, args)\n      md_ast   → ReadInputFiles.scan → GenerateAst.parse_file\n                 → SaveOutputFiles.save_all (3 recortes: blocks, code, tables)\n                 → SaveOutputFiles.create_views (automático via save_all)\n      md_json  → ReadInputFiles.scan → GenerateAst.parse_file\n                 → SaveOutputFiles.save_json (3 recortes)\n      md_sqlite → painel_sqlite_import.upsert_sqlite (reusa fluxo existente)\n                 → SaveOutputFiles.create_views\n"
+  },
+  {
+    "file_path": "260619_painel_controle_lint_srd_00.md",
+    "start_line": 188,
+    "type": "code",
+    "depth": 0,
+    "h1": "5. arquitetura de dados",
+    "h2": "5.2. modelos de dados",
+    "h3": "5.2.1. script models",
+    "h4": "5.2.1.1. schemas de extração/importação",
+    "h5": "",
+    "h6": "",
+    "lang": "python",
+    "value": "ast_model = {\n    \"type\": \"root\",\n    \"children\": [\n        {\"type\": \"heading\", \"fields\": {\"depth\": \"int\", \"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [{\"type\": \"text\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}}]},\n        {\"type\": \"paragraph\", \"children\": [\n            {\"type\": \"text\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}},\n            {\"type\": \"strong\", \"children\": [{\"type\": \"text\"}]},\n            {\"type\": \"em\", \"children\": [{\"type\": \"text\"}]},\n            {\"type\": \"inlineCode\"},\n            {\"type\": \"link\", \"fields\": {\"url\": \"str\", \"title\": \"str\", \"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [{\"type\": \"text\"}]}\n        ]},\n        {\"type\": \"code\", \"fields\": {\"lang\": \"str\", \"value\": \"str\", \"start_line\": \"int\", \"end_line\": \"int\"}},\n        {\"type\": \"list\", \"fields\": {\"ordered\": \"bool\", \"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [\n            {\"type\": \"listItem\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [\n                {\"type\": \"paragraph\", \"children\": [{\"type\": \"text\"}]}\n            ]}\n        ]},\n        {\"type\": \"blockquote\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [\n            {\"type\": \"paragraph\", \"children\": [{\"type\": \"text\"}]}\n        ]},\n        {\"type\": \"thematicBreak\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}},\n        {\"type\": \"table\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [\n            {\"type\": \"tableRow\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [\n                {\"type\": \"tableCell\", \"fields\": {\"start_line\": \"int\", \"end_line\": \"int\"}, \"children\": [{\"type\": \"text\"}]}\n            ]}\n        ]}\n    ]\n}\n"
+  },
+  {
+    "file_path": "260619_painel_controle_lint_srd_00.md",
+    "start_line": 221,
+    "type": "code",
+    "depth": 0,
+    "h1": "5. arquitetura de dados",
+    "h2": "5.2. modelos de dados",
+    "h3": "5.2.1. script models",
+    "h4": "5.2.1.1. schemas de extração/importação",
+    "h5": "",
+    "h6": "",
+    "lang": "python",
+    "value": "json_schema_blocks = {\n    \"type\": \"blocks\",\n    \"fields\": [\n        {\"name\": \"file_path\", \"source\": \"entry\"},\n        {\"name\": \"line\",      \"source\": \"ast.node.start_line\"},\n        {\"name\": \"block_type\",\"source\": \"ast.node.type\"},\n        {\"name\": \"level\",     \"source\": \"ast.node.depth\", \"default\": 0},\n        {\"name\": \"script\",    \"source\": \"ast.node.h2\", \"default\": \"\"},\n        {\"name\": \"classe\",    \"source\": \"ast.node.h3\", \"default\": \"\"},\n        {\"name\": \"metodo\",    \"source\": \"ast.node.h4\", \"default\": \"\"},\n        {\"name\": \"content\",   \"source\": \"ast\", \"method\": \"collect_text\"},\n    ]\n}\n\njson_schema_code = {\n    \"type\": \"code\",\n    \"fields\": [\n        {\"name\": \"file_path\", \"source\": \"entry\"},\n        {\"name\": \"line\",      \"source\": \"ast.node.start_line\"},\n        {\"name\": \"lang\",      \"source\": \"ast.node.lang\"},\n        {\"name\": \"script\",    \"source\": \"ast.node.h2\", \"default\": \"\"},\n        {\"name\": \"classe\",    \"source\": \"ast.node.h3\", \"default\": \"\"},\n        {\"name\": \"metodo\",    \"source\": \"ast.node.h4\", \"default\": \"\"},\n        {\"name\": \"value\",     \"source\": \"ast.node.value\"},\n    ]\n}\n\njson_schema_tables = {\n    \"type\": \"tables\",\n    \"fields\": [\n        {\"name\": \"file_path\", \"source\": \"entry\"},\n        {\"name\": \"line\",      \"source\": \"ast.node.start_line\"},\n        {\"name\": \"row\",       \"source\": \"ast.row_index\"},\n        {\"name\": \"col\",       \"source\": \"ast.cell_index\"},\n        {\"name\": \"cell_type\", \"source\": \"ast.cell.type\"},\n        {\"name\": \"script\",    \"source\": \"ast.node.h2\", \"default\": \"\"},\n        {\"name\": \"classe\",    \"source\": \"ast.node.h3\", \"default\": \"\"},\n        {\"name\": \"metodo\",    \"source\": \"ast.node.h4\", \"default\": \"\"},\n        {\"name\": \"value\",     \"source\": \"ast\", \"method\": \"collect_text\"},\n    ]\n}\n"
+  }
+]

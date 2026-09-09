@@ -1,0 +1,153 @@
+ponto de entrada do KB - Knowledge Bundle 
+
+# 1. antes 
+[[260617_conceitos_info_ontologia|conceitos ontologia]]
+[[260617_conceitos_info_se]]
+
+# 2. Sobre este documento 
+- ponto de entrada de KB - Knowledge Bunble - master  
+- define padrão de arquitetura e organizaçao aplicados a todos os KB 
+- define ontologias utilizadas nos KB 
+
+
+# 3. Arquitetura OKF Knowledge Bundle
+
+- arquitetura ontologica
+	- Camada de **Metadados** (Foundation Layer)
+		- `Resource` — entidade base que pode ser descrita, referenciada e persistida
+		  - `Agent` — entidade que executa ações, toma decisões ou produz conhecimento
+		    - `HumanAgent` — pessoa física
+		    - `SystemAgent` — sistema automatizado (API, script, LLM)
+		  - `Activity` — ação ou processo que ocorre no tempo
+		    - `Inquiry` — atividade de investigação ou pesquisa
+		    - `LearningProcess` — atividade que revisa o próprio modelo
+		  - `KnowledgeArtifact` — produto tangível de uma atividade cognitiva
+		    - `Report` — relatório estruturado
+		    - `ProposedRelation` — nova aresta sugerida para a rede
+		    - `ProposedNode` — novo nó sugerido para a rede
+	- Camada de **Domínio Genérico** (Domain Layer)
+		- `StorageSystem` — sistema de persistência de dados
+		  - `Database` — banco de dados estruturado
+		    - `RelationalDatabase` — SQL-based
+		    - `NoSQLDatabase` — document store, graph, etc.
+		  - `DocumentStore` — repositório de documentos não estruturados
+		  - `Repository` — sistema de controle de versão ou artefatos
+		  - `FileSystem` — sistema de arquivos convencional
+		- `TopicNetwork` — grafo de conceitos inter-relacionados, informações, assuntos
+		  - `Node` — conceito ou entidade no grafo
+		    - `CoreConcept` — conceito/ definição fundamental do domínio
+		    - `Instance` — ocorrência concreta de um conceito, exemplos
+		    - `RelationType` — tipo de relação entre conceitos (ex: "é parte de", "causa")
+		  - `Edge` — relação entre dois nós
+		    - `HierarchicalEdge` — relação de hierarquia (pai-filho)
+		    - `AssociativeEdge` — relação não-hierárquica (associação, correlação)
+		    - `CausalEdge` — relação de causa e efeito
+		  - `Subgraph` — subconjunto da rede para um domínio ou propósito específico
+	- Camada **Processual** (Process Layer)
+		- `ReasoningTrace` — sequência de operações que gerou novos nós ou arestas, conhecimento. seleção de informações com propósito 
+		  - `QueryTrace` — trace originado de uma consulta a um StorageSystem
+		  - `InferenceTrace` — trace originado de inferência lógica ou dedução
+		  - `SynthesisTrace` — trace originado de combinação de fontes múltiplas
+		  - `ValidationTrace` — trace originado de verificação de consistência
+		  - Atributos da trilha:
+		    - `timestamp` — quando ocorreu
+		    - `triggeredBy` — referência ao Agent que iniciou
+		    - `inputNodes` — nós de partida
+		    - `outputNodes` — nós gerados
+		    - `steps` — lista de operações intermediárias
+		    - `confidenceScore` — métrica de confiança no resultado
+		- `KnowledgeArtifact` (já listado em metadados) — é o produto da ReasoningTrace
+	- Camada **Avaliativa** (Evaluation Layer)
+		- adicionar: prontidão (completo, recebe consultas sem necessidade de atualização), qualidade, atualização, conformidade, versionamento 
+		- `EvaluationRule` — critério para validar, questionar ou criticar conhecimento
+		  - `ValidationRule` — regra formal e objetiva
+		    - `StructuralRule` — ex: "todo nó deve ter ao menos uma aresta"
+		    - `TypeRule` — ex: "uma Edge só pode conectar Nodes de tipos compatíveis"
+		    - `ConsistencyRule` — ex: "não pode haver ciclos em hierarquias"
+		  - `HeuristicRule` — regra subjetiva ou baseada em boas práticas
+		    - `SimplicityRule` — "prefira conceitos mais gerais a específicos"
+		    - `RelevanceRule` — "priorize nós com maior frequência de uso"
+		    - `AuthorityRule` — "prefira fontes com maior reputação"
+		  - `MetaRule` — regra que avalia outras regras
+		    - `RuleConflictRule` — "se duas regras conflitam, a de maior prioridade vence"
+		- `Critique` — avaliação concreta aplicada a um elemento da rede
+		  - `PositiveCritique` — validação ou confirmação
+		  - `NegativeCritique` — apontamento de problema ou inconsistência
+		  - `SuggestionCritique` — proposta de melhoria
+		  - Atributos:
+		    - `target` — nó, aresta ou subgrafo avaliado
+		    - `ruleApplied` — referência à EvaluationRule usada
+		    - `justification` — explicação textual
+		    - `severity` — nível de criticidade (baixo/médio/alto)
+	- Camada **Metacognitiva** (Metacognitive Layer)
+		- `LearningProcess` — mecanismo que revisa ou melhora o próprio modelo
+		  - `FeedbackLearning` — aprendizado baseado em avaliações humanas ou automáticas
+		    - `HumanFeedbackLoop` — ajuste com base em revisão manual
+		    - `AutomatedFeedbackLoop` — ajuste com base em métricas (ex: precisão, cobertura)
+		  - `PatternDiscovery` — aprendizado que identifica novos padrões na rede
+		    - `Clustering` — agrupa nós semelhantes
+		    - `AnomalyDetection` — identifica nós ou arestas atípicas
+		  - `OntologyEvolution` — aprendizado que altera a própria estrutura ontológica
+		    - `TypeCreation` — sugere novos tipos de nós ou arestas
+		    - `TypeMerge` — unifica tipos redundantes
+		    - `RuleRefinement` — ajusta regras de validação com base em evidências
+		  - Atributos do LearningProcess:
+		    - `trigger` — o que iniciou o processo (ex: acúmulo de críticas, periodicidade)
+		    - `scope` — quais partes do modelo são afetadas
+		    - `resultingChanges` — mudanças efetivamente aplicadas
+	- Camada de **Relações** (Relations Layer) — como tudo se conecta
+		- `StorageSystem`  –– stores ––  `TopicNetwork`
+		- `Agent`  –– executes ––  `Activity`
+		- `Activity`  –– includes ––  `ReasoningTrace`
+		- `ReasoningTrace`  –– generates ––  `KnowledgeArtifact`
+		- `KnowledgeArtifact`  –– updates ––  `TopicNetwork` (novos nós/arestas)
+		- `TopicNetwork`  –– triggers ––  `EvaluationRule` (quando consultada para validação)
+		- `EvaluationRule`  –– produces ––  `Critique`
+		- `Critique`  –– validates ––  `Node` | `Edge` | `Subgraph`
+		- `Critique`  –– feeds into ––  `LearningProcess`
+		- `LearningProcess`  –– revises ––  `EvaluationRule`
+		- `LearningProcess`  –– restructures ––  `TopicNetwork`
+		- `LearningProcess`  –– redefines ––  `StorageSystem` (ex: mudança de esquema)
+- arquitetura de implementação
+	- Camada de Implementação Técnica (como os dados são armazenados)
+		- tecnologia [Neo4j (property graph), RDF/SPARQL (triplestore), SQL com tabelas]
+	- Camada de Validação (regras formais do schema)
+		- Tipagem, Um nó `Node` deve ter um campo `name` (string)
+		- Cardinalidade, Um `ReasoningTrace` deve ter pelo menos 1 `inputNode`
+		- Obrigatoriedade, `timestamp` é obrigatório em `ReasoningTrace`
+		- Domínio de valores, `severity` só pode ser "baixo", "médio" ou "alto"
+	-  Camada de Consulta (como você vai perguntar ao grafo)
+		- Defina as **perguntas frequentes** que seu Knowledge Graph vai responder. Isso ajuda a modelar índices e relações.
+
+# 4. mapa de dominios
+- tipo dominio: conhecimento conceitual 
+	- Basic concepts (km)
+- tipo dominio: conhecimento aplicado 
+	- aplicação, operação, processamento (lifecycle processes), regras, modelos 
+	- ontologias, taxonomias 
+	- MBSE
+		- Convenções de Modelagem
+- tipo dominio: regras sobre kb concepts 
+	- Convenções de Modelagem
+	- Políticas, Workflows, Templates
+- tipo dominio: regras sobre codificação 
+	- Convenções de Modelagem
+	- Convenções de Geração
+	- Regras de Validação
+- tipo dominio: regras sobre agent pipelines 
+	- Agents (proficiência) - saber [porque, quando, como] fazer [pesquisa, entendimento, análise, okf-mindmap, edição,  revisão]
+	- skills, regras, modelos, prompts 
+- tipo dominio: system models  
+	- MBCG
+		- spec current
+		- spec next 
+			- Requisitos
+			- Arquitetura
+			- UML
+			- Componentes
+			- Interfaces
+			- Algoritmos
+			- Motor de Geração
+			- Motor de Conhecimento
+			- Harness de Agentes
+

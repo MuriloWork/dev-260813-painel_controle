@@ -1,0 +1,488 @@
+{
+  "data_paths": {
+    "database": {
+      "DB_PARSE_DART": "dataMu\\dbMu\\sqlite\\parse_dart.db",
+      "DB_PARSE_MD": "dataMu\\dbMu\\sqlite\\parse_md.db",
+      "DB_PAINEL_TKINTER": "dataMu\\dbMu\\sqlite\\painel_tkinter.db"
+    },
+    "sources": {
+      "SOURCE_DART": {
+        "paths": [
+          "..\\src\\scripts"
+        ],
+        "extensions": [
+          ".py",
+          ".dart"
+        ],
+        "include_child_paths": [],
+        "include_child_globs": [],
+        "exclude_child_paths": [
+          "**\\.dart_tool",
+          "**\\.tests"
+        ],
+        "exclude_child_globs": [
+          "**\\c*.dart"
+        ]
+      },
+      "SOURCE_RAW": {
+        "paths": [
+          "..\\src\\scripts"
+        ],
+        "extensions": [
+          ".py",
+          ".dart"
+        ],
+        "include_child_paths": [],
+        "include_child_globs": [],
+        "exclude_child_paths": [
+          "**\\.dart_tool",
+          "**\\.tests"
+        ],
+        "exclude_child_globs": [
+          "**\\c*.dart"
+        ]
+      },
+      "SOURCE_MD": {
+        "paths": [
+          "..\\sessions\\260623_arquitetura_painel\\md_extract"
+        ],
+        "extensions": [
+          ".md"
+        ],
+        "include_child_paths": [],
+        "include_child_globs": [],
+        "exclude_child_paths": [],
+        "exclude_child_globs": [
+          "**\\*backup*",
+          "**\\*delete*"
+        ]
+      }
+    },
+    "targets": {
+      "TARGET_LOG_DISPLAY": "dataMu\\data_docs\\data_docs_painel\\logs\\docs_display",
+      "TARGET_LOG_SESSION": "dataMu\\data_docs\\data_docs_painel\\logs\\docs_session",
+      "TARGET_MD": {
+        "path": "dataMu\\data_docs\\data_docs_painel\\json_md_ast",
+        "version_filter": [
+          "latest"
+        ]
+      },
+      "TARGET_DART": {
+        "path": "dataMu\\data_docs\\data_docs_painel\\json_script_dart_ast",
+        "version_filter": [
+          "latest"
+        ]
+      },
+      "TARGET_DART_FUNC": {
+        "path": "dataMu\\data_docs\\data_docs_painel\\json_script_dart_ast_func",
+        "version_filter": [
+          "latest"
+        ]
+      },
+      "TARGET_RAW": {
+        "path": "dataMu\\data_docs\\data_docs_painel\\json_script_raw",
+        "version_filter": [
+          "latest"
+        ]
+      }
+    }
+  },
+  "sqlite_tables": {
+    "parse_dart": {
+      "TB_AST": "flutter_app_ast",
+      "TB_RAW": "raw_script"
+    },
+    "parse_md": {
+      "TB_MD_BLOCKS": "tb_json_md_ast_blocks",
+      "TB_MD_CODE": "tb_json_md_ast_code",
+      "TB_MD_TABLES": "tb_json_md_ast_tables"
+    }
+  },
+  "sql_paths": {
+    "SQL_TB_AST": "src\\sql_sqlite\\sql_parse_script\\tb_ast.sql",
+    "SQL_TB_AST_FUNC": "src\\sql_sqlite\\sql_parse_script\\tb_ast_func.sql",
+    "SQL_TB_AST_FUNC_MAP_1D": "src\\sql_sqlite\\sql_parse_script\\tb_ast_func_map_1d.sql",
+    "SQL_TB_AST_FUNC_MAP_2D": "src\\sql_sqlite\\sql_parse_script\\tb_ast_func_map_2d.sql",
+    "SQL_MD_CODE": "src\\sql_sqlite\\sql_parse_md\\vw_md_ast_code.sql",
+    "SQL_MD_TABLES": "src\\sql_sqlite\\sql_parse_md\\vw_md_ast_tables.sql"
+  },
+  "actions": {
+    "parse_script_dart_ast.py": [
+      {
+        "action": "ast",
+        "child_action": [
+          "json",
+          "sqlite_upsert",
+          "sqlite_triggers",
+          "sqlite_export_ast"
+        ],
+        "input": [
+          {
+            "input_name": "dart_source",
+            "var_ref": "SOURCE_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "json_ast",
+            "var_ref": "TARGET_DART"
+          },
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {
+          "sqlite_triggers_steps": [
+            "tb_ast",
+            "tb_ast_func",
+            "tb_ast_func_map_1d",
+            "tb_ast_func_map_2d"
+          ],
+          "sql_step_var_prefix": "SQL_TB_AST"
+        }
+      },
+      {
+        "action": "ast_json",
+        "child_action": [
+          "json"
+        ],
+        "input": [
+          {
+            "input_name": "dart_source",
+            "var_ref": "SOURCE_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "json_ast",
+            "var_ref": "TARGET_DART"
+          }
+        ],
+        "optional_settings": {}
+      },
+      {
+        "action": "ast_sqlite",
+        "child_action": [
+          "sqlite_upsert",
+          "sqlite_triggers"
+        ],
+        "input": [
+          {
+            "input_name": "json_ast",
+            "var_ref": "TARGET_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {
+          "sqlite_triggers_steps": [
+            "tb_ast",
+            "tb_ast_func",
+            "tb_ast_func_map_1d",
+            "tb_ast_func_map_2d"
+          ]
+        }
+      },
+      {
+        "action": "sqlite_ast",
+        "child_action": [
+          "sqlite_upsert",
+          "sqlite_triggers"
+        ],
+        "input": [
+          {
+            "input_name": "json_ast",
+            "var_ref": "TARGET_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {
+          "sqlite_triggers_steps": [
+            "tb_ast"
+          ]
+        }
+      },
+      {
+        "action": "sqlite_ast_func",
+        "child_action": [
+          "sqlite_upsert",
+          "sqlite_triggers"
+        ],
+        "input": [
+          {
+            "input_name": "json_ast",
+            "var_ref": "TARGET_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {
+          "sqlite_triggers_steps": [
+            "tb_ast",
+            "tb_ast_func"
+          ]
+        }
+      },
+      {
+        "action": "sqlite_ast_1d",
+        "child_action": [
+          "sqlite_upsert",
+          "sqlite_triggers"
+        ],
+        "input": [
+          {
+            "input_name": "json_ast",
+            "var_ref": "TARGET_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {
+          "sqlite_triggers_steps": [
+            "tb_ast",
+            "tb_ast_func",
+            "tb_ast_func_map_1d"
+          ]
+        }
+      }
+    ],
+    "parse_script_raw.py": [
+      {
+        "action": "raw",
+        "child_action": [
+          "align_comments",
+          "-csv",
+          "sqlite",
+          "json"
+        ],
+        "input": [
+          {
+            "input_name": "script_raw",
+            "var_ref": "SOURCE_RAW"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "csv_output",
+            "var_ref": "TARGET_RAW"
+          },
+          {
+            "output_name": "json_output",
+            "var_ref": "TARGET_RAW"
+          },
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {
+          "DESIRED_COMMENT_START": 90
+        }
+      }
+    ],
+    "parse_md_ast.py": [
+      {
+        "action": "md_ast",
+        "child_action": [
+          "json",
+          "sqlite"
+        ],
+        "input": [
+          {
+            "input_name": "md_source",
+            "var_ref": "SOURCE_MD"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "json_md_ast",
+            "var_ref": "TARGET_MD"
+          },
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_MD"
+          }
+        ],
+        "optional_settings": {}
+      },
+      {
+        "action": "md_json",
+        "child_action": [
+          "json"
+        ],
+        "input": [
+          {
+            "input_name": "md_source",
+            "var_ref": "SOURCE_MD"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "json_md_ast",
+            "var_ref": "TARGET_MD"
+          }
+        ],
+        "optional_settings": {}
+      },
+      {
+        "action": "md_sqlite",
+        "child_action": [
+          "sqlite"
+        ],
+        "input": [
+          {
+            "input_name": "json_md_ast",
+            "var_ref": "TARGET_MD"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_MD"
+          }
+        ],
+        "optional_settings": {}
+      }
+    ],
+    "painel_sqlite_import.py": [
+      {
+        "action": "sqlite_trg",
+        "child_action": [
+          "tb_ast",
+          "tb_ast_func",
+          "tb_ast_func_map_1d",
+          "tb_ast_func_map_2d"
+        ],
+        "input": [
+          {
+            "input_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "output": [
+          {
+            "output_name": "sqlite_db",
+            "var_ref": "DB_PARSE_DART"
+          }
+        ],
+        "optional_settings": {}
+      }
+    ]
+  },
+  "absolute_paths": {
+    "data_paths": {
+      "database": {
+        "DB_PARSE_DART": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\dbMu\\sqlite\\parse_dart.db",
+        "DB_PARSE_MD": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\dbMu\\sqlite\\parse_md.db",
+        "DB_PAINEL_TKINTER": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\dbMu\\sqlite\\painel_tkinter.db"
+      },
+      "sources": {
+        "SOURCE_DART": {
+          "paths": [
+            "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\src\\scripts"
+          ],
+          "extensions": [
+            ".py",
+            ".dart"
+          ],
+          "include_child_paths": [],
+          "include_child_globs": [],
+          "exclude_child_paths": [
+            "**\\.dart_tool",
+            "**\\.tests"
+          ],
+          "exclude_child_globs": [
+            "**\\c*.dart"
+          ]
+        },
+        "SOURCE_RAW": {
+          "paths": [
+            "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\src\\scripts"
+          ],
+          "extensions": [
+            ".py",
+            ".dart"
+          ],
+          "include_child_paths": [],
+          "include_child_globs": [],
+          "exclude_child_paths": [
+            "**\\.dart_tool",
+            "**\\.tests"
+          ],
+          "exclude_child_globs": [
+            "**\\c*.dart"
+          ]
+        },
+        "SOURCE_MD": {
+          "paths": [
+            "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\sessions\\260623_arquitetura_painel\\md_extract"
+          ],
+          "extensions": [
+            ".md"
+          ],
+          "include_child_paths": [],
+          "include_child_globs": [],
+          "exclude_child_paths": [],
+          "exclude_child_globs": [
+            "**\\*backup*",
+            "**\\*delete*"
+          ]
+        }
+      },
+      "targets": {
+        "TARGET_LOG_DISPLAY": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\data_docs\\data_docs_painel\\logs\\docs_display",
+        "TARGET_LOG_SESSION": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\data_docs\\data_docs_painel\\logs\\docs_session",
+        "TARGET_MD": {
+          "path": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\data_docs\\data_docs_painel\\json_md_ast",
+          "version_filter": [
+            "latest"
+          ]
+        },
+        "TARGET_DART": {
+          "path": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\data_docs\\data_docs_painel\\json_script_dart_ast",
+          "version_filter": [
+            "latest"
+          ]
+        },
+        "TARGET_DART_FUNC": {
+          "path": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\data_docs\\data_docs_painel\\json_script_dart_ast_func",
+          "version_filter": [
+            "latest"
+          ]
+        },
+        "TARGET_RAW": {
+          "path": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\dataMu\\data_docs\\data_docs_painel\\json_script_raw",
+          "version_filter": [
+            "latest"
+          ]
+        }
+      }
+    },
+    "sql_paths": {
+      "SQL_TB_AST": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\src\\sql_sqlite\\sql_parse_script\\tb_ast.sql",
+      "SQL_TB_AST_FUNC": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\src\\sql_sqlite\\sql_parse_script\\tb_ast_func.sql",
+      "SQL_TB_AST_FUNC_MAP_1D": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\src\\sql_sqlite\\sql_parse_script\\tb_ast_func_map_1d.sql",
+      "SQL_TB_AST_FUNC_MAP_2D": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\src\\sql_sqlite\\sql_parse_script\\tb_ast_func_map_2d.sql",
+      "SQL_MD_CODE": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\src\\sql_sqlite\\sql_parse_md\\vw_md_ast_code.sql",
+      "SQL_MD_TABLES": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev\\src\\sql_sqlite\\sql_parse_md\\vw_md_ast_tables.sql"
+    }
+  }
+}

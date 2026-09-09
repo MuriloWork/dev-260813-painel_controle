@@ -1,0 +1,1778 @@
+[
+  {
+    "line": 1,
+    "column": 1,
+    "script_string": "import 'dart:convert';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 2,
+    "column": 1,
+    "script_string": "import 'dart:io';",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 3,
+    "column": 1,
+    "script_string": "import 'package:http/http.dart' as http;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 4,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 5,
+    "column": 1,
+    "script_string": "class ResumableUploadService {",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 6,
+    "column": 3,
+    "script_string": "static const String _apiVersion = 'v25.0';",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 7,
+    "column": 3,
+    "script_string": "static const String _baseGraph = 'https://graph.facebook.com';",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 8,
+    "column": 3,
+    "script_string": "static const String _baseGraphVideo = 'https://graph-video.facebook.com';",
+    "comment": "",
+    "tag": "",
+    "length": 73
+  },
+  {
+    "line": 9,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 10,
+    "column": 3,
+    "script_string": "/// STEP 1: Cria sessão de upload.",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 11,
+    "column": 3,
+    "script_string": "static Future<String> createSession(",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 12,
+    "column": 5,
+    "script_string": "String appId,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 13,
+    "column": 5,
+    "script_string": "String fileName,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 14,
+    "column": 5,
+    "script_string": "int fileLength,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 15,
+    "column": 5,
+    "script_string": "String userToken,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 16,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 17,
+    "column": 5,
+    "script_string": "final uri = Uri.parse(",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 18,
+    "column": 7,
+    "script_string": "'$_baseGraph/$_apiVersion/$appId/uploads'",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 19,
+    "column": 7,
+    "script_string": "'?file_name=$fileName&file_length=$fileLength'",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 20,
+    "column": 7,
+    "script_string": "'&file_type=video/mp4&access_token=$userToken',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 21,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 22,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 23,
+    "column": 5,
+    "script_string": "final resp = await http.post(uri);",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 24,
+    "column": 5,
+    "script_string": "final body = jsonDecode(resp.body) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 25,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 26,
+    "column": 5,
+    "script_string": "if (resp.statusCode != 200 || body.containsKey('error')) {",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 27,
+    "column": 7,
+    "script_string": "throw Exception('createSession failed: ${body['error'] ?? resp.body}');",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 28,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 29,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 30,
+    "column": 5,
+    "script_string": "final sessionId = body['id'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 31,
+    "column": 5,
+    "script_string": "print('    [RUS] Session created: $sessionId');",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 32,
+    "column": 5,
+    "script_string": "return sessionId;",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 33,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 34,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 35,
+    "column": 3,
+    "script_string": "/// STEP 2: Faz upload do arquivo via Resumable Upload.",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 36,
+    "column": 3,
+    "script_string": "/// Retorna o handle. Faz resume automático se session já tem dados.",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 37,
+    "column": 3,
+    "script_string": "static Future<String> uploadFile(",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 38,
+    "column": 5,
+    "script_string": "String sessionId,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 39,
+    "column": 5,
+    "script_string": "String filePath,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 40,
+    "column": 5,
+    "script_string": "String userToken,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 41,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 42,
+    "column": 5,
+    "script_string": "final file = File(filePath);",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 43,
+    "column": 5,
+    "script_string": "if (!file.existsSync()) {",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 44,
+    "column": 7,
+    "script_string": "throw Exception('File not found: $filePath');",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 45,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 46,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 47,
+    "column": 5,
+    "script_string": "final fileSize = await file.length();",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 48,
+    "column": 5,
+    "script_string": "final uploadUrl = Uri.parse('$_baseGraph/$_apiVersion/$sessionId');",
+    "comment": "",
+    "tag": "",
+    "length": 67
+  },
+  {
+    "line": 49,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 50,
+    "column": 5,
+    "script_string": "// GET session para verificar offset atual",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 51,
+    "column": 5,
+    "script_string": "int currentOffset = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 52,
+    "column": 5,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 53,
+    "column": 7,
+    "script_string": "final checkResp = await http.get(",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 54,
+    "column": 9,
+    "script_string": "uploadUrl,",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 55,
+    "column": 9,
+    "script_string": "headers: {'Authorization': 'OAuth $userToken'},",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 56,
+    "column": 7,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 57,
+    "column": 7,
+    "script_string": "if (checkResp.statusCode == 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 58,
+    "column": 9,
+    "script_string": "final checkBody = jsonDecode(checkResp.body) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 59,
+    "column": 9,
+    "script_string": "if (checkBody.containsKey('file_offset')) {",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 60,
+    "column": 11,
+    "script_string": "currentOffset = checkBody['file_offset'] as int;",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 61,
+    "column": 11,
+    "script_string": "print('    [RUS] Resume from offset: $currentOffset / $fileSize');",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 62,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 63,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 64,
+    "column": 5,
+    "script_string": "} catch (_) {",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 65,
+    "column": 7,
+    "script_string": "print('    [RUS] New session, offset 0');",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 66,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 67,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 68,
+    "column": 5,
+    "script_string": "// Se já está completo, re-POST com offset=0 para obter handle",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 69,
+    "column": 5,
+    "script_string": "if (currentOffset >= fileSize) {",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 70,
+    "column": 7,
+    "script_string": "print('    [RUS] Session complete, re-POST to get handle');",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 71,
+    "column": 7,
+    "script_string": "currentOffset = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 72,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 73,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 74,
+    "column": 5,
+    "script_string": "final bytes = await file.readAsBytes();",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 75,
+    "column": 5,
+    "script_string": "const maxAttempts = 3;",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 76,
+    "column": 5,
+    "script_string": "String? handle;",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 77,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 78,
+    "column": 5,
+    "script_string": "for (int attempt = 1; attempt <= maxAttempts; attempt++) {",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 79,
+    "column": 7,
+    "script_string": "final bytesToSend = fileSize - currentOffset;",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 80,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 81,
+    "column": 7,
+    "script_string": "print('    [RUS] Attempt $attempt: offset=$currentOffset'",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 82,
+    "column": 11,
+    "script_string": "' send=$bytesToSend / $fileSize');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 83,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 84,
+    "column": 7,
+    "script_string": "final chunk = bytes.sublist(currentOffset, fileSize);",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 85,
+    "column": 7,
+    "script_string": "final request = http.Request('POST', uploadUrl);",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 86,
+    "column": 7,
+    "script_string": "request.headers['Authorization'] = 'OAuth $userToken';",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 87,
+    "column": 7,
+    "script_string": "request.headers['file_offset'] = '$currentOffset';",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 88,
+    "column": 7,
+    "script_string": "request.headers['Content-Type'] = 'application/octet-stream';",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 89,
+    "column": 7,
+    "script_string": "request.bodyBytes = chunk;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 90,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 91,
+    "column": 7,
+    "script_string": "final streamed = await http.Client().send(request);",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 92,
+    "column": 7,
+    "script_string": "final responseBody = await streamed.stream.bytesToString();",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 93,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 94,
+    "column": 7,
+    "script_string": "if (streamed.statusCode != 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 95,
+    "column": 9,
+    "script_string": "print('    [RUS] Request failed: $responseBody');",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 96,
+    "column": 9,
+    "script_string": "// Tenta consultar offset atualizado",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 97,
+    "column": 9,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 98,
+    "column": 11,
+    "script_string": "final checkResp = await http.get(",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 99,
+    "column": 13,
+    "script_string": "uploadUrl,",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 100,
+    "column": 13,
+    "script_string": "headers: {'Authorization': 'OAuth $userToken'},",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 101,
+    "column": 11,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 102,
+    "column": 11,
+    "script_string": "if (checkResp.statusCode == 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 103,
+    "column": 13,
+    "script_string": "final checkBody =",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 104,
+    "column": 17,
+    "script_string": "jsonDecode(checkResp.body) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 105,
+    "column": 13,
+    "script_string": "if (checkBody.containsKey('file_offset')) {",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 106,
+    "column": 15,
+    "script_string": "final newOffset = checkBody['file_offset'] as int;",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 107,
+    "column": 15,
+    "script_string": "if (newOffset > currentOffset) {",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 108,
+    "column": 17,
+    "script_string": "currentOffset = newOffset;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 109,
+    "column": 17,
+    "script_string": "print('    [RUS] Server offset: $newOffset');",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 110,
+    "column": 17,
+    "script_string": "continue;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 111,
+    "column": 15,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 112,
+    "column": 13,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 113,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 114,
+    "column": 9,
+    "script_string": "} catch (_) {}",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 115,
+    "column": 9,
+    "script_string": "currentOffset += bytesToSend;",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 116,
+    "column": 9,
+    "script_string": "continue;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 117,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 118,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 119,
+    "column": 7,
+    "script_string": "// Server pode retornar múltiplos handles separados por \\n no campo h",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 120,
+    "column": 7,
+    "script_string": "// Usar apenas o primeiro",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 121,
+    "column": 7,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 122,
+    "column": 9,
+    "script_string": "final parsed = jsonDecode(responseBody) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 123,
+    "column": 9,
+    "script_string": "if (parsed.containsKey('h')) {",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 124,
+    "column": 11,
+    "script_string": "final raw = parsed['h'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 125,
+    "column": 11,
+    "script_string": "final allHandles = raw.split('\\n');",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 126,
+    "column": 11,
+    "script_string": "handle = allHandles[0].trim();",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 127,
+    "column": 11,
+    "script_string": "print('    [RUS] Handle OK (${handle.length} chars)');",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 128,
+    "column": 11,
+    "script_string": "return handle;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 129,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 130,
+    "column": 7,
+    "script_string": "} catch (_) {",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 131,
+    "column": 9,
+    "script_string": "print('    [RUS] Could not parse handle response');",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 132,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 133,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 134,
+    "column": 7,
+    "script_string": "// Sem handle ainda — consulta offset",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 135,
+    "column": 7,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 136,
+    "column": 9,
+    "script_string": "final checkResp = await http.get(",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 137,
+    "column": 11,
+    "script_string": "uploadUrl,",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 138,
+    "column": 11,
+    "script_string": "headers: {'Authorization': 'OAuth $userToken'},",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 139,
+    "column": 9,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 140,
+    "column": 9,
+    "script_string": "if (checkResp.statusCode == 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 141,
+    "column": 11,
+    "script_string": "final checkBody = jsonDecode(checkResp.body) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 142,
+    "column": 11,
+    "script_string": "if (checkBody.containsKey('file_offset')) {",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 143,
+    "column": 13,
+    "script_string": "final newOffset = checkBody['file_offset'] as int;",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 144,
+    "column": 13,
+    "script_string": "if (newOffset > currentOffset) {",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 145,
+    "column": 15,
+    "script_string": "currentOffset = newOffset;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 146,
+    "column": 15,
+    "script_string": "continue;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 147,
+    "column": 13,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 148,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 149,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 150,
+    "column": 7,
+    "script_string": "} catch (_) {}",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 151,
+    "column": 7,
+    "script_string": "currentOffset += bytesToSend;",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 152,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 153,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 154,
+    "column": 5,
+    "script_string": "throw Exception('No handle after upload');",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 155,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 156,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 157,
+    "column": 3,
+    "script_string": "/// STEP 3: Publica o vídeo no feed com o handle.",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 158,
+    "column": 3,
+    "script_string": "static Future<Map<String, dynamic>> publishVideo({",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 159,
+    "column": 5,
+    "script_string": "required String pageId,",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 160,
+    "column": 5,
+    "script_string": "required String handle,",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 161,
+    "column": 5,
+    "script_string": "required String pageToken,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 162,
+    "column": 5,
+    "script_string": "bool noStory = true,",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 163,
+    "column": 5,
+    "script_string": "bool published = true,",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 164,
+    "column": 5,
+    "script_string": "String? scheduledPublishTime,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 165,
+    "column": 5,
+    "script_string": "String? title,",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 166,
+    "column": 5,
+    "script_string": "String? description,",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 167,
+    "column": 3,
+    "script_string": "}) async {",
+    "comment": "",
+    "tag": "",
+    "length": 10
+  },
+  {
+    "line": 168,
+    "column": 5,
+    "script_string": "final url = '$_baseGraphVideo/$_apiVersion/$pageId/videos';",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 169,
+    "column": 5,
+    "script_string": "final request = http.MultipartRequest('POST', Uri.parse(url));",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 170,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 171,
+    "column": 5,
+    "script_string": "request.fields['access_token'] = pageToken;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 172,
+    "column": 5,
+    "script_string": "request.fields['fbuploader_video_file_chunk'] = handle;",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 173,
+    "column": 5,
+    "script_string": "request.fields['no_story'] = noStory ? 'true' : 'false';",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 174,
+    "column": 5,
+    "script_string": "request.fields['published'] = published ? 'true' : 'false';",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 175,
+    "column": 5,
+    "script_string": "if (scheduledPublishTime != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 176,
+    "column": 7,
+    "script_string": "request.fields['scheduled_publish_time'] = scheduledPublishTime;",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 177,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 178,
+    "column": 5,
+    "script_string": "if (title != null) request.fields['title'] = title;",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 179,
+    "column": 5,
+    "script_string": "if (description != null) request.fields['description'] = description;",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 180,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 181,
+    "column": 5,
+    "script_string": "print('    [RUS] Publish: no_story=$noStory published=$published');",
+    "comment": "",
+    "tag": "",
+    "length": 67
+  },
+  {
+    "line": 182,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 183,
+    "column": 5,
+    "script_string": "final streamed = await request.send();",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 184,
+    "column": 5,
+    "script_string": "final responseBody = await streamed.stream.bytesToString();",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 185,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 186,
+    "column": 5,
+    "script_string": "if (streamed.statusCode != 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 187,
+    "column": 7,
+    "script_string": "throw Exception('publishVideo failed: $responseBody');",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 188,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 189,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 190,
+    "column": 5,
+    "script_string": "final result = jsonDecode(responseBody) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 191,
+    "column": 5,
+    "script_string": "final videoId = result['id'] as String? ?? result['post_id'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 192,
+    "column": 5,
+    "script_string": "print('    [RUS] Published! ID: $videoId');",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 193,
+    "column": 5,
+    "script_string": "return result;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 194,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 195,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 196,
+    "column": 3,
+    "script_string": "/// STEP 4: Atualiza publish_to_news_feed=true.",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 197,
+    "column": 3,
+    "script_string": "static Future<void> updateNewsFeed(",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 198,
+    "column": 5,
+    "script_string": "String videoId,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 199,
+    "column": 5,
+    "script_string": "String pageToken,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 200,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 201,
+    "column": 5,
+    "script_string": "final uri = Uri.parse('$_baseGraph/$_apiVersion/$videoId');",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 202,
+    "column": 5,
+    "script_string": "final request = http.MultipartRequest('POST', uri);",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 203,
+    "column": 5,
+    "script_string": "request.fields['access_token'] = pageToken;",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 204,
+    "column": 5,
+    "script_string": "request.fields['publish_to_news_feed'] = 'true';",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 205,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 206,
+    "column": 5,
+    "script_string": "final streamed = await request.send();",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 207,
+    "column": 5,
+    "script_string": "final responseBody = await streamed.stream.bytesToString();",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 208,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 209,
+    "column": 5,
+    "script_string": "if (streamed.statusCode != 200) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 210,
+    "column": 7,
+    "script_string": "final result = jsonDecode(responseBody) as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 64
+  },
+  {
+    "line": 211,
+    "column": 7,
+    "script_string": "if (result.containsKey('error')) {",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 212,
+    "column": 9,
+    "script_string": "final subcode = (result['error'] as Map)['error_subcode'] as int?;",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 213,
+    "column": 9,
+    "script_string": "if (subcode == 1363077) {",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 214,
+    "column": 11,
+    "script_string": "print('    [RUS] STEP 4: Post already published');",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 215,
+    "column": 11,
+    "script_string": "return;",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 216,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 217,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 218,
+    "column": 7,
+    "script_string": "throw Exception('updateNewsFeed failed: $responseBody');",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 219,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 220,
+    "column": 5,
+    "script_string": "print('    [RUS] STEP 4: publish_to_news_feed=true OK');",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 221,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 222,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  }
+]

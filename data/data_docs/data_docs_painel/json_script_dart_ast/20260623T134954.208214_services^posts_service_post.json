@@ -1,0 +1,1794 @@
+{
+  "type": "CompilationUnitImpl",
+  "offset": 0,
+  "length": 2067,
+  "line": 1,
+  "column": 1,
+  "source_text": "import 'dart:convert'; import 'dart:io'; import '../publish/post_builder.dart'; Future<List<Map<String, dynamic>>> runPipeline(String assetsDir, String auditDir) async {print('=== PIPELINE ===\\n'); print('--- etapa 1: scanAssets ---'); final groups = await BuildAssetsContent.resolveAssetsContent(assetsDir); print('Groups: ${groups.length}'); print(''); print('--- etapa 2: resolvePostsConfig ---'); final postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir); print('Configs: ${postsConfig.length}'); await BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig); print(''); print('--- etapa 3: resolvePostsContent ---'); final postsContent = await BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json'); print('Contents: ${postsContent.length}'); print(''); print('--- etapa 4: resolveFinalPayload ---'); final postsPayload = await BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json'); print('Payloads: ${postsPayload.length}'); print(''); await BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload); print(''); print('--- etapa 5: requestPayload ---'); final requests = postsPayload.map(BuildFinalPayload.requestPayload).toList(); print('Requests: ${requests.length}'); print(''); print('=== PIPELINE CONCLUÍDO ==='); return requests;}",
+  "children": [
+    {
+      "type": "ImportDirectiveImpl",
+      "offset": 0,
+      "length": 22,
+      "line": 1,
+      "column": 1,
+      "source_text": "import 'dart:convert';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 7,
+          "length": 14,
+          "line": 1,
+          "column": 8,
+          "source_text": "'dart:convert'",
+          "staticType": "String",
+          "value": "dart:convert"
+        }
+      ]
+    },
+    {
+      "type": "ImportDirectiveImpl",
+      "offset": 24,
+      "length": 17,
+      "line": 2,
+      "column": 1,
+      "source_text": "import 'dart:io';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 31,
+          "length": 9,
+          "line": 2,
+          "column": 8,
+          "source_text": "'dart:io'",
+          "staticType": "String",
+          "value": "dart:io"
+        }
+      ]
+    },
+    {
+      "type": "ImportDirectiveImpl",
+      "offset": 43,
+      "length": 38,
+      "line": 3,
+      "column": 1,
+      "source_text": "import '../publish/post_builder.dart';",
+      "children": [
+        {
+          "type": "SimpleStringLiteralImpl",
+          "offset": 50,
+          "length": 30,
+          "line": 3,
+          "column": 8,
+          "source_text": "'../publish/post_builder.dart'",
+          "staticType": "String",
+          "value": "../publish/post_builder.dart"
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclarationImpl",
+      "offset": 85,
+      "length": 1980,
+      "line": 5,
+      "column": 1,
+      "source_text": "Future<List<Map<String, dynamic>>> runPipeline(String assetsDir, String auditDir) async {print('=== PIPELINE ===\\n'); print('--- etapa 1: scanAssets ---'); final groups = await BuildAssetsContent.resolveAssetsContent(assetsDir); print('Groups: ${groups.length}'); print(''); print('--- etapa 2: resolvePostsConfig ---'); final postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir); print('Configs: ${postsConfig.length}'); await BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig); print(''); print('--- etapa 3: resolvePostsContent ---'); final postsContent = await BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json'); print('Contents: ${postsContent.length}'); print(''); print('--- etapa 4: resolveFinalPayload ---'); final postsPayload = await BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json'); print('Payloads: ${postsPayload.length}'); print(''); await BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload); print(''); print('--- etapa 5: requestPayload ---'); final requests = postsPayload.map(BuildFinalPayload.requestPayload).toList(); print('Requests: ${requests.length}'); print(''); print('=== PIPELINE CONCLUÍDO ==='); return requests;}",
+      "name": "runPipeline",
+      "returnType": "Future<List<Map<String, dynamic>>>",
+      "children": [
+        {
+          "type": "CommentImpl",
+          "offset": 85,
+          "length": 230,
+          "line": 5,
+          "column": 1,
+          "source_text": "",
+          "children": [
+            {
+              "type": "SimpleIdentifierImpl",
+              "offset": 171,
+              "length": 8,
+              "line": 6,
+              "column": 6,
+              "source_text": "auditDir",
+              "staticType": null,
+              "value": "auditDir"
+            }
+          ]
+        },
+        {
+          "type": "TypeArgumentListImpl",
+          "offset": 323,
+          "length": 28,
+          "line": 8,
+          "column": 7,
+          "source_text": "<List<Map<String, dynamic>>>",
+          "children": [
+            {
+              "type": "TypeArgumentListImpl",
+              "offset": 328,
+              "length": 22,
+              "line": 8,
+              "column": 12,
+              "source_text": "<Map<String, dynamic>>",
+              "children": [
+                {
+                  "type": "TypeArgumentListImpl",
+                  "offset": 332,
+                  "length": 17,
+                  "line": 8,
+                  "column": 16,
+                  "source_text": "<String, dynamic>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "FunctionExpressionImpl",
+          "offset": 363,
+          "length": 1702,
+          "line": 8,
+          "column": 47,
+          "source_text": "(String assetsDir, String auditDir) async {print('=== PIPELINE ===\\n'); print('--- etapa 1: scanAssets ---'); final groups = await BuildAssetsContent.resolveAssetsContent(assetsDir); print('Groups: ${groups.length}'); print(''); print('--- etapa 2: resolvePostsConfig ---'); final postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir); print('Configs: ${postsConfig.length}'); await BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig); print(''); print('--- etapa 3: resolvePostsContent ---'); final postsContent = await BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json'); print('Contents: ${postsContent.length}'); print(''); print('--- etapa 4: resolveFinalPayload ---'); final postsPayload = await BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json'); print('Payloads: ${postsPayload.length}'); print(''); await BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload); print(''); print('--- etapa 5: requestPayload ---'); final requests = postsPayload.map(BuildFinalPayload.requestPayload).toList(); print('Requests: ${requests.length}'); print(''); print('=== PIPELINE CONCLUÍDO ==='); return requests;}",
+          "staticType": "Future<List<Map<String, dynamic>>> Function(String, String)",
+          "children": [
+            {
+              "type": "FormalParameterListImpl",
+              "offset": 363,
+              "length": 45,
+              "line": 8,
+              "column": 47,
+              "source_text": "(String assetsDir, String auditDir)",
+              "children": [
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 368,
+                  "length": 16,
+                  "line": 9,
+                  "column": 3,
+                  "source_text": "String assetsDir"
+                },
+                {
+                  "type": "SimpleFormalParameterImpl",
+                  "offset": 389,
+                  "length": 15,
+                  "line": 10,
+                  "column": 3,
+                  "source_text": "String auditDir"
+                }
+              ]
+            },
+            {
+              "type": "BlockFunctionBodyImpl",
+              "offset": 409,
+              "length": 1656,
+              "line": 11,
+              "column": 3,
+              "source_text": "async {print('=== PIPELINE ===\\n'); print('--- etapa 1: scanAssets ---'); final groups = await BuildAssetsContent.resolveAssetsContent(assetsDir); print('Groups: ${groups.length}'); print(''); print('--- etapa 2: resolvePostsConfig ---'); final postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir); print('Configs: ${postsConfig.length}'); await BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig); print(''); print('--- etapa 3: resolvePostsContent ---'); final postsContent = await BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json'); print('Contents: ${postsContent.length}'); print(''); print('--- etapa 4: resolveFinalPayload ---'); final postsPayload = await BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json'); print('Payloads: ${postsPayload.length}'); print(''); await BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload); print(''); print('--- etapa 5: requestPayload ---'); final requests = postsPayload.map(BuildFinalPayload.requestPayload).toList(); print('Requests: ${requests.length}'); print(''); print('=== PIPELINE CONCLUÍDO ==='); return requests;}",
+              "children": [
+                {
+                  "type": "BlockImpl",
+                  "offset": 415,
+                  "length": 1650,
+                  "line": 11,
+                  "column": 9,
+                  "source_text": "{print('=== PIPELINE ===\\n'); print('--- etapa 1: scanAssets ---'); final groups = await BuildAssetsContent.resolveAssetsContent(assetsDir); print('Groups: ${groups.length}'); print(''); print('--- etapa 2: resolvePostsConfig ---'); final postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir); print('Configs: ${postsConfig.length}'); await BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig); print(''); print('--- etapa 3: resolvePostsContent ---'); final postsContent = await BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json'); print('Contents: ${postsContent.length}'); print(''); print('--- etapa 4: resolveFinalPayload ---'); final postsPayload = await BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json'); print('Payloads: ${postsPayload.length}'); print(''); await BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload); print(''); print('--- etapa 5: requestPayload ---'); final requests = postsPayload.map(BuildFinalPayload.requestPayload).toList(); print('Requests: ${requests.length}'); print(''); print('=== PIPELINE CONCLUÍDO ==='); return requests;}",
+                  "children": [
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 420,
+                      "length": 28,
+                      "line": 12,
+                      "column": 3,
+                      "source_text": "print('=== PIPELINE ===\\n');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 420,
+                          "length": 27,
+                          "line": 12,
+                          "column": 3,
+                          "source_text": "print('=== PIPELINE ===\\n')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 420,
+                              "length": 5,
+                              "line": 12,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 425,
+                              "length": 22,
+                              "line": 12,
+                              "column": 8,
+                              "source_text": "('=== PIPELINE ===\\n')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 426,
+                                  "length": 20,
+                                  "line": 12,
+                                  "column": 9,
+                                  "source_text": "'=== PIPELINE ===\\n'",
+                                  "staticType": "String",
+                                  "value": "=== PIPELINE ===\n"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 474,
+                      "length": 37,
+                      "line": 15,
+                      "column": 3,
+                      "source_text": "print('--- etapa 1: scanAssets ---');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 474,
+                          "length": 36,
+                          "line": 15,
+                          "column": 3,
+                          "source_text": "print('--- etapa 1: scanAssets ---')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 474,
+                              "length": 5,
+                              "line": 15,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 479,
+                              "length": 31,
+                              "line": 15,
+                              "column": 8,
+                              "source_text": "('--- etapa 1: scanAssets ---')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 480,
+                                  "length": 29,
+                                  "line": 15,
+                                  "column": 9,
+                                  "source_text": "'--- etapa 1: scanAssets ---'",
+                                  "staticType": "String",
+                                  "value": "--- etapa 1: scanAssets ---"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VariableDeclarationImpl",
+                      "offset": 521,
+                      "length": 65,
+                      "line": 16,
+                      "column": 9,
+                      "source_text": "groups = await BuildAssetsContent.resolveAssetsContent(assetsDir)",
+                      "name": "groups",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 536,
+                          "length": 50,
+                          "line": 16,
+                          "column": 24,
+                          "source_text": "BuildAssetsContent.resolveAssetsContent(assetsDir)",
+                          "staticType": "Future<List<Map<String, dynamic>>>",
+                          "methodName": "resolveAssetsContent",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 536,
+                              "length": 18,
+                              "line": 16,
+                              "column": 24,
+                              "source_text": "BuildAssetsContent",
+                              "staticType": null,
+                              "value": "BuildAssetsContent"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 555,
+                              "length": 20,
+                              "line": 16,
+                              "column": 43,
+                              "source_text": "resolveAssetsContent",
+                              "staticType": "Future<List<Map<String, dynamic>>> Function(String)",
+                              "value": "resolveAssetsContent"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 575,
+                              "length": 11,
+                              "line": 16,
+                              "column": 63,
+                              "source_text": "(assetsDir)",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 576,
+                                  "length": 9,
+                                  "line": 16,
+                                  "column": 64,
+                                  "source_text": "assetsDir",
+                                  "staticType": "String",
+                                  "value": "assetsDir"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 591,
+                      "length": 34,
+                      "line": 17,
+                      "column": 3,
+                      "source_text": "print('Groups: ${groups.length}');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 591,
+                          "length": 33,
+                          "line": 17,
+                          "column": 3,
+                          "source_text": "print('Groups: ${groups.length}')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 591,
+                              "length": 5,
+                              "line": 17,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 596,
+                              "length": 28,
+                              "line": 17,
+                              "column": 8,
+                              "source_text": "('Groups: ${groups.length}')",
+                              "children": [
+                                {
+                                  "type": "PrefixedIdentifierImpl",
+                                  "offset": 608,
+                                  "length": 13,
+                                  "line": 17,
+                                  "column": 20,
+                                  "source_text": "groups.length",
+                                  "staticType": "int",
+                                  "value": "groups.length",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 608,
+                                      "length": 6,
+                                      "line": 17,
+                                      "column": 20,
+                                      "source_text": "groups",
+                                      "staticType": "List<Map<String, dynamic>>",
+                                      "value": "groups"
+                                    },
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 615,
+                                      "length": 6,
+                                      "line": 17,
+                                      "column": 27,
+                                      "source_text": "length",
+                                      "staticType": "int",
+                                      "value": "length"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 629,
+                      "length": 10,
+                      "line": 18,
+                      "column": 3,
+                      "source_text": "print('');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 629,
+                          "length": 9,
+                          "line": 18,
+                          "column": 3,
+                          "source_text": "print('')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 629,
+                              "length": 5,
+                              "line": 18,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 634,
+                              "length": 4,
+                              "line": 18,
+                              "column": 8,
+                              "source_text": "('')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 635,
+                                  "length": 2,
+                                  "line": 18,
+                                  "column": 9,
+                                  "source_text": "''",
+                                  "staticType": "String",
+                                  "value": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 667,
+                      "length": 45,
+                      "line": 21,
+                      "column": 3,
+                      "source_text": "print('--- etapa 2: resolvePostsConfig ---');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 667,
+                          "length": 44,
+                          "line": 21,
+                          "column": 3,
+                          "source_text": "print('--- etapa 2: resolvePostsConfig ---')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 667,
+                              "length": 5,
+                              "line": 21,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 672,
+                              "length": 39,
+                              "line": 21,
+                              "column": 8,
+                              "source_text": "('--- etapa 2: resolvePostsConfig ---')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 673,
+                                  "length": 37,
+                                  "line": 21,
+                                  "column": 9,
+                                  "source_text": "'--- etapa 2: resolvePostsConfig ---'",
+                                  "staticType": "String",
+                                  "value": "--- etapa 2: resolvePostsConfig ---"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VariableDeclarationImpl",
+                      "offset": 722,
+                      "length": 71,
+                      "line": 22,
+                      "column": 9,
+                      "source_text": "postsConfig = BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir)",
+                      "name": "postsConfig",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 736,
+                          "length": 57,
+                          "line": 22,
+                          "column": 23,
+                          "source_text": "BuildJsonPostConfig.resolvePostsConfig(groups, assetsDir)",
+                          "staticType": "List<Map<String, dynamic>>",
+                          "methodName": "resolvePostsConfig",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 736,
+                              "length": 19,
+                              "line": 22,
+                              "column": 23,
+                              "source_text": "BuildJsonPostConfig",
+                              "staticType": null,
+                              "value": "BuildJsonPostConfig"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 756,
+                              "length": 18,
+                              "line": 22,
+                              "column": 43,
+                              "source_text": "resolvePostsConfig",
+                              "staticType": "List<Map<String, dynamic>> Function(List<Map<String, dynamic>>, String)",
+                              "value": "resolvePostsConfig"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 774,
+                              "length": 19,
+                              "line": 22,
+                              "column": 61,
+                              "source_text": "(groups, assetsDir)",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 775,
+                                  "length": 6,
+                                  "line": 22,
+                                  "column": 62,
+                                  "source_text": "groups",
+                                  "staticType": "List<Map<String, dynamic>>",
+                                  "value": "groups"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 783,
+                                  "length": 9,
+                                  "line": 22,
+                                  "column": 70,
+                                  "source_text": "assetsDir",
+                                  "staticType": "String",
+                                  "value": "assetsDir"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 798,
+                      "length": 40,
+                      "line": 23,
+                      "column": 3,
+                      "source_text": "print('Configs: ${postsConfig.length}');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 798,
+                          "length": 39,
+                          "line": 23,
+                          "column": 3,
+                          "source_text": "print('Configs: ${postsConfig.length}')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 798,
+                              "length": 5,
+                              "line": 23,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 803,
+                              "length": 34,
+                              "line": 23,
+                              "column": 8,
+                              "source_text": "('Configs: ${postsConfig.length}')",
+                              "children": [
+                                {
+                                  "type": "PrefixedIdentifierImpl",
+                                  "offset": 816,
+                                  "length": 18,
+                                  "line": 23,
+                                  "column": 21,
+                                  "source_text": "postsConfig.length",
+                                  "staticType": "int",
+                                  "value": "postsConfig.length",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 816,
+                                      "length": 11,
+                                      "line": 23,
+                                      "column": 21,
+                                      "source_text": "postsConfig",
+                                      "staticType": "List<Map<String, dynamic>>",
+                                      "value": "postsConfig"
+                                    },
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 828,
+                                      "length": 6,
+                                      "line": 23,
+                                      "column": 33,
+                                      "source_text": "length",
+                                      "staticType": "int",
+                                      "value": "length"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 842,
+                      "length": 104,
+                      "line": 24,
+                      "column": 3,
+                      "source_text": "await BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig);",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 848,
+                          "length": 97,
+                          "line": 24,
+                          "column": 9,
+                          "source_text": "BuildJsonPostConfig.savePostsConfigToJson('$auditDir\\\\posts_config.json', postsConfig)",
+                          "staticType": "Future<void>",
+                          "methodName": "savePostsConfigToJson",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 848,
+                              "length": 19,
+                              "line": 24,
+                              "column": 9,
+                              "source_text": "BuildJsonPostConfig",
+                              "staticType": null,
+                              "value": "BuildJsonPostConfig"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 868,
+                              "length": 21,
+                              "line": 24,
+                              "column": 29,
+                              "source_text": "savePostsConfigToJson",
+                              "staticType": "Future<void> Function(String, List<Map<String, dynamic>>)",
+                              "value": "savePostsConfigToJson"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 889,
+                              "length": 56,
+                              "line": 24,
+                              "column": 50,
+                              "source_text": "('$auditDir\\\\posts_config.json', postsConfig)",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 898,
+                                  "length": 8,
+                                  "line": 25,
+                                  "column": 7,
+                                  "source_text": "auditDir",
+                                  "staticType": "String",
+                                  "value": "auditDir"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 928,
+                                  "length": 11,
+                                  "line": 25,
+                                  "column": 37,
+                                  "source_text": "postsConfig",
+                                  "staticType": "List<Map<String, dynamic>>",
+                                  "value": "postsConfig"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 950,
+                      "length": 10,
+                      "line": 27,
+                      "column": 3,
+                      "source_text": "print('');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 950,
+                          "length": 9,
+                          "line": 27,
+                          "column": 3,
+                          "source_text": "print('')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 950,
+                              "length": 5,
+                              "line": 27,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 955,
+                              "length": 4,
+                              "line": 27,
+                              "column": 8,
+                              "source_text": "('')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 956,
+                                  "length": 2,
+                                  "line": 27,
+                                  "column": 9,
+                                  "source_text": "''",
+                                  "staticType": "String",
+                                  "value": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1001,
+                      "length": 46,
+                      "line": 30,
+                      "column": 3,
+                      "source_text": "print('--- etapa 3: resolvePostsContent ---');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1001,
+                          "length": 45,
+                          "line": 30,
+                          "column": 3,
+                          "source_text": "print('--- etapa 3: resolvePostsContent ---')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1001,
+                              "length": 5,
+                              "line": 30,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1006,
+                              "length": 40,
+                              "line": 30,
+                              "column": 8,
+                              "source_text": "('--- etapa 3: resolvePostsContent ---')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1007,
+                                  "length": 38,
+                                  "line": 30,
+                                  "column": 9,
+                                  "source_text": "'--- etapa 3: resolvePostsContent ---'",
+                                  "staticType": "String",
+                                  "value": "--- etapa 3: resolvePostsContent ---"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VariableDeclarationImpl",
+                      "offset": 1057,
+                      "length": 142,
+                      "line": 31,
+                      "column": 9,
+                      "source_text": "postsContent = await BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json')",
+                      "name": "postsContent",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1078,
+                          "length": 121,
+                          "line": 31,
+                          "column": 30,
+                          "source_text": "BuildJsonPostContent.resolvePostsContent('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json')",
+                          "staticType": "Future<List<Map<String, dynamic>>>",
+                          "methodName": "resolvePostsContent",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1078,
+                              "length": 20,
+                              "line": 31,
+                              "column": 30,
+                              "source_text": "BuildJsonPostContent",
+                              "staticType": null,
+                              "value": "BuildJsonPostContent"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1099,
+                              "length": 19,
+                              "line": 31,
+                              "column": 51,
+                              "source_text": "resolvePostsContent",
+                              "staticType": "Future<List<Map<String, dynamic>>> Function(String, String)",
+                              "value": "resolvePostsContent"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1118,
+                              "length": 81,
+                              "line": 31,
+                              "column": 70,
+                              "source_text": "('$auditDir\\\\posts_config.json', '$auditDir\\\\posts_content.json')",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1127,
+                                  "length": 8,
+                                  "line": 32,
+                                  "column": 7,
+                                  "source_text": "auditDir",
+                                  "staticType": "String",
+                                  "value": "auditDir"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1164,
+                                  "length": 8,
+                                  "line": 33,
+                                  "column": 7,
+                                  "source_text": "auditDir",
+                                  "staticType": "String",
+                                  "value": "auditDir"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1204,
+                      "length": 42,
+                      "line": 35,
+                      "column": 3,
+                      "source_text": "print('Contents: ${postsContent.length}');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1204,
+                          "length": 41,
+                          "line": 35,
+                          "column": 3,
+                          "source_text": "print('Contents: ${postsContent.length}')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1204,
+                              "length": 5,
+                              "line": 35,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1209,
+                              "length": 36,
+                              "line": 35,
+                              "column": 8,
+                              "source_text": "('Contents: ${postsContent.length}')",
+                              "children": [
+                                {
+                                  "type": "PrefixedIdentifierImpl",
+                                  "offset": 1223,
+                                  "length": 19,
+                                  "line": 35,
+                                  "column": 22,
+                                  "source_text": "postsContent.length",
+                                  "staticType": "int",
+                                  "value": "postsContent.length",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 1223,
+                                      "length": 12,
+                                      "line": 35,
+                                      "column": 22,
+                                      "source_text": "postsContent",
+                                      "staticType": "List<Map<String, dynamic>>",
+                                      "value": "postsContent"
+                                    },
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 1236,
+                                      "length": 6,
+                                      "line": 35,
+                                      "column": 35,
+                                      "source_text": "length",
+                                      "staticType": "int",
+                                      "value": "length"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1250,
+                      "length": 10,
+                      "line": 36,
+                      "column": 3,
+                      "source_text": "print('');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1250,
+                          "length": 9,
+                          "line": 36,
+                          "column": 3,
+                          "source_text": "print('')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1250,
+                              "length": 5,
+                              "line": 36,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1255,
+                              "length": 4,
+                              "line": 36,
+                              "column": 8,
+                              "source_text": "('')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1256,
+                                  "length": 2,
+                                  "line": 36,
+                                  "column": 9,
+                                  "source_text": "''",
+                                  "staticType": "String",
+                                  "value": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1301,
+                      "length": 46,
+                      "line": 39,
+                      "column": 3,
+                      "source_text": "print('--- etapa 4: resolveFinalPayload ---');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1301,
+                          "length": 45,
+                          "line": 39,
+                          "column": 3,
+                          "source_text": "print('--- etapa 4: resolveFinalPayload ---')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1301,
+                              "length": 5,
+                              "line": 39,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1306,
+                              "length": 40,
+                              "line": 39,
+                              "column": 8,
+                              "source_text": "('--- etapa 4: resolveFinalPayload ---')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1307,
+                                  "length": 38,
+                                  "line": 39,
+                                  "column": 9,
+                                  "source_text": "'--- etapa 4: resolveFinalPayload ---'",
+                                  "staticType": "String",
+                                  "value": "--- etapa 4: resolveFinalPayload ---"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VariableDeclarationImpl",
+                      "offset": 1357,
+                      "length": 140,
+                      "line": 40,
+                      "column": 9,
+                      "source_text": "postsPayload = await BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json')",
+                      "name": "postsPayload",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1378,
+                          "length": 119,
+                          "line": 40,
+                          "column": 30,
+                          "source_text": "BuildFinalPayload.resolveFinalPayload('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json')",
+                          "staticType": "Future<List<Map<String, dynamic>>>",
+                          "methodName": "resolveFinalPayload",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1378,
+                              "length": 17,
+                              "line": 40,
+                              "column": 30,
+                              "source_text": "BuildFinalPayload",
+                              "staticType": null,
+                              "value": "BuildFinalPayload"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1396,
+                              "length": 19,
+                              "line": 40,
+                              "column": 48,
+                              "source_text": "resolveFinalPayload",
+                              "staticType": "Future<List<Map<String, dynamic>>> Function(String, String)",
+                              "value": "resolveFinalPayload"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1415,
+                              "length": 82,
+                              "line": 40,
+                              "column": 67,
+                              "source_text": "('$auditDir\\\\posts_content.json', '$auditDir\\\\posts_payload.json')",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1424,
+                                  "length": 8,
+                                  "line": 41,
+                                  "column": 7,
+                                  "source_text": "auditDir",
+                                  "staticType": "String",
+                                  "value": "auditDir"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1462,
+                                  "length": 8,
+                                  "line": 42,
+                                  "column": 7,
+                                  "source_text": "auditDir",
+                                  "staticType": "String",
+                                  "value": "auditDir"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1502,
+                      "length": 42,
+                      "line": 44,
+                      "column": 3,
+                      "source_text": "print('Payloads: ${postsPayload.length}');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1502,
+                          "length": 41,
+                          "line": 44,
+                          "column": 3,
+                          "source_text": "print('Payloads: ${postsPayload.length}')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1502,
+                              "length": 5,
+                              "line": 44,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1507,
+                              "length": 36,
+                              "line": 44,
+                              "column": 8,
+                              "source_text": "('Payloads: ${postsPayload.length}')",
+                              "children": [
+                                {
+                                  "type": "PrefixedIdentifierImpl",
+                                  "offset": 1521,
+                                  "length": 19,
+                                  "line": 44,
+                                  "column": 22,
+                                  "source_text": "postsPayload.length",
+                                  "staticType": "int",
+                                  "value": "postsPayload.length",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 1521,
+                                      "length": 12,
+                                      "line": 44,
+                                      "column": 22,
+                                      "source_text": "postsPayload",
+                                      "staticType": "List<Map<String, dynamic>>",
+                                      "value": "postsPayload"
+                                    },
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 1534,
+                                      "length": 6,
+                                      "line": 44,
+                                      "column": 35,
+                                      "source_text": "length",
+                                      "staticType": "int",
+                                      "value": "length"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1548,
+                      "length": 10,
+                      "line": 45,
+                      "column": 3,
+                      "source_text": "print('');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1548,
+                          "length": 9,
+                          "line": 45,
+                          "column": 3,
+                          "source_text": "print('')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1548,
+                              "length": 5,
+                              "line": 45,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1553,
+                              "length": 4,
+                              "line": 45,
+                              "column": 8,
+                              "source_text": "('')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1554,
+                                  "length": 2,
+                                  "line": 45,
+                                  "column": 9,
+                                  "source_text": "''",
+                                  "staticType": "String",
+                                  "value": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1666,
+                      "length": 113,
+                      "line": 49,
+                      "column": 3,
+                      "source_text": "await BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload);",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1672,
+                          "length": 106,
+                          "line": 49,
+                          "column": 9,
+                          "source_text": "BuildFinalPayload.savePostsPayloadToJson('$auditDir\\\\post_model_NN_payload.json', postsPayload)",
+                          "staticType": "Future<void>",
+                          "methodName": "savePostsPayloadToJson",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1672,
+                              "length": 17,
+                              "line": 49,
+                              "column": 9,
+                              "source_text": "BuildFinalPayload",
+                              "staticType": null,
+                              "value": "BuildFinalPayload"
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1690,
+                              "length": 22,
+                              "line": 49,
+                              "column": 27,
+                              "source_text": "savePostsPayloadToJson",
+                              "staticType": "Future<void> Function(String, List<Map<String, dynamic>>)",
+                              "value": "savePostsPayloadToJson"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1712,
+                              "length": 66,
+                              "line": 49,
+                              "column": 49,
+                              "source_text": "('$auditDir\\\\post_model_NN_payload.json', postsPayload)",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1721,
+                                  "length": 8,
+                                  "line": 50,
+                                  "column": 7,
+                                  "source_text": "auditDir",
+                                  "staticType": "String",
+                                  "value": "auditDir"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1760,
+                                  "length": 12,
+                                  "line": 50,
+                                  "column": 46,
+                                  "source_text": "postsPayload",
+                                  "staticType": "List<Map<String, dynamic>>",
+                                  "value": "postsPayload"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1783,
+                      "length": 10,
+                      "line": 52,
+                      "column": 3,
+                      "source_text": "print('');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1783,
+                          "length": 9,
+                          "line": 52,
+                          "column": 3,
+                          "source_text": "print('')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1783,
+                              "length": 5,
+                              "line": 52,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1788,
+                              "length": 4,
+                              "line": 52,
+                              "column": 8,
+                              "source_text": "('')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1789,
+                                  "length": 2,
+                                  "line": 52,
+                                  "column": 9,
+                                  "source_text": "''",
+                                  "staticType": "String",
+                                  "value": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1822,
+                      "length": 41,
+                      "line": 55,
+                      "column": 3,
+                      "source_text": "print('--- etapa 5: requestPayload ---');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1822,
+                          "length": 40,
+                          "line": 55,
+                          "column": 3,
+                          "source_text": "print('--- etapa 5: requestPayload ---')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1822,
+                              "length": 5,
+                              "line": 55,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1827,
+                              "length": 35,
+                              "line": 55,
+                              "column": 8,
+                              "source_text": "('--- etapa 5: requestPayload ---')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1828,
+                                  "length": 33,
+                                  "line": 55,
+                                  "column": 9,
+                                  "source_text": "'--- etapa 5: requestPayload ---'",
+                                  "staticType": "String",
+                                  "value": "--- etapa 5: requestPayload ---"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VariableDeclarationImpl",
+                      "offset": 1873,
+                      "length": 70,
+                      "line": 56,
+                      "column": 9,
+                      "source_text": "requests = postsPayload.map(BuildFinalPayload.requestPayload).toList()",
+                      "name": "requests",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1884,
+                          "length": 59,
+                          "line": 56,
+                          "column": 20,
+                          "source_text": "postsPayload.map(BuildFinalPayload.requestPayload).toList()",
+                          "staticType": "List<Map<String, dynamic>>",
+                          "methodName": "toList",
+                          "children": [
+                            {
+                              "type": "MethodInvocationImpl",
+                              "offset": 1884,
+                              "length": 50,
+                              "line": 56,
+                              "column": 20,
+                              "source_text": "postsPayload.map(BuildFinalPayload.requestPayload)",
+                              "staticType": "Iterable<Map<String, dynamic>>",
+                              "methodName": "map",
+                              "children": [
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1884,
+                                  "length": 12,
+                                  "line": 56,
+                                  "column": 20,
+                                  "source_text": "postsPayload",
+                                  "staticType": "List<Map<String, dynamic>>",
+                                  "value": "postsPayload"
+                                },
+                                {
+                                  "type": "SimpleIdentifierImpl",
+                                  "offset": 1897,
+                                  "length": 3,
+                                  "line": 56,
+                                  "column": 33,
+                                  "source_text": "map",
+                                  "staticType": "Iterable<T> Function<T>(T Function(Map<String, dynamic>))",
+                                  "value": "map"
+                                },
+                                {
+                                  "type": "ArgumentListImpl",
+                                  "offset": 1900,
+                                  "length": 34,
+                                  "line": 56,
+                                  "column": 36,
+                                  "source_text": "(BuildFinalPayload.requestPayload)",
+                                  "children": [
+                                    {
+                                      "type": "PrefixedIdentifierImpl",
+                                      "offset": 1901,
+                                      "length": 32,
+                                      "line": 56,
+                                      "column": 37,
+                                      "source_text": "BuildFinalPayload.requestPayload",
+                                      "staticType": "Map<String, dynamic> Function(Map<String, dynamic>)",
+                                      "value": "BuildFinalPayload.requestPayload",
+                                      "children": [
+                                        {
+                                          "type": "SimpleIdentifierImpl",
+                                          "offset": 1901,
+                                          "length": 17,
+                                          "line": 56,
+                                          "column": 37,
+                                          "source_text": "BuildFinalPayload",
+                                          "staticType": null,
+                                          "value": "BuildFinalPayload"
+                                        },
+                                        {
+                                          "type": "SimpleIdentifierImpl",
+                                          "offset": 1919,
+                                          "length": 14,
+                                          "line": 56,
+                                          "column": 55,
+                                          "source_text": "requestPayload",
+                                          "staticType": "Map<String, dynamic> Function(Map<String, dynamic>)",
+                                          "value": "requestPayload"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1935,
+                              "length": 6,
+                              "line": 56,
+                              "column": 71,
+                              "source_text": "toList",
+                              "staticType": "List<Map<String, dynamic>> Function({bool growable})",
+                              "value": "toList"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1941,
+                              "length": 2,
+                              "line": 56,
+                              "column": 77,
+                              "source_text": "()"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1948,
+                      "length": 38,
+                      "line": 57,
+                      "column": 3,
+                      "source_text": "print('Requests: ${requests.length}');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1948,
+                          "length": 37,
+                          "line": 57,
+                          "column": 3,
+                          "source_text": "print('Requests: ${requests.length}')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1948,
+                              "length": 5,
+                              "line": 57,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1953,
+                              "length": 32,
+                              "line": 57,
+                              "column": 8,
+                              "source_text": "('Requests: ${requests.length}')",
+                              "children": [
+                                {
+                                  "type": "PrefixedIdentifierImpl",
+                                  "offset": 1967,
+                                  "length": 15,
+                                  "line": 57,
+                                  "column": 22,
+                                  "source_text": "requests.length",
+                                  "staticType": "int",
+                                  "value": "requests.length",
+                                  "children": [
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 1967,
+                                      "length": 8,
+                                      "line": 57,
+                                      "column": 22,
+                                      "source_text": "requests",
+                                      "staticType": "List<Map<String, dynamic>>",
+                                      "value": "requests"
+                                    },
+                                    {
+                                      "type": "SimpleIdentifierImpl",
+                                      "offset": 1976,
+                                      "length": 6,
+                                      "line": 57,
+                                      "column": 31,
+                                      "source_text": "length",
+                                      "staticType": "int",
+                                      "value": "length"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 1990,
+                      "length": 10,
+                      "line": 58,
+                      "column": 3,
+                      "source_text": "print('');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 1990,
+                          "length": 9,
+                          "line": 58,
+                          "column": 3,
+                          "source_text": "print('')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 1990,
+                              "length": 5,
+                              "line": 58,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 1995,
+                              "length": 4,
+                              "line": 58,
+                              "column": 8,
+                              "source_text": "('')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 1996,
+                                  "length": 2,
+                                  "line": 58,
+                                  "column": 9,
+                                  "source_text": "''",
+                                  "staticType": "String",
+                                  "value": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatementImpl",
+                      "offset": 2006,
+                      "length": 36,
+                      "line": 60,
+                      "column": 3,
+                      "source_text": "print('=== PIPELINE CONCLUÍDO ===');",
+                      "children": [
+                        {
+                          "type": "MethodInvocationImpl",
+                          "offset": 2006,
+                          "length": 35,
+                          "line": 60,
+                          "column": 3,
+                          "source_text": "print('=== PIPELINE CONCLUÍDO ===')",
+                          "staticType": "void",
+                          "methodName": "print",
+                          "children": [
+                            {
+                              "type": "SimpleIdentifierImpl",
+                              "offset": 2006,
+                              "length": 5,
+                              "line": 60,
+                              "column": 3,
+                              "source_text": "print",
+                              "staticType": "void Function(Object?)",
+                              "value": "print"
+                            },
+                            {
+                              "type": "ArgumentListImpl",
+                              "offset": 2011,
+                              "length": 30,
+                              "line": 60,
+                              "column": 8,
+                              "source_text": "('=== PIPELINE CONCLUÍDO ===')",
+                              "children": [
+                                {
+                                  "type": "SimpleStringLiteralImpl",
+                                  "offset": 2012,
+                                  "length": 28,
+                                  "line": 60,
+                                  "column": 9,
+                                  "source_text": "'=== PIPELINE CONCLUÍDO ==='",
+                                  "staticType": "String",
+                                  "value": "=== PIPELINE CONCLUÍDO ==="
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ReturnStatementImpl",
+                      "offset": 2046,
+                      "length": 16,
+                      "line": 61,
+                      "column": 3,
+                      "source_text": "return requests;",
+                      "children": [
+                        {
+                          "type": "SimpleIdentifierImpl",
+                          "offset": 2053,
+                          "length": 8,
+                          "line": 61,
+                          "column": 10,
+                          "source_text": "requests",
+                          "staticType": "List<Map<String, dynamic>>",
+                          "value": "requests"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

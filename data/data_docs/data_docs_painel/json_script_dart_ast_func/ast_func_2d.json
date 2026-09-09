@@ -1,0 +1,5486 @@
+{
+  "files": [
+    {
+      "file_name": "controller_controller_second_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "updateDataContext",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 23
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableFields",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "updatePaginationContext",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "hasMoreData",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "itemsPerPage",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "updateSortFilterContext",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "currentSearchString",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 37
+            },
+            {
+              "variable_name": "isAscending",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "selectedFilterField",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "selectedOrderField",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_snackBarEventController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "syncButtonEnabled",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "filterData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_serviceLoad",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentSearchString",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "filteredData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 35
+            },
+            {
+              "variable_name": "originalTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "selectedFilterField",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "getMarkedForDeleteCount",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "count",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "hasPendingDeletes",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "initialize",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "defaultAscending",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 22
+            },
+            {
+              "variable_name": "isAscending",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "selectedFilterField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "selectedOrderField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "tableConfigs",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "isMarkedForDelete",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 19
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "loadData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "_dataState",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_serviceLoad",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "checkTimer",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "currentSearchString",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 16
+            },
+            {
+              "variable_name": "currentTableDataFinal",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "currentTableDataInitial",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "currentTableDataIsFullLoaded",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 53
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "dataState",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "defaultAscending",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "hasMoreData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 148
+            },
+            {
+              "variable_name": "isLoading",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "itemsPerPage",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "originalTableData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "selectedFilterField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "selectedOrderField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "showCurrentTableDataFinalOnScreen",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "showWithScroll",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "syncButtonEnabled",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableFields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "manageBatchUpdate",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_dataState",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "_serviceBatchUpdates",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "convertedKeys",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataState",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "failureCount",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "hasRealUpdates",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 138
+            },
+            {
+              "variable_name": "isLoading",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "isPartialSuccess",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "keyValue",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "pendingDelete",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "pendingUpsert",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "primaryKeysToDelete",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "successCount",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "manageTempRecord",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_dataState",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 32
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "currentItem",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 43
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dataState",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 32
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "existingItem",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 179
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 21
+            },
+            {
+              "variable_name": "itemIndex",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "newAction",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "newRecordData",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "record",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "recordId",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "tempRecord",
+              "variable_description": "",
+              "variable_count": 25
+            },
+            {
+              "variable_name": "tempRecordHasPendingUpdates",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "updatedData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "setSelectedTableName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "sortData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_serviceLoad",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 22
+            },
+            {
+              "variable_name": "isAscending",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "selectedOrderField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "sortedData",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "toggleDeleteMark",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentItem",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 45
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "itemIndex",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "newAction",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "hasPendingUpdates",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "emitSnackBarEvent",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_snackBarEventController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "getCardColor",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "getCardColorById",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_cardColors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentItem",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 17
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "getItemExpansionState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_expansionStates",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "setCardColor",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_cardColors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "setDataStore",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "setItemExpansionState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_expansionStates",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "snackBarEvents",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_snackBarEventController",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "main",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "models_app_models",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "getTableConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableConfigs",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "isValidField",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 21
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "copyWith",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "newData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "updates",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "updates",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "crudAction",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "displayName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 51
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "getDataFields",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 19
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "getValue",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "id",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "fields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 55
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "isExpanded",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "setCrudAction",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "setValue",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "tableName",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "toJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "models_ui_models",
+      "file_description": "",
+      "functions": []
+    },
+    {
+      "file_name": "screens_home_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "createState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_expansionCallback",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 69
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "subItems",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 6
+            }
+          ]
+        },
+        {
+          "function_name": "initState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_serviceLoad",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 16
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "screens_second_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "createState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_getSnackBarColor",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_getTextController",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_textControllers",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "controllerKey",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 23
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_showDeleteConfirmationDialog",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "count",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 20
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "_updateStateWithScrollPreservation",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_scrollController",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "_scrollPositionBeforeUpdate",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "accumulatedHeight",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "closedCardHeight",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "duration",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "expandedCardHeight",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 60
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 25
+            },
+            {
+              "variable_name": "_dataController",
+              "variable_description": "",
+              "variable_count": 24
+            },
+            {
+              "variable_name": "_dataState",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "_isSearchRowVisible",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "_scrollController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_searchController",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "confirmed",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentSearchString",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "currentTableDataForDisplay",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 70
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 25
+            },
+            {
+              "variable_name": "dataState",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "displayTableFields",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "displayValue",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "duration",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "expansionTileChildren",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "filterFieldValue",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "hasMoreData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 542
+            },
+            {
+              "variable_name": "isAscending",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "isLoading",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 42
+            },
+            {
+              "variable_name": "itemData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "orderFieldValue",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "record",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "recordId",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "selectedFilterField",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "selectedOrderField",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "selectedTableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "syncButtonEnabled",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableFields",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tempRecord",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "tempRecordHasPendingUpdates",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "textFieldController",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "titleText",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 17
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataController",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_scrollController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_searchController",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_textControllers",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "getDisplayTableFields",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 14
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "initState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataContext",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_dataController",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_dataState",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 17
+            },
+            {
+              "variable_name": "dataContext",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dataState",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "duration",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 30
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "screens_third_screen",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "createState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "_updateState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 8
+            }
+          ]
+        },
+        {
+          "function_name": "build",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataController",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "_dataState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "dataState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "isLoading",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "dispose",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataController",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 9
+            }
+          ]
+        },
+        {
+          "function_name": "initState",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataController",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 21
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "services_data_service",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "convertValidationErrorsToBatchErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "errorCode",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errorMessage",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 66
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "matchingItems",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "originalRecord",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "record",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "recordId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "violations",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "toString",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "toJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "notifyError",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "notifyInfo",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "notifySuccess",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "notifyWarning",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "screenState",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "batchUpdateTableRows",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "batch",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "batchSize",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "dataToUpdate",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "errorTime",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 92
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "primaryKeyValue",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "response",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "updatedRows",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "updates",
+              "variable_description": "",
+              "variable_count": 6
+            }
+          ]
+        },
+        {
+          "function_name": "client",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            }
+          ]
+        },
+        {
+          "function_name": "deleteSupabase",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 27
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "primaryKeyValue",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 7
+            }
+          ]
+        },
+        {
+          "function_name": "insertTableRow",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 19
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 6
+            }
+          ]
+        },
+        {
+          "function_name": "performBatchUpdate",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "batch",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "convertedItemId",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 74
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "itemId",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "itemUpdate",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "pendingUpdates",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "tableData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableDataFromStore",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "updatedItem",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "updatedTableData",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "updates",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "updatesList",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "updatesWithoutPk",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "updateTableRow",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 19
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "primaryKeyValue",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "updatedData",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "upsertSupabase",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_crudAction",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 15
+            },
+            {
+              "variable_name": "_validationLogger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_validator",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "allowedFields",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "batch",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "count",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "crudAction",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "dataList",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 13
+            },
+            {
+              "variable_name": "errorCode",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errorCount",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "errorMessage",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "failureCount",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "fieldStr",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "filteredData",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 341
+            },
+            {
+              "variable_name": "inserts",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "isExpanded",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "isPartialSuccess",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 39
+            },
+            {
+              "variable_name": "itemData",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "notifier",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "originalRecord",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "pendingUpsert",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "processedData",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "processedDataList",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "record",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "recordId",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "successCount",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 15
+            },
+            {
+              "variable_name": "totalProcessed",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "updates",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "validationResult",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "filterData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "dataToFilter",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "filteredData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 31
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "loadAllTableDataInBackground",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "allData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "currentTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "dataStore",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 17
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "originalTableData",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "response",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableItem",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "loadData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_client",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "hasMoreData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 80
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "primaryKeyField",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "processedData",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "query",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "response",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableConfig",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableData",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableFields",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableItem",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 5
+            }
+          ]
+        },
+        {
+          "function_name": "parseMenuItems",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 45
+            },
+            {
+              "variable_name": "subItems",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "title",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "sortData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "aValue",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "bValue",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "dataToSort",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 21
+            },
+            {
+              "variable_name": "sortedData",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "tableItemFromJson",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "tableItem",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "getErrorsForField",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 16
+            },
+            {
+              "variable_name": "message",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "violations",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "hasErrorsForField",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "fieldName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "services_table_validator",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_loadConstraintsFromConfig",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 132
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 20
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "pattern",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "regex",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 57
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 5
+            }
+          ]
+        },
+        {
+          "function_name": "getConstraints",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_cache",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "invalidate",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_cache",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_addError",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 20
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "_validateConstraints",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 22
+            },
+            {
+              "variable_name": "fieldConstraints",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 80
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "regex",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 7
+            }
+          ]
+        },
+        {
+          "function_name": "_validateEnum",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "allowedValues",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "effectiveValue",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 42
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "_validateForeignKey",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 59
+            },
+            {
+              "variable_name": "numericRegex",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "refColumn",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "refTable",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "uuidRegex",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 8
+            }
+          ]
+        },
+        {
+          "function_name": "_validatePrimaryKey",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 52
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "type",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "uuidRegex",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 10
+            }
+          ]
+        },
+        {
+          "function_name": "_validateRegex",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 52
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "pattern",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "regex",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "suggestion",
+              "variable_description": "",
+              "variable_count": 5
+            },
+            {
+              "variable_name": "testValue",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 7
+            }
+          ]
+        },
+        {
+          "function_name": "_validateRequired",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 18
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "_validateUnique",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "duplicates",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 32
+            },
+            {
+              "variable_name": "item",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 6
+            }
+          ]
+        },
+        {
+          "function_name": "validate",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 10
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "validateBatch",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "allErrorsEmpty",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "combinedErrorsByField",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "combinedGeneralErrors",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 94
+            },
+            {
+              "variable_name": "invalidRecords",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "key",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "otherRecords",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "record",
+              "variable_description": "",
+              "variable_count": 12
+            },
+            {
+              "variable_name": "recordId",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "reports",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "result",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "results",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "validRecords",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "validateWithExistingData",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "constraints",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "data",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 38
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "services_validation_logger",
+      "file_description": "",
+      "functions": [
+        {
+          "function_name": "_appendToLogFile",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_maxFileSize",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "file",
+              "variable_description": "",
+              "variable_count": 9
+            },
+            {
+              "variable_name": "filePath",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "fileSize",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 39
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_copyToPublicStorage",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "appDir",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 43
+            },
+            {
+              "variable_name": "publicDir",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "sourceFile",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "targetFile",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_findProjectDirectory",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "currentDir",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 28
+            },
+            {
+              "variable_name": "parentDir",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "pubspecFile",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_getLogFilePath",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logFileName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "directory",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 47
+            },
+            {
+              "variable_name": "logsDir",
+              "variable_description": "",
+              "variable_count": 8
+            },
+            {
+              "variable_name": "projectDir",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "_rotateLogFile",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "currentFile",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 22
+            },
+            {
+              "variable_name": "rotatedPath",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "getExternalLogPath",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logFileName",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "directory",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 20
+            },
+            {
+              "variable_name": "logsDir",
+              "variable_description": "",
+              "variable_count": 4
+            }
+          ]
+        },
+        {
+          "function_name": "logBatchValidationErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 40
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "reports",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "validationResult",
+              "variable_description": "",
+              "variable_count": 1
+            }
+          ]
+        },
+        {
+          "function_name": "logDetailedErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 38
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 7
+            },
+            {
+              "variable_name": "reports",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "violations",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        },
+        {
+          "function_name": "logFieldValidation",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 33
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "value",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "logValidationErrors",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 11
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            }
+          ]
+        },
+        {
+          "function_name": "logValidationReport",
+          "function_description": "",
+          "variables": [
+            {
+              "variable_name": "_logger",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "_tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "end",
+              "variable_description": "",
+              "variable_count": 1
+            },
+            {
+              "variable_name": "errors",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "errorsByField",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "field",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "generalErrors",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "i",
+              "variable_description": "",
+              "variable_count": 38
+            },
+            {
+              "variable_name": "isValid",
+              "variable_description": "",
+              "variable_count": 4
+            },
+            {
+              "variable_name": "logEntry",
+              "variable_description": "",
+              "variable_count": 2
+            },
+            {
+              "variable_name": "report",
+              "variable_description": "",
+              "variable_count": 6
+            },
+            {
+              "variable_name": "tableName",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "timestamp",
+              "variable_description": "",
+              "variable_count": 3
+            },
+            {
+              "variable_name": "violations",
+              "variable_description": "",
+              "variable_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "supabase_config",
+      "file_description": "",
+      "functions": []
+    }
+  ]
+}

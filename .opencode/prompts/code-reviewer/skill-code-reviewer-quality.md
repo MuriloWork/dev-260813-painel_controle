@@ -1,0 +1,47 @@
+# 1. dev workflow 
+
+- plan 
+	- prd 
+		- funções negócio 
+		- stack: dart, python, ps1, sqlite, api  
+		- UI: flutter, web, shell 
+	- srd 
+		- funções de negócio 
+			- arquitetura, folders, files 
+				- classes, métodos, objetos 
+		- dados de negócio 
+			- documentos, schemas, tabelas 
+				- objetos, campos 
+		- descrições: responsabilidades, lógicas, requisitos, restrições 
+		- review rules: quality, tag system 
+	- plano: 
+		- etapas, todo 
+		- control maps 
+			- **code map**: [files, classes, métodos] x [funções negócio] = tags [pendencia, maturidade] 
+				- pendencia: [novo, refatorar, manter, eliminar] 
+				- maturidade: [descrições, code block, quality, test] 
+- code 
+	- coding 
+	- review: quality 
+		- input prompt 
+			- instruções 
+			- var paths map 
+				- srd: seções [descrições, tag system] 
+				- code control map 
+				- code files 
+		- agent rules 
+			- permissions: tools, ~~skills~~ 
+			- var paths map {placeholders}
+			- fix paths map 
+				- output template 
+				- skills 
+				- aux files: json 
+			- workflow, regras para chamar skills 
+		- skills 
+			- code-spec-compliance 
+				- paths map: srd [descrições, tag system] 
+				- rules: conformidade com descrições, checklist 
+			- code-quality
+				- paths map: code control map, code files, srd [tag system] 
+				- rules: hierarquia, nomenclatura, complexidade  
+	- test 

@@ -1,0 +1,16 @@
+[
+  {
+    "file_path": "painel_controle_srd_02.md",
+    "start_line": 267,
+    "type": "code",
+    "depth": 0,
+    "h1": "4. arquitetura de funções",
+    "h2": "4.1. resumo",
+    "h3": "",
+    "h4": "",
+    "h5": "",
+    "h6": "",
+    "lang": "",
+    "value": "- [automatic] update PRD: [PRD_00, template_PRD] -> PRD_01\n- [automatic] update AGENTS.md: [AGENTS, PRD_01] -> AGENTS.md\n- [session] update PRD\n- [automatic] create SRD: [PRD_02, template_SRD] -> SRD_00\n- loop update SRD\n  - [session] update SRD\n  - [automatic] parse [PRD, SRD] -> [json, sqlite]\n  - [automatic] cross-reference spec vs code -> gaps_report.md\n  - [agent] review SRD -> review_srd_{version}.md\n- [session] update tables [naming_rules, variables_rules, data_object_rules, orchestrator_rules]\n- [agent] create session_code_blocks\n- loop update session_code_blocks\n  - [automatic] parse [SRD, session_code_blocks] -> [json, sqlite]\n  - [agent] review session_code_blocks -> review_code_blocks_{version}.md\n  - [session] update session_code_blocks\n- [agent] create code_scripts\n- loop update code_scripts\n  - [automatic] parse code_scripts -> [json, sqlite]\n  - [automatic] cross-reference spec vs code -> gaps_report.md\n  - [automatic] lint code_scripts -> violations.json\n  - [agent] review code_scripts -> review_code_scripts_{version}.md\n  - [session] update [SRD, session_code_blocks, code_scripts]\n- loop update [SRD, session_code_blocks, code_scripts]\n  - [automatic] parse [SRD, session_code_blocks, code_scripts] -> [json, sqlite]\n  - [automatic] cross-reference spec vs code -> gaps_report.md\n  - [automatic] lint code_scripts -> violations.json\n  - [agent] review [SRD, session_code_blocks, code_scripts] -> consolidated review\n  - [session] update [SRD, session_code_blocks, code_scripts]\n  - [session] update tables\n"
+  }
+]

@@ -1,0 +1,14 @@
+.env
+.temp/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.ffs_db
+*.sqlite
+*.sqlite3
+src/config/credentials/
+docs/sessions/.logs/
+*.xlsx
+.venv/
+venv/

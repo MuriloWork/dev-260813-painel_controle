@@ -1,0 +1,1242 @@
+[
+  {
+    "line": 1,
+    "column": 1,
+    "script_string": "import 'dart:convert';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 2,
+    "column": 1,
+    "script_string": "import 'dart:io';",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 3,
+    "column": 1,
+    "script_string": "import '../models/post_models.dart';",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 4,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 5,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 6,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 7,
+    "column": 1,
+    "script_string": "// BuildAssetsContent — scan assets (etapa 1 do pipeline)",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 8,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 9,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 10,
+    "column": 1,
+    "script_string": "class BuildAssetsContent {",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 11,
+    "column": 3,
+    "script_string": "static Future<List<Map<String, dynamic>>> resolveAssetsContent(",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 12,
+    "column": 5,
+    "script_string": "String assetsDir,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 13,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 14,
+    "column": 5,
+    "script_string": "return await AssetsEntries.scanAssets(assetsDir);",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 15,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 16,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 17,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 18,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 19,
+    "column": 1,
+    "script_string": "// BuildJsonPostConfig — resolve posts config (etapa 2 do pipeline)",
+    "comment": "",
+    "tag": "",
+    "length": 67
+  },
+  {
+    "line": 20,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 21,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 22,
+    "column": 1,
+    "script_string": "class BuildJsonPostConfig {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 23,
+    "column": 3,
+    "script_string": "static List<Map<String, dynamic>> resolvePostsConfig(",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 24,
+    "column": 5,
+    "script_string": "List<Map<String, dynamic>> groups,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 25,
+    "column": 5,
+    "script_string": "String assetsDir,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 26,
+    "column": 3,
+    "script_string": ") {",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 27,
+    "column": 5,
+    "script_string": "return PostsConfig.toPostsConfig(groups, assetsDir);",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 28,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 29,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 30,
+    "column": 3,
+    "script_string": "static Future<void> savePostsConfigToJson(",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 31,
+    "column": 5,
+    "script_string": "String modelPath,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 32,
+    "column": 5,
+    "script_string": "List<Map<String, dynamic>> postsConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 33,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 34,
+    "column": 5,
+    "script_string": "final data = {'posts': postsConfig};",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 35,
+    "column": 5,
+    "script_string": "await File(modelPath).writeAsString(",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 36,
+    "column": 7,
+    "script_string": "const JsonEncoder.withIndent('  ').convert(data),",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 37,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 38,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 39,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 40,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 41,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 42,
+    "column": 1,
+    "script_string": "// BuildJsonPostContent — resolve posts content (etapa 3 do pipeline)",
+    "comment": "",
+    "tag": "",
+    "length": 69
+  },
+  {
+    "line": 43,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 44,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 45,
+    "column": 1,
+    "script_string": "class BuildJsonPostContent {",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 46,
+    "column": 3,
+    "script_string": "static Future<List<Map<String, dynamic>>> resolvePostsContent(",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 47,
+    "column": 5,
+    "script_string": "String inputPath,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 48,
+    "column": 5,
+    "script_string": "String outputPath,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 49,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 50,
+    "column": 5,
+    "script_string": "await PostsContent.toPostsContent(inputPath, outputPath);",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 51,
+    "column": 5,
+    "script_string": "final raw = jsonDecode(await File(outputPath).readAsString());",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 52,
+    "column": 5,
+    "script_string": "return (raw['posts'] as List<dynamic>).cast<Map<String, dynamic>>();",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 53,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 54,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 55,
+    "column": 3,
+    "script_string": "static Future<void> savePostsContentToJson(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 56,
+    "column": 5,
+    "script_string": "String modelPath,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 57,
+    "column": 5,
+    "script_string": "List<Map<String, dynamic>> postsContent,",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 58,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 59,
+    "column": 5,
+    "script_string": "final data = {'posts': postsContent};",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 60,
+    "column": 5,
+    "script_string": "await File(modelPath).writeAsString(",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 61,
+    "column": 7,
+    "script_string": "const JsonEncoder.withIndent('  ').convert(data),",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 62,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 63,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 64,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 65,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 66,
+    "column": 1,
+    "script_string": "class BuildFinalPayload {",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 67,
+    "column": 3,
+    "script_string": "static Future<List<Map<String, dynamic>>> resolveFinalPayload(",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 68,
+    "column": 5,
+    "script_string": "String inputPath,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 69,
+    "column": 5,
+    "script_string": "String outputPath,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 70,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 71,
+    "column": 5,
+    "script_string": "await PostsPayload.toPostsPayload(inputPath, outputPath);",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 72,
+    "column": 5,
+    "script_string": "final raw = jsonDecode(await File(outputPath).readAsString());",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 73,
+    "column": 5,
+    "script_string": "return (raw['posts'] as List<dynamic>).cast<Map<String, dynamic>>();",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 74,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 75,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 76,
+    "column": 3,
+    "script_string": "static Future<void> savePostsPayloadToJson(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 77,
+    "column": 5,
+    "script_string": "String modelPath,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 78,
+    "column": 5,
+    "script_string": "List<Map<String, dynamic>> payloads,",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 79,
+    "column": 3,
+    "script_string": ") async {",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 80,
+    "column": 5,
+    "script_string": "final data = {'posts': payloads};",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 81,
+    "column": 5,
+    "script_string": "await File(modelPath).writeAsString(",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 82,
+    "column": 7,
+    "script_string": "const JsonEncoder.withIndent('  ').convert(data),",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 83,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 84,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 85,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 86,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> requestPayload(",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 87,
+    "column": 5,
+    "script_string": "Map<String, dynamic> postEntry,",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 88,
+    "column": 3,
+    "script_string": ") {",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 89,
+    "column": 5,
+    "script_string": "final platform = postEntry['platform'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 90,
+    "column": 5,
+    "script_string": "final contentType = postEntry['content_type'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 91,
+    "column": 5,
+    "script_string": "final mediaType = postEntry['media_type'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 92,
+    "column": 5,
+    "script_string": "final body = Map<String, dynamic>.from(",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 93,
+    "column": 7,
+    "script_string": "postEntry['body'] as Map<String, dynamic>,",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 94,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 95,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 96,
+    "column": 5,
+    "script_string": "String endpointTemplate;",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 97,
+    "column": 5,
+    "script_string": "String uploadFlow;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 98,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 99,
+    "column": 5,
+    "script_string": "if (platform == 'facebook') {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 100,
+    "column": 7,
+    "script_string": "switch (contentType) {",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 101,
+    "column": 9,
+    "script_string": "case 'feed':",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 102,
+    "column": 11,
+    "script_string": "switch (mediaType) {",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 103,
+    "column": 13,
+    "script_string": "case 'text':",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 104,
+    "column": 15,
+    "script_string": "endpointTemplate = '/{id}/feed';",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 105,
+    "column": 15,
+    "script_string": "uploadFlow = 'simple';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 106,
+    "column": 13,
+    "script_string": "case 'photo':",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 107,
+    "column": 15,
+    "script_string": "endpointTemplate = '/{id}/photos';",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 108,
+    "column": 15,
+    "script_string": "uploadFlow = 'simple';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 109,
+    "column": 13,
+    "script_string": "case 'video':",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 110,
+    "column": 15,
+    "script_string": "endpointTemplate = '/{id}/videos';",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 111,
+    "column": 15,
+    "script_string": "uploadFlow = 'resumable';",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 112,
+    "column": 13,
+    "script_string": "default:",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 113,
+    "column": 15,
+    "script_string": "throw Exception('Unknown FB feed media type: $mediaType');",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 114,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 115,
+    "column": 9,
+    "script_string": "case 'reels':",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 116,
+    "column": 11,
+    "script_string": "endpointTemplate = '/{id}/video_reels';",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 117,
+    "column": 11,
+    "script_string": "uploadFlow = 'threeStep';",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 118,
+    "column": 9,
+    "script_string": "case 'stories':",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 119,
+    "column": 11,
+    "script_string": "if (mediaType == 'photo') {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 120,
+    "column": 13,
+    "script_string": "endpointTemplate = '/{id}/photos';",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 121,
+    "column": 13,
+    "script_string": "uploadFlow = 'twoStep';",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 122,
+    "column": 11,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 123,
+    "column": 13,
+    "script_string": "endpointTemplate = '/{id}/video_stories';",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 124,
+    "column": 13,
+    "script_string": "uploadFlow = 'threeStep';",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 125,
+    "column": 11,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 126,
+    "column": 9,
+    "script_string": "default:",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 127,
+    "column": 11,
+    "script_string": "throw Exception('Unknown FB content type: $contentType');",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 128,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 129,
+    "column": 5,
+    "script_string": "} else if (platform == 'instagram') {",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 130,
+    "column": 7,
+    "script_string": "endpointTemplate = '/{id}/media';",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 131,
+    "column": 7,
+    "script_string": "switch (contentType) {",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 132,
+    "column": 9,
+    "script_string": "case 'feed':",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 133,
+    "column": 11,
+    "script_string": "uploadFlow = mediaType == 'photo' ? 'igContainer' : 'igResumable';",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 134,
+    "column": 9,
+    "script_string": "case 'reels':",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 135,
+    "column": 11,
+    "script_string": "uploadFlow = 'igResumable';",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 136,
+    "column": 9,
+    "script_string": "case 'stories':",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 137,
+    "column": 11,
+    "script_string": "uploadFlow = mediaType == 'photo' ? 'igContainer' : 'igResumable';",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 138,
+    "column": 9,
+    "script_string": "default:",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 139,
+    "column": 11,
+    "script_string": "throw Exception('Unknown IG content type: $contentType');",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 140,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 141,
+    "column": 5,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 142,
+    "column": 7,
+    "script_string": "throw Exception('Unknown platform: $platform');",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 143,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 144,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 145,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 146,
+    "column": 7,
+    "script_string": "'endpoint_template': endpointTemplate,",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 147,
+    "column": 7,
+    "script_string": "'method': 'POST',",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 148,
+    "column": 7,
+    "script_string": "'body': body,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 149,
+    "column": 7,
+    "script_string": "'upload_flow': uploadFlow,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 150,
+    "column": 7,
+    "script_string": "'post_config': postEntry['post_config'],",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 151,
+    "column": 7,
+    "script_string": "'post_content': postEntry['post_content'],",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 152,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 153,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 154,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 155,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  }
+]

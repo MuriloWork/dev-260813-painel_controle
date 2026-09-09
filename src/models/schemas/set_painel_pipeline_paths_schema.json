@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meta-api.local/schemas/set_painel_pipeline_paths.json",
+  "title": "Painel Pipeline Paths",
+  "description": "Define PAINEL_ROOT e tool paths (Dart SDK). Sem relative_paths de scripts (hardcoded em painel_settings.py)",
+  "type": "object",
+  "required": ["PAINEL_ROOT", "tool_paths", "absolute_paths"],
+  "properties": {
+    "PAINEL_ROOT": {
+      "description": "Raiz do painel. \".\" = parent.parent de ENV_PAINEL = dev/",
+      "type": "string",
+      "default": "."
+    },
+    "tool_paths": {
+      "description": "Paths absolutos de ferramentas do projeto",
+      "type": "object",
+      "required": ["ABS_PATH_DART_EXECUTABLE", "ABS_PATH_DART_SDK"],
+      "properties": {
+        "ABS_PATH_DART_EXECUTABLE": {
+          "type": "string",
+          "pattern": "^[a-zA-Z]:\\\\"
+        },
+        "ABS_PATH_DART_SDK": {
+          "type": "string",
+          "pattern": "^[a-zA-Z]:\\\\"
+        }
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-zA-Z]:\\\\"
+      }
+    },
+    "absolute_paths": {
+      "description": "Preenchido E SALVO por painel_settings.py",
+      "type": "object",
+      "properties": {
+        "PAINEL_ROOT": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" },
+        "tool_paths": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "pattern": "^[a-zA-Z]:\\\\" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

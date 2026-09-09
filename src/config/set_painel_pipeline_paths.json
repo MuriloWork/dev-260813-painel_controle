@@ -1,0 +1,14 @@
+{
+  "PAINEL_ROOT": ".",
+  "tool_paths": {
+    "ABS_PATH_DART_EXECUTABLE": "C:\\Users\\muril\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+    "ABS_PATH_DART_SDK": "C:\\Users\\muril\\flutter\\bin\\cache\\dart-sdk"
+  },
+  "absolute_paths": {
+    "PAINEL_ROOT": "C:\\Users\\muril\\OneDrive\\01 mycloud\\01 sistMu\\10.01 scripts\\01_root\\main\\260511_meta_api\\dev",
+    "tool_paths": {
+      "ABS_PATH_DART_EXECUTABLE": "C:\\Users\\muril\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+      "ABS_PATH_DART_SDK": "C:\\Users\\muril\\flutter\\bin\\cache\\dart-sdk"
+    }
+  }
+}

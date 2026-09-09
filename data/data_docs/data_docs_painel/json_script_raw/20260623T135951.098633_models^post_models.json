@@ -1,0 +1,3946 @@
+[
+  {
+    "line": 1,
+    "column": 1,
+    "script_string": "import 'dart:convert';",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 2,
+    "column": 1,
+    "script_string": "import 'dart:io';",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 3,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 4,
+    "column": 1,
+    "script_string": "int _toUnix(dynamic value) {",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 5,
+    "column": 3,
+    "script_string": "final dt = value is DateTime ? value : DateTime.parse(value as String);",
+    "comment": "",
+    "tag": "",
+    "length": 71
+  },
+  {
+    "line": 6,
+    "column": 3,
+    "script_string": "return (dt.toUtc().millisecondsSinceEpoch / 1000).round();",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 7,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 8,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 9,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 10,
+    "column": 1,
+    "script_string": "// AssetsEntries — scan assets, parse, build entries",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 11,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 12,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 13,
+    "column": 1,
+    "script_string": "enum PostContentType { textOnly, textWithMedia, mediaOnly }",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 14,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 15,
+    "column": 1,
+    "script_string": "class AssetsEntries {",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 16,
+    "column": 3,
+    "script_string": "/// Cria um map de asset individual com [7 campos obrigatórios/opcionais].",
+    "comment": "",
+    "tag": "",
+    "length": 74
+  },
+  {
+    "line": 17,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> assetsEntry({",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 18,
+    "column": 5,
+    "script_string": "required String fileName,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 19,
+    "column": 5,
+    "script_string": "required DateTime timestamp,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 20,
+    "column": 5,
+    "script_string": "required PostContentType type,",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 21,
+    "column": 5,
+    "script_string": "required String mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 22,
+    "column": 5,
+    "script_string": "String? title,",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 23,
+    "column": 5,
+    "script_string": "String? mediaFile,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 24,
+    "column": 5,
+    "script_string": "String? body,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 25,
+    "column": 3,
+    "script_string": "}) => {",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 26,
+    "column": 5,
+    "script_string": "'fileName': fileName, 'timestamp': timestamp,",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 27,
+    "column": 5,
+    "script_string": "'type': type, 'mediaType': mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 28,
+    "column": 5,
+    "script_string": "'title': title, 'mediaFile': mediaFile, 'body': body,",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 29,
+    "column": 3,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 30,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 31,
+    "column": 3,
+    "script_string": "/// Cria um map de grupo de assets com [platform, contentType, entries].",
+    "comment": "",
+    "tag": "",
+    "length": 72
+  },
+  {
+    "line": 32,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> assetsContent({",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 33,
+    "column": 5,
+    "script_string": "required String platform,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 34,
+    "column": 5,
+    "script_string": "required String contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 35,
+    "column": 5,
+    "script_string": "required List<Map<String, dynamic>> entries,",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 36,
+    "column": 3,
+    "script_string": "}) => {",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 37,
+    "column": 5,
+    "script_string": "'platform': platform, 'contentType': contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 38,
+    "column": 5,
+    "script_string": "'entries': entries,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 39,
+    "column": 3,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 40,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 41,
+    "column": 3,
+    "script_string": "static Future<List<Map<String, dynamic>>> scanAssets(",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 42,
+    "column": 7,
+    "script_string": "String assetsDir) async {",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 43,
+    "column": 5,
+    "script_string": "final groups = <Map<String, dynamic>>[];",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 44,
+    "column": 5,
+    "script_string": "final dir = Directory(assetsDir);",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 45,
+    "column": 5,
+    "script_string": "if (!dir.existsSync()) return groups;",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 46,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 47,
+    "column": 5,
+    "script_string": "final subs = await dir.list().toList();",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 48,
+    "column": 5,
+    "script_string": "for (final sub in subs) {",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 49,
+    "column": 7,
+    "script_string": "if (sub is! Directory) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 50,
+    "column": 7,
+    "script_string": "final name = sub.path.split('\\\\').last;",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 51,
+    "column": 7,
+    "script_string": "if (!name.contains('.')) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 52,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 53,
+    "column": 7,
+    "script_string": "final parts = name.split('.');",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 54,
+    "column": 7,
+    "script_string": "if (parts.length < 2) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 55,
+    "column": 7,
+    "script_string": "final platform = parts[0];",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 56,
+    "column": 7,
+    "script_string": "final contentType = parts[1];",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 57,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 58,
+    "column": 7,
+    "script_string": "final files = await Directory(sub.path).list().toList();",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 59,
+    "column": 7,
+    "script_string": "final entries = <Map<String, dynamic>>[];",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 60,
+    "column": 7,
+    "script_string": "for (final file in files) {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 61,
+    "column": 9,
+    "script_string": "if (file is! File) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 62,
+    "column": 9,
+    "script_string": "final fileName = file.path.split('\\\\').last;",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 63,
+    "column": 9,
+    "script_string": "final ext = fileName.split('.').last.toLowerCase();",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 64,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 65,
+    "column": 9,
+    "script_string": "final timestamp = AssetsEntries.parseTimestamp(fileName);",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 66,
+    "column": 9,
+    "script_string": "if (timestamp == null) continue;",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 67,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 68,
+    "column": 9,
+    "script_string": "PostContentType type;",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 69,
+    "column": 9,
+    "script_string": "String? title;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 70,
+    "column": 9,
+    "script_string": "String? mediaFile;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 71,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 72,
+    "column": 9,
+    "script_string": "if (ext == 'md') {",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 73,
+    "column": 11,
+    "script_string": "final fm = await AssetsEntries.parseFrontmatter(file.path);",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 74,
+    "column": 11,
+    "script_string": "title = fm?.title;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 75,
+    "column": 11,
+    "script_string": "mediaFile = fm?.mediaFile;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 76,
+    "column": 11,
+    "script_string": "final hasMedia = mediaFile != null && mediaFile.isNotEmpty;",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 77,
+    "column": 11,
+    "script_string": "type = hasMedia",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 78,
+    "column": 15,
+    "script_string": "? PostContentType.textWithMedia",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 79,
+    "column": 15,
+    "script_string": ": PostContentType.textOnly;",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 80,
+    "column": 9,
+    "script_string": "} else if (ext == 'jpg' || ext == 'png' || ext == 'mp4') {",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 81,
+    "column": 11,
+    "script_string": "type = PostContentType.mediaOnly;",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 82,
+    "column": 9,
+    "script_string": "} else {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 83,
+    "column": 11,
+    "script_string": "continue;",
+    "comment": "",
+    "tag": "",
+    "length": 9
+  },
+  {
+    "line": 84,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 85,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 86,
+    "column": 9,
+    "script_string": "final mediaType = (type == PostContentType.textOnly) ? 'text'",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 87,
+    "column": 13,
+    "script_string": ": (ext == 'jpg' || ext == 'png') ? 'photo' : 'video';",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 88,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 89,
+    "column": 9,
+    "script_string": "final entry = assetsEntry(",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 90,
+    "column": 11,
+    "script_string": "fileName: fileName, timestamp: timestamp,",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 91,
+    "column": 11,
+    "script_string": "type: type, mediaType: mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 92,
+    "column": 11,
+    "script_string": "title: title, mediaFile: mediaFile,",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 93,
+    "column": 9,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 94,
+    "column": 9,
+    "script_string": "if (type == PostContentType.textWithMedia || type == PostContentType.textOnly) {",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 95,
+    "column": 11,
+    "script_string": "await _loadBody(entry, assetsDir, platform, contentType);",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 96,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 97,
+    "column": 9,
+    "script_string": "entries.add(entry);",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 98,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 99,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 100,
+    "column": 7,
+    "script_string": "entries.sort((a, b) =>",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 101,
+    "column": 11,
+    "script_string": "(a['timestamp'] as DateTime).compareTo(b['timestamp'] as DateTime));",
+    "comment": "",
+    "tag": "",
+    "length": 68
+  },
+  {
+    "line": 102,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 103,
+    "column": 7,
+    "script_string": "groups.add(assetsContent(",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 104,
+    "column": 9,
+    "script_string": "platform: platform, contentType: contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 105,
+    "column": 9,
+    "script_string": "entries: entries,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 106,
+    "column": 7,
+    "script_string": "));",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 107,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 108,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 109,
+    "column": 5,
+    "script_string": "return groups;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 110,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 111,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 112,
+    "column": 3,
+    "script_string": "static DateTime? parseTimestamp(String fileName) {",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 113,
+    "column": 5,
+    "script_string": "try {",
+    "comment": "",
+    "tag": "",
+    "length": 5
+  },
+  {
+    "line": 114,
+    "column": 7,
+    "script_string": "final parts = fileName.split('_');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 115,
+    "column": 7,
+    "script_string": "if (parts.length < 2) return null;",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 116,
+    "column": 7,
+    "script_string": "final datePart = parts[0];",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 117,
+    "column": 7,
+    "script_string": "final timePart = parts[1];",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 118,
+    "column": 7,
+    "script_string": "if (datePart.length != 8 || timePart.length < 6) return null;",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 119,
+    "column": 7,
+    "script_string": "final y = int.parse(datePart.substring(0, 4));",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 120,
+    "column": 7,
+    "script_string": "final m = int.parse(datePart.substring(4, 6));",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 121,
+    "column": 7,
+    "script_string": "final d = int.parse(datePart.substring(6, 8));",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 122,
+    "column": 7,
+    "script_string": "final h = int.parse(timePart.substring(0, 2));",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 123,
+    "column": 7,
+    "script_string": "final min = int.parse(timePart.substring(2, 4));",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 124,
+    "column": 7,
+    "script_string": "final s = int.parse(timePart.substring(4, 6));",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 125,
+    "column": 7,
+    "script_string": "return DateTime(y, m, d, h, min, s);",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 126,
+    "column": 5,
+    "script_string": "} catch (_) {",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 127,
+    "column": 7,
+    "script_string": "return null;",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 128,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 129,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 130,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 131,
+    "column": 3,
+    "script_string": "static Future<({String? title, String? mediaFile})?> parseFrontmatter(",
+    "comment": "",
+    "tag": "",
+    "length": 70
+  },
+  {
+    "line": 132,
+    "column": 7,
+    "script_string": "String filePath) async {",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 133,
+    "column": 5,
+    "script_string": "final file = File(filePath);",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 134,
+    "column": 5,
+    "script_string": "if (!file.existsSync()) return null;",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 135,
+    "column": 5,
+    "script_string": "final content = await file.readAsString();",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 136,
+    "column": 5,
+    "script_string": "final lines = content.split('\\n');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 137,
+    "column": 5,
+    "script_string": "if (lines.isEmpty || lines[0].trim() != '---') return null;",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 138,
+    "column": 5,
+    "script_string": "String? title;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 139,
+    "column": 5,
+    "script_string": "String? mediaFile;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 140,
+    "column": 5,
+    "script_string": "for (int i = 1; i < lines.length; i++) {",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 141,
+    "column": 7,
+    "script_string": "final line = lines[i].trim();",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 142,
+    "column": 7,
+    "script_string": "if (line == '---') break;",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 143,
+    "column": 7,
+    "script_string": "if (line.startsWith('title:')) {",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 144,
+    "column": 9,
+    "script_string": "title = line.substring(6).trim();",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 145,
+    "column": 7,
+    "script_string": "} else if (line.startsWith('media_file:')) {",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 146,
+    "column": 9,
+    "script_string": "final val = line.substring(11).trim();",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 147,
+    "column": 9,
+    "script_string": "mediaFile = val.isNotEmpty ? val : null;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 148,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 149,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 150,
+    "column": 5,
+    "script_string": "return (title: title, mediaFile: mediaFile);",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 151,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 152,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 153,
+    "column": 3,
+    "script_string": "static Future<void> _loadBody(Map<String, dynamic> entry,",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 154,
+    "column": 7,
+    "script_string": "String assetsDir, String platform, String contentType) async {",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 155,
+    "column": 5,
+    "script_string": "final title = entry['title'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 156,
+    "column": 5,
+    "script_string": "final mediaFile = entry['mediaFile'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 157,
+    "column": 5,
+    "script_string": "if (title == null && mediaFile == null) return;",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 158,
+    "column": 5,
+    "script_string": "final fileName = entry['fileName'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 159,
+    "column": 5,
+    "script_string": "final filePath = '$assetsDir\\\\$platform.$contentType\\\\$fileName';",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 160,
+    "column": 5,
+    "script_string": "final file = File(filePath);",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 161,
+    "column": 5,
+    "script_string": "if (!file.existsSync()) return;",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 162,
+    "column": 5,
+    "script_string": "final content = await file.readAsString();",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 163,
+    "column": 5,
+    "script_string": "final lines = content.split('\\n');",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 164,
+    "column": 5,
+    "script_string": "int startIdx = 0;",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 165,
+    "column": 5,
+    "script_string": "if (lines.isNotEmpty && lines[0].trim() == '---') {",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 166,
+    "column": 7,
+    "script_string": "for (int i = 1; i < lines.length; i++) {",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 167,
+    "column": 9,
+    "script_string": "if (lines[i].trim() == '---') {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 168,
+    "column": 11,
+    "script_string": "startIdx = i + 1;",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 169,
+    "column": 11,
+    "script_string": "break;",
+    "comment": "",
+    "tag": "",
+    "length": 6
+  },
+  {
+    "line": 170,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 171,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 172,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 173,
+    "column": 5,
+    "script_string": "entry['body'] = lines.skip(startIdx).join('\\n').trim();",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 174,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 175,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 176,
+    "column": 3,
+    "script_string": "static String _formatTimestamp(DateTime dt) {",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 177,
+    "column": 5,
+    "script_string": "final y = dt.year.toString();",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 178,
+    "column": 5,
+    "script_string": "final m = dt.month.toString().padLeft(2, '0');",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 179,
+    "column": 5,
+    "script_string": "final d = dt.day.toString().padLeft(2, '0');",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 180,
+    "column": 5,
+    "script_string": "final h = dt.hour.toString().padLeft(2, '0');",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 181,
+    "column": 5,
+    "script_string": "final min = dt.minute.toString().padLeft(2, '0');",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 182,
+    "column": 5,
+    "script_string": "final s = dt.second.toString().padLeft(2, '0');",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 183,
+    "column": 5,
+    "script_string": "return '$y-$m-${d}T$h:$min:${s}-03:00';",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 184,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 185,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 186,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 187,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 188,
+    "column": 1,
+    "script_string": "// PostsConfig — build post_config Map from assets entries",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 189,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 190,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 191,
+    "column": 1,
+    "script_string": "class PostsConfig {",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 192,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> postsConfig({",
+    "comment": "",
+    "tag": "",
+    "length": 41
+  },
+  {
+    "line": 193,
+    "column": 5,
+    "script_string": "required String platform,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 194,
+    "column": 5,
+    "script_string": "required String contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 195,
+    "column": 5,
+    "script_string": "required String mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 196,
+    "column": 5,
+    "script_string": "required bool published,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 197,
+    "column": 5,
+    "script_string": "String? title,",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 198,
+    "column": 5,
+    "script_string": "String? body,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 199,
+    "column": 5,
+    "script_string": "String? imagePath,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 200,
+    "column": 5,
+    "script_string": "String? videoPath,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 201,
+    "column": 5,
+    "script_string": "String? scheduledPublishTime,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 202,
+    "column": 5,
+    "script_string": "Map<String, dynamic>? retryConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 203,
+    "column": 3,
+    "script_string": "}) => {",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 204,
+    "column": 5,
+    "script_string": "'platform': platform,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 205,
+    "column": 5,
+    "script_string": "'content_type': contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 206,
+    "column": 5,
+    "script_string": "'media_type': mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 207,
+    "column": 5,
+    "script_string": "'published': published,",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 208,
+    "column": 5,
+    "script_string": "'scheduled_publish_time': scheduledPublishTime,",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 209,
+    "column": 5,
+    "script_string": "'retry_config': retryConfig ?? {'max_retries': 3, 'delay_seconds': 2},",
+    "comment": "",
+    "tag": "",
+    "length": 70
+  },
+  {
+    "line": 210,
+    "column": 5,
+    "script_string": "'text_values': title != null || body != null ? {'title': title, 'body': body} : null,",
+    "comment": "",
+    "tag": "",
+    "length": 85
+  },
+  {
+    "line": 211,
+    "column": 5,
+    "script_string": "'image_path': imagePath,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 212,
+    "column": 5,
+    "script_string": "'video_path': videoPath,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 213,
+    "column": 3,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 214,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 215,
+    "column": 3,
+    "script_string": "static List<Map<String, dynamic>> toPostsConfig(",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 216,
+    "column": 5,
+    "script_string": "List<Map<String, dynamic>> groups,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 217,
+    "column": 5,
+    "script_string": "String assetsDir,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 218,
+    "column": 3,
+    "script_string": ") {",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 219,
+    "column": 5,
+    "script_string": "final result = <Map<String, dynamic>>[];",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 220,
+    "column": 5,
+    "script_string": "for (final group in groups) {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 221,
+    "column": 7,
+    "script_string": "final entries = group['entries'] as List<Map<String, dynamic>>;",
+    "comment": "",
+    "tag": "",
+    "length": 63
+  },
+  {
+    "line": 222,
+    "column": 7,
+    "script_string": "final platform = group['platform'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 223,
+    "column": 7,
+    "script_string": "final contentType = group['contentType'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 51
+  },
+  {
+    "line": 224,
+    "column": 7,
+    "script_string": "for (final entry in entries) {",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 225,
+    "column": 9,
+    "script_string": "final type = entry['type'] as PostContentType;",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 226,
+    "column": 9,
+    "script_string": "final mediaType = entry['mediaType'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 227,
+    "column": 9,
+    "script_string": "final timestamp = entry['timestamp'] as DateTime;",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 228,
+    "column": 9,
+    "script_string": "final nowPlus10 = DateTime.now().add(const Duration(minutes: 10));",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 229,
+    "column": 9,
+    "script_string": "final isPast = timestamp.isBefore(nowPlus10) ||",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 230,
+    "column": 13,
+    "script_string": "timestamp.isAtSameMomentAs(nowPlus10);",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 231,
+    "column": 9,
+    "script_string": "final title = entry['title'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 232,
+    "column": 9,
+    "script_string": "final body = entry['body'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 233,
+    "column": 9,
+    "script_string": "final fileName = entry['fileName'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 234,
+    "column": 9,
+    "script_string": "final mediaFile = entry['mediaFile'] as String?;",
+    "comment": "",
+    "tag": "",
+    "length": 48
+  },
+  {
+    "line": 235,
+    "column": 9,
+    "script_string": "String? imagePath;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 236,
+    "column": 9,
+    "script_string": "String? videoPath;",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 237,
+    "column": 9,
+    "script_string": "if (type == PostContentType.mediaOnly) {",
+    "comment": "",
+    "tag": "",
+    "length": 40
+  },
+  {
+    "line": 238,
+    "column": 11,
+    "script_string": "final fullPath = '$assetsDir\\\\$platform.$contentType\\\\$fileName';",
+    "comment": "",
+    "tag": "",
+    "length": 65
+  },
+  {
+    "line": 239,
+    "column": 11,
+    "script_string": "if (mediaType == 'photo') imagePath = fullPath;",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 240,
+    "column": 11,
+    "script_string": "else videoPath = fullPath;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 241,
+    "column": 9,
+    "script_string": "} else if (mediaFile != null) {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 242,
+    "column": 11,
+    "script_string": "final fullPath = '$assetsDir\\\\assets\\\\$mediaFile';",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 243,
+    "column": 11,
+    "script_string": "if (mediaType == 'photo') imagePath = fullPath;",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 244,
+    "column": 11,
+    "script_string": "else videoPath = fullPath;",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 245,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 246,
+    "column": 9,
+    "script_string": "final config = postsConfig(",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 247,
+    "column": 11,
+    "script_string": "platform: platform,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 248,
+    "column": 11,
+    "script_string": "contentType: contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 249,
+    "column": 11,
+    "script_string": "mediaType: mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 250,
+    "column": 11,
+    "script_string": "published: isPast,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 251,
+    "column": 11,
+    "script_string": "title: title,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 252,
+    "column": 11,
+    "script_string": "body: body,",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 253,
+    "column": 11,
+    "script_string": "imagePath: imagePath,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 254,
+    "column": 11,
+    "script_string": "videoPath: videoPath,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 255,
+    "column": 11,
+    "script_string": "scheduledPublishTime: isPast ? null : AssetsEntries._formatTimestamp(timestamp),",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 256,
+    "column": 9,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 257,
+    "column": 9,
+    "script_string": "result.add({",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 258,
+    "column": 11,
+    "script_string": "'post_config': config,",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 259,
+    "column": 11,
+    "script_string": "'post_content': <String, dynamic>{},",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 260,
+    "column": 9,
+    "script_string": "});",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 261,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 262,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 263,
+    "column": 5,
+    "script_string": "return result;",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 264,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 265,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 266,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 267,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 268,
+    "column": 1,
+    "script_string": "// PostsContent — resolve post_content Map from post_config",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 269,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 270,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 271,
+    "column": 1,
+    "script_string": "class PostsContent {",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 272,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> postsContent({",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 273,
+    "column": 5,
+    "script_string": "required String platform,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 274,
+    "column": 5,
+    "script_string": "required String contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 275,
+    "column": 5,
+    "script_string": "required String mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 276,
+    "column": 5,
+    "script_string": "required bool published,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 277,
+    "column": 5,
+    "script_string": "String? title,",
+    "comment": "",
+    "tag": "",
+    "length": 14
+  },
+  {
+    "line": 278,
+    "column": 5,
+    "script_string": "String? body,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 279,
+    "column": 5,
+    "script_string": "String? imagePath,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 280,
+    "column": 5,
+    "script_string": "String? videoPath,",
+    "comment": "",
+    "tag": "",
+    "length": 18
+  },
+  {
+    "line": 281,
+    "column": 5,
+    "script_string": "String? scheduledPublishTime,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 282,
+    "column": 5,
+    "script_string": "Map<String, dynamic>? retryConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 283,
+    "column": 3,
+    "script_string": "}) {",
+    "comment": "",
+    "tag": "",
+    "length": 4
+  },
+  {
+    "line": 284,
+    "column": 5,
+    "script_string": "final textField = _textFieldFor(platform, contentType, mediaType);",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 285,
+    "column": 5,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 286,
+    "column": 7,
+    "script_string": "'platform': platform,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 287,
+    "column": 7,
+    "script_string": "'content_type': contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 288,
+    "column": 7,
+    "script_string": "'media_type': mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 289,
+    "column": 7,
+    "script_string": "'published': published,",
+    "comment": "",
+    "tag": "",
+    "length": 23
+  },
+  {
+    "line": 290,
+    "column": 7,
+    "script_string": "'scheduled_publish_time': scheduledPublishTime,",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 291,
+    "column": 7,
+    "script_string": "'retry_config': retryConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 292,
+    "column": 7,
+    "script_string": "'image_path': imagePath,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 293,
+    "column": 7,
+    "script_string": "'video_path': videoPath,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 294,
+    "column": 7,
+    "script_string": "'title': title,",
+    "comment": "",
+    "tag": "",
+    "length": 15
+  },
+  {
+    "line": 295,
+    "column": 7,
+    "script_string": "if (body != null && textField != null) textField: body,",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 296,
+    "column": 5,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 297,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 298,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 299,
+    "column": 3,
+    "script_string": "static Future<void> toPostsContent(String inputPath, String outputPath) async {",
+    "comment": "",
+    "tag": "",
+    "length": 79
+  },
+  {
+    "line": 300,
+    "column": 5,
+    "script_string": "final raw = jsonDecode(await File(inputPath).readAsString());",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 301,
+    "column": 5,
+    "script_string": "final items = (raw['posts'] as List<dynamic>).map((e) => e as Map<String, dynamic>).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 93
+  },
+  {
+    "line": 302,
+    "column": 5,
+    "script_string": "final result = items.map((item) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 303,
+    "column": 7,
+    "script_string": "final config = item['post_config'] as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 304,
+    "column": 7,
+    "script_string": "final tv = config['text_values'] as Map<String, dynamic>?;",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 305,
+    "column": 7,
+    "script_string": "final content = postsContent(",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 306,
+    "column": 9,
+    "script_string": "platform: config['platform'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 307,
+    "column": 9,
+    "script_string": "contentType: config['content_type'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 308,
+    "column": 9,
+    "script_string": "mediaType: config['media_type'] as String,",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 309,
+    "column": 9,
+    "script_string": "published: config['published'] as bool,",
+    "comment": "",
+    "tag": "",
+    "length": 39
+  },
+  {
+    "line": 310,
+    "column": 9,
+    "script_string": "title: tv?['title'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 311,
+    "column": 9,
+    "script_string": "body: tv?['body'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 312,
+    "column": 9,
+    "script_string": "imagePath: config['image_path'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 313,
+    "column": 9,
+    "script_string": "videoPath: config['video_path'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 314,
+    "column": 9,
+    "script_string": "scheduledPublishTime: config['scheduled_publish_time'] as String?,",
+    "comment": "",
+    "tag": "",
+    "length": 66
+  },
+  {
+    "line": 315,
+    "column": 9,
+    "script_string": "retryConfig: config['retry_config'] as Map<String, dynamic>?,",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 316,
+    "column": 7,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 317,
+    "column": 7,
+    "script_string": "return {'post_config': config, 'post_content': content};",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 318,
+    "column": 5,
+    "script_string": "}).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 319,
+    "column": 5,
+    "script_string": "await File(outputPath).writeAsString(",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 320,
+    "column": 7,
+    "script_string": "const JsonEncoder.withIndent('  ').convert({'posts': result}),",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 321,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 322,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 323,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 324,
+    "column": 3,
+    "script_string": "static String? _textFieldFor(",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 325,
+    "column": 5,
+    "script_string": "String platform,",
+    "comment": "",
+    "tag": "",
+    "length": 16
+  },
+  {
+    "line": 326,
+    "column": 5,
+    "script_string": "String contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 327,
+    "column": 5,
+    "script_string": "String mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 328,
+    "column": 3,
+    "script_string": ") {",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 329,
+    "column": 5,
+    "script_string": "if (platform == 'facebook') {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 330,
+    "column": 7,
+    "script_string": "if (contentType == 'feed') {",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 331,
+    "column": 9,
+    "script_string": "switch (mediaType) {",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 332,
+    "column": 11,
+    "script_string": "case 'text': return 'message';",
+    "comment": "",
+    "tag": "",
+    "length": 30
+  },
+  {
+    "line": 333,
+    "column": 11,
+    "script_string": "case 'photo': return 'caption';",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 334,
+    "column": 11,
+    "script_string": "case 'video': return 'description';",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 335,
+    "column": 9,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 336,
+    "column": 7,
+    "script_string": "} else if (contentType == 'reels') {",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 337,
+    "column": 9,
+    "script_string": "return 'description';",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 338,
+    "column": 7,
+    "script_string": "} else if (contentType == 'stories') {",
+    "comment": "",
+    "tag": "",
+    "length": 38
+  },
+  {
+    "line": 339,
+    "column": 9,
+    "script_string": "return mediaType == 'photo' ? 'caption' : 'description';",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 340,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 341,
+    "column": 5,
+    "script_string": "} else if (platform == 'instagram') {",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 342,
+    "column": 7,
+    "script_string": "return 'caption';",
+    "comment": "",
+    "tag": "",
+    "length": 17
+  },
+  {
+    "line": 343,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 344,
+    "column": 5,
+    "script_string": "return null;",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 345,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 346,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 347,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 348,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 349,
+    "column": 1,
+    "script_string": "// PostsPayload — build final API payload from post_content",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 350,
+    "column": 1,
+    "script_string": "// =============================================================================",
+    "comment": "",
+    "tag": "",
+    "length": 80
+  },
+  {
+    "line": 351,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 352,
+    "column": 1,
+    "script_string": "class PostsPayload {",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 353,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> postsPayload({",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 354,
+    "column": 5,
+    "script_string": "required String platform,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 355,
+    "column": 5,
+    "script_string": "required String contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 356,
+    "column": 5,
+    "script_string": "required String mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 357,
+    "column": 5,
+    "script_string": "required Map<String, dynamic> body,",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 358,
+    "column": 5,
+    "script_string": "Map<String, dynamic>? postConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 359,
+    "column": 5,
+    "script_string": "Map<String, dynamic>? postContent,",
+    "comment": "",
+    "tag": "",
+    "length": 34
+  },
+  {
+    "line": 360,
+    "column": 3,
+    "script_string": "}) => {",
+    "comment": "",
+    "tag": "",
+    "length": 7
+  },
+  {
+    "line": 361,
+    "column": 5,
+    "script_string": "'body': body,",
+    "comment": "",
+    "tag": "",
+    "length": 13
+  },
+  {
+    "line": 362,
+    "column": 5,
+    "script_string": "'platform': platform,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 363,
+    "column": 5,
+    "script_string": "'content_type': contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 364,
+    "column": 5,
+    "script_string": "'media_type': mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 365,
+    "column": 5,
+    "script_string": "if (postConfig != null) 'post_config': postConfig,",
+    "comment": "",
+    "tag": "",
+    "length": 50
+  },
+  {
+    "line": 366,
+    "column": 5,
+    "script_string": "if (postContent != null) 'post_content': postContent,",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 367,
+    "column": 3,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 368,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 369,
+    "column": 3,
+    "script_string": "static Future<void> toPostsPayload(String inputPath, String outputPath) async {",
+    "comment": "",
+    "tag": "",
+    "length": 79
+  },
+  {
+    "line": 370,
+    "column": 5,
+    "script_string": "final raw = jsonDecode(await File(inputPath).readAsString());",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 371,
+    "column": 5,
+    "script_string": "final items = (raw['posts'] as List<dynamic>).map((e) => e as Map<String, dynamic>).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 93
+  },
+  {
+    "line": 372,
+    "column": 5,
+    "script_string": "final result = items.map((item) {",
+    "comment": "",
+    "tag": "",
+    "length": 33
+  },
+  {
+    "line": 373,
+    "column": 7,
+    "script_string": "final config = item['post_config'] as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 59
+  },
+  {
+    "line": 374,
+    "column": 7,
+    "script_string": "final content = item['post_content'] as Map<String, dynamic>;",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 375,
+    "column": 7,
+    "script_string": "final platform = config['platform'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 46
+  },
+  {
+    "line": 376,
+    "column": 7,
+    "script_string": "final contentType = config['content_type'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 53
+  },
+  {
+    "line": 377,
+    "column": 7,
+    "script_string": "final mediaType = config['media_type'] as String;",
+    "comment": "",
+    "tag": "",
+    "length": 49
+  },
+  {
+    "line": 378,
+    "column": 7,
+    "script_string": "final body = platform == 'facebook'",
+    "comment": "",
+    "tag": "",
+    "length": 35
+  },
+  {
+    "line": 379,
+    "column": 9,
+    "script_string": "? _fbBody(contentType, mediaType, content)",
+    "comment": "",
+    "tag": "",
+    "length": 42
+  },
+  {
+    "line": 380,
+    "column": 9,
+    "script_string": ": _igBody(contentType, mediaType, content);",
+    "comment": "",
+    "tag": "",
+    "length": 43
+  },
+  {
+    "line": 381,
+    "column": 7,
+    "script_string": "return postsPayload(",
+    "comment": "",
+    "tag": "",
+    "length": 20
+  },
+  {
+    "line": 382,
+    "column": 9,
+    "script_string": "platform: platform,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 383,
+    "column": 9,
+    "script_string": "contentType: contentType,",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 384,
+    "column": 9,
+    "script_string": "mediaType: mediaType,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 385,
+    "column": 9,
+    "script_string": "body: body,",
+    "comment": "",
+    "tag": "",
+    "length": 11
+  },
+  {
+    "line": 386,
+    "column": 9,
+    "script_string": "postConfig: config,",
+    "comment": "",
+    "tag": "",
+    "length": 19
+  },
+  {
+    "line": 387,
+    "column": 9,
+    "script_string": "postContent: content,",
+    "comment": "",
+    "tag": "",
+    "length": 21
+  },
+  {
+    "line": 388,
+    "column": 7,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 389,
+    "column": 5,
+    "script_string": "}).toList();",
+    "comment": "",
+    "tag": "",
+    "length": 12
+  },
+  {
+    "line": 390,
+    "column": 5,
+    "script_string": "await File(outputPath).writeAsString(",
+    "comment": "",
+    "tag": "",
+    "length": 37
+  },
+  {
+    "line": 391,
+    "column": 7,
+    "script_string": "const JsonEncoder.withIndent('  ').convert({'posts': result}),",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 392,
+    "column": 5,
+    "script_string": ");",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 393,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 394,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 395,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> _fbBody(",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 396,
+    "column": 5,
+    "script_string": "String contentType, String mediaType, Map<String, dynamic> content,",
+    "comment": "",
+    "tag": "",
+    "length": 67
+  },
+  {
+    "line": 397,
+    "column": 3,
+    "script_string": ") {",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 398,
+    "column": 5,
+    "script_string": "if (contentType == 'feed') {",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 399,
+    "column": 7,
+    "script_string": "final isPublished = content['published'] as bool? ?? true;",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 400,
+    "column": 7,
+    "script_string": "if (mediaType == 'text') {",
+    "comment": "",
+    "tag": "",
+    "length": 26
+  },
+  {
+    "line": 401,
+    "column": 9,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 402,
+    "column": 11,
+    "script_string": "'message': content['message'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 403,
+    "column": 11,
+    "script_string": "'published': isPublished ? 'true' : 'false',",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 404,
+    "column": 11,
+    "script_string": "if (!isPublished && content['scheduled_publish_time'] != null)",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 405,
+    "column": 13,
+    "script_string": "'scheduled_publish_time':",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 406,
+    "column": 17,
+    "script_string": "_toUnix(content['scheduled_publish_time']).toString(),",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 407,
+    "column": 9,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 408,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 409,
+    "column": 7,
+    "script_string": "if (mediaType == 'photo') {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 410,
+    "column": 9,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 411,
+    "column": 11,
+    "script_string": "'file': content['image_path'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 412,
+    "column": 11,
+    "script_string": "'caption': content['caption'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 413,
+    "column": 11,
+    "script_string": "'published': isPublished ? 'true' : 'false',",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 414,
+    "column": 11,
+    "script_string": "if (!isPublished && content['scheduled_publish_time'] != null)",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 415,
+    "column": 13,
+    "script_string": "'scheduled_publish_time':",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 416,
+    "column": 17,
+    "script_string": "_toUnix(content['scheduled_publish_time']).toString(),",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 417,
+    "column": 9,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 418,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 419,
+    "column": 7,
+    "script_string": "if (mediaType == 'video') {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 420,
+    "column": 9,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 421,
+    "column": 11,
+    "script_string": "'file': content['video_path'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 422,
+    "column": 11,
+    "script_string": "'description': content['description'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 423,
+    "column": 11,
+    "script_string": "'published': isPublished ? 'true' : 'false',",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 424,
+    "column": 11,
+    "script_string": "if (!isPublished && content['scheduled_publish_time'] != null)",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 425,
+    "column": 13,
+    "script_string": "'scheduled_publish_time':",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 426,
+    "column": 17,
+    "script_string": "_toUnix(content['scheduled_publish_time']).toString(),",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 427,
+    "column": 9,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 428,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 429,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 430,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 431,
+    "column": 5,
+    "script_string": "if (contentType == 'reels') {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 432,
+    "column": 7,
+    "script_string": "final isPublished = content['published'] as bool? ?? true;",
+    "comment": "",
+    "tag": "",
+    "length": 58
+  },
+  {
+    "line": 433,
+    "column": 7,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 434,
+    "column": 9,
+    "script_string": "'file': content['video_path'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 435,
+    "column": 9,
+    "script_string": "'description': content['description'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 55
+  },
+  {
+    "line": 436,
+    "column": 9,
+    "script_string": "'published': isPublished ? 'true' : 'false',",
+    "comment": "",
+    "tag": "",
+    "length": 44
+  },
+  {
+    "line": 437,
+    "column": 9,
+    "script_string": "'privacy': '{\"value\":\"PUBLIC\"}',",
+    "comment": "",
+    "tag": "",
+    "length": 32
+  },
+  {
+    "line": 438,
+    "column": 9,
+    "script_string": "if (!isPublished && content['scheduled_publish_time'] != null)",
+    "comment": "",
+    "tag": "",
+    "length": 62
+  },
+  {
+    "line": 439,
+    "column": 11,
+    "script_string": "'scheduled_publish_time':",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 440,
+    "column": 15,
+    "script_string": "_toUnix(content['scheduled_publish_time']).toString(),",
+    "comment": "",
+    "tag": "",
+    "length": 54
+  },
+  {
+    "line": 441,
+    "column": 7,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 442,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 443,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 444,
+    "column": 5,
+    "script_string": "if (contentType == 'stories') {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 445,
+    "column": 7,
+    "script_string": "if (mediaType == 'photo') {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 446,
+    "column": 9,
+    "script_string": "return {'file': content['image_path'] as String? ?? ''};",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 447,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 448,
+    "column": 7,
+    "script_string": "return {'file': content['video_path'] as String? ?? ''};",
+    "comment": "",
+    "tag": "",
+    "length": 56
+  },
+  {
+    "line": 449,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 450,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 451,
+    "column": 5,
+    "script_string": "throw Exception('Unknown FB content type: $contentType');",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 452,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 453,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 454,
+    "column": 3,
+    "script_string": "static Map<String, dynamic> _igBody(",
+    "comment": "",
+    "tag": "",
+    "length": 36
+  },
+  {
+    "line": 455,
+    "column": 5,
+    "script_string": "String contentType, String mediaType, Map<String, dynamic> content,",
+    "comment": "",
+    "tag": "",
+    "length": 67
+  },
+  {
+    "line": 456,
+    "column": 3,
+    "script_string": ") {",
+    "comment": "",
+    "tag": "",
+    "length": 3
+  },
+  {
+    "line": 457,
+    "column": 5,
+    "script_string": "if (contentType == 'feed') {",
+    "comment": "",
+    "tag": "",
+    "length": 28
+  },
+  {
+    "line": 458,
+    "column": 7,
+    "script_string": "if (mediaType == 'photo') {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 459,
+    "column": 9,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 460,
+    "column": 11,
+    "script_string": "'image_url': content['image_path'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 52
+  },
+  {
+    "line": 461,
+    "column": 11,
+    "script_string": "'caption': content['caption'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 462,
+    "column": 9,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 463,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 464,
+    "column": 7,
+    "script_string": "// feed video → reels with share_to_feed=true",
+    "comment": "",
+    "tag": "",
+    "length": 45
+  },
+  {
+    "line": 465,
+    "column": 7,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 466,
+    "column": 9,
+    "script_string": "'media_type': 'REELS',",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 467,
+    "column": 9,
+    "script_string": "'upload_type': 'resumable',",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 468,
+    "column": 9,
+    "script_string": "'caption': content['caption'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 469,
+    "column": 9,
+    "script_string": "'share_to_feed': 'true',",
+    "comment": "",
+    "tag": "",
+    "length": 24
+  },
+  {
+    "line": 470,
+    "column": 7,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 471,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 472,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 473,
+    "column": 5,
+    "script_string": "if (contentType == 'reels') {",
+    "comment": "",
+    "tag": "",
+    "length": 29
+  },
+  {
+    "line": 474,
+    "column": 7,
+    "script_string": "return {",
+    "comment": "",
+    "tag": "",
+    "length": 8
+  },
+  {
+    "line": 475,
+    "column": 9,
+    "script_string": "'media_type': 'REELS',",
+    "comment": "",
+    "tag": "",
+    "length": 22
+  },
+  {
+    "line": 476,
+    "column": 9,
+    "script_string": "'upload_type': 'resumable',",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 477,
+    "column": 9,
+    "script_string": "'caption': content['caption'] as String? ?? '',",
+    "comment": "",
+    "tag": "",
+    "length": 47
+  },
+  {
+    "line": 478,
+    "column": 9,
+    "script_string": "'share_to_feed': 'false',",
+    "comment": "",
+    "tag": "",
+    "length": 25
+  },
+  {
+    "line": 479,
+    "column": 7,
+    "script_string": "};",
+    "comment": "",
+    "tag": "",
+    "length": 2
+  },
+  {
+    "line": 480,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 481,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 482,
+    "column": 5,
+    "script_string": "if (contentType == 'stories') {",
+    "comment": "",
+    "tag": "",
+    "length": 31
+  },
+  {
+    "line": 483,
+    "column": 7,
+    "script_string": "if (mediaType == 'photo') {",
+    "comment": "",
+    "tag": "",
+    "length": 27
+  },
+  {
+    "line": 484,
+    "column": 9,
+    "script_string": "return {'media_type': 'STORIES', 'image_url': content['image_path'] as String? ?? ''};",
+    "comment": "",
+    "tag": "",
+    "length": 86
+  },
+  {
+    "line": 485,
+    "column": 7,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 486,
+    "column": 7,
+    "script_string": "return {'media_type': 'STORIES', 'upload_type': 'resumable'};",
+    "comment": "",
+    "tag": "",
+    "length": 61
+  },
+  {
+    "line": 487,
+    "column": 5,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 488,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 489,
+    "column": 5,
+    "script_string": "throw Exception('Unknown IG content type: $contentType');",
+    "comment": "",
+    "tag": "",
+    "length": 57
+  },
+  {
+    "line": 490,
+    "column": 3,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 491,
+    "column": 1,
+    "script_string": "}",
+    "comment": "",
+    "tag": "",
+    "length": 1
+  },
+  {
+    "line": 492,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  },
+  {
+    "line": 493,
+    "column": 0,
+    "script_string": "",
+    "comment": "",
+    "tag": "",
+    "length": 0
+  }
+]

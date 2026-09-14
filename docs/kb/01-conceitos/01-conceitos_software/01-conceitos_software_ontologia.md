@@ -50,8 +50,9 @@ definições [Wikipedia](https://pt.wikipedia.org/wiki/Ontologia)
 
 # 2. modelagem, schemas
 ## 2.1. OWL - modelagem ontologica  
-|[# OWL 2 Web Ontology Language Primer](https://www.w3.org/TR/2012/REC-owl2-primer-20121211/)|
-|[# OWL 2 Web Ontology Language Quick Reference Guide](https://www.w3.org/TR/2012/REC-owl2-quick-reference-20121211/)|
+|[OWL 2 Web Ontology Language Overview](https://www.w3.org/TR/owl2-overview/)|
+|[OWL 2 Web Ontology Language Primer](https://www.w3.org/TR/2012/REC-owl2-primer-20121211/)|
+|[OWL 2 Web Ontology Language Quick Reference Guide](https://www.w3.org/TR/2012/REC-owl2-quick-reference-20121211/)|
 
 ### 2.1.1. O que e o OWL 2
 Ontology Web Services ou serviços voltados à manipulação de Ontologias (OWL - Web Ontology Language). Esses componentes estruturam o conhecimento formal em redes semânticas ligadas.
@@ -66,6 +67,8 @@ Integração na Arquitetura
 O OWL 2 Web Ontology Language e uma linguagem de ontologias para a Web Semantica com significado formalmente definido [3]. Ontologias escritas em OWL 2 sao estruturadas como documentos e servem para descrever de forma precisa porcoes do mundo real, chamadas de dominios de interesse [3, 13]. Elas auxiliam na comunicacao humana e garantem a consistencia do comportamento de softwares e agentes na web [13].
 
 As ontologias em OWL 2 sao baseadas em computacao logica [7]. Esse carater declarativo faz com que ferramentas de raciocinio automatizado (raciocinadores) consigam computar consequencias logicas e inferir novos fatos implicitamente contidos na base [7, 15, 19].
+
+![[01-conceitos_software_ontologia-04.png]]
 
 ### 2.1.2. Modelagem de Conhecimento e Noções Basicas
 O OWL 2 representa o conhecimento por meio de tres elementos lógicos principais: axiomas, entidades e expressoes [17].
@@ -82,6 +85,51 @@ As entidades denotam os objetos e relacoes do dominio [17, 21]. Sao divididas em
 
 #### 2.1.2.3. Expressoes
 As expressoes sao criadas combinando entidades por meio de construtores logicos [17, 22]. Elas criam novos conceitos a partir de componentes basicos, como a interseccao ou a uniao de classes preexistentes [22, 50].
+
+#### 2.1.2.4. Inter-relações entre os conceitos
+
+- **Entidades (Objetos do Domínio)**: Denotam os elementos básicos do domínio. Dividem-se em **Indivíduos** (elementos concretos), **Classes** (conjuntos de indivíduos) e **Propriedades**, que podem conectar indivíduos entre si (propriedades de objeto) ou indivíduos a literais (propriedades de dados). As **Propriedades de Anotação** servem para incluir metadados sem afetar a lógica inferencial.
+- **Expressões (Construção de Conceitos)**: São formadas pela combinação de entidades através de construtores lógicos (como interseção ou união de classes), permitindo descrever novos conceitos complexos a partir dos elementos existentes.
+- **Axiomas (Proposições Lógicas)**: São as declarações e proposições que a ontologia assume como verdadeiras. Eles utilizam tanto as entidades quanto as expressões para formar afirmações com valor de verdade avaliável.
+- **Raciocinador Automatizado**: A interação de todos os axiomas declarados forma a base para que ferramentas de raciocínio lógico extraiam e inferem novas consequências dedutivas que estavam implícitas na ontologia.
+
+O diagrama a seguir ilustra esses conceitos centrais, suas subdivisões e a forma como eles se inter-relacionam para permitir o raciocínio automatizado:
+
+```mermaid
+graph TD
+    OWL2["Modelagem de Conhecimento em OWL 2"] --> Axiomas["Axiomas"]
+    OWL2 --> Entidades["Entidades"]
+    OWL2 --> Expressoes["Expressões"]
+
+    Entidades --> Individuos["Indivíduos"]
+    Entidades --> Classes["Classes"]
+    Entidades --> Propriedades["Propriedades"]
+    Entidades --> Anotacao["Propriedades de Anotação"]
+
+    Individuos -->|Representam| IndObj["Objetos e elementos concretos"]
+    Classes -->|Categorizam| ConjInd["Conjuntos de indivíduos"]
+
+    Propriedades --> PropObjeto["Propriedades de Objeto"]
+    Propriedades --> PropDados["Propriedades de Dados"]
+
+    PropObjeto -->|Relacionam| RelInd["Indivíduo com Indivíduo"]
+    PropDados -->|Relacionam| RelLit["Indivíduo com Dado Literal"]
+    Anotacao -->|Registram| Metadados["Metadados (sem impacto no raciocínio)"]
+
+    Entidades -->|Combinadas por construtores lógicos| Expressoes
+    Expressoes -->|Criam novos conceitos ex: união/interseção| NovosConceitos["Novos Conceitos de Classe"]
+
+    Entidades -->|Usadas para formular| Assercoes["Declarações com valor de verdade"]
+    Expressoes -->|Usadas para formular| Assercoes
+    Assercoes --> Axiomas
+
+    Axiomas -->|Assumidos como verdadeiros| BaseConhecimento["Base Lógica"]
+    BaseConhecimento -->|Processada por| Raciocinador["Raciocinador Automatizado"]
+    Raciocinador -->|Infere e computa| Consequencias["Consequências e Novos Fatos"]
+```
+
+
+![[01-conceitos_software_ontologia-05.png]]
 
 ### 2.1.3. Sintaxes e Serializações
 O OWL 2 oferece diferentes syntaxes para variados contextos praticos de uso [11].

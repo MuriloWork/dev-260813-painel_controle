@@ -1,0 +1,243 @@
+<rdf:RDF
+ xml:base="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:dct="http://purl.org/dc/terms/"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+ xmlns:c="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#">
+    <owl:Ontology rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a">
+        <dc:title>260913-termboard_model_repository_v02</dc:title>
+        <dct:modified>13-9-2026</dct:modified>
+        <rdfs:comment>Ontology exported from Termboard - a visual knowledge modeling tool. v02 - Aligned to SKOS (Simple Knowledge Organization System).</rdfs:comment>
+        <rdfs:label>260913-termboard_model_repository_v02</rdfs:label>
+        <owl:versionInfo>2.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- ConceptScheme -->
+    <skos:ConceptScheme rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository_scheme">
+        <skos:prefLabel>Repository Concept Scheme</skos:prefLabel>
+        <skos:definition>Concept scheme for repository-related concepts in software development.</skos:definition>
+        <skos:hasTopConcept rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+    </skos:ConceptScheme>
+
+    <!-- Top Concept: Repository -->
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A centralized, version-controlled storage system for managing and tracking changes to digital assets over time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>repository</rdfs:label>
+        <skos:definition>A centralized, version-controlled storage system for managing and tracking changes to digital assets over time.</skos:definition>
+        <skos:prefLabel>repository</skos:prefLabel>
+        <skos:altLabel>repo</skos:altLabel>
+        <skos:altLabel>codebase</skos:altLabel>
+        <skos:altLabel>source control</skos:altLabel>
+        <skos:altLabel>version control system</skos:altLabel>
+        <skos:topConceptOf rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository_scheme"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#code_repository"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#artifact_repository"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#data_repository"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#documentation_repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#branch"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#tag"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#release"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#remote"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#commit"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#merge"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#clone"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#pull_request"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#version_control_tool"/>
+    </owl:Class>
+
+    <!-- Narrower Concepts -->
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#code_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A specialized repository dedicated to storing and versioning source code.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>code repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:definition>A specialized repository dedicated to storing and versioning source code.</skos:definition>
+        <skos:prefLabel>code repository</skos:prefLabel>
+        <skos:altLabel>source code repo</skos:altLabel>
+        <skos:altLabel>git repo</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#artifact_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A centralized repository for storing build artifacts, libraries, and binaries.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>artifact repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:definition>A centralized repository for storing build artifacts, libraries, and binaries.</skos:definition>
+        <skos:prefLabel>artifact repository</skos:prefLabel>
+        <skos:altLabel>binary repo</skos:altLabel>
+        <skos:altLabel>package repo</skos:altLabel>
+        <skos:altLabel>maven repo</skos:altLabel>
+        <skos:altLabel>npm registry</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#data_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A repository designed to store structured or unstructured data assets.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>data repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:definition>A repository designed to store structured or unstructured data assets.</skos:definition>
+        <skos:prefLabel>data repository</skos:prefLabel>
+        <skos:altLabel>dataset repo</skos:altLabel>
+        <skos:altLabel>data store</skos:altLabel>
+        <skos:altLabel>data lake</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#documentation_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A repository specifically for managing and versioning project documentation.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>documentation repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:definition>A repository specifically for managing and versioning project documentation.</skos:definition>
+        <skos:prefLabel>documentation repository</skos:prefLabel>
+        <skos:altLabel>docs repo</skos:altLabel>
+        <skos:altLabel>wiki repo</skos:altLabel>
+        <skos:altLabel>knowledge base</skos:altLabel>
+    </owl:Class>
+
+    <!-- Related Concepts -->
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#branch">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A parallel line of development within a repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>branch</rdfs:label>
+        <skos:definition>A parallel line of development within a repository.</skos:definition>
+        <skos:prefLabel>branch</skos:prefLabel>
+        <skos:altLabel>feature branch</skos:altLabel>
+        <skos:altLabel>dev branch</skos:altLabel>
+        <skos:altLabel>git branch</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#merge"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#commit"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#remote"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#tag">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A named pointer to a specific commit, used to mark releases or important milestones.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>tag</rdfs:label>
+        <skos:definition>A named pointer to a specific commit, used to mark releases or important milestones.</skos:definition>
+        <skos:prefLabel>tag</skos:prefLabel>
+        <skos:altLabel>git tag</skos:altLabel>
+        <skos:altLabel>version tag</skos:altLabel>
+        <skos:altLabel>release tag</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#release"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#release">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A packaged version of the software at a specific point in time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>release</rdfs:label>
+        <skos:definition>A packaged version of the software at a specific point in time.</skos:definition>
+        <skos:prefLabel>release</skos:prefLabel>
+        <skos:altLabel>version release</skos:altLabel>
+        <skos:altLabel>software release</skos:altLabel>
+        <skos:altLabel>build release</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#tag"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#remote">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A version of a repository hosted on a server.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>remote</rdfs:label>
+        <skos:definition>A version of a repository hosted on a server.</skos:definition>
+        <skos:prefLabel>remote</skos:prefLabel>
+        <skos:altLabel>remote repo</skos:altLabel>
+        <skos:altLabel>origin</skos:altLabel>
+        <skos:altLabel>upstream</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#clone"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#branch"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#commit">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A single snapshot of the state of the repository at a specific point in time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>commit</rdfs:label>
+        <skos:definition>A single snapshot of the state of the repository at a specific point in time.</skos:definition>
+        <skos:prefLabel>commit</skos:prefLabel>
+        <skos:altLabel>git commit</skos:altLabel>
+        <skos:altLabel>revision</skos:altLabel>
+        <skos:altLabel>changeset</skos:altLabel>
+        <skos:altLabel>snapshot</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#branch"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#merge">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>The process of combining changes from one branch into another.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>merge</rdfs:label>
+        <skos:definition>The process of combining changes from one branch into another.</skos:definition>
+        <skos:prefLabel>merge</skos:prefLabel>
+        <skos:altLabel>git merge</skos:altLabel>
+        <skos:altLabel>branch merge</skos:altLabel>
+        <skos:altLabel>integration</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#branch"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#clone">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>The action of creating a local copy of a remote repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>clone</rdfs:label>
+        <skos:definition>The action of creating a local copy of a remote repository.</skos:definition>
+        <skos:prefLabel>clone</skos:prefLabel>
+        <skos:altLabel>git clone</skos:altLabel>
+        <skos:altLabel>repo clone</skos:altLabel>
+        <skos:altLabel>checkout</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#remote"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#pull_request">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A proposal to merge changes from one branch into another.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>pull request</rdfs:label>
+        <skos:definition>A proposal to merge changes from one branch into another.</skos:definition>
+        <skos:prefLabel>pull request</skos:prefLabel>
+        <skos:altLabel>merge request</skos:altLabel>
+        <skos:altLabel>MR</skos:altLabel>
+        <skos:altLabel>PR</skos:altLabel>
+        <skos:altLabel>code review</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#branch"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#version_control_tool">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>Software that tracks changes to files and allows users to manage different versions.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a"/>
+        <rdfs:label>version control tool</rdfs:label>
+        <skos:definition>Software that tracks changes to files and allows users to manage different versions.</skos:definition>
+        <skos:prefLabel>version control tool</skos:prefLabel>
+        <skos:altLabel>VCS</skos:altLabel>
+        <skos:altLabel>SCM</skos:altLabel>
+        <skos:altLabel>git</skos:altLabel>
+        <skos:altLabel>subversion</skos:altLabel>
+        <skos:altLabel>mercurial</skos:altLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d7e8f9a0-b1c2-4d3e-5f6a-7b8c9d0e1f2a#repository"/>
+    </owl:Class>
+
+</rdf:RDF>

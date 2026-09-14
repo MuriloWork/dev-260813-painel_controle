@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>260912-termboard_model_repository</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-sidebar: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border-color: #e2e8f0;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --badge-bg: #e0e7ff;
+      --badge-text: #3730a3;
+      --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-sidebar: #111827;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #64748b;
+      --border-color: #334155;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --badge-bg: #312e81;
+      --badge-text: #c7d2fe;
+      --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navbar */
+    .topbar {
+      height: 60px;
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 10;
+    }
+    .topbar-brand { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+    .topbar-controls { display: flex; align-items: center; gap: 12px; }
+    .search-box { position: relative; display: flex; align-items: center; }
+    .search-input {
+      padding: 8px 30px 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      width: 300px;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-kbd {
+      position: absolute;
+      right: 10px;
+      font-size: 0.75rem;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: var(--border-color);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .btn-action {
+      background: none;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-action:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Main Container Layout */
+    .app-container {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 60px);
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 340px;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-header { padding: 12px 16px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-secondary); }
+    .view-toggle-group { display: flex; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; padding: 2px; gap: 2px; }
+    .btn-view-toggle { background: none; border: none; padding: 2px 8px; font-size: 0.75rem; font-family: inherit; border-radius: 4px; cursor: pointer; color: var(--text-secondary); }
+    .btn-view-toggle.active { background: var(--bg-secondary); color: var(--accent); font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+
+    .type-filters { display: flex; gap: 4px; padding: 8px 16px; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); }
+    .filter-chip {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .xfield-filters { display: flex; flex-direction: column; gap: 8px; padding: 8px 16px; border-bottom: 1px solid var(--border-color); }
+    .xfield-filter-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .xfield-filter-label { font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
+    .xfield-filter-select { flex: 1; padding: 4px; font-size: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); outline: none; }
+
+    .term-list { flex: 1; overflow-y: auto; list-style: none; }
+    .term-item {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+    .term-item:hover { background: var(--bg-primary); }
+    .term-item.active { background: var(--bg-secondary); font-weight: 600; }
+    .term-item-name { font-size: 0.95rem; }
+    .type-badge {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Taxonomy Tree View Styles */
+    .tree-container { flex: 1; overflow-y: auto; padding: 8px 0; }
+    .tree-list { list-style: none; padding-left: 0; }
+    .tree-item { margin: 2px 0; }
+    .tree-row { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 4px; cursor: pointer; transition: background 0.15s; user-select: none; }
+    .tree-row:hover { background: var(--bg-primary); }
+    .tree-row.active { background: var(--bg-secondary); font-weight: 600; }
+    .tree-toggle { font-size: 0.75rem; width: 16px; text-align: center; color: var(--text-muted); }
+    .tree-label { flex: 1; font-size: 0.9rem; }
+    .tree-children { list-style: none; padding-left: 16px; border-left: 1px dashed var(--border-color); margin-left: 14px; }
+
+    /* Main Content Pane */
+    .content-pane {
+      flex: 1;
+      padding: 32px 48px;
+      overflow-y: auto;
+      background: var(--bg-primary);
+    }
+    .detail-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: var(--card-shadow);
+      max-width: 900px;
+      margin: 0 auto 24px auto;
+    }
+    .detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .detail-title { font-size: 1.8rem; font-weight: 700; color: var(--text-primary); }
+    .card-actions { display: flex; gap: 8px; }
+    .btn-card-action {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+    .btn-card-action:hover { color: var(--accent); border-color: var(--accent); }
+
+    .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: var(--text-muted); font-size: 0.75rem; }
+
+    .section-title { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin: 24px 0 12px 0; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
+    .subsection-title { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin: 12px 0 6px 0; }
+    
+    /* Definition clean text under title */
+    .definition-clean {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .definition-clean a { color: #1867c0; font-weight: 500; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease; cursor: pointer; }
+    .definition-clean a:hover { color: #0d47a1; border-bottom-color: #0d47a1; }
+
+    .term-description {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      overflow-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+    .term-description img, .term-description table, .term-description pre {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    .term-description a { color: #1867c0; font-weight: 500; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease; cursor: pointer; }
+    .term-description a:hover { color: #0d47a1; border-bottom-color: #0d47a1; }
+
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; }
+    .meta-card { background: var(--bg-primary); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+    .meta-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; overflow-wrap: anywhere; word-break: break-word; }
+    .meta-value { font-size: 0.9rem; font-weight: 500; color: var(--text-primary); margin-top: 4px; overflow-wrap: anywhere; word-break: break-all; word-break: break-word; }
+    .meta-value a { color: var(--primary-color, #1867c0); font-weight: bold; overflow-wrap: anywhere; word-break: break-all; word-break: break-word; max-width: 100%; display: inline-block; }
+
+    /* Sub-concepts Grid */
+    .subconcepts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .subconcept-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .subconcept-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+    .subconcept-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .subconcept-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .subconcept-arrow {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.15s ease;
+    }
+    .subconcept-card:hover .subconcept-arrow {
+      transform: translateX(3px);
+    }
+    .subconcept-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Grouped Relations List */
+    .relations-group {
+      margin-bottom: 16px;
+    }
+    .relations-list {
+      list-style: none;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .relations-list li {
+      padding: 10px 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      transition: border-color 0.15s ease;
+    }
+    .relations-list li:hover {
+      border-color: var(--accent);
+    }
+    .relations-list a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .relations-list a:hover {
+      text-decoration: underline;
+    }
+    .relation-pill {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-style: italic;
+    }
+    .relation-dir-icon {
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .relation-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      width: 100%;
+      margin-top: 2px;
+    }
+
+    /* Empty State Inline */
+    .section-empty {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 8px 0;
+    }
+
+    /* Empty state */
+    .empty-state { text-align: center; color: var(--text-muted); padding: 64px 0; }
+    .empty-state h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--text-secondary); }
+
+    /* Responsive 2-Screen Mobile Flow */
+    .btn-back { display: none; }
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 8px 12px;
+        gap: 8px;
+        flex-wrap: wrap;
+        height: auto;
+      }
+      .topbar-brand { font-size: 1rem; width: 100%; justify-content: space-between; }
+      .topbar-controls { width: 100%; justify-content: space-between; }
+      .search-input { width: 100%; max-width: 160px; }
+      
+      .app-container { flex-direction: column; height: calc(100vh - 90px); position: relative; }
+      
+      /* Screen 1: Index / Search */
+      .sidebar {
+        width: 100%;
+        height: 100%;
+        border-right: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Screen 2: Content Details */
+      .content-pane {
+        width: 100%;
+        height: 100%;
+        padding: 12px;
+        display: none;
+      }
+
+      /* Mobile 2-Screen State toggle via body attribute */
+      body[data-mobile-screen="detail"] .sidebar { display: none; }
+      body[data-mobile-screen="detail"] .content-pane { display: block; }
+      body[data-mobile-screen="detail"] .btn-back { display: inline-flex; }
+
+      .detail-card { padding: 16px; border-radius: 6px; }
+      .detail-header { flex-direction: column; gap: 8px; }
+      .card-actions { width: 100%; justify-content: flex-start; }
+      .subconcepts-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Print styles */
+    @media print {
+      .topbar, .sidebar, .card-actions { display: none !important; }
+      .app-container { height: auto !important; overflow: visible !important; }
+      .content-pane { padding: 0 !important; overflow: visible !important; background: #fff !important; }
+      .detail-card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        margin-bottom: 32px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body data-mobile-screen="index">
+  <header class="topbar">
+    <div class="topbar-brand">
+      <button id="btnBack" class="btn-action btn-back">← Back</button>
+      <span>260912-termboard_model_repository</span>
+    </div>
+    <div class="topbar-controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search..." />
+        <span class="search-kbd">/</span>
+      </div>
+      <button id="btnPrint" class="btn-action">Print</button>
+      <button id="themeToggle" class="btn-action">Theme</button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="view-toggle-group">
+          <button id="btnViewList" class="btn-view-toggle active">List</button>
+          <button id="btnViewTree" class="btn-view-toggle">Taxonomy</button>
+        </div>
+        <span id="termCount">0 terms</span>
+      </div>
+      <div id="typeFilters" class="type-filters"></div>
+      <div id="xFieldFilters" class="xfield-filters"></div>
+      <ul id="termList" class="term-list"></ul>
+      <div id="treeContainer" class="tree-container" style="display:none;"></div>
+    </aside>
+
+    <main class="content-pane" id="contentPane">
+      <div id="welcomeView" class="empty-state">
+        <h3>260912-termboard_model_repository</h3>
+        <p>Select a term from the index or search to view documentation.</p>
+      </div>
+      <div id="detailView" style="display:none;"></div>
+    </main>
+  </div>
+
+  <script type="application/json" id="glossary-data">[{"id":"64c6fcad-0654-47c3-f00d-adcbadf90b9c","name":"artifact repository","type":"term","description":"A centralized repository for storing build artifacts, libraries, and binaries, commonly used in continuous integration and deployment pipelines.","additionalInformation":"","synonyms":"","parent":"eba450cb-2e5b-af44-f49b-6e9a60db2828","parentName":"repository","xFields":[],"relations":[{"id":"075bb5eb-5ca2-8fd6-be7b-6a780de9e77f","sourceId":"64c6fcad-0654-47c3-f00d-adcbadf90b9c","sourceName":"artifact repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""}]},{"id":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","name":"branch","type":"term","description":"A parallel line of development within a repository that allows for independent work without affecting the main codebase until merged.","additionalInformation":"","synonyms":"","xFields":[],"relations":[{"id":"942a89bf-16da-7770-a594-1a3991c002bd","sourceId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","sourceName":"repository","relationName":"supports","targetId":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","targetName":"branch","description":""},{"id":"d1317dbb-0753-4496-7612-cd4739265308","sourceId":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","sourceName":"branch","relationName":"undergoes","targetId":"f4432fc9-56fa-1983-89f6-4c84624ed2e8","targetName":"merge","description":""}]},{"id":"34871689-703c-f73b-f545-08785c40fc99","name":"code repository","type":"term","description":"A specialized repository dedicated to storing and versioning source code, often supporting features like branching and merge management.","additionalInformation":"","synonyms":"","parent":"eba450cb-2e5b-af44-f49b-6e9a60db2828","parentName":"repository","xFields":[],"relations":[{"id":"374d4a0f-547b-79e8-e8de-e74fd30958ff","sourceId":"34871689-703c-f73b-f545-08785c40fc99","sourceName":"code repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""}]},{"id":"ebf8d115-a9d0-5058-653e-8e891cb386f2","name":"commit","type":"term","description":"A single snapshot of the state of the repository at a specific point in time, representing a discrete change or update.","additionalInformation":"","synonyms":"","xFields":[],"relations":[{"id":"fce0acd1-1294-4a97-e442-e96d81db7538","sourceId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","sourceName":"repository","relationName":"contains","targetId":"ebf8d115-a9d0-5058-653e-8e891cb386f2","targetName":"commit","description":""}]},{"id":"9700b40b-b77d-6aca-5445-125aee01cd8a","name":"data repository","type":"term","description":"A repository designed to store structured or unstructured data assets, such as datasets, schemas, or configuration files, with version control.","additionalInformation":"","synonyms":"","parent":"eba450cb-2e5b-af44-f49b-6e9a60db2828","parentName":"repository","xFields":[],"relations":[{"id":"931fa919-194a-c73e-68df-71fcf2973cbe","sourceId":"9700b40b-b77d-6aca-5445-125aee01cd8a","sourceName":"data repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""}]},{"id":"2f356223-d580-c7d5-a3dc-91574bf9a6ef","name":"documentation repository","type":"term","description":"A repository specifically for managing and versioning project documentation, guides, and knowledge base entries.","additionalInformation":"","synonyms":"","parent":"eba450cb-2e5b-af44-f49b-6e9a60db2828","parentName":"repository","xFields":[],"relations":[{"id":"4073b8e2-7031-0881-8921-4e7c1d1b8af2","sourceId":"2f356223-d580-c7d5-a3dc-91574bf9a6ef","sourceName":"documentation repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""}]},{"id":"f4432fc9-56fa-1983-89f6-4c84624ed2e8","name":"merge","type":"term","description":"The process of combining changes from one branch into another, integrating development work into the repository's main history.","additionalInformation":"","synonyms":"","xFields":[],"relations":[{"id":"d1317dbb-0753-4496-7612-cd4739265308","sourceId":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","sourceName":"branch","relationName":"undergoes","targetId":"f4432fc9-56fa-1983-89f6-4c84624ed2e8","targetName":"merge","description":""}]},{"id":"757e6bb8-91e5-e095-a48d-238417a585d1","name":"pull request","type":"term","description":"A mechanism for proposing changes to a repository, allowing for review and discussion before the changes are officially merged.","additionalInformation":"","synonyms":"","xFields":[],"relations":[{"id":"c8d814ca-6946-ee61-c8c9-3a17d883d487","sourceId":"757e6bb8-91e5-e095-a48d-238417a585d1","sourceName":"pull request","relationName":"proposes changes to","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""}]},{"id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","name":"repository","type":"concept","description":"A repository is a centralized, version-controlled storage system for managing and tracking changes to source code or other digital assets over time.","additionalInformation":"\u003cp>A&nbsp;\u003cstrong>repository\u003c/strong>&nbsp;is&nbsp;a&nbsp;centralized,&nbsp;version-controlled&nbsp;system&nbsp;for&nbsp;managing&nbsp;digital&nbsp;assets.\u003c/p>\u003cul>\u003cli>Stores&nbsp;source&nbsp;code&nbsp;or&nbsp;files&nbsp;in&nbsp;one&nbsp;location.\u003c/li>\u003cli>Tracks&nbsp;changes&nbsp;to&nbsp;allow&nbsp;for&nbsp;version&nbsp;history.\u003c/li>\u003c/ul>\u003cp>\u003c/p>\u003cp>\u003c/p>","synonyms":"codebase, source control system, version control system, central code store, asset repository","xFields":[],"relations":[{"id":"4073b8e2-7031-0881-8921-4e7c1d1b8af2","sourceId":"2f356223-d580-c7d5-a3dc-91574bf9a6ef","sourceName":"documentation repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""},{"id":"374d4a0f-547b-79e8-e8de-e74fd30958ff","sourceId":"34871689-703c-f73b-f545-08785c40fc99","sourceName":"code repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""},{"id":"075bb5eb-5ca2-8fd6-be7b-6a780de9e77f","sourceId":"64c6fcad-0654-47c3-f00d-adcbadf90b9c","sourceName":"artifact repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""},{"id":"931fa919-194a-c73e-68df-71fcf2973cbe","sourceId":"9700b40b-b77d-6aca-5445-125aee01cd8a","sourceName":"data repository","relationName":"is-a","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""},{"id":"c8d814ca-6946-ee61-c8c9-3a17d883d487","sourceId":"757e6bb8-91e5-e095-a48d-238417a585d1","sourceName":"pull request","relationName":"proposes changes to","targetId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","targetName":"repository","description":""},{"id":"ca27a4ea-2156-24cc-ab34-cb21336adfa5","sourceId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","sourceName":"repository","relationName":"is managed by","targetId":"8ce68225-a7ec-6d61-6067-fead3d7350ec","targetName":"version control system","description":""},{"id":"fce0acd1-1294-4a97-e442-e96d81db7538","sourceId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","sourceName":"repository","relationName":"contains","targetId":"ebf8d115-a9d0-5058-653e-8e891cb386f2","targetName":"commit","description":""},{"id":"942a89bf-16da-7770-a594-1a3991c002bd","sourceId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","sourceName":"repository","relationName":"supports","targetId":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","targetName":"branch","description":""}]},{"id":"8ce68225-a7ec-6d61-6067-fead3d7350ec","name":"version control system","type":"term","description":"Software that tracks changes to files and allows users to manage different versions of the data, forming the core mechanism of a repository.","additionalInformation":"","synonyms":"","xFields":[],"relations":[{"id":"ca27a4ea-2156-24cc-ab34-cb21336adfa5","sourceId":"eba450cb-2e5b-af44-f49b-6e9a60db2828","sourceName":"repository","relationName":"is managed by","targetId":"8ce68225-a7ec-6d61-6067-fead3d7350ec","targetName":"version control system","description":""}]}]</script>
+  <script type="application/json" id="profile-colors">{}</script>
+
+  <script>
+    (function() {
+      const data = JSON.parse(document.getElementById('glossary-data').textContent || '[]');
+      const profileColors = JSON.parse(document.getElementById('profile-colors').textContent || '{}');
+      const termMap = new Map();
+      data.forEach(t => termMap.set(t.id, t));
+
+      let activeTypeFilter = 'ALL';
+      let searchQuery = '';
+      let activeTermIds = new Set();
+      let sidebarViewMode = 'list'; // 'list' | 'tree'
+
+      const genKeywords = [
+        'generalization', 'is a', 'is_a', 'isa',
+        'a type of', 'type of', 'subtype of', 'sub-type of',
+        'kind of', 'extends', 'inherits', 'inherits from',
+        'specialization of', 'is a type of'
+      ];
+
+      function isGeneralization(r) {
+        if (!r) return false;
+        const name = (r.relationName || '').toLowerCase().trim();
+        return genKeywords.includes(name);
+      }
+
+      function getParentIds(t) {
+        if (!t) return [];
+        const parents = new Set();
+        if (t.parent && termMap.has(t.parent)) {
+          parents.add(t.parent);
+        }
+        if (t.relations) {
+          t.relations.forEach(r => {
+            if (r.sourceId === t.id && isGeneralization(r) && termMap.has(r.targetId)) {
+              parents.add(r.targetId);
+            }
+          });
+        }
+        return Array.from(parents);
+      }
+
+      function getChildTerms(parentTermId) {
+        return data.filter(t => getParentIds(t).includes(parentTermId));
+      }
+
+      // Elements
+      const termListEl = document.getElementById('termList');
+      const treeContainerEl = document.getElementById('treeContainer');
+      const typeFiltersEl = document.getElementById('typeFilters');
+      const xFieldFiltersEl = document.getElementById('xFieldFilters');
+      const termCountEl = document.getElementById('termCount');
+      const searchInput = document.getElementById('searchInput');
+      const themeToggle = document.getElementById('themeToggle');
+      const btnPrint = document.getElementById('btnPrint');
+      const btnViewList = document.getElementById('btnViewList');
+      const btnViewTree = document.getElementById('btnViewTree');
+      const welcomeView = document.getElementById('welcomeView');
+      const detailView = document.getElementById('detailView');
+      const contentPane = document.getElementById('contentPane');
+
+      const btnBack = document.getElementById('btnBack');
+
+      if (btnBack) {
+        btnBack.addEventListener('click', () => {
+          document.body.setAttribute('data-mobile-screen', 'index');
+        });
+      }
+
+      // View Mode Toggle
+      btnViewList.addEventListener('click', () => setSidebarViewMode('list'));
+      btnViewTree.addEventListener('click', () => setSidebarViewMode('tree'));
+
+      function setSidebarViewMode(mode) {
+        sidebarViewMode = mode;
+        if (mode === 'list') {
+          btnViewList.classList.add('active');
+          btnViewTree.classList.remove('active');
+          termListEl.style.display = 'block';
+          treeContainerEl.style.display = 'none';
+        } else {
+          btnViewTree.classList.add('active');
+          btnViewList.classList.remove('active');
+          termListEl.style.display = 'none';
+          treeContainerEl.style.display = 'block';
+        }
+        renderSidebar();
+      }
+
+      // Print Handler
+      btnPrint.addEventListener('click', () => window.print());
+
+      // Theme handler
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+      });
+
+      // Keyboard shortcut '/'
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+
+      // Search input
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderSidebar();
+        if (searchQuery) {
+          window.location.hash = encodeURIComponent(searchQuery);
+        } else {
+          window.location.hash = '';
+        }
+      });
+
+      // Extract unique term types
+      const types = Array.from(new Set(data.map(t => t.type))).sort();
+      renderTypeFilters(types);
+
+      function renderTypeFilters(types) {
+        typeFiltersEl.innerHTML = '';
+        const allChip = createFilterChip('ALL', 'All (' + data.length + ')');
+        typeFiltersEl.appendChild(allChip);
+
+        types.forEach(type => {
+          const count = data.filter(t => t.type === type).length;
+          const chip = createFilterChip(type, type + ' (' + count + ')');
+          typeFiltersEl.appendChild(chip);
+        });
+      }
+
+      function createFilterChip(typeKey, label) {
+        const chip = document.createElement('span');
+        chip.className = 'filter-chip' + (activeTypeFilter === typeKey ? ' active' : '');
+        chip.textContent = label;
+        chip.addEventListener('click', () => {
+          activeTypeFilter = typeKey;
+          document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          renderSidebar();
+        });
+        return chip;
+      }
+
+      function renderSidebar() {
+        if (sidebarViewMode === 'list') {
+          renderListSidebar();
+        } else {
+          renderTreeSidebar();
+        }
+      }
+
+      let activeXFieldFilters = {};
+
+      const xFieldsMeta = {};
+      data.forEach(t => {
+        if (t.xFields) {
+          t.xFields.forEach(xf => {
+            if (!xFieldsMeta[xf.name]) {
+              xFieldsMeta[xf.name] = new Set();
+            }
+            if (xf.value !== undefined && xf.value !== null && xf.value !== '') {
+              xFieldsMeta[xf.name].add(String(xf.value));
+            }
+          });
+        }
+      });
+
+      function renderXFieldFilters() {
+        if (!xFieldFiltersEl) return;
+        xFieldFiltersEl.innerHTML = '';
+        const fieldNames = Object.keys(xFieldsMeta).sort();
+        if (fieldNames.length === 0) {
+          xFieldFiltersEl.style.display = 'none';
+          return;
+        }
+
+        fieldNames.forEach(fieldName => {
+          const row = document.createElement('div');
+          row.className = 'xfield-filter-row';
+          
+          const label = document.createElement('span');
+          label.className = 'xfield-filter-label';
+          label.textContent = fieldName;
+          label.title = fieldName;
+
+          const select = document.createElement('select');
+          select.className = 'xfield-filter-select';
+          
+          const defaultOpt = document.createElement('option');
+          defaultOpt.value = '';
+          defaultOpt.textContent = 'All';
+          select.appendChild(defaultOpt);
+
+          Array.from(xFieldsMeta[fieldName]).sort().forEach(val => {
+            const opt = document.createElement('option');
+            opt.value = val;
+            opt.textContent = val;
+            select.appendChild(opt);
+          });
+
+          select.addEventListener('change', (e) => {
+            if (e.target.value) {
+              activeXFieldFilters[fieldName] = e.target.value;
+            } else {
+              delete activeXFieldFilters[fieldName];
+            }
+            renderSidebar();
+          });
+
+          row.appendChild(label);
+          row.appendChild(select);
+          xFieldFiltersEl.appendChild(row);
+        });
+      }
+
+      renderXFieldFilters();
+
+      function termMatchesFilters(t) {
+        const matchesType = activeTypeFilter === 'ALL' || t.type === activeTypeFilter;
+        let matchesXFields = true;
+        for (const [key, val] of Object.entries(activeXFieldFilters)) {
+          const field = (t.xFields || []).find(xf => xf.name === key);
+          if (!field || String(field.value) !== String(val)) {
+            matchesXFields = false;
+            break;
+          }
+        }
+        let matchesSearch = true;
+        if (searchQuery) {
+          try {
+            const pattern = (searchQuery.includes('*') || searchQuery.includes('?')) ? searchQuery : '*' + searchQuery + '*';
+            const sr = wildcardToRegExp(pattern);
+            matchesSearch = sr.test(t.name) || (t.description && sr.test(t.description));
+          } catch(e) {
+            matchesSearch = t.name.toLowerCase().includes(searchQuery.toLowerCase());
+          }
+        }
+        return matchesType && matchesXFields && matchesSearch;
+      }
+
+      function renderListSidebar() {
+        termListEl.innerHTML = '';
+        const filtered = data.filter(termMatchesFilters);
+
+        termCountEl.textContent = filtered.length + ' term' + (filtered.length === 1 ? '' : 's');
+
+        filtered.forEach(t => {
+          const li = document.createElement('li');
+          li.className = 'term-item' + (activeTermIds.has(t.id) ? ' active' : '');
+          
+          const nameSpan = document.createElement('span');
+          nameSpan.className = 'term-item-name';
+          nameSpan.textContent = t.name;
+
+          li.appendChild(nameSpan);
+
+          const termTypeLower = (t.type || '').toLowerCase();
+          if (termTypeLower !== 'term' || profileColors[t.type]) {
+            const badge = document.createElement('span');
+            badge.className = 'type-badge';
+            badge.textContent = t.type;
+            if (profileColors[t.type]) {
+              badge.style.background = profileColors[t.type];
+              badge.style.color = '#ffffff';
+            }
+            li.appendChild(badge);
+          }
+
+          li.addEventListener('click', () => {
+            window.location.hash = encodeURIComponent(t.name);
+          });
+          termListEl.appendChild(li);
+        });
+      }
+
+      function renderTreeSidebar() {
+        treeContainerEl.innerHTML = '';
+        const rootTerms = data.filter(t => getParentIds(t).length === 0);
+
+        const ul = document.createElement('ul');
+        ul.className = 'tree-list';
+
+        const hasAnyFilters = activeTypeFilter !== 'ALL' || Object.keys(activeXFieldFilters).length > 0 || searchQuery !== '';
+        
+        let matchCount = 0;
+        if (hasAnyFilters) {
+          matchCount = data.filter(termMatchesFilters).length;
+        } else {
+          matchCount = data.length;
+        }
+        termCountEl.textContent = matchCount + ' term' + (matchCount === 1 ? '' : 's');
+
+        rootTerms.forEach(root => {
+          const nodeInfo = buildTreeNode(root, new Set(), hasAnyFilters);
+          if (nodeInfo && nodeInfo.el) {
+            ul.appendChild(nodeInfo.el);
+          }
+        });
+
+        treeContainerEl.appendChild(ul);
+
+        // Auto-expand active branches in tree view
+        if (activeTermIds.size > 0) {
+          activeTermIds.forEach(id => {
+            const activeRows = treeContainerEl.querySelectorAll('[data-term-id="' + id + '"]');
+            activeRows.forEach(row => {
+              row.classList.add('active');
+              let parentUl = row.closest('.tree-children');
+              while (parentUl) {
+                parentUl.style.display = 'block';
+                const toggleEl = parentUl.previousElementSibling ? parentUl.previousElementSibling.querySelector('.tree-toggle') : null;
+                if (toggleEl) toggleEl.textContent = '▼';
+                parentUl = parentUl.parentElement ? parentUl.parentElement.closest('.tree-children') : null;
+              }
+            });
+          });
+        }
+      }
+
+      function buildTreeNode(term, visitedPath, hasAnyFilters) {
+        if (visitedPath.has(term.id)) return null; // Circular hierarchy prevention
+        const currentPath = new Set(visitedPath);
+        currentPath.add(term.id);
+
+        const children = getChildTerms(term.id);
+        const isActive = activeTermIds.has(term.id);
+        const isDirectMatch = termMatchesFilters(term);
+
+        const childNodes = [];
+        let hasMatchingChild = false;
+        children.forEach(c => {
+          const cNodeInfo = buildTreeNode(c, currentPath, hasAnyFilters);
+          if (cNodeInfo && cNodeInfo.el) {
+            childNodes.push(cNodeInfo.el);
+            if (cNodeInfo.hasMatch) {
+              hasMatchingChild = true;
+            }
+          }
+        });
+
+        if (hasAnyFilters && !isDirectMatch && !hasMatchingChild) {
+          return null;
+        }
+
+        const hasChildren = childNodes.length > 0;
+
+        const li = document.createElement('li');
+        li.className = 'tree-item';
+
+        const row = document.createElement('div');
+        row.className = 'tree-row' + (isActive ? ' active' : '') + (hasAnyFilters && !isDirectMatch ? ' indirect-match' : '');
+        row.setAttribute('data-term-id', term.id);
+        if (hasAnyFilters && !isDirectMatch) {
+          row.style.opacity = '0.6';
+        }
+
+        const toggle = document.createElement('span');
+        toggle.className = 'tree-toggle';
+        
+        const isExpanded = hasAnyFilters && hasMatchingChild;
+        toggle.textContent = hasChildren ? (isExpanded ? '▼' : '▶') : '•';
+
+        const label = document.createElement('span');
+        label.className = 'tree-label';
+        label.textContent = term.name;
+
+        row.appendChild(toggle);
+        row.appendChild(label);
+
+        // Hide badge if type is standard 'term' or 'TERM' to reduce noise, unless custom profile color or non-standard type
+        const termTypeLower = (term.type || '').toLowerCase();
+        if (termTypeLower !== 'term' || profileColors[term.type]) {
+          const badge = document.createElement('span');
+          badge.className = 'type-badge';
+          badge.textContent = term.type;
+          if (profileColors[term.type]) {
+            badge.style.background = profileColors[term.type];
+            badge.style.color = '#ffffff';
+          }
+          row.appendChild(badge);
+        }
+
+        li.appendChild(row);
+
+        row.addEventListener('click', () => {
+          window.location.hash = encodeURIComponent(term.name);
+        });
+
+        if (hasChildren) {
+          const childUl = document.createElement('ul');
+          childUl.className = 'tree-children';
+          childUl.style.display = isExpanded ? 'block' : 'none';
+
+          toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = childUl.style.display === 'none';
+            childUl.style.display = isHidden ? 'block' : 'none';
+            toggle.textContent = isHidden ? '▼' : '▶';
+          });
+
+          childNodes.forEach(childEl => childUl.appendChild(childEl));
+          li.appendChild(childUl);
+        }
+
+        return { el: li, hasMatch: isDirectMatch || hasMatchingChild };
+      }
+
+      const includeAutoLinks = true;
+      const rawTermMap = {"artifact repository":{"name":"artifact repository","id":"64c6fcad-0654-47c3-f00d-adcbadf90b9c","variantName":"artifact repository"},"artifact repositories":{"name":"artifact repository","id":"64c6fcad-0654-47c3-f00d-adcbadf90b9c","variantName":"artifact repository"},"branch":{"name":"branch","id":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","variantName":"branch"},"branches":{"name":"branch","id":"e2989d39-5cec-1811-cbf3-59ab3f28bc13","variantName":"branch"},"code repository":{"name":"code repository","id":"34871689-703c-f73b-f545-08785c40fc99","variantName":"code repository"},"code repositories":{"name":"code repository","id":"34871689-703c-f73b-f545-08785c40fc99","variantName":"code repository"},"commit":{"name":"commit","id":"ebf8d115-a9d0-5058-653e-8e891cb386f2","variantName":"commit"},"commits":{"name":"commit","id":"ebf8d115-a9d0-5058-653e-8e891cb386f2","variantName":"commit"},"data repository":{"name":"data repository","id":"9700b40b-b77d-6aca-5445-125aee01cd8a","variantName":"data repository"},"data repositories":{"name":"data repository","id":"9700b40b-b77d-6aca-5445-125aee01cd8a","variantName":"data repository"},"documentation repository":{"name":"documentation repository","id":"2f356223-d580-c7d5-a3dc-91574bf9a6ef","variantName":"documentation repository"},"documentation repositories":{"name":"documentation repository","id":"2f356223-d580-c7d5-a3dc-91574bf9a6ef","variantName":"documentation repository"},"merge":{"name":"merge","id":"f4432fc9-56fa-1983-89f6-4c84624ed2e8","variantName":"merge"},"merges":{"name":"merge","id":"f4432fc9-56fa-1983-89f6-4c84624ed2e8","variantName":"merge"},"pull request":{"name":"pull request","id":"757e6bb8-91e5-e095-a48d-238417a585d1","variantName":"pull request"},"pull requests":{"name":"pull request","id":"757e6bb8-91e5-e095-a48d-238417a585d1","variantName":"pull request"},"repository":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"repository"},"repositories":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"repository"},"version control system":{"name":"version control system","id":"8ce68225-a7ec-6d61-6067-fead3d7350ec","variantName":"version control system"},"version control systems":{"name":"version control system","id":"8ce68225-a7ec-6d61-6067-fead3d7350ec","variantName":"version control system"},"codebase":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"codebase"},"codebases":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"codebase"},"source control system":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"source control system"},"source control systems":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"source control system"},"central code store":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"central code store"},"central code stores":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"central code store"},"asset repository":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"asset repository"},"asset repositories":{"name":"repository","id":"eba450cb-2e5b-af44-f49b-6e9a60db2828","variantName":"asset repository"}};
+      const linkingTermMap = new Map(Object.entries(rawTermMap));
+      const globalRegexSource = "\\b(documentation repositories|documentation repository|version control systems|version control system|source control systems|artifact repositories|source control system|artifact repository|central code stores|central code store|asset repositories|code repositories|data repositories|asset repository|code repository|data repository|pull requests|pull request|repositories|repository|codebases|branches|codebase|commits|branch|commit|merges|merge)\\b";
+      
+      function buildTermMatchingEngine() {
+        if (linkingTermMap.size === 0) return null;
+        const regex = new RegExp(globalRegexSource, 'gi');
+        return { termMap: linkingTermMap, regex };
+      }
+
+      function autoLinkText(text, currentTermId) {
+        if (!text) return '';
+        if (!includeAutoLinks) return escapeHtml(text);
+
+        const engine = buildTermMatchingEngine();
+        if (!engine) return escapeHtml(text);
+
+        const { termMap, regex } = engine;
+        let lastIdx = 0;
+        let result = '';
+
+        const matches = Array.from(text.matchAll(regex));
+        
+        for (const match of matches) {
+          const matchText = match[1] || '';
+          const matchStart = match.index;
+          const matchedTerm = termMap.get(matchText.toLowerCase());
+
+          result += escapeHtml(text.substring(lastIdx, matchStart));
+
+          if (matchedTerm && matchedTerm.id !== currentTermId) {
+            result += '<a href="#' + encodeURIComponent(matchedTerm.name) + '">' + escapeHtml(matchText) + '</a>';
+          } else {
+            result += escapeHtml(matchText);
+          }
+
+          lastIdx = matchStart + matchText.length;
+        }
+
+        result += escapeHtml(text.substring(lastIdx));
+        return result;
+      }
+
+
+
+      function getTaxonomyBreadcrumbs(term) {
+        const path = [];
+        let curr = term;
+        const visited = new Set();
+        let pIds = getParentIds(curr);
+        while (pIds.length > 0) {
+          const pId = pIds[0];
+          if (!termMap.has(pId) || visited.has(pId)) break;
+          visited.add(pId);
+          const p = termMap.get(pId);
+          path.unshift(p);
+          curr = p;
+          pIds = getParentIds(curr);
+        }
+        return path;
+      }
+
+      function sanitizeHtml(html) {
+        if (!html) return '';
+        // Safe DOMParser sanitization for Quill HTML content
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        const allowedTags = new Set([
+          'b', 'i', 'strong', 'em', 'u', 's', 'br', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+          'ul', 'ol', 'li', 'blockquote', 'code', 'pre', 'span', 'a', 'table', 'thead', 'tbody', 'tr', 'td', 'th'
+        ]);
+
+        function sanitizeNode(node) {
+          if (node.nodeType === Node.TEXT_NODE) return node.cloneNode(false);
+          if (node.nodeType !== Node.ELEMENT_NODE) return null;
+          const element = node;
+          const tagName = element.tagName.toLowerCase();
+
+          if (!allowedTags.has(tagName)) {
+            if (tagName === 'script' || tagName === 'style') return null;
+            const frag = document.createDocumentFragment();
+            Array.from(element.childNodes).forEach(c => {
+              const s = sanitizeNode(c);
+              if (s) frag.appendChild(s);
+            });
+            return frag;
+          }
+
+          if (tagName === 'a') {
+            const href = element.getAttribute('href') || '';
+            if (href.match(/^(javascript|data|vbscript):/i)) {
+              const frag = document.createDocumentFragment();
+              Array.from(element.childNodes).forEach(c => {
+                const s = sanitizeNode(c);
+                if (s) frag.appendChild(s);
+              });
+              return frag;
+            }
+          }
+
+          const clean = document.createElement(tagName);
+          ['class', 'style', 'href', 'target', 'rel', 'colspan', 'rowspan'].forEach(attr => {
+            if (element.hasAttribute(attr)) {
+              clean.setAttribute(attr, element.getAttribute(attr));
+            }
+          });
+
+          Array.from(element.childNodes).forEach(c => {
+            const s = sanitizeNode(c);
+            if (s) clean.appendChild(s);
+          });
+          return clean;
+        }
+
+        const cleanBody = document.createElement('body');
+        Array.from(doc.body.childNodes).forEach(c => {
+          const s = sanitizeNode(c);
+          if (s) cleanBody.appendChild(s);
+        });
+        return cleanBody.innerHTML;
+      }
+
+      function autoLinkHtml(html, currentTermId) {
+        if (!html) return '';
+        const sanitized = sanitizeHtml(html);
+        if (!includeAutoLinks) return sanitized;
+
+        const engine = buildTermMatchingEngine();
+        if (!engine) return sanitized;
+
+        const { termMap, regex } = engine;
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(sanitized, 'text/html');
+
+        function processNode(node) {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const tagName = node.tagName.toLowerCase();
+            if (tagName === 'a' || tagName === 'script' || tagName === 'style') return;
+            Array.from(node.childNodes).forEach(processNode);
+          } else if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.nodeValue;
+            if (!text) return;
+
+            const matches = Array.from(text.matchAll(regex));
+            if (matches.length > 0) {
+              const frag = document.createDocumentFragment();
+              let lastIdx = 0;
+
+              for (const match of matches) {
+                const matchText = match[1] || '';
+                const matchStart = match.index;
+                const matchedTerm = termMap.get(matchText.toLowerCase());
+
+                if (matchStart > lastIdx) {
+                  frag.appendChild(document.createTextNode(text.substring(lastIdx, matchStart)));
+                }
+
+                if (matchedTerm && matchedTerm.id !== currentTermId) {
+                  const a = document.createElement('a');
+                  a.href = '#' + encodeURIComponent(matchedTerm.name);
+                  a.textContent = matchText;
+                  frag.appendChild(a);
+                } else {
+                  frag.appendChild(document.createTextNode(matchText));
+                }
+
+                lastIdx = matchStart + matchText.length;
+              }
+
+              if (lastIdx < text.length) {
+                frag.appendChild(document.createTextNode(text.substring(lastIdx)));
+              }
+
+              node.parentNode.replaceChild(frag, node);
+            }
+          }
+        }
+
+        Array.from(doc.body.childNodes).forEach(processNode);
+        return doc.body.innerHTML;
+      }
+
+      function renderCards(matchingTerms) {
+        welcomeView.style.display = 'none';
+        detailView.style.display = 'block';
+        detailView.innerHTML = '';
+        if (contentPane) contentPane.scrollTop = 0;
+
+        matchingTerms.forEach(term => {
+          const card = document.createElement('div');
+          card.className = 'detail-card';
+
+          const taxonomyPath = getTaxonomyBreadcrumbs(term);
+          let breadcrumbHtml = '';
+          if (taxonomyPath.length > 0) {
+            const links = taxonomyPath.map(p => '<a href="#' + encodeURIComponent(p.name) + '">' + escapeHtml(p.name) + '</a>');
+            breadcrumbHtml = '<div class="breadcrumb"><span>Taxonomy:</span> ' + links.join(' <span class="breadcrumb-sep">&gt;</span> ') + ' <span class="breadcrumb-sep">&gt;</span> <strong>' + escapeHtml(term.name) + '</strong></div>';
+          }
+
+          // Sub-Concepts section with rich cards (hidden if empty)
+          const children = getChildTerms(term.id);
+          let childTermsHtml = '';
+          if (children.length > 0) {
+            const childCards = children.map(c => {
+              const desc = c.description ? '<div class="subconcept-desc">' + escapeHtml(c.description) + '</div>' : '';
+              return `
+                <a href="#${encodeURIComponent(c.name)}" class="subconcept-card">
+                  <div class="subconcept-header">
+                    <span class="subconcept-name">${escapeHtml(c.name)}</span>
+                    <span class="subconcept-arrow">&rarr;</span>
+                  </div>
+                  ${desc}
+                </a>
+              `;
+            }).join('');
+
+            childTermsHtml = `
+              <div class="section-title">Sub-Concepts</div>
+              <div class="subconcepts-grid">${childCards}</div>
+            `;
+          }
+
+          // Unified Relationships list without Outgoing/Incoming section labels (hidden if empty)
+          let relationsHtml = '';
+          if (term.relations && term.relations.length > 0) {
+            const items = term.relations.map(r => {
+              const isSource = r.sourceId === term.id;
+              const relName = escapeHtml(r.relationName || 'relates to');
+              const desc = r.description ? '<div class="relation-desc">' + escapeHtml(r.description) + '</div>' : '';
+
+              const leftSide = isSource
+                ? '<strong>' + escapeHtml(r.sourceName) + '</strong>'
+                : '<a href="#' + encodeURIComponent(r.sourceName) + '">' + escapeHtml(r.sourceName) + '</a>';
+
+              const rightSide = !isSource
+                ? '<strong>' + escapeHtml(r.targetName) + '</strong>'
+                : '<a href="#' + encodeURIComponent(r.targetName) + '">' + escapeHtml(r.targetName) + '</a>';
+
+              return `
+                <li>
+                  ${leftSide}
+                  <span class="relation-pill">${relName}</span>
+                  <span class="relation-dir-icon">&rarr;</span>
+                  ${rightSide}
+                  ${desc}
+                </li>
+              `;
+            }).join('');
+
+            relationsHtml = `
+              <div class="section-title">Relationships</div>
+              <ul class="relations-list">${items}</ul>
+            `;
+          }
+
+          let xFieldsHtml = '';
+          if (term.xFields && term.xFields.length > 0) {
+            const items = term.xFields.map(f => {
+              const valStr = String(f.value ?? '');
+              const isUrl = /^https?:///i.test(valStr.trim());
+              const valHtml = isUrl
+                ? '<a href="' + escapeHtml(valStr.trim()) + '" target="_blank" rel="noopener" style="color:var(--primary-color, #1867c0);font-weight:bold;overflow-wrap:anywhere;word-break:break-all;">' + escapeHtml(valStr) + ' ↗</a>'
+                : escapeHtml(valStr);
+              return `
+              <div class="meta-card">
+                <div class="meta-label">${escapeHtml(f.name)}</div>
+                <div class="meta-value">${valHtml}</div>
+              </div>
+            `;
+            }).join('');
+
+            xFieldsHtml = `
+              <div class="section-title">Metadata</div>
+              <div class="meta-grid">${items}</div>
+            `;
+          }
+
+          let externalMappingsHtml = '';
+          if (term.externalMappings && term.externalMappings.length > 0) {
+            const items = term.externalMappings.map(m => `
+              <div class="meta-card">
+                <div class="meta-label">${escapeHtml(m.sourceSystem || 'External Catalog')} (${escapeHtml(m.status)})</div>
+                <div class="meta-value">
+                  ${m.externalUrl ? '<a href="' + escapeHtml(m.externalUrl) + '" target="_blank" rel="noopener" style="color:var(--primary-color, #1867c0);font-weight:bold;overflow-wrap:anywhere;word-break:break-all;">' + escapeHtml(m.container) + '.' + escapeHtml(m.name) + ' ↗</a>' : '<span>' + escapeHtml(m.container) + '.' + escapeHtml(m.name) + '</span>'}
+                </div>
+              </div>
+            `).join('');
+
+            externalMappingsHtml = `
+              <div class="section-title">External Catalog & LDM Mappings</div>
+              <div class="meta-grid">${items}</div>
+            `;
+          }
+
+          let addInfoHtml = '';
+          if (term.additionalInformation) {
+            addInfoHtml = `
+              <div class="section-title">Additional Information</div>
+              <div class="term-description">${autoLinkHtml(term.additionalInformation, term.id)}</div>
+            `;
+          }
+
+          const termTypeLower = (term.type || '').toLowerCase();
+          const isStandardTerm = termTypeLower === 'term' && !profileColors[term.type];
+          const badgeStyle = profileColors[term.type] ? 'background:' + profileColors[term.type] + ';color:#fff;' : '';
+          const badgeHtml = !isStandardTerm ? '<span class="type-badge" style="' + badgeStyle + '">' + escapeHtml(term.type) + '</span>' : '';
+
+          card.innerHTML = `
+            ${breadcrumbHtml}
+            <div class="detail-header">
+              <div>
+                <h1 class="detail-title">${escapeHtml(term.name)}</h1>
+                ${badgeHtml}
+              </div>
+              <div class="card-actions">
+                <button class="btn-card-action btn-copy-md">Copy Markdown</button>
+                <button class="btn-card-action btn-copy-link">Copy Link</button>
+              </div>
+            </div>
+
+            <!-- Definition text cleanly below term name -->
+            <div class="definition-clean">${autoLinkText(term.description, term.id) || '<em style="color:var(--text-muted);">No description provided.</em>'}</div>
+
+            ${term.synonyms ? '<div class="section-title">Synonyms</div><p style="color:var(--text-secondary);"> ' + escapeHtml(term.synonyms) + '</p>' : ''}
+            ${addInfoHtml}
+            ${xFieldsHtml}
+            ${externalMappingsHtml}
+            ${childTermsHtml}
+            ${relationsHtml}
+          `;
+
+          // Button event listeners
+          const copyBtn = card.querySelector('.btn-copy-link');
+          if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+              const linkUrl = window.location.origin + window.location.pathname + '#' + encodeURIComponent(term.name);
+              navigator.clipboard.writeText(linkUrl);
+              copyBtn.textContent = 'Copied!';
+              setTimeout(() => copyBtn.textContent = 'Copy Link', 2000);
+            });
+          }
+
+          function htmlToMarkdown(html) {
+            if (!html) return '';
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            function nodeToMd(node) {
+              if (node.nodeType === Node.TEXT_NODE) {
+                return node.nodeValue || '';
+              }
+              if (node.nodeType !== Node.ELEMENT_NODE) {
+                return '';
+              }
+              const tag = node.tagName.toLowerCase();
+              const childrenMd = Array.from(node.childNodes).map(nodeToMd).join('');
+
+              switch (tag) {
+                case 'h1': return '\n# ' + childrenMd.trim() + '\n\n';
+                case 'h2': return '\n## ' + childrenMd.trim() + '\n\n';
+                case 'h3': return '\n### ' + childrenMd.trim() + '\n\n';
+                case 'h4': return '\n#### ' + childrenMd.trim() + '\n\n';
+                case 'h5': return '\n##### ' + childrenMd.trim() + '\n\n';
+                case 'h6': return '\n###### ' + childrenMd.trim() + '\n\n';
+                case 'p': return '\n' + childrenMd.trim() + '\n\n';
+                case 'br': return '\n';
+                case 'strong':
+                case 'b': return '**' + childrenMd + '**';
+                case 'em':
+                case 'i': return '*' + childrenMd + '*';
+                case 'u': return '_' + childrenMd + '_';
+                case 's': return '~~' + childrenMd + '~~';
+                case 'code': return String.fromCharCode(96) + childrenMd + String.fromCharCode(96);
+                case 'pre': {
+                  const b = String.fromCharCode(96).repeat(3);
+                  return '\n' + b + '\n' + childrenMd.trim() + '\n' + b + '\n\n';
+                }
+                case 'blockquote': return '\n> ' + childrenMd.trim().replace(/\n/g, '\n> ') + '\n\n';
+                case 'a': {
+                  const href = node.getAttribute('href');
+                  return href ? '[' + childrenMd + '](' + href + ')' : childrenMd;
+                }
+                case 'ul': return '\n' + childrenMd + '\n';
+                case 'ol': return '\n' + childrenMd + '\n';
+                case 'li': return '- ' + childrenMd.trim() + '\n';
+                default: return childrenMd;
+              }
+            }
+
+            const res = nodeToMd(doc.body).replace(/\n{3,}/g, '\n\n').trim();
+            return res;
+          }
+
+          const copyMdBtn = card.querySelector('.btn-copy-md');
+          if (copyMdBtn) {
+            copyMdBtn.addEventListener('click', () => {
+              let md = '# ' + term.name + ' [' + term.type + ']\n\n';
+              if (term.description) md += '## Definition\n' + term.description + '\n\n';
+              if (term.synonyms) md += '## Synonyms\n' + term.synonyms + '\n\n';
+              if (term.additionalInformation) md += '## Additional Info\n' + htmlToMarkdown(term.additionalInformation) + '\n\n';
+              if (term.xFields && term.xFields.length > 0) {
+                md += '## Metadata\n';
+                term.xFields.forEach(f => md += '- **' + f.name + '**: ' + f.value + '\n');
+                md += '\n';
+              }
+              if (term.relations && term.relations.length > 0) {
+                md += '## Relationships\n';
+                term.relations.forEach(r => {
+                  md += '- ' + r.sourceName + ' ' + r.relationName + ' ' + r.targetName + (r.description ? ' (' + r.description + ')' : '') + '\n';
+                });
+              }
+              navigator.clipboard.writeText(md.trim());
+              copyMdBtn.textContent = 'Copied MD!';
+              setTimeout(() => copyMdBtn.textContent = 'Copy Markdown', 2000);
+            });
+          }
+
+          detailView.appendChild(card);
+        });
+      }
+
+      function wildcardToRegExp(pattern) {
+        if (!pattern) return /^$/i;
+        const escapeChar = pattern.replace(/[.+^${}()|[]\]/g, '\$&');
+        const regexStr = '^' + escapeChar.replace(/\?/g, '.').replace(/\*/g, '.*') + '$';
+        return new RegExp(regexStr, 'i');
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      // Handle Hash Routing & Matching
+      function handleHashChange() {
+        const rawHash = window.location.hash ? window.location.hash.substring(1) : '';
+        if (!rawHash) {
+          activeTermIds.clear();
+          renderSidebar();
+          welcomeView.style.display = 'block';
+          detailView.style.display = 'none';
+          return;
+        }
+
+        const decoded = decodeURIComponent(rawHash).trim();
+        const query = decoded.startsWith('term-') ? decoded.substring(5) : decoded;
+
+        let matcher;
+        try {
+          matcher = wildcardToRegExp(query);
+        } catch (e) {
+          matcher = wildcardToRegExp(escapeRegex(query));
+        }
+
+        // Find terms matching wildcard pattern on name or ID
+        const matches = data.filter(t => {
+          const lowerDecoded = decoded.toLowerCase();
+          return matcher.test(t.name) || matcher.test(t.id) || t.id.toLowerCase() === lowerDecoded;
+        });
+
+        if (matches.length > 0) {
+          activeTermIds = new Set(matches.map(m => m.id));
+          renderSidebar();
+          renderCards(matches);
+          document.body.setAttribute('data-mobile-screen', 'detail');
+        } else {
+          activeTermIds.clear();
+          renderSidebar();
+          welcomeView.style.display = 'block';
+          welcomeView.innerHTML = '<h3>No terms found</h3><p>No terms matched "' + escapeHtml(decoded) + '".</p>';
+          detailView.style.display = 'none';
+          document.body.setAttribute('data-mobile-screen', 'detail');
+        }
+      }
+
+      window.addEventListener('hashchange', handleHashChange);
+      
+      // Init
+      renderSidebar();
+      if (window.location.hash) {
+        handleHashChange();
+      } else {
+        document.body.setAttribute('data-mobile-screen', 'index');
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -88,9 +88,9 @@ Harness **control** through the Plan-Execute-Verify loop reframes feedback-guide
 ![[260909-ia_handbook_harness_memory-03.jpg]]
 
 - **working memory**
-- **memoria semantica** = verdade, fatos úteis 
+- **memoria semantica** = AGENTS.md, verdade, fatos úteis 
+- **memoria procedimental** = SKILL.md, regras 
 - **memoria episodica** = o que aconteceu, historico, cross-task transfer 
-- **memoria procedimental** = regras 
 - **retrieval - memoria de longo prazo** = memory governance (long-term retrieval planning and memory control)
 - **memoria parametrica** = original do model LLM 
 - ++ Multi-Agent Memory 
@@ -102,7 +102,12 @@ Harness **control** through the Plan-Execute-Verify loop reframes feedback-guide
 
 
 
-#### 1.4.1.3. generalidades
+#### 1.4.1.3. prompt/memory cache
+
+[YT - prompt caching explained](https://youtu.be/SkM4k4SKvCM?is=sw2KgQAox8BSB0bG)
+
+
+#### 1.4.1.4. generalidades
 [caso de uso - YT AlmaBrain - acionabilidade](https://youtu.be/vF8YZiLsl2Q?is=d8_Nrlo78vr4cSx5)
 - projetos
 - memori[IA]

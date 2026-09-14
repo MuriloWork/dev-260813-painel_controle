@@ -1,0 +1,29 @@
+let
+    Source = #"260912-termboard_model_repository-01",
+    #"Expanded Value" = Table.ExpandRecordColumn(Source, "Value", {"terms"}, {"terms"}),
+    #"Expanded terms" = Table.ExpandListColumn(#"Expanded Value", "terms"),
+    #"Expanded terms1" = Table.ExpandRecordColumn(#"Expanded terms", "terms", {"id", "name", "description", "additionalInformation", "has_position", "type", "groupRelation", "parent", "displayType", "weight", "xFields", "synonyms", "x", "y", "style_borderColor", "style_backgroundColor", "style_fontColor", "style_fontSize", "style_fontType", "style_shape", "style_lineStyle", "style_width", "style_height", "style_displayType", "style_imageUrl"}, {"id", "name", "description", "additionalInformation", "has_position", "type", "groupRelation", "parent", "displayType", "weight", "xFields", "synonyms", "x", "y", "style_borderColor", "style_backgroundColor", "style_fontColor", "style_fontSize", "style_fontType", "style_shape", "style_lineStyle", "style_width", "style_height", "style_displayType", "style_imageUrl"}),
+    #"Merged Queries" = Table.NestedJoin(#"Expanded terms1", {"name"}, #"hierarquia-260912-termboard_model_repository-01 (4)", {"filho"}, "hierarquia-260912-termboard_model_repository-01 (4)", JoinKind.LeftOuter),
+    #"Expanded hierarquia-260912-termboard_model_repository-01 (4)" = Table.ExpandTableColumn(#"Merged Queries", "hierarquia-260912-termboard_model_repository-01 (4)", {"pai"}, {"pai"}),
+    // N-níveis: dicionário filho->pai primário (primeiro alfabético, igual ao tool-hierarchy-levels.py)
+    _Mapa = Table.SelectRows(#"Expanded hierarquia-260912-termboard_model_repository-01 (4)", each [pai] <> null and [pai] <> ""),
+    _MapaOrd = Table.Sort(_Mapa, {{"name", Order.Ascending}, {"pai", Order.Ascending}}),
+    _MapaDedup = Table.Distinct(_MapaOrd, {"name"}),
+    _Filhos = List.Buffer(Table.Column(_MapaDedup, "name")),
+    _Pais = List.Buffer(Table.Column(_MapaDedup, "pai")),
+    PaiDict = Record.FromList(_Pais, _Filhos),
+    GetPai = (t as text) as nullable text => Record.FieldOrDefault(PaiDict, t, null),
+    NivelFn = (t as text, vis as list) as number =>
+        let p = GetPai(t)
+        in if p = null then 0
+           else if List.Contains(vis, t) then -1
+           else @NivelFn(p, vis & {t}) + 1,
+    CaminhoFn = (t as text, vis as list) as text =>
+        let p = GetPai(t)
+        in if p = null then t
+           else if List.Contains(vis, t) then "!CICLO!/" & t
+           else @CaminhoFn(p, vis & {t}) & "/" & t,
+    #"Added Conditional Column" = Table.AddColumn(#"Expanded hierarquia-260912-termboard_model_repository-01 (4)", "nivel", each NivelFn([name], {}), Int64.Type),
+    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "caminho", each CaminhoFn([name], {}), type text)
+in
+    #"Added Conditional Column1"

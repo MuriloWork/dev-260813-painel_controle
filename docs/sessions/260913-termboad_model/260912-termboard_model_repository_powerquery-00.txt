@@ -1,0 +1,11 @@
+let
+    Source = #"260912-termboard_model_repository-01",
+    #"Expanded Value" = Table.ExpandRecordColumn(Source, "Value", {"terms"}, {"terms"}),
+    #"Expanded terms" = Table.ExpandListColumn(#"Expanded Value", "terms"),
+    #"Expanded terms1" = Table.ExpandRecordColumn(#"Expanded terms", "terms", {"id", "name", "description", "additionalInformation", "has_position", "type", "groupRelation", "parent", "displayType", "weight", "xFields", "synonyms", "x", "y", "style_borderColor", "style_backgroundColor", "style_fontColor", "style_fontSize", "style_fontType", "style_shape", "style_lineStyle", "style_width", "style_height", "style_displayType", "style_imageUrl"}, {"id", "name", "description", "additionalInformation", "has_position", "type", "groupRelation", "parent", "displayType", "weight", "xFields", "synonyms", "x", "y", "style_borderColor", "style_backgroundColor", "style_fontColor", "style_fontSize", "style_fontType", "style_shape", "style_lineStyle", "style_width", "style_height", "style_displayType", "style_imageUrl"}),
+    #"Merged Queries" = Table.NestedJoin(#"Expanded terms1", {"name"}, #"hierarquia-260912-termboard_model_repository-01 (4)", {"filho"}, "hierarquia-260912-termboard_model_repository-01 (4)", JoinKind.LeftOuter),
+    #"Expanded hierarquia-260912-termboard_model_repository-01 (4)" = Table.ExpandTableColumn(#"Merged Queries", "hierarquia-260912-termboard_model_repository-01 (4)", {"pai"}, {"pai"}),
+    #"Added Conditional Column" = Table.AddColumn(#"Expanded hierarquia-260912-termboard_model_repository-01 (4)", "nivel", each if [pai] = null then 0 else 1),
+    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "caminho", each if [pai] = null then [name] else [pai] &"/"& [name])
+in
+    #"Added Conditional Column1"

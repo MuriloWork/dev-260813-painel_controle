@@ -1,0 +1,50 @@
+@prefix : <http://example.org/okf/repository-classification#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.org/okf/repository-classification> a owl:Ontology ;
+    rdfs:comment "Ontologia para Classificacao Automatica de Repositorios no contexto de Knowledge Bundles (OKF)."@pt .
+
+# Declaracao de Classes
+:Repository a owl:Class ;
+    rdfs:label "Repository"@en, "Repositório"@pt .
+
+:KnowledgeBundle a owl:Class ;
+    rdfs:label "Knowledge Bundle"@en, "Pacote de Conhecimento"@pt .
+
+:RestrictedBundle a owl:Class ;
+    rdfs:subClassOf :KnowledgeBundle ;
+    rdfs:label "Restricted Bundle"@en, "Pacote Restrito"@pt .
+
+:RestrictedRepository a owl:Class ;
+    rdfs:subClassOf :Repository ;
+    rdfs:label "Restricted Repository"@en, "Repositório Restrito"@pt .
+
+:PublicRepository a owl:Class ;
+    rdfs:subClassOf :Repository ;
+    rdfs:label "Public Repository"@en, "Repositório Público"@pt .
+
+# Propriedade de Objeto e Restrições de Domínio/Alcance
+:containsBundle a owl:ObjectProperty ;
+    rdfs:domain :Repository ;
+    rdfs:range :KnowledgeBundle ;
+    rdfs:label "contains bundle"@en, "contém pacote"@pt .
+
+# Axioma de Disjunção entre Subclasses de Repositório
+[] a owl:AllDisjointClasses ;
+    owl:members ( :RestrictedRepository :PublicRepository ) .
+
+# Axioma de Equivalência Lógica para Classificação Automática
+:RestrictedRepository owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        :Repository
+        [
+            a owl:Restriction ;
+            owl:onProperty :containsBundle ;
+            owl:someValuesFrom :RestrictedBundle
+        ]
+    )
+] .

@@ -1,0 +1,174 @@
+<rdf:RDF
+ xml:base="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:dct="http://purl.org/dc/terms/"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+ xmlns:c="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#">
+    <owl:Ontology rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5">
+        <dc:title>260912-termboard_model_repository</dc:title>
+        <dct:modified>13-9-2026</dct:modified>
+        <rdfs:comment>Ontology exported from Termboard - a visual knowledge modeling tool.</rdfs:comment>
+        <rdfs:label>260912-termboard_model_repository</rdfs:label>
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#documentation_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A repository specifically for managing and versioning project documentation, guides, and knowledge base entries.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>documentation repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:definition>A repository specifically for managing and versioning project documentation, guides, and knowledge base entries.</skos:definition>
+        <skos:prefLabel>documentation repository</skos:prefLabel>
+        <c:is-a rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#code_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A specialized repository dedicated to storing and versioning source code, often supporting features like branching and merge management.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>code repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:definition>A specialized repository dedicated to storing and versioning source code, often supporting features like branching and merge management.</skos:definition>
+        <skos:prefLabel>code repository</skos:prefLabel>
+        <c:is-a rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#artifact_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A centralized repository for storing build artifacts, libraries, and binaries, commonly used in continuous integration and deployment pipelines.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>artifact repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:definition>A centralized repository for storing build artifacts, libraries, and binaries, commonly used in continuous integration and deployment pipelines.</skos:definition>
+        <skos:prefLabel>artifact repository</skos:prefLabel>
+        <c:is-a rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#pull_request">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A mechanism for proposing changes to a repository, allowing for review and discussion before the changes are officially merged.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>pull request</rdfs:label>
+        <skos:definition>A mechanism for proposing changes to a repository, allowing for review and discussion before the changes are officially merged.</skos:definition>
+        <skos:prefLabel>pull request</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <c:proposes_changes_to rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#version_control_system">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>Software that tracks changes to files and allows users to manage different versions of the data, forming the core mechanism of a repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>version control system</rdfs:label>
+        <skos:definition>Software that tracks changes to files and allows users to manage different versions of the data, forming the core mechanism of a repository.</skos:definition>
+        <skos:prefLabel>version control system</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#data_repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A repository designed to store structured or unstructured data assets, such as datasets, schemas, or configuration files, with version control.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>data repository</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:definition>A repository designed to store structured or unstructured data assets, such as datasets, schemas, or configuration files, with version control.</skos:definition>
+        <skos:prefLabel>data repository</skos:prefLabel>
+        <c:is-a rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#branch">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A parallel line of development within a repository that allows for independent work without affecting the main codebase until merged.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>branch</rdfs:label>
+        <skos:definition>A parallel line of development within a repository that allows for independent work without affecting the main codebase until merged.</skos:definition>
+        <skos:prefLabel>branch</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#merge"/>
+        <c:undergoes rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#merge"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A repository is a centralized, version-controlled storage system for managing and tracking changes to source code or other digital assets over time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>repository</rdfs:label>
+        <skos:altLabel>codebase</skos:altLabel>
+        <skos:altLabel>source control system</skos:altLabel>
+        <skos:altLabel>version control system</skos:altLabel>
+        <skos:altLabel>central code store</skos:altLabel>
+        <skos:altLabel>asset repository</skos:altLabel>
+        <skos:definition>A repository is a centralized, version-controlled storage system for managing and tracking changes to source code or other digital assets over time.</skos:definition>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#artifact_repository"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#code_repository"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#documentation_repository"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#data_repository"/>
+        <skos:prefLabel>repository</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#branch"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#pull_request"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#version_control_system"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#commit"/>
+        <c:contains rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#commit"/>
+        <c:is_managed_by rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#version_control_system"/>
+        <c:supports rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#branch"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#commit">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>A single snapshot of the state of the repository at a specific point in time, representing a discrete change or update.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>commit</rdfs:label>
+        <skos:definition>A single snapshot of the state of the repository at a specific point in time, representing a discrete change or update.</skos:definition>
+        <skos:prefLabel>commit</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#merge">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment>The process of combining changes from one branch into another, integrating development work into the repository's main history.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>merge</rdfs:label>
+        <skos:definition>The process of combining changes from one branch into another, integrating development work into the repository's main history.</skos:definition>
+        <skos:prefLabel>merge</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#branch"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#is-a">
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>is-a</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:prefLabel>is-a</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#supports">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>supports</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#branch"/>
+        <skos:prefLabel>supports</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#proposes_changes_to">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#pull_request"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>proposes changes to</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <skos:prefLabel>proposes changes to</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#is_managed_by">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>is managed by</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#version_control_system"/>
+        <skos:prefLabel>is managed by</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#undergoes">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#branch"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>undergoes</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#merge"/>
+        <skos:prefLabel>undergoes</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#contains">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#repository"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5"/>
+        <rdfs:label>contains</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/c26d4dc7-d6be-026e-0b7d-dbb050bf76a5#commit"/>
+        <skos:prefLabel>contains</skos:prefLabel>
+    </owl:ObjectProperty>
+</rdf:RDF>

@@ -1,0 +1,53 @@
+@prefix : <http://example.org/okf/bundle-validation#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/okf/bundle-validation> a owl:Ontology ;
+    rdfs:comment "Ontologia para Validação de Conformidade e Integridade de Knowledge Bundles (OKF)."@pt .
+
+# Declaracao de Classes
+:OKFBundle a owl:Class ;
+    rdfs:label "OKF Bundle"@en, "Pacote OKF"@pt .
+
+:CertifiedBundle a owl:Class ;
+    rdfs:subClassOf :OKFBundle ;
+    rdfs:label "Certified Bundle"@en, "Pacote Certificado"@pt .
+
+:Metadata a owl:Class ;
+    rdfs:label "Metadata"@en, "Metadados"@pt .
+
+:SchemaDefinition a owl:Class ;
+    rdfs:label "Schema Definition"@en, "Definição de Esquema"@pt .
+
+# Propriedades de Objeto e Restrições de Domínio/Alcance
+:hasMetadata a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain :OKFBundle ;
+    rdfs:range :Metadata ;
+    rdfs:label "has metadata"@en, "possui metadados"@pt .
+
+:hasSchema a owl:ObjectProperty ;
+    rdfs:domain :OKFBundle ;
+    rdfs:range :SchemaDefinition ;
+    rdfs:label "has schema"@en, "possui esquema"@pt .
+
+# Axioma de Equivalência Lógica para Validação do CertifiedBundle
+:CertifiedBundle owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        :OKFBundle
+        [
+            a owl:Restriction ;
+            owl:onProperty :hasMetadata ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :Metadata
+        ]
+        [
+            a owl:Restriction ;
+            owl:onProperty :hasSchema ;
+            owl:someValuesFrom :SchemaDefinition
+        ]
+    )
+] .

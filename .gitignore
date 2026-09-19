@@ -12,3 +12,5 @@ docs/sessions/.logs/
 *.xlsx
 .venv/
 venv/
+# Added by code-review-graph
+.code-review-graph/

@@ -154,8 +154,12 @@
       "code-review-graph": {
         "type": "local",
         "command": [
-          "code-review-graph",
-          "serve"
+          "/home/linux_mu/venvs/pessoal/bin/python3",
+          "-m",
+          "code_review_graph",
+          "serve",
+          "--repo",
+          "/mnt/c/Users/muril/OneDrive/01 mycloud/01-sistMu/11-systems/01-root/dev/260813-painel_controle"
         ],
         "disabled": false
       },

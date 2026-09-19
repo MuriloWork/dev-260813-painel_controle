@@ -410,15 +410,15 @@ graph LR
 
 
 ## 3.2. bloco repositorios
-[[260819-modelo_repositorios|modelo_repositorios]]
+[[260916-modelos_semanticos|modelo_repositorios]]
 ### 3.2.1. repositorios de documentos
 #### 3.2.1.1. `docs^agents`
 #### 3.2.1.2. `docs^gsd-planning`
 #### 3.2.1.3. `docs^kb`
 Arquitetura dos repositorios conforme google OKF. Cada pasta na raiz representa um tipo de dominio
 
-- documento [[260819-modelo_repositorios#4.2.1. modelo especifico para INDEX.md na pasta raiz `docs kb`|INDEX.md]] 
-- documento [[260819-modelo_repositorios#4.3.1. modelo especifico para README.md na pasta raiz `docs kb`|README.md]] 
+- documento [[260916-modelos_semanticos#4.2.1. modelo especifico para INDEX.md na pasta raiz `docs kb`|INDEX.md]] 
+- documento [[260916-modelos_semanticos#4.3.1. modelo especifico para README.md na pasta raiz `docs kb`|README.md]] 
 - pasta `conceitos`
 - pasta `conceitos aplicados`
 	- ontologias 

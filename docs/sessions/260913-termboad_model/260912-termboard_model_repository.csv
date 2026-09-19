@@ -1,0 +1,15 @@
+Relation Name,Reversed,Type,Direction
+skos:narrower,skos:broader,Generalization,source ? target
+repo:contains,repo:isPartOf,Aggregation,source ? target
+repo:produces,repo:producedBy,Dependency,source ? target
+repo:supports,repo:supportedBy,Interaction,source ? target
+repo:uses,repo:usedBy,Attributive,source ? target
+repo:managedBy,repo:manages,Dependency,target ? source
+repo:undergoes,repo:affects,Interaction,source ? target
+repo:references,repo:referencedBy,Dependency,source ? target
+repo:isMarkedBy,repo:marks,Attributive,target ? source
+repo:sourceOf,repo:sourceFor,Dependency,target ? source
+repo:containsBranches,repo:containedIn,Aggregation,target ? source
+repo:hasRemote,repo:remoteFor,Interaction,target ? source
+repo:allowsCloneOf,repo:cloneOf,Dependency,target ? source
+repo:receivesPullRequest,repo:proposesChangesTo,Interaction,source ? target

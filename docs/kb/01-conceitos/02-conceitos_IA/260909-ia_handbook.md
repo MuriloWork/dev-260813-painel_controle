@@ -1,80 +1,892 @@
 **IA**  
 
-# 1. agents 
+# 1. [[260909-ia_handbook_harness|agent harness]]  
+## 1.1. [[260919-ia_agent_harness|caso de uso: agent_harness, versao atual]]
 
-## 1.1. session-planner 
+# 2. agents + skills 
+## 2.1. resumo 
+Existe uma relação estreita entre [janela de contexto, memoria] do agente interagindo com o modelo LLM e os mecanismos de cada aplicação de agent harness, na forma e dinamica de gerenciamento de que o harness consegue realizar.
 
-- session-plan-init-investigate  
-- session-plan-init-structure 
-- session-plan-init-review 
-- session-plan-init-publish 
-- session-plan-update 
-- session-plan-finish 
+Os aspectos conceituais sobre [[260909-ia_handbook_harness#1.4.1. Memory and Context Engineering for Agent Harness|Memory and Context Engineering for Agent Harness]] são abordados em seção dedicada ao tema.
+A persistência (ou não) dos dados no contexto é uma decisão puramente do **harness** (a infraestrutura de código que envelopa o LLM).
 
-## 1.2. project-planner 
+Aqui nessa seção serão tratados os aspectos operacionais de gerenciamento de memoria e contexto, com base em casos de uso.
 
-- skills 
-  - project-prd 
-  - project-srd 
-  - project-plan-steps  
-  - project-plan-map 
-  - project-plan-code-map 
+## 2.2. [[260919-ia_agent_harness|caso de uso: opencode]] 
+No caso do **OpenCode**, o ecossistema lida com isso de forma muito inteligente e estruturada através de ferramentas nativas e plugins de compactação/memória.
 
-## 1.3. code-reviewer 
+O ecossistema do OpenCode gerencia o ciclo de vida das skills e o contexto da seguinte forma:
 
-- input prompt  
-  - contexto 
-    - project_title: 
-    - project_absolute_path: 
-    - stack 
-    - seção do projeto 
-  - caminhos dos documentos, relativos ao {project_absolute_path} 
-    - code_folder: 
-    - code_target_files 
-    - code_map: 
-    - srd: seções [descrições, tag system] 
-    - session_code_blocks: 
-    - session_code_blocks_sections: [] 
-    - requested_report: 
-  - instruções 
-- agent rules 
-  - permissions: ~~skills~~, tools 
-  - var paths map `{placeholders}` 
-  - fix paths map 
-    - output template 
-    - skills 
-    - aux files: json 
-    - regras para chamar skills 
-  - workflow 
-    - ler 
-    - executar 
-    - salvar requested report, versionamento 
-- skills 
-  - code-spec-compliance 
-    - paths map: srd [descrições, tag system] 
-    - rules: conformidade com descrições, checklist 
-  - code-quality 
-    - paths map: code control map, code files, srd [tag system] 
-    - rules: hierarquia, nomenclatura, complexidade 
+### 2.2.1. agentes opencode |[web](https://opencode.ai/docs/pt-br/agents/)|
+
+Agentes são assistentes de IA especializados que podem ser configurados para tarefas e fluxos de trabalho específicos. Eles permitem que você crie ferramentas focadas com prompts, modelos e acesso a ferramentas personalizados.
+
+Você pode alternar entre agentes durante uma sessão ou invocá-los com a menção `@`.
 
 
-```toml
-[tab]
-abc = 1
-dgh = "cvbnk"
-```  
 
-# 2. [[260909-ia_handbook_harness|harness]]  
+#### 2.2.1.1. Tipos
+
+Existem dois tipos de agentes no opencode; agentes primários e subagentes.
+
+
+
+##### 2.2.1.1.1. Agentes primários
+
+Agentes primários são os principais assistentes com os quais você interage diretamente. Você pode alternar entre eles usando a tecla **Tab** ou sua tecla de atalho configurada `switch_agent`. Esses agentes lidam com sua conversa principal. O acesso às ferramentas é configurado por meio de permissões — por exemplo, Build tem todas as ferramentas habilitadas, enquanto Plan é restrito.
+
+opencode vem com dois agentes primários integrados, **Build** e **Plan**. Vamos ver isso abaixo.
+
+
+
+##### 2.2.1.1.2. Subagentes
+
+Subagentes são assistentes especializados que agentes primários podem invocar para tarefas específicas. Você também pode invocá-los manualmente mencionando-os com **@** em suas mensagens.
+
+OpenCode vem com três subagentes integrados, **General**, **Explore** e **Scout**. Vamos ver isso abaixo.
+
+
+
+#### 2.2.1.2. Integrados
+
+OpenCode vem com dois agentes primários integrados e três subagentes integrados.
+
+
+
+##### 2.2.1.2.1. build
+
+*Modo*: `primary`
+
+Build é o agente primário **padrão** com todas as ferramentas habilitadas. Este é o agente padrão para trabalho de desenvolvimento onde você precisa de acesso total a operações de arquivo e comandos do sistema.
+
+
+
+##### 2.2.1.2.2. plan
+
+*Modo*: `primary`
+
+Um agente restrito projetado para planejamento e análise. Usamos um sistema de permissões para lhe dar mais controle e evitar alterações não intencionais. Por padrão, todos os seguintes estão configurados para `ask`:
+
+- `file edits`: Todas as gravações, patches e edições
+- `bash`: Todos os comandos bash
+
+Este agente é útil quando você deseja que o LLM analise código, sugira alterações ou crie planos sem fazer modificações reais em seu código.
+
+
+
+##### 2.2.1.2.3. general
+
+*Modo*: `subagent`
+
+Um agente de propósito geral para pesquisar questões complexas e executar tarefas em múltiplas etapas. Tem acesso total às ferramentas (exceto todo), portanto, pode fazer alterações em arquivos quando necessário. Use isso para executar várias unidades de trabalho em paralelo.
+
+
+
+##### 2.2.1.2.4. explore
+
+*Modo*: `subagent`
+
+Um agente rápido e somente leitura para explorar bases de código. Não pode modificar arquivos. Use isso quando você precisar encontrar rapidamente arquivos por padrões, pesquisar código por palavras-chave ou responder perguntas sobre a base de código.
+
+
+
+##### 2.2.1.2.5. Scout
+
+*Modo*: `subagent`
+
+Um agente somente leitura para pesquisa em documentação externa e dependências. Use-o quando você precisar clonar o repositório de uma dependência para o cache gerenciado do OpenCode, inspecionar o código-fonte de uma biblioteca ou cruzar o código local com implementações upstream sem modificar seu workspace.
+
+
+
+##### 2.2.1.2.6. compaction
+
+*Modo*: `primary`
+
+Agente de sistema oculto que compacta longos contextos em um resumo menor. Ele é executado automaticamente quando necessário e não é selecionável na interface.
+
+
+
+*Modo*: `primary`
+
+Agente de sistema oculto que gera títulos curtos para sessões. Ele é executado automaticamente e não é selecionável na interface.
+
+
+
+##### 2.2.1.2.7. summary
+
+*Modo*: `primary`
+
+Agente de sistema oculto que cria resumos de sessões. Ele é executado automaticamente e não é selecionável na interface.
+
+
+
+#### 2.2.1.3. Uso
+
+1. Para agentes primários, use a tecla **Tab** para alternar entre eles durante uma sessão. Você também pode usar sua tecla de atalho configurada `switch_agent`.
+2. Subagentes podem ser invocados:
+	- **Automaticamente** por agentes primários para tarefas especializadas com base em suas descrições.
+		- Manualmente mencionando um subagente em sua mensagem. Por exemplo.
+		```txt
+		@general help me search for this function
+		```
+3. **Navegação entre sessões**: Quando subagentes criam suas próprias sessões filhas, você pode navegar entre a sessão pai e todas as sessões filhas usando:
+	- **\<Leader>+Right** (ou sua tecla de atalho configurada `session_child_cycle`) para alternar para frente através de pai → child1 → child2 → … → pai
+		- **\<Leader>+Left** (ou sua tecla de atalho configurada `session_child_cycle_reverse`) para alternar para trás através de pai ← child1 ← child2 ← … ← pai
+	Isso permite que você mude perfeitamente entre a conversa principal e o trabalho especializado do subagente.
+
+
+
+#### 2.2.1.4. Configuração
+
+Você pode personalizar os agentes integrados ou criar os seus próprios através da configuração. Os agentes podem ser configurados de duas maneiras:
+
+
+
+##### 2.2.1.4.1. JSON
+
+Configure os agentes em seu arquivo de configuração `opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "prompt": "{file:./prompts/build.txt}",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "plan": {
+      "mode": "primary",
+      "model": "anthropic/claude-haiku-4-20250514",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false
+      }
+    },
+    "code-reviewer": {
+      "description": "Revisa código para melhores práticas e potenciais problemas",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "prompt": "Você é um revisor de código. Foque em segurança, performance e manutenibilidade.",
+      "tools": {
+        "write": false,
+        "edit": false
+      }
+    }
+  }
+}
+```
+
+
+
+##### 2.2.1.4.2. Markdown
+
+Você também pode definir agentes usando arquivos markdown. Coloque-os em:
+
+- Global: `~/.config/opencode/agents/`
+- Por projeto: `.opencode/agents/`
+
+```markdown
+---
+description: Revisa código para qualidade e melhores práticas
+mode: subagent
+model: anthropic/claude-sonnet-4-20250514
+temperature: 0.1
+tools:
+  write: false
+  edit: false
+  bash: false
+---
+
+Você está no modo de revisão de código. Foque em:
+
+- Qualidade do código e melhores práticas
+- Bugs potenciais e casos de borda
+- Implicações de desempenho
+- Considerações de segurança
+
+Forneça feedback construtivo sem fazer alterações diretas.
+```
+
+O nome do arquivo markdown se torna o nome do agente. Por exemplo, `review.md` cria um agente `review`.
+
+
+
+#### 2.2.1.5. Opções
+
+Vamos analisar essas opções de configuração em detalhes.
+
+
+
+##### 2.2.1.5.1. Descrição
+
+Use a opção `description` para fornecer uma breve descrição do que o agente faz e quando usá-lo.
+
+```json
+{
+  "agent": {
+    "review": {
+      "description": "Revisa código para melhores práticas e potenciais problemas"
+    }
+  }
+}
+```
+
+Esta é uma opção de configuração **obrigatória**.
+
+
+
+##### 2.2.1.5.2. Temperatura
+
+Controle a aleatoriedade e criatividade das respostas do LLM com a configuração `temperature`.
+
+Valores mais baixos tornam as respostas mais focadas e determinísticas, enquanto valores mais altos aumentam a criatividade e variabilidade.
+
+```json
+{
+  "agent": {
+    "plan": {
+      "temperature": 0.1
+    },
+    "creative": {
+      "temperature": 0.8
+    }
+  }
+}
+```
+
+Os valores de temperatura geralmente variam de 0.0 a 1.0:
+
+- **0.0-0.2**: Respostas muito focadas e determinísticas, ideais para análise de código e planejamento
+- **0.3-0.5**: Respostas equilibradas com alguma criatividade, boas para tarefas de desenvolvimento gerais
+- **0.6-1.0**: Respostas mais criativas e variadas, úteis para brainstorming e exploração
+
+```json
+{
+  "agent": {
+    "analyze": {
+      "temperature": 0.1,
+      "prompt": "{file:./prompts/analysis.txt}"
+    },
+    "build": {
+      "temperature": 0.3
+    },
+    "brainstorm": {
+      "temperature": 0.7,
+      "prompt": "{file:./prompts/creative.txt}"
+    }
+  }
+}
+```
+
+Se nenhuma temperatura for especificada, o opencode usa padrões específicos do modelo; tipicamente 0 para a maioria dos modelos, 0.55 para modelos Qwen.
+
+
+
+##### 2.2.1.5.3. Máximo de etapas
+
+Controle o número máximo de iterações que um agente pode realizar antes de ser forçado a responder apenas com texto. Isso permite que usuários que desejam controlar custos definam um limite nas ações do agente.
+
+Se isso não for definido, o agente continuará a iterar até que o modelo decida parar ou o usuário interrompa a sessão.
+
+```json
+{
+  "agent": {
+    "quick-thinker": {
+      "description": "Raciocínio rápido com iterações limitadas",
+      "prompt": "Você é um pensador rápido. Resolva problemas com etapas mínimas.",
+      "steps": 5
+    }
+  }
+}
+```
+
+Quando o limite é alcançado, o agente recebe um prompt especial do sistema instruindo-o a responder com um resumo de seu trabalho e tarefas recomendadas restantes.
+
+
+
+##### 2.2.1.5.4. Desativar
+
+Defina como `true` para desativar o agente.
+
+```json
+{
+  "agent": {
+    "review": {
+      "disable": true
+    }
+  }
+}
+```
+
+
+
+##### 2.2.1.5.5. Prompt
+
+Especifique um arquivo de prompt do sistema personalizado para este agente com a configuração `prompt`. O arquivo de prompt deve conter instruções específicas para o propósito do agente.
+
+```json
+{
+  "agent": {
+    "review": {
+      "prompt": "{file:./prompts/code-review.txt}"
+    }
+  }
+}
+```
+
+Este caminho é relativo ao local onde o arquivo de configuração está localizado. Portanto, isso funciona tanto para a configuração global do opencode quanto para a configuração específica do projeto.
+
+
+
+##### 2.2.1.5.6. Modelo
+
+Use a configuração `model` para substituir o modelo para este agente. Útil para usar diferentes modelos otimizados para diferentes tarefas. Por exemplo, um modelo mais rápido para planejamento, um modelo mais capaz para implementação.
+
+```json
+{
+  "agent": {
+    "plan": {
+      "model": "anthropic/claude-haiku-4-20250514"
+    }
+  }
+}
+```
+
+O ID do modelo em sua configuração do opencode usa o formato `provider/model-id`. Por exemplo, se você estiver usando [OpenCode Zen](https://opencode.ai/docs/zen), você usaria `opencode/gpt-5.1-codex` para GPT 5.1 Codex.
+
+
+
+##### 2.2.1.5.7. Ferramentas
+
+Controle quais ferramentas estão disponíveis neste agente com a configuração `tools`. Você pode habilitar ou desabilitar ferramentas específicas definindo-as como `true` ou `false`.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "tools": {
+    "write": true,
+    "bash": true
+  },
+  "agent": {
+    "plan": {
+      "tools": {
+        "write": false,
+        "bash": false
+      }
+    }
+  }
+}
+```
+
+Você também pode usar curingas para controlar várias ferramentas ao mesmo tempo. Por exemplo, para desativar todas as ferramentas de um servidor MCP:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "readonly": {
+      "tools": {
+        "mymcp_*": false,
+        "write": false,
+        "edit": false
+      }
+    }
+  }
+}
+```
+
+[Saiba mais sobre ferramentas](https://opencode.ai/docs/tools).
+
+
+
+##### 2.2.1.5.8. Permissões
+
+Você pode configurar permissões para gerenciar quais ações um agente pode realizar. Atualmente, as permissões para as ferramentas `edit`, `bash` e `webfetch` podem ser configuradas para:
+
+- `"ask"` — Solicitar aprovação antes de executar a ferramenta
+- `"allow"` — Permitir todas as operações sem aprovação
+- `"deny"` — Desativar a ferramenta
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "edit": "deny"
+  }
+}
+```
+
+Você pode substituir essas permissões por agente.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "edit": "deny"
+  },
+  "agent": {
+    "build": {
+      "permission": {
+        "edit": "ask"
+      }
+    }
+  }
+}
+```
+
+Você também pode definir permissões em agentes Markdown.
+
+```markdown
+---
+description: Revisão de código sem edições
+mode: subagent
+permission:
+  edit: deny
+  bash:
+    "*": ask
+    "git diff": allow
+    "git log*": allow
+    "grep *": allow
+  webfetch: deny
+---
+
+Apenas analise o código e sugira alterações.
+```
+
+Você pode definir permissões para comandos bash específicos.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "permission": {
+        "bash": {
+          "git push": "ask",
+          "grep *": "allow"
+        }
+      }
+    }
+  }
+}
+```
+
+Isso pode aceitar um padrão glob.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "permission": {
+        "bash": {
+          "git *": "ask"
+        }
+      }
+    }
+  }
+}
+```
+
+E você também pode usar o curinga `*` para gerenciar permissões para todos os comandos. Como a última regra correspondente tem precedência, coloque o curinga `*` primeiro e regras específicas depois.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "permission": {
+        "bash": {
+          "*": "ask",
+          "git status *": "allow"
+        }
+      }
+    }
+  }
+}
+```
+
+[Saiba mais sobre permissões](https://opencode.ai/docs/permissions).
+
+
+##### 2.2.1.5.9. Modo
+
+Controle o modo do agente com a configuração `mode`. A opção `mode` é usada para determinar como o agente pode ser usado.
+
+```json
+{
+  "agent": {
+    "review": {
+      "mode": "subagent"
+    }
+  }
+}
+```
+
+A opção `mode` pode ser definida como `primary`, `subagent` ou `all`. Se nenhum `mode` for especificado, o padrão é `all`.
+
+---
+
+##### 2.2.1.5.10. Oculto
+
+Oculte um subagente do menu de autocompletar `@` com `hidden: true`. Útil para subagentes internos que devem ser invocados apenas programaticamente por outros agentes através da ferramenta Task.
+
+```json
+{
+  "agent": {
+    "internal-helper": {
+      "mode": "subagent",
+      "hidden": true
+    }
+  }
+}
+```
+
+Isso afeta apenas a visibilidade do usuário no menu de autocompletar. Agentes ocultos ainda podem ser invocados pelo modelo através da ferramenta Task, se as permissões permitirem.
+
+---
+
+##### 2.2.1.5.11. Permissões de tarefa
+
+Controle quais subagentes um agente pode invocar através da ferramenta Task com `permission.task`. Usa padrões globais para correspondência flexível.
+
+```json
+{
+  "agent": {
+    "orchestrator": {
+      "mode": "primary",
+      "permission": {
+        "task": {
+          "*": "deny",
+          "orchestrator-*": "allow",
+          "code-reviewer": "ask"
+        }
+      }
+    }
+  }
+}
+```
+
+Quando definido como `deny`, o subagente é removido da descrição da ferramenta Task completamente, então o modelo não tentará invocá-lo.
+
+---
+
+##### 2.2.1.5.12. Cor
+
+Personalize a aparência visual do agente na interface com a opção `color`. Isso afeta como o agente aparece na interface.
+
+Use uma cor hex válida (por exemplo, `#FF5733`) ou cor de tema: `primary`, `secondary`, `accent`, `success`, `warning`, `error`, `info`.
+
+```json
+{
+  "agent": {
+    "creative": {
+      "color": "#ff6b6b"
+    },
+    "code-reviewer": {
+      "color": "accent"
+    }
+  }
+}
+```
+
+---
+
+##### 2.2.1.5.13. Top P
+
+Controle a diversidade das respostas com a opção `top_p`. Alternativa à temperatura para controlar a aleatoriedade.
+
+```json
+{
+  "agent": {
+    "brainstorm": {
+      "top_p": 0.9
+    }
+  }
+}
+```
+
+Os valores variam de 0.0 a 1.0. Valores mais baixos são mais focados, valores mais altos são mais diversos.
+
+---
+
+##### 2.2.1.5.14. Adicional
+
+Quaisquer outras opções que você especificar em sua configuração de agente serão **passadas diretamente** para o provedor como opções de modelo. Isso permite que você use recursos e parâmetros específicos do provedor.
+
+Por exemplo, com os modelos de raciocínio da OpenAI, você pode controlar o esforço de raciocínio:
+
+```json
+{
+  "agent": {
+    "deep-thinker": {
+      "description": "Agente que usa alto esforço de raciocínio para problemas complexos",
+      "model": "openai/gpt-5",
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    }
+  }
+}
+```
+
+Essas opções adicionais são específicas do modelo e do provedor. Verifique a documentação do seu provedor para parâmetros disponíveis.
+
+---
+
+#### 2.2.1.6. Criando agentes
+
+Você pode criar novos agentes usando o seguinte comando:
+
+```bash
+opencode agent create
+```
+
+Este comando interativo irá:
+
+1. Perguntar onde salvar o agente; global ou específico do projeto.
+2. Descrição do que o agente deve fazer.
+3. Gerar um prompt de sistema apropriado e identificador.
+4. Permitir que você selecione quais ferramentas o agente pode acessar.
+5. Finalmente, criar um arquivo markdown com a configuração do agente.
+
+#### 2.2.1.7. Casos de uso
+
+Aqui estão alguns casos de uso comuns para diferentes agentes.
+
+- **Agente Build**: Trabalho de desenvolvimento completo com todas as ferramentas habilitadas
+- **Agente Plan**: Análise e planejamento sem fazer alterações
+- **Agente Review**: Revisão de código com acesso somente leitura e ferramentas de documentação
+- **Agente Debug**: Focado em investigação com ferramentas bash e de leitura habilitadas
+- **Agente Docs**: Redação de documentação com operações de arquivo, mas sem comandos do sistema
+
+#### 2.2.1.8. Exemplos
+
+Aqui estão alguns agentes de exemplo que você pode achar úteis.
+
+##### 2.2.1.8.1. Agente de documentação
+
+```markdown
+---
+description: Escreve e mantém a documentação do projeto
+mode: subagent
+tools:
+  bash: false
+---
+
+Você é um escritor técnico. Crie documentação clara e abrangente.
+
+Foque em:
+
+- Explicações claras
+- Estrutura adequada
+- Exemplos de código
+- Linguagem amigável ao usuário
+```
+
+
+##### 2.2.1.8.2. Auditor de segurança
+
+```markdown
+---
+description: Realiza auditorias de segurança e identifica vulnerabilidades
+mode: subagent
+tools:
+  write: false
+  edit: false
+---
+
+Você é um especialista em segurança. Foque em identificar potenciais problemas de segurança.
+
+Procure por:
+
+- Vulnerabilidades de validação de entrada
+- Falhas de autenticação e autorização
+- Riscos de exposição de dados
+- Vulnerabilidades de dependência
+- Problemas de segurança de configuração
+```
+
+
+### 2.2.2. O Carregamento NATIVO de Skills no OpenCode
+
+O OpenCode possui uma ferramenta nativa chamada explicitamente **`skill`**.
+As suas habilidades personalizadas ficam salvas em arquivos `SKILL.md` (dentro de diretórios como `.opencode/skills/nome-da-skill/`).
+
+O fluxo de contexto que ele faz segue esta lógica:
+
+* **No início da sessão:** O OpenCode injeta no System Prompt apenas a tag `<available_skills>` contendo o `name` e a `description` de cada skill cadastrada. O conteúdo interno do markdown **não** entra no contexto ainda.
+* **A Invocação:** Quando o agente precisa daquela habilidade, ele executa a ferramenta: `skill(name="minha-skill")`.
+* **O Impacto no Contexto:** O OpenCode lê o arquivo `SKILL.md` e joga o texto completo dele **para dentro da janela de conversa** como o retorno da ferramenta.
+
+---
+
+### 2.2.3. Como o OpenCode evita o estouro do contexto após usar a Skill?
+
+Se o agente ler três ou quatro arquivos `SKILL.md` densos, a janela de contexto começaria a pesar. Para mitigar isso, o OpenCode utiliza duas frentes (nativas e via plugins):
+
+#### 2.2.3.1. A. Isolamento via Sub-agentes (Nativo)
+
+O OpenCode frequentemente delega tarefas pesadas que exigem habilidades específicas para **Sub-agentes** (como os sub-agentes embutidos *General*, *Explore* ou *Scout*).
+
+* Quando o agente principal spawna um sub-agente para aplicar uma skill, esse sub-agente roda em uma **chamada de API paralela e isolada**, com sua própria janela de contexto.
+* Quando o sub-agente termina de processar a skill, ele devolve apenas um resumo ou o resultado final para o agente principal através de troca de mensagens. As instruções brutas da skill morrem junto com o contexto descartado do sub-agente.
+
+#### 2.2.3.2. B. O Mecanismo de Compactação (Context Window Compaction)
+
+Para sessões longas no terminal, o OpenCode possui uma rotina de **Compaction** (Compactação). Quando a conversa fica ociosa (*idle*) ou atinge um limite crítico de tokens, o harness do OpenCode passa uma "poda" no histórico:
+
+* Ele remove os retornos brutos e gigantescos de ferramentas (como o conteúdo completo de um arquivo lido ou de uma skill carregada passos atrás).
+* Ele mantém apenas os turnos essenciais da conversa (as instruções finais e o estado atual do código).
+
+#### 2.2.3.3. C. Integração com Plugins de Memória Longa (ex: Hindsight / Agent-Memory)
+
+Em implementações mais robustas do OpenCode, utilizam-se plugins como o `hindsight` ou `opencode-agent-memory` (baseado no padrão do Letta).
+
+Esses componentes alteram drasticamente o jogo:
+
+1. O plugin intercepta a conversa a cada $N$ turnos (`retainEveryNTurns`).
+2. Ele extrai os aprendizados e o resultado do uso daquela skill.
+3. Ele joga fora o log pesado da execução da ferramenta do contexto atual e salva o aprendizado em um banco SQLite local (Durable Objects) ou arquivos markdown de memória (`.opencode/memory/`).
+4. Se o agente precisar daquele conhecimento de novo, ele usa ferramentas de recordação (`hindsight_recall`) para trazer apenas o pedaço estritamente necessário de volta.
+
+---
+
+#### 2.2.3.4. Resumo
+
+No **OpenCode**, o conteúdo de um `SKILL.md` entra por completo no contexto do chat no momento em que a ferramenta `skill` é chamada. Porém, ele não fica lá para sempre gerando "gordura": o OpenCode limpa essa janela através de **sub-agentes isolados** (para a skill não poluir o fluxo principal) ou através de rotinas automáticas de **compactação de contexto** quando o terminal fica ocioso.
+
+
 # 3. Knowledge base
 
-## 3.1. okf - open knowledge format
+## 3.1. project docs OLD 
 
-### 3.1.1. esclarecimentos
+### 3.1.1. prd 
+
+- funções de negócio 
+- stack 
+	- scripts: dart, python, ps1, sqlite, api  
+	- UI: flutter, web, shell 
+- referências: docs 
+
+### 3.1.2. project documents rules  
+
+- general rules: 
+	- naming 
+	- versioning 
+	- mirroring [md, json, toml, csv, xlsx]  
+- spec docs  
+- plan docs  
+	- plan & control rules: tag system    
+- script docs  
+	- build rules
+		- metodos
+			- factory para boco de dados 
+				- Factory: recebe parâmetros tipados nomeados e cria um Map novo — assetsEntry(fileName: x, timestamp: y) => {'fileName': x, 'timestamp': y}.
+			- transformador para alimentar o bloco 
+				- Transformador: recebe um Map pronto, extrai com casts, transforma em outro Map — _toConfigMap(entry) { final x = entry['fileName'] as String; ... return {...} }.
+	- review rules: spec, quality  
+
+### 3.1.3. srd 
+  
+- arquitetura de funções 
+  - tipo: [negócio, automação] 
+  - funções de automação (implementação)
+   - arquitetura, folders, files 
+     - classes, métodos, objetos 
+- arquitetura de dados 
+  - tipo: [ambiente, config, auth, state, script flow, negócio]
+  - dados de negócio 
+  - documentos, schemas, tabelas 
+    - objetos, campos 
+- blocos do modelo de dados  
+	- post type: [platform, content_type, media_type]
+	- texto: campos detalhados abaixo
+	- media: [image_path, video_path]
+	- schedule: [published, scheduled_publish_time]
+- descrições funcionais (responsabilidades, lógicas, requisitos, restrições) 
+	- tipo [coordenação de processo, execução de processo, processamento de dados]
+	- descrições interfuncionais (coordenação, invocação)
+	- descrições intrafuncionais (execução, implementação)
+		- responsabilidades comuns 
+			- etapas em serie, onde cada etapa
+			- busca os dados na fonte (input)
+			- executa as tranformações necessarias
+			- constroi o mapa de dados para a proxima etapa (output)
+	- processamento de dados (data block, input, transformação, output)
+      - BuildAssets 
+        - input: diretório de assets no disco 
+        - transformações: scan pastas `{platform}.{content_type}`, parse timestamp + frontmatter + body, classificar por tipo (textOnly/textWithMedia/mediaOnly) 
+        - output: `List<AssetsContent>` (AssetsContent = agrupamento por pasta + List.AssetsEntry) 
+        - data blocks processados: 
+          - post type: platform, content_type inferidos da pasta; media_type inferido da extensão 
+          - texto: frontmatter.title + .md body 
+          - media: image_path / video_path resolvidos via media_file do frontmatter 
+          - schedule: timestamp extraído do nome do arquivo 
+      - BuildPostConfig 
+        - input: `List<AssetsContent>`
+        - transformações: mapear AssetsContent.Content → Map post_config (fromAssetsContent), resolver campos de texto (titleFrom + bodyFrom + defaultTextForType), formatar schedule
+        - output: `List<Map post_config>` no schema definido
+        - data blocks processados:
+          - post type: platform, content_type, media_type (copia direta)
+          - texto: text_values.title + text_values.body (de AssetsContent ou fallback defaultTextForType)
+          - media: image_path, video_path (resolvidos do AssetsContent)
+          - schedule: published (bool), scheduled_publish_time (ISO8601 ou null)
+      - BuildPostContent 
+        - input: `Map post_config` (um post)
+        - transformações: copiar fields fixos (platform, content_type, media_type, published, scheduled_publish_time, retry_config), copiar paths (image_path, video_path), resolver texto no field correto (postType.textField = message / caption / description)
+        - output: `Map post_content`
+        - data blocks processados:
+          - post type: platform, content_type, media_type (copia direta)
+          - texto: title (de text_values.title) + body no textField correto (de text_values.body)
+          - media: image_path, video_path (copia direta)
+          - schedule: published, scheduled_publish_time (copia direta)
+      - BuildPayload 
+        - input: `Map post_content`
+        - transformações: construir objeto PostContent Dart (TextContent / ImageContent / VideoContent) com base em media_type + campos preenchidos, validar existência dos paths
+        - output: `PostContent`
+        - data blocks processados:
+          - post type: endpoint, uploadFlow (via PostType)
+          - texto: extrair do textField correto (caption / description / message)
+          - media: validar image_path / video_path no disco 
+          - schedule: passed through via PostType.decorate 
+- logic maps 
+	- [arquitetura funções] x [arquitetura funções] = [descrições]
+	- [arquitetura funções] x [arquitetura dados] = [descrições]
+
+### 3.1.4. srd session code blocks 
+
+- resumo do srd: selected logic map maps review rules   
+- resumo do control map + tag system 
+- selected code blocks 
+
+### 3.1.5. plano 
+
+- plano integral: etapas 
+- plano etapa, todo 
+- control maps 
+  - plan map 
+  - **code map**: [files, classes, métodos] x [funções negócio] = tags [pendencia, maturidade] 
+    - pendencia: [novo, refatorar, manter, eliminar] 
+    - maturidade: [descrições, code block, quality, test] 
+  - **data process map**: [files, classes, métodos] x [data blocks] = tags [pendencia, maturidade] 
+
+### 3.1.6. code, code-review, test 
+
+## 3.2. okf - open knowledge format
+
+### 3.2.1. esclarecimentos
 [[260810_okf_spec|GitHub OKF spec original (local)]]
 
-#### 3.1.1.1. OKF versus md + links + frontmatter
+#### 3.2.1.1. OKF versus md + links + frontmatter
 
-##### 3.1.1.1.1. recursos básicos do OKF já existiam
+##### 3.2.1.1.1. recursos básicos do OKF já existiam
 O diferencial está na **combinação de pequenas convenções**.
 
 A especificação define explicitamente:
@@ -94,7 +906,7 @@ A especificação define explicitamente:
 
 Então eu dividiria o ganho em **três níveis**.
 
-##### 3.1.1.1.2. Nível 1 — organização
+##### 3.2.1.1.2. Nível 1 — organização
 
 Um Markdown convencional:
 
@@ -128,7 +940,7 @@ Agora a própria estrutura já é uma **forma de navegação**.
 
 ---
 
-##### 3.1.1.1.3. Nível 2 — progressive disclosure
+##### 3.2.1.1.3. Nível 2 — progressive disclosure
 
 Esse é, para mim, um dos recursos mais interessantes para o seu problema.
 
@@ -183,7 +995,7 @@ Isso responde parcialmente à sua pergunta 2.
 
 ---
 
-##### 3.1.1.1.4. Nível 3 — conhecimento passa a ter metadados sobre o próprio conhecimento
+##### 3.2.1.1.4. Nível 3 — conhecimento passa a ter metadados sobre o próprio conhecimento
 
 Aqui está uma diferença mais substancial.
 
@@ -231,7 +1043,7 @@ Para uma KB mantida parcialmente por agentes, isso é muito mais importante do q
 
 ---
 
-#### 3.1.1.2. recursos necessarios
+#### 3.2.1.2. recursos necessarios
 
 A estrutura básica é extremamente simples:
 
@@ -291,8 +1103,8 @@ Isso é uma das características mais interessantes do OKF para o seu projeto.
 
 ---
 
-### 3.1.2. instruções, como produzir
-#### 3.1.2.1. O mais interessante para sua aplicação: links entre conceitos
+### 3.2.2. instruções, como produzir
+#### 3.2.2.1. O mais interessante para sua aplicação: links entre conceitos
 
 O OKF é especialmente interessante para o seu caso porque os documentos podem representar **conceitos relacionados**, e os relacionamentos podem ser expressos por links Markdown.
 
@@ -337,7 +1149,7 @@ A própria especificação trabalha com a ideia de _concepts_ e relações entre
 
 ---
 
-#### 3.1.2.2. Minha recomendação para seu projeto
+#### 3.2.2.2. Minha recomendação para seu projeto
 
 Eu **não começaria usando nenhum produto Google**.
 
@@ -409,7 +1221,7 @@ Depois você pode decidir se precisa de:
 
 ---
 
-##### 3.1.2.2.1. E há uma questão arquitetural ainda mais interessante
+##### 3.2.2.2.1. E há uma questão arquitetural ainda mais interessante
 
 Para o seu caso, eu separaria **"modelo do sistema"** de **"conhecimento sobre o modelo"**.
 
@@ -441,7 +1253,7 @@ Para uma aplicação de _model-based code generation_, eu acho essa separação 
 
 Se quiser, posso avançar um passo e **propor uma estrutura OKF completa para sua aplicação**, incluindo `requirements`, `architecture`, `UML classes`, `design patterns`, `ADRs`, `code-generation rules`, relacionamentos e como um agente deveria consultar essa base.
 
-### 3.1.3. instruções, como consumir, grafos
+### 3.2.3. instruções, como consumir, grafos
 
 A especificação diz explicitamente que os links entre conceitos formam relações e que consumidores podem construir uma visão de grafo; o visualizador de referência do próprio projeto faz exatamente isso. Ele fornece:
 
@@ -449,22 +1261,28 @@ A especificação diz explicitamente que os links entre conceitos formam relaç�
 
 A estratégia de recuperação fica para o consumidor.
 
-### 3.1.4. outras referencias
+### 3.2.4. outras referencias
 [Google Cloud - apresentando o okf](https://cloud-google-com.translate.goog/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc)
 [Atteniv OKF Editor](https://github.com/atteniv/okf-editor/blob/main/README.md#where-this-editor-fits)
 
-# 4. perguntas e respostas
+# 4. Knowledge Graph
+- understand anything 
+- [Graphify + code-review-graph](https://dev.to/mir_mursalin_ankur/graphify-code-review-graph-build-a-self-updating-knowledge-graph-for-claude-code-and-other-ai-j1m)
 
-## 4.1. perguntas 01
+# 5. drafts
+
+## 5.1. perguntas e respostas
+
+### 5.1.1. perguntas 01
 - links entre arquivos markdown, e outros, e tambem frontmatters, são recursos comuns, o que há no okf que aprimora o uso desses recursos?
 - uma leitura eficiente da base de conhecimento é ler o conteudo certo no momento certo, para um agente fazer uma leitura eficiente precisa de algum recurso, tipo um grafo?
 - ainda sobre como o agente lê o conteúdo, 
 	- faz diferença onde os links são posicinados no conteudo markdown? se o link estiver no meio de um paragrafo, existe o risco do agente navegar para um proximo arquivo sem ter lido o conteudo necessario no arquivo de origem?
 	- cada interação sobre a base de conhecimento podem ter objetivos ligeiramente distintos, cabendo ao agente decidir se deve ler (trazer para o contexto) todo o conteudo de um determinado markdown ou apenas uma parte, o que funciona melhor? conhecimento quebrado em um numero maior de arquivos ou em arquivos maiores e deixar o agente selecionar?
 
-## 4.2. respostas 01
+### 5.1.2. respostas 01
 
-### 4.2.1. Eu faria uma arquitetura híbrida
+#### 5.1.2.1. Eu faria uma arquitetura híbrida
 
 Para sua aplicação eu não escolheria:
 
@@ -518,7 +1336,7 @@ Isso evita ficar preso a um banco de grafos.
 
 ---
 
-### 4.2.2. Sobre sua pergunta mais interessante: posição do link
+#### 5.1.2.2. Sobre sua pergunta mais interessante: posição do link
 
 > Se o link estiver no meio de um parágrafo, existe risco de o agente navegar para o próximo arquivo sem ter lido o conteúdo necessário?
 
@@ -556,7 +1374,7 @@ Isso é uma limitação importante para o seu caso.
 
 ---
 
-### 4.2.3. Para Model-Based Code Generation eu faria diferente
+#### 5.1.2.3. Para Model-Based Code Generation eu faria diferente
 
 Eu provavelmente adotaria uma convenção mais estruturada.
 
@@ -571,7 +1389,7 @@ para persistência.
 poderia ter:
 
 ```
-# Persistence
+## Persistence
 
 A classe utiliza Repository para separar persistência da lógica
 de domínio.
@@ -585,7 +1403,7 @@ Related concepts:
 Ou até:
 
 ```
-# Relationships
+## Relationships
 
 - implements: [INTERFACE-003](../interfaces/INTERFACE-003.md)
 - uses: [PAT-003](../patterns/PAT-003.md)
@@ -613,7 +1431,7 @@ link
 
 ---
 
-### 4.2.4. Eu iria ainda mais longe
+#### 5.1.2.4. Eu iria ainda mais longe
 
 Para seu projeto, eu consideraria uma convenção própria sobre o OKF:
 
@@ -628,11 +1446,11 @@ title: OrderService
 e:
 
 ```
-# Responsibilities
+## Responsibilities
 
 ...
 
-# Relationships
+## Relationships
 
 - satisfies: [REQ-021](../requirements/REQ-021.md)
 - implements: [INTERFACE-003](../interfaces/INTERFACE-003.md)
@@ -655,7 +1473,7 @@ O OKF continua válido porque permite extensões e não fixa uma taxonomia de ti
 
 ---
 
-### 4.2.5. Agora sua terceira pergunta: arquivos pequenos ou arquivos grandes?
+#### 5.1.2.5. Agora sua terceira pergunta: arquivos pequenos ou arquivos grandes?
 
 Aqui eu acho que existe uma resposta bastante clara para **agentes**:
 
@@ -706,7 +1524,7 @@ Isso coincide bastante com a definição de _concept_ no OKF: cada conceito é r
 
 ---
 
-### 4.2.6. Um exemplo para seu domínio
+#### 5.1.2.6. Um exemplo para seu domínio
 
 Eu consideraria:
 
@@ -769,7 +1587,7 @@ Não dividiria cada método em outro arquivo.
 
 ---
 
-### 4.2.7. Mas existe uma segunda dimensão: dentro do arquivo
+#### 5.1.2.7. Mas existe uma segunda dimensão: dentro do arquivo
 
 Aqui está uma solução muito interessante para sua situação.
 
@@ -781,31 +1599,31 @@ type: Class
 title: UserService
 ---
 
-# Summary
+## Summary
 
 ...
 
-# Responsibilities
+## Responsibilities
 
 ...
 
-# Attributes
+## Attributes
 
 ...
 
-# Methods
+## Methods
 
 ...
 
-# Relationships
+## Relationships
 
 ...
 
-# Constraints
+## Constraints
 
 ...
 
-# Examples
+## Examples
 
 ...
 ```
@@ -845,7 +1663,7 @@ Isso é muito melhor do que transformar cada seção em um arquivo.
 
 ---
 
-### 4.2.8. Isso permite uma estratégia de recuperação em camadas
+#### 5.1.2.8. Isso permite uma estratégia de recuperação em camadas
 
 Eu projetaria seu agente mais ou menos assim:
 
@@ -890,7 +1708,7 @@ E acho que essa combinação é muito mais importante para seu projeto do que si
 
 ---
 
-### 4.2.9. Um detalhe do OKF que acho especialmente importante para isso
+#### 5.1.2.9. Um detalhe do OKF que acho especialmente importante para isso
 
 O `description` do frontmatter não é apenas documentação bonita.
 
@@ -936,16 +1754,16 @@ Isso é uma forma **muito barata de reduzir contexto**.
 
 ---
 
-### 4.2.10. E o `index.md` pode funcionar como um "mapa cognitivo"
+#### 5.1.2.10. E o `index.md` pode funcionar como um "mapa cognitivo"
 
 Eu gosto bastante dessa possibilidade para o seu projeto.
 
 Por exemplo:
 
 ```
-# Domain Model
+## Domain Model
 
-## Authentication
+### Authentication
 
 - [User](../classes/CLASS-001.md)
   Represents the authenticated user.
@@ -956,7 +1774,7 @@ Por exemplo:
 - [AuthenticationRepository](../interfaces/IF-003.md)
   Persistence abstraction.
 
-## Relationships
+### Relationships
 
 User
 → UserService
@@ -981,23 +1799,23 @@ todos os 300 conceitos do domínio.
 
 ---
 
-### 4.2.11. Então eu faria uma distinção entre três coisas
+#### 5.1.2.11. Então eu faria uma distinção entre três coisas
 
 Isso pode ser muito útil para a arquitetura que você está desenhando:
 
-##### 4.2.11.1.1. Storage
+###### 5.1.2.11.1.1. Storage
 
 ```text
 Markdown + YAML
 ```
 
-##### 4.2.11.1.2. Knowledge structure
+###### 5.1.2.11.1.2. Knowledge structure
 
 ```text
 hierarchy + links + relationships
 ```
 
-##### 4.2.11.1.3. Retrieval
+###### 5.1.2.11.1.3. Retrieval
 
 ```text
 agent
@@ -1038,19 +1856,19 @@ Não resolve Retrieval.
 
 ---
 
-### 4.2.12. Minha recomendação concreta para sua KB
+#### 5.1.2.12. Minha recomendação concreta para sua KB
 
 Para a sua aplicação, eu começaria com:
 
-#### 4.2.12.1. Unidade
+##### 5.1.2.12.1. Unidade
 
 **1 arquivo = 1 conceito**
 
-#### 4.2.12.2. Granularidade
+##### 5.1.2.12.2. Granularidade
 
 Conceitos relativamente independentes, mas não microssegmentados.
 
-#### 4.2.12.3. Estrutura
+##### 5.1.2.12.3. Estrutura
 
 ```text
 knowledge/
@@ -1075,7 +1893,7 @@ knowledge/
     └── index.md
 ```
 
-#### 4.2.12.4. Cada conceito
+##### 5.1.2.12.4. Cada conceito
 
 ```yaml
 ---
@@ -1091,26 +1909,26 @@ stale_after:
 ---
 ```
 
-#### 4.2.12.5. Corpo
+##### 5.1.2.12.5. Corpo
 
 ```
-# Summary
+## Summary
 
-# Responsibilities
+## Responsibilities
 
-# Relationships
+## Relationships
 
-# Constraints
+## Constraints
 
-# Examples
+## Examples
 ```
 
-#### 4.2.12.6. Relationships
+##### 5.1.2.12.6. Relationships
 
 Eu adicionaria uma **convenção própria**, como:
 
 ```
-# Relationships
+## Relationships
 
 - satisfies: [REQ-001](...)
 - depends-on: [CLASS-002](...)
@@ -1164,7 +1982,7 @@ Isso, na minha opinião, é onde a sua ideia começa a ficar realmente interessa
 
 E o mais importante: **essa camada pode ser derivada dos Markdown, sem transformar o grafo em sua fonte de verdade.** O próprio OKF segue essa filosofia — o visualizador oficial, por exemplo, deriva o grafo dos cross-links dos documentos. ([GitHub](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/README.md?utm_source=chatgpt.com "knowledge-catalog/okf/README.md at main · GoogleCloudPlatform/knowledge-catalog · GitHub"))
 
-## 4.3. perguntas 02
+### 5.1.3. perguntas 02
 - quero entender um pouco mais do que o modelo OKF em si já contém em termos de facilidades, disponibilizadas no github oficial:
 	- do que se trata esse recurso instalável? ```python3.13 -m venv .venv  \n  .venv/bin/pip install --index-url https://pypi.org/simple/ -e .[dev]```
 	- produtor okf: existe um agente de referencia mas, pelo que entendi, ele só gera os modelos de exemplo, mas não funcionaria para o meu caso, certo?
@@ -1177,13 +1995,13 @@ E o mais importante: **essa camada pode ser derivada dos Markdown, sem transform
 	- para o sistema "model-based code generator" e seus "filhos" (sistemas criados com ele): adotar sua recomendação de "md (com convenção propria para o okf) + grafo" e adicionar (considero fundamental) o padrão UML, com arquivos tipo gaphor (gerado pelo aplicativo gaphor conforme o padrão XMI da OMG), o que acha? funciona bem? quais seriam os principais pontos de atenção?
 	- para a inteligencia em si (item 3 acima): predominante md + grafo automatico (se possivel usando o consumidor original disponibilizado no github)
 
-## 4.4. respostas 02
+### 5.1.4. respostas 02
 
 Sim — e, depois de olhar o repositório oficial atual, eu faria **uma pequena correção de rumo** em relação ao que discutimos antes: o OKF está mais interessante do que apenas “Markdown + YAML + links”. O **v0.2 adicionou provenance, trust, lifecycle e attestation**, além do visualizador de referência. ([GitHub][1])
 
-### 4.4.1. O que existe efetivamente no repositório oficial
+#### 5.1.4.1. O que existe efetivamente no repositório oficial
 
-#### 4.4.1.1. 1 O comando de instalação
+##### 5.1.4.1.1. 1 O comando de instalação
 
 Este trecho:
 
@@ -1217,7 +2035,7 @@ e dentro dele executa a instalação.
 
 Isso disponibiliza, entre outras coisas, o `reference_agent` e o comando `visualize`. O README deixa explícito que esse agente é **proof of concept**, enquanto o formato OKF é a contribuição principal. ([GitHub][2])
 
-#### 4.4.1.2. E aqui está uma distinção importante
+##### 5.1.4.1.2. E aqui está uma distinção importante
 
 **Para simplesmente criar seus próprios arquivos OKF, você não precisa instalar isso.**
 
@@ -1246,7 +2064,7 @@ exemplos
 
 ---
 
-#### 4.4.1.3. 2 O Reference Producer
+##### 5.1.4.1.3. 2 O Reference Producer
 
 Sua interpretação está essencialmente correta.
 
@@ -1314,7 +2132,7 @@ Você estaria usando **o padrão OKF**, mas implementando um producer adequado a
 
 ---
 
-#### 4.4.1.4. 3 O Visualizador oficial
+##### 5.1.4.1.4. 3 O Visualizador oficial
 
 Esse sim é particularmente interessante para você.
 
@@ -1381,13 +2199,13 @@ Isso reforça bastante a arquitetura que sugeri anteriormente:
 
 ---
 
-### 4.4.2. Suas três Knowledge Bases
+#### 5.1.4.2. Suas três Knowledge Bases
 
 Aqui concordo **fortemente** com sua separação.
 
 Eu inclusive daria nomes diferentes para evitar que no futuro elas sejam confundidas.
 
-#### 4.4.2.1. KB-1 — Product/System Knowledge
+##### 5.1.4.2.1. KB-1 — Product/System Knowledge
 
 Conhecimento **do sistema que está sendo construído**.
 
@@ -1418,7 +2236,7 @@ ADR-008
 
 ---
 
-#### 4.4.2.2. KB-2 — Generator Knowledge
+##### 5.1.4.2.2. KB-2 — Generator Knowledge
 
 Conhecimento **sobre o próprio Model-Based Code Generator**.
 
@@ -1452,7 +2270,7 @@ Generator
 
 ---
 
-#### 4.4.2.3. KB-3 — Agent Intelligence
+##### 5.1.4.2.3. KB-3 — Agent Intelligence
 
 Essa é diferente das duas anteriores.
 
@@ -1496,7 +2314,7 @@ Eu manteria essa separação.
 
 ---
 
-#### 4.4.2.4. E aqui surge uma arquitetura que acho muito boa
+##### 5.1.4.2.4. E aqui surge uma arquitetura que acho muito boa
 
 Você acaba tendo:
 
@@ -1544,11 +2362,11 @@ Essa separação vai ser muito útil para evitar que regras do agente sejam conf
 
 ---
 
-### 4.4.3. Sua proposta de UML + OKF
+#### 5.1.4.3. Sua proposta de UML + OKF
 
 Aqui eu concordo **quase integralmente**.
 
-#### 4.4.3.1. Eu faria:
+##### 5.1.4.3.1. Eu faria:
 
 ```text
 System KB
@@ -1590,11 +2408,11 @@ Eu faria:
 
 ---
 
-#### 4.4.3.2. Por que isso é particularmente bom?
+##### 5.1.4.3.2. Por que isso é particularmente bom?
 
 Porque Markdown e UML resolvem problemas diferentes.
 
-##### 4.4.3.2.1. Markdown/OKF
+###### 5.1.4.3.2.1. Markdown/OKF
 
 Excelente para:
 
@@ -1611,7 +2429,7 @@ Excelente para:
 * provenance;
 * instruções.
 
-##### 4.4.3.2.2. UML/XMI
+###### 5.1.4.3.2.2. UML/XMI
 
 Excelente para:
 
@@ -1648,7 +2466,7 @@ no UML podem representar aspectos diferentes da mesma realidade.
 
 ---
 
-#### 4.4.3.3. Mas eu colocaria uma regra fundamental
+##### 5.1.4.3.3. Mas eu colocaria uma regra fundamental
 
 **Não deixe Markdown e XMI se tornarem duas fontes independentes da verdade.**
 
@@ -1697,7 +2515,7 @@ Isso é extremamente importante.
 
 ---
 
-#### 4.4.3.4. E eu adicionaria Traceability como uma camada explícita
+##### 5.1.4.3.4. E eu adicionaria Traceability como uma camada explícita
 
 Aqui sua aplicação pode ficar realmente poderosa.
 
@@ -1742,7 +2560,7 @@ Assim seu grafo passa a ser **um grafo de engenharia de software**, não apenas 
 
 ---
 
-#### 4.4.3.5. Atenção: o XMI não deve virar a interface do agente
+##### 5.1.4.3.5. Atenção: o XMI não deve virar a interface do agente
 
 Esse seria outro ponto importante.
 
@@ -1783,7 +2601,7 @@ Ou seja:
 
 ---
 
-#### 4.4.3.6. Sobre Gaphor especificamente
+##### 5.1.4.3.6. Sobre Gaphor especificamente
 
 Sua ideia de utilizar o arquivo de projeto do Gaphor/XMI é viável, mas eu faria uma ressalva importante.
 
@@ -1839,7 +2657,7 @@ seu **modelo canônico** continua sendo o mesmo.
 
 ---
 
-### 4.4.4. Para a Intelligence KB eu faria ainda mais simples
+#### 5.1.4.4. Para a Intelligence KB eu faria ainda mais simples
 
 Aqui sua proposta:
 
@@ -1900,7 +2718,7 @@ O visualizador oficial consegue transformar esses cross-links em grafo automatic
 
 ---
 
-### 4.4.5. Uma coisa que eu mudaria na sua ideia
+#### 5.1.4.5. Uma coisa que eu mudaria na sua ideia
 
 Eu não chamaria simplesmente de:
 
@@ -1930,7 +2748,7 @@ O próprio visualizador oficial segue exatamente essa ideia: ele deriva as arest
 
 ---
 
-### 4.4.6. E existe uma descoberta importante para seu projeto
+#### 5.1.4.6. E existe uma descoberta importante para seu projeto
 
 O OKF **explicitamente permite extensões**.
 
@@ -1979,7 +2797,7 @@ e deixar a maior parte das informações no corpo/links.
 
 ---
 
-### 4.4.7. Minha arquitetura recomendada para você
+#### 5.1.4.7. Minha arquitetura recomendada para você
 
 Considerando tudo o que você descreveu, eu chegaria a isto:
 
@@ -2029,7 +2847,7 @@ E eu definiria uma regra arquitetural:
 
 ---
 
-### 4.4.8. Um último ponto que considero muito importante
+#### 5.1.4.8. Um último ponto que considero muito importante
 
 O OKF v0.2 ainda está **deliberadamente incompleto como protocolo de execução/serving**. A própria especificação diz que não define storage, serving, query infrastructure nem um runtime; e algumas partes, como o protocolo completo de attestation, foram deixadas para versões futuras. ([GitHub][1])
 
@@ -2061,7 +2879,7 @@ sem que o agente precise conhecer a estrutura física da KB.
 
 
 
-## 4.5. perguntas 03
+### 5.1.5. perguntas 03
 1. sobre "ownership [md, uml] de temas + convenção de relações (traceability)", existe alguma norma ou convenção de modelagem que eu possa seguir para isso?
 2. sobre "XMI não deve virar a interface do agente"
    - eu imaginei que o agente teria facilidade com XMI, pois é um XML que segue os padrões UML 
@@ -2069,17 +2887,17 @@ sem que o agente precise conhecer a estrutura física da KB.
    - em linhas gerais, como seria o parse de XMI para [md, graph]? 
 
 
-## 4.6. respostas 03
+### 5.1.6. respostas 03
 
 Sim. Pesquisei especificamente a parte de **UML/XMI, traceability e ferramentas Python**, e eu faria uma distinção importante entre três níveis: **norma**, **modelo canônico** e **formato de consumo pelo agente**.
 
-### 4.6.1. Existe uma norma para o ownership MD × UML + traceability?
+#### 5.1.6.1. Existe uma norma para o ownership MD × UML + traceability?
 
 **Não existe uma norma única que diga "este tipo de informação deve ficar em Markdown e aquele em UML".** Essa decisão é arquitetural.
 
 Mas existem padrões OMG que dão uma base muito boa para você não inventar tudo.
 
-#### 4.6.1.1. O principal candidato é SysML
+##### 5.1.6.1.1. O principal candidato é SysML
 
 Embora seu domínio seja software, eu estudaria **SysML**, especialmente o conceito de *requirements modeling* e relações de rastreabilidade.
 
@@ -2129,7 +2947,7 @@ Então, para **traceability**, eu não inventaria uma taxonomia do zero. Eu come
 
 ---
 
-#### 4.6.1.2. UML também possui `Trace`
+##### 5.1.6.1.2. UML também possui `Trace`
 
 O UML possui o conceito de `Trace`/`Abstraction`, mas ele é deliberadamente genérico.
 
@@ -2149,7 +2967,7 @@ A especificação SysML inclusive define `Trace` como uma relação entre requis
 
 ---
 
-### 4.6.2. Eu faria ownership assim
+#### 5.1.6.2. Eu faria ownership assim
 
 Em vez de procurar uma norma que diga exatamente onde cada informação deve ficar, estabeleceria uma **Architecture Decision** do seu próprio sistema:
 
@@ -2205,7 +3023,7 @@ Melhor:
 ```text
 CLASS-001.md
 
-# User
+## User
 
 Representa o usuário do sistema.
 
@@ -2216,7 +3034,7 @@ e os atributos ficam exclusivamente no UML.
 
 ---
 
-### 4.6.3. Onde eu colocaria a traceability?
+#### 5.1.6.3. Onde eu colocaria a traceability?
 
 Aqui eu faria uma coisa um pouco diferente da minha sugestão anterior.
 
@@ -2239,7 +3057,7 @@ poderia estar no modelo UML/SysML.
 E o OKF poderia expor a mesma relação para os agentes:
 
 ```
-# Traceability
+## Traceability
 
 - satisfies: [REQ-001](../requirements/REQ-001.md)
 ```
@@ -2280,7 +3098,7 @@ Isso evita inconsistência.
 
 ---
 
-### 4.6.4. Sobre sua hipótese: "o agente teria facilidade com XMI"
+#### 5.1.6.4. Sobre sua hipótese: "o agente teria facilidade com XMI"
 
 Aqui eu faria uma correção na minha afirmação anterior:
 
@@ -2300,7 +3118,7 @@ O problema é:
 
 ---
 
-#### 4.6.4.1. Por que XMI pode ser ruim como interface direta?
+##### 5.1.6.4.1. Por que XMI pode ser ruim como interface direta?
 
 Imagine algo conceitualmente simples:
 
@@ -2369,7 +3187,7 @@ O XML não é o problema.
 
 ---
 
-### 4.6.5. E há uma questão ainda mais importante: XMI não é "UML XML"
+#### 5.1.6.5. E há uma questão ainda mais importante: XMI não é "UML XML"
 
 Essa distinção é fundamental.
 
@@ -2411,7 +3229,7 @@ Isso também explica por que dois arquivos XMI de ferramentas diferentes podem s
 
 ---
 
-### 4.6.6. Existem bibliotecas Python?
+#### 5.1.6.6. Existem bibliotecas Python?
 
 **Sim — e uma delas é especialmente relevante para seu projeto: PyEcore.**
 
@@ -2445,7 +3263,7 @@ find("ownedAttribute")
 
 ---
 
-### 4.6.7. Por que PyEcore é particularmente interessante?
+#### 5.1.6.7. Por que PyEcore é particularmente interessante?
 
 Porque você quer fazer **Model Driven Engineering**.
 
@@ -2482,7 +3300,7 @@ XMI → XML parser → regex → Markdown
 
 ---
 
-### 4.6.8. Mas existe um ponto de atenção enorme com Gaphor
+#### 5.1.6.8. Mas existe um ponto de atenção enorme com Gaphor
 
 **Eu não assumiria que "PyEcore consegue ler XMI" significa "PyEcore consegue ler qualquer XMI gerado pelo Gaphor".**
 
@@ -2516,7 +3334,7 @@ Portanto eu faria um pequeno POC antes de decidir a arquitetura.
 
 ---
 
-### 4.6.9. Como seria o parse XMI → MD + Graph?
+#### 5.1.6.9. Como seria o parse XMI → MD + Graph?
 
 Eu não faria:
 
@@ -2554,7 +3372,7 @@ Esse **Canonical UML Model** é uma peça importantíssima.
 
 ---
 
-### 4.6.10. Exemplo
+#### 5.1.6.10. Exemplo
 
 Suponha que o XMI represente:
 
@@ -2608,7 +3426,7 @@ Isso é o seu **modelo intermediário**.
 
 ---
 
-### 4.6.11. Depois você produz o grafo
+#### 5.1.6.11. Depois você produz o grafo
 
 Por exemplo:
 
@@ -2649,7 +3467,7 @@ E isso pode alimentar:
 
 ---
 
-### 4.6.12. Depois você gera o OKF
+#### 5.1.6.12. Depois você gera o OKF
 
 Por exemplo:
 
@@ -2670,19 +3488,19 @@ uml_id: _abc
 E:
 
 ```
-# User
+## User
 
 Representa o usuário autenticado do sistema.
 
-## Attributes
+### Attributes
 
 Os atributos estruturais são definidos no modelo UML.
 
-## Operations
+### Operations
 
 As operações são definidas no modelo UML.
 
-## Relationships
+### Relationships
 
 - used-by: [UserService](CLASS-002-user-service.md)
 ```
@@ -2705,7 +3523,7 @@ estrutural/formal
 
 ---
 
-### 4.6.13. E você pode gerar uma representação "Agent-friendly"
+#### 5.1.6.13. E você pode gerar uma representação "Agent-friendly"
 
 Aqui acho que está a oportunidade mais interessante.
 
@@ -2720,7 +3538,7 @@ O agente não precisa receber:
 nem necessariamente:
 
 ```
-# User
+## User
 
 ...
 ```
@@ -2769,7 +3587,7 @@ Isso é, na minha opinião, superior a simplesmente jogar o XMI inteiro no conte
 
 ---
 
-### 4.6.14. E o mais interessante: o agente pode pedir exatamente o que precisa
+#### 5.1.6.14. E o mais interessante: o agente pode pedir exatamente o que precisa
 
 Por exemplo:
 
@@ -2813,7 +3631,7 @@ Então você consegue implementar exatamente aquela estratégia que discutimos a
 
 ---
 
-### 4.6.15. Eu adotaria esta arquitetura
+#### 5.1.6.15. Eu adotaria esta arquitetura
 
 Para o seu caso, depois dessas perguntas, eu refinaria minha recomendação para:
 
@@ -2852,13 +3670,13 @@ porque ele transforma os artefatos de engenharia em uma representação consult�
 
 ---
 
-### 4.6.16. E há uma consequência importante para sua decisão UML
+#### 5.1.6.16. E há uma consequência importante para sua decisão UML
 
 Eu **não usaria apenas UML puro** se o seu objetivo inclui requisitos e rastreabilidade.
 
 Eu avaliaria:
 
-#### 4.6.16.1. Opção A — UML + OKF
+##### 5.1.6.16.1. Opção A — UML + OKF
 
 ```text
 UML → estrutura
@@ -2867,7 +3685,7 @@ OKF → requisitos/documentação
 
 Mais simples.
 
-#### 4.6.16.2. Opção B — UML + conceitos de SysML + OKF
+##### 5.1.6.16.2. Opção B — UML + conceitos de SysML + OKF
 
 ```text
 UML → estrutura
@@ -2877,7 +3695,7 @@ OKF → documentação/knowledge
 
 Mais rico.
 
-#### 4.6.16.3. Opção C — SysML como modelo formal principal
+##### 5.1.6.16.3. Opção C — SysML como modelo formal principal
 
 ```text
 SysML → requirements + structure + traceability
@@ -2892,7 +3710,7 @@ A OMG mantém UML 2.5.1 como especificação formal e disponibiliza o metamodelo
 
 ---
 
-### 4.6.17. Minha recomendação final neste momento
+#### 5.1.6.17. Minha recomendação final neste momento
 
 Eu faria um **POC extremamente pequeno antes de definir tudo**:
 
@@ -2954,8 +3772,8 @@ Se essas quatro representações conseguirem ser geradas consistentemente a part
 [5]: https://www.omg.org/spec/UML/2.5.1/About-UML/?utm_source=chatgpt.com "About the Unified Modeling Language Specification Version 2.5.1"
 
 
-# 5. descartavel
-## 5.1. Então onde entra o Google?
+## 5.2. descartavel
+### 5.2.1. Então onde entra o Google?
 
 O Google **define/publica a especificação** e também possui ferramentas/ecossistema que podem trabalhar com ela.
 
@@ -2982,7 +3800,7 @@ Isso é particularmente relevante para a sua aplicação de **model-based code g
 
 ---
 
-## 5.2. OKF não é uma Knowledge Base pronta
+### 5.2.2. OKF não é uma Knowledge Base pronta
 
 Aqui está provavelmente a distinção mais importante.
 
@@ -3044,7 +3862,7 @@ Essas coisas ficam **acima do OKF**.
 
 ---
 
-## 5.3. E isso combina muito bem com sua ideia
+### 5.2.3. E isso combina muito bem com sua ideia
 
 Pelo que você está investigando para sua aplicação de **Model Based Code Generation**, eu vejo uma arquitetura interessante:
 
@@ -3109,7 +3927,7 @@ E nada disso precisa fazer parte do OKF.
 
 ---
 
-## 5.4. Você não precisa de RAG inicialmente
+### 5.2.4. Você não precisa de RAG inicialmente
 
 Isso também é importante.
 
@@ -3164,11 +3982,11 @@ Depois, quando a base ficar grande:
 
 ---
 
-## 5.5. Credenciais só aparecem quando você adicionar serviços
+### 5.2.5. Credenciais só aparecem quando você adicionar serviços
 
 Por exemplo, se você decidir:
 
-### 5.5.1. Armazenamento local
+#### 5.2.5.1. Armazenamento local
 
 ```text
 OKF
@@ -3182,7 +4000,7 @@ filesystem
 
 ---
 
-### 5.5.2. GitHub/GitLab
+#### 5.2.5.2. GitHub/GitLab
 
 ```text
 OKF
@@ -3196,7 +4014,7 @@ Aí você precisa das credenciais do GitHub/GitLab, mas **isso não tem relaçã
 
 ---
 
-### 5.5.3. Google Cloud
+#### 5.2.5.3. Google Cloud
 
 ```text
 OKF
@@ -3221,7 +4039,7 @@ Novamente, isso é dependência **do serviço que você escolheu**, não do OKF.
 
 ---
 
-### 5.5.4. OpenAI / Gemini / Claude
+#### 5.2.5.4. OpenAI / Gemini / Claude
 
 ```text
 OKF
@@ -3248,7 +4066,7 @@ O OKF não se importa.
 
 ---
 
-## 5.6. Existe uma ferramenta oficial?
+### 5.2.6. Existe uma ferramenta oficial?
 
 O repositório oficial do Google é o **GoogleCloudPlatform/knowledge-catalog**, que contém a especificação e material relacionado ao OKF. ([GitHub](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md?utm_source=chatgpt.com "knowledge-catalog/okf/SPEC.md at main · GoogleCloudPlatform/knowledge-catalog · GitHub"))
 
@@ -3258,6 +4076,3 @@ A especificação atual é relativamente pequena e vale mais a pena **ler a espe
 
 ---
 
-# 6. Knowledge Graph
-- understand anything 
-- [Graphify + code-review-graph](https://dev.to/mir_mursalin_ankur/graphify-code-review-graph-build-a-self-updating-knowledge-graph-for-claude-code-and-other-ai-j1m)

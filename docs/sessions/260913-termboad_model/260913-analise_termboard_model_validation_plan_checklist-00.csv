@@ -1,0 +1,32 @@
+num,item,category,termboard,protege,orionbelt
+1,"Arquivo OWL/XML válido",Sintaxe,❌,⚠️,✅
+2,"Namespace RDF correto",Sintaxe,❌,⚠️,✅
+3,"Namespace OWL correto",Sintaxe,❌,⚠️,✅
+4,"Namespace SKOS correto",Sintaxe,❌,⚠️,✅
+5,"Hierarquia skos:broader sem ciclos",SKOS,✅,⚠️,✅
+6,"Todo skos:Concept em skos:ConceptScheme",SKOS,❌,⚠️,✅
+7,"Todo skos:ConceptScheme tem skos:hasTopConcept",SKOS,❌,⚠️,✅
+8,"skos:prefLabel único por idioma",SKOS,✅,⚠️,✅
+9,"skos:altLabel único por conceito",SKOS,✅,⚠️,✅
+10,"Reasoner sem inconsistências",OWL,❌,✅,✅
+11,"Conformidade OWL DL",OWL,❌,✅,⚠️
+12,"Propriedades com domínio/alcance definidos",OWL,❌,✅,✅
+13,"Restrições lógicas corretas",OWL,❌,✅,✅
+14,"Nomes no plural (devem ser singulares)",Qualidade Conceitos,✅,❌,❌
+15,"Termos com nomes similares (typos)",Qualidade Conceitos,✅,❌,❌
+16,"Conflitos de sinônimos",Qualidade Conceitos,✅,❌,❌
+17,"Qualidade das descrições (score 0-100)",Qualidade Conceitos,✅,❌,❌
+18,"Descrição menciona termo pai",Qualidade Conceitos,✅,❌,❌
+19,"Termos sem relações (órfãos)",Qualidade Conceitos,✅,❌,✅
+20,"Relações duplicadas com pai",Qualidade Conceitos,✅,❌,❌
+21,"Herança múltipla",Qualidade Conceitos,✅,❌,❌
+22,"Relações bidirecionais",Qualidade Conceitos,✅,❌,❌
+23,"Propriedades identificadas corretamente",Qualidade Conceitos,✅,❌,❌
+24,"Propriedades sem relação atributiva",Qualidade Conceitos,✅,❌,❌
+25,"Conceitos sem hierarquia",Qualidade Conceitos,✅,❌,❌
+26,"Título da ontologia preenchido",Metadados,❌,✅,⚠️
+27,"Versão informada",Metadados,❌,✅,⚠️
+28,"Data de modificação atualizada",Metadados,❌,⚠️,❌
+29,"Descrição da ontologia presente",Metadados,❌,✅,⚠️
+30,"Autor/criador documentado",Metadados,❌,✅,⚠️
+31,"Visualização gráfica da hierarquia",Visualização,✅,✅,✅

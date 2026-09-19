@@ -1,0 +1,369 @@
+<rdf:RDF
+ xml:base="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:dct="http://purl.org/dc/terms/"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+ xmlns:c="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#">
+    <owl:Ontology rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890">
+        <dc:title>260913-termboard_model_repository_v04_corrected</dc:title>
+        <dct:modified>16-9-2026</dct:modified>
+        <rdfs:comment>Repository concept model v04 (corrected) - Faceted classification using ONLY standard SKOS/RDFS/OWL predicates. No custom properties.</rdfs:comment>
+        <rdfs:label>260913-termboard_model_repository_v04_corrected</rdfs:label>
+        <owl:versionInfo>4.1</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- ============================================================ -->
+    <!--                    CONCEPT SCHEMES (FACETS)                  -->
+    <!-- ============================================================ -->
+
+    <!-- Facet: Content - What the repository stores -->
+    <skos:ConceptScheme rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme">
+        <skos:prefLabel>Content Type Scheme</skos:prefLabel>
+        <skos:definition>Facet defining what a repository stores or contains.</skos:definition>
+        <skos:hasTopConcept rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+    </skos:ConceptScheme>
+
+    <!-- Facet: Structure - How the repository is organized -->
+    <skos:ConceptScheme rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#StructureScheme">
+        <skos:prefLabel>Structure Scheme</skos:prefLabel>
+        <skos:definition>Facet defining how a repository is organized internally.</skos:definition>
+        <skos:hasTopConcept rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+    </skos:ConceptScheme>
+
+    <!-- Facet: Process - What operations happen in the repository -->
+    <skos:ConceptScheme rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme">
+        <skos:prefLabel>Process Scheme</skos:prefLabel>
+        <skos:definition>Facet defining what operations or events occur in a repository.</skos:definition>
+        <skos:hasTopConcept rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+    </skos:ConceptScheme>
+
+    <!-- Facet: Tool - What tool manages the repository -->
+    <skos:ConceptScheme rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ToolScheme">
+        <skos:prefLabel>Tool Scheme</skos:prefLabel>
+        <skos:definition>Facet defining what software manages the repository.</skos:definition>
+        <skos:hasTopConcept rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+    </skos:ConceptScheme>
+
+    <!-- Facet: Scope - Access and visibility -->
+    <skos:ConceptScheme rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ScopeScheme">
+        <skos:prefLabel>Scope Scheme</skos:prefLabel>
+        <skos:definition>Facet defining access, visibility, and location of a repository.</skos:definition>
+        <skos:hasTopConcept rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+    </skos:ConceptScheme>
+
+    <!-- ============================================================ -->
+    <!--              CORE CONCEPT: REPOSITORY (All Facets)          -->
+    <!-- ============================================================ -->
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository">
+        <rdfs:comment>A centralized, version-controlled storage system. Hub concept that belongs to ALL facets.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>repository</rdfs:label>
+        <skos:definition>A centralized, version-controlled storage system.</skos:definition>
+        <skos:prefLabel>repository</skos:prefLabel>
+        <skos:altLabel>repo</skos:altLabel>
+        <skos:altLabel>codebase</skos:altLabel>
+        <skos:altLabel>source control</skos:altLabel>
+        <!-- topConceptOf: Repository is the top concept in each facet -->
+        <skos:topConceptOf rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme"/>
+        <skos:topConceptOf rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#StructureScheme"/>
+        <skos:topConceptOf rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme"/>
+        <skos:topConceptOf rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ToolScheme"/>
+        <skos:topConceptOf rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ScopeScheme"/>
+        <!-- narrower: Children in each facet -->
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#CodeContent"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#DocumentContent"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#DataContent"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ArtifactContent"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ConfigContent"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Folder"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#File"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Branch"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Tag"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Commit"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Merge"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Release"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Clone"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#PullRequest"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Git"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#SVN"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Mercurial"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Local"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Remote"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Private"/>
+        <skos:narrower rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Public"/>
+    </skos:Concept>
+
+    <!-- ============================================================ -->
+    <!--              FACET: CONTENT (What is stored)                -->
+    <!-- ============================================================ -->
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#CodeContent">
+        <rdfs:comment>Source code files and programming assets.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>code content</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Source code files and programming assets.</skos:definition>
+        <skos:prefLabel>code content</skos:prefLabel>
+        <skos:altLabel>source code</skos:altLabel>
+        <skos:altLabel>programming files</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#DocumentContent">
+        <rdfs:comment>Documentation, guides, and knowledge base entries.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>document content</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Documentation, guides, and knowledge base entries.</skos:definition>
+        <skos:prefLabel>document content</skos:prefLabel>
+        <skos:altLabel>documentation</skos:altLabel>
+        <skos:altLabel>knowledge base</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#DataContent">
+        <rdfs:comment>Datasets, schemas, and configuration files.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>data content</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Datasets, schemas, and configuration files.</skos:definition>
+        <skos:prefLabel>data content</skos:prefLabel>
+        <skos:altLabel>datasets</skos:altLabel>
+        <skos:altLabel>configuration</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ArtifactContent">
+        <rdfs:comment>Build artifacts, libraries, and binaries.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>artifact content</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Build artifacts, libraries, and binaries.</skos:definition>
+        <skos:prefLabel>artifact content</skos:prefLabel>
+        <skos:altLabel>binaries</skos:altLabel>
+        <skos:altLabel>packages</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ConfigContent">
+        <rdfs:comment>Environment configuration and infrastructure as code.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>config content</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ContentScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Environment configuration and infrastructure as code.</skos:definition>
+        <skos:prefLabel>config content</skos:prefLabel>
+        <skos:altLabel>configuration files</skos:altLabel>
+        <skos:altLabel>infrastructure as code</skos:altLabel>
+    </skos:Concept>
+
+    <!-- ============================================================ -->
+    <!--             FACET: STRUCTURE (How it's organized)           -->
+    <!-- ============================================================ -->
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Folder">
+        <rdfs:comment>A directory organizing files within a repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>folder</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#StructureScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A directory organizing files within a repository.</skos:definition>
+        <skos:prefLabel>folder</skos:prefLabel>
+        <skos:altLabel>directory</skos:altLabel>
+        <skos:altLabel>path</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#File">
+        <rdfs:comment>A single file within a repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>file</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#StructureScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A single file within a repository.</skos:definition>
+        <skos:prefLabel>file</skos:prefLabel>
+        <skos:altLabel>source file</skos:altLabel>
+        <skos:altLabel>artifact file</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Branch">
+        <rdfs:comment>A parallel line of development within a repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>branch</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#StructureScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A parallel line of development within a repository.</skos:definition>
+        <skos:prefLabel>branch</skos:prefLabel>
+        <skos:altLabel>feature branch</skos:altLabel>
+        <skos:altLabel>dev branch</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Tag">
+        <rdfs:comment>A named pointer to a specific commit.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>tag</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#StructureScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A named pointer to a specific commit.</skos:definition>
+        <skos:prefLabel>tag</skos:prefLabel>
+        <skos:altLabel>version tag</skos:altLabel>
+        <skos:altLabel>release tag</skos:altLabel>
+    </skos:Concept>
+
+    <!-- ============================================================ -->
+    <!--              FACET: PROCESS (What happens)                  -->
+    <!-- ============================================================ -->
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Commit">
+        <rdfs:comment>A single snapshot of repository state at a point in time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>commit</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A single snapshot of repository state at a point in time.</skos:definition>
+        <skos:prefLabel>commit</skos:prefLabel>
+        <skos:altLabel>revision</skos:altLabel>
+        <skos:altLabel>changeset</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Merge">
+        <rdfs:comment>The process of combining changes from one branch into another.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>merge</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>The process of combining changes from one branch into another.</skos:definition>
+        <skos:prefLabel>merge</skos:prefLabel>
+        <skos:altLabel>integration</skos:altLabel>
+        <skos:altLabel>branch merge</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Release">
+        <rdfs:comment>A packaged version of software at a specific point in time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>release</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A packaged version of software at a specific point in time.</skos:definition>
+        <skos:prefLabel>release</skos:prefLabel>
+        <skos:altLabel>version</skos:altLabel>
+        <skos:altLabel>build</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Clone">
+        <rdfs:comment>The action of creating a local copy of a remote repository.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>clone</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>The action of creating a local copy of a remote repository.</skos:definition>
+        <skos:prefLabel>clone</skos:prefLabel>
+        <skos:altLabel>checkout</skos:altLabel>
+        <skos:altLabel>local copy</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#PullRequest">
+        <rdfs:comment>A proposal to merge changes from one branch into another.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>pull request</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ProcessScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>A proposal to merge changes from one branch into another.</skos:definition>
+        <skos:prefLabel>pull request</skos:prefLabel>
+        <skos:altLabel>merge request</skos:altLabel>
+        <skos:altLabel>code review</skos:altLabel>
+    </skos:Concept>
+
+    <!-- ============================================================ -->
+    <!--              FACET: TOOL (What manages it)                  -->
+    <!-- ============================================================ -->
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Git">
+        <rdfs:comment>Distributed version control system.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>Git</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ToolScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Distributed version control system.</skos:definition>
+        <skos:prefLabel>Git</skos:prefLabel>
+        <skos:altLabel>git</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#SVN">
+        <rdfs:comment>Centralized version control system (Apache Subversion).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>SVN</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ToolScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Centralized version control system (Apache Subversion).</skos:definition>
+        <skos:prefLabel>SVN</skos:prefLabel>
+        <skos:altLabel>Subversion</skos:altLabel>
+        <skos:altLabel>Apache Subversion</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Mercurial">
+        <rdfs:comment>Distributed version control system (legacy).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>Mercurial</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ToolScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Distributed version control system (legacy).</skos:definition>
+        <skos:prefLabel>Mercurial</skos:prefLabel>
+        <skos:altLabel>Hg</skos:altLabel>
+    </skos:Concept>
+
+    <!-- ============================================================ -->
+    <!--              FACET: SCOPE (Access/Visibility)               -->
+    <!-- ============================================================ -->
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Local">
+        <rdfs:comment>Repository exists only on local machine.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>local</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ScopeScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Repository exists only on local machine.</skos:definition>
+        <skos:prefLabel>local</skos:prefLabel>
+        <skos:altLabel>local only</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Remote">
+        <rdfs:comment>Repository is hosted on a server.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>remote</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ScopeScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Repository is hosted on a server.</skos:definition>
+        <skos:prefLabel>remote</skos:prefLabel>
+        <skos:altLabel>hosted</skos:altLabel>
+        <skos:altLabel>server</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Private">
+        <rdfs:comment>Repository access is restricted to authorized users.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>private</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ScopeScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Repository access is restricted to authorized users.</skos:definition>
+        <skos:prefLabel>private</skos:prefLabel>
+        <skos:altLabel>restricted</skos:altLabel>
+        <skos:altLabel>internal access</skos:altLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#Public">
+        <rdfs:comment>Repository is accessible to everyone.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890"/>
+        <rdfs:label>public</rdfs:label>
+        <skos:inScheme rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#ScopeScheme"/>
+        <skos:broader rdf:resource="https://termboard.com/ontology/f1a2b3c4-d5e6-7890-abcd-ef1234567890#repository"/>
+        <skos:definition>Repository is accessible to everyone.</skos:definition>
+        <skos:prefLabel>public</skos:prefLabel>
+        <skos:altLabel>open</skos:altLabel>
+        <skos:altLabel>open source</skos:altLabel>
+    </skos:Concept>
+
+</rdf:RDF>

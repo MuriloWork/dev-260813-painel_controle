@@ -370,7 +370,7 @@ Atribui comportamentos de inferência dedutiva às propriedades.
 * SKOS: `skos:broaderTransitive` / `skos:narrowerTransitive` (para suporte a fechamento transitivo), `skos:related` (simétrica) e inversão explícita entre `skos:broader` e `skos:narrower`.
 
 
-# 4. Modelo Comparativo de Entidades, Expressões e Axiomas em Engenharia de Software
+# 4. [paused] Modelo Comparativo de Entidades, Expressões e Axiomas em Engenharia de Software
 
 ## 4.1. Entidades
 

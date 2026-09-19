@@ -280,7 +280,7 @@ The three models are separate parts of the description of a complete system but 
 
 # 6. [[01-conceitos_software_se_mbse|MBSE - Model Based Systems Engineering]]
 # 7. Knowledge Graph 
-caso de uso: [[260819-modelo_repositorios#4.1. KG - Knowledge Graph|KMS - modelo repositorios]]
+caso de uso: [[260916-modelos_semanticos#4.1. KG - Knowledge Graph|KMS - modelo repositorios]]
 
 - Conceitos basicos para estudo
 	- [SYSTEM ENGINEERING MODELS MEET KNOWLEDGE GRAPHS](https://nebula.esa.int/sites/default/files/neb_tec_study/1436/public/C4000133311ExS.pdf)

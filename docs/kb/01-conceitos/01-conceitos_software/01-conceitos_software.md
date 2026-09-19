@@ -254,7 +254,7 @@ UML - Unified Modeling Language
 
 # 6. Documentos e Dados
 
-## 6.1. [[260819-modelo_repositorios#6. Análise de Formatos de Documentos para Agentes de IA|Análise de Formatos de Documentos para Agentes de IA]]
+## 6.1. [[260916-modelos_semanticos#6. Análise de Formatos de Documentos para Agentes de IA|Análise de Formatos de Documentos para Agentes de IA]]
 
 # 7. Integração Contínua
 

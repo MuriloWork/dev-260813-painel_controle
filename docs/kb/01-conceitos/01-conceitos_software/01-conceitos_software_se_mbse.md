@@ -783,7 +783,7 @@ Mas com limitações: OCL só verifica estrutura estática (multiplicidades, tip
 
 [UDA (Unified Data Architecture) at Netflix](https://netflixtechblog.com/uda-unified-data-architecture-6a6aee261d8d)
 
-## 5.1. [[260813-mbse_docs_00#3. resumo do sistema mbse_docs|sistema docs Mu]]
+## 5.1. [[260916-modelos_semanticos#3. OLD mbse_docs|mbse_docs]]
 definições:
 - documentos de sistema
 - documentos de projeto

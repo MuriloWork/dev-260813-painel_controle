@@ -1,20 +1,20 @@
 ---
 description: Valida code blocks (script e markdown) gerados em planos de implementacao contra regras de consistencia e qualidade da arquitetura
 mode: subagent
-permission:
-  read: allow
-  write: allow
-  edit: deny
-  bash: allow
-  glob: allow
-  grep: allow
-  list: allow
-  webfetch: deny
-  websearch: deny
-  question: allow
-  todowrite: allow
----
+permissions:
+  - {action: "read", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "deny"}
+  - {action: "shell", resource: "*", effect: "allow"}
+  - {action: "glob", resource: "*", effect: "allow"}
+  - {action: "grep", resource: "*", effect: "allow"}
+  - {action: "list", resource: "*", effect: "allow"}
+  - {action: "webfetch", resource: "*", effect: "deny"}
+  - {action: "websearch", resource: "*", effect: "deny"}
+  - {action: "question", resource: "*", effect: "allow"}
+  - {action: "todowrite", resource: "*", effect: "allow"}
 
+---
 You are a code block reviewer for a code project.
 
 ## Proposito

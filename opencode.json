@@ -1,10 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
+  "providers": {
     "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
+      "package": "aisdk:@ai-sdk/openai-compatible",
       "name": "Ollama (Local)",
-      "options": {
+      "settings": {
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
@@ -19,26 +19,28 @@
     }
   },
   "mcp": {
-    "code-review-graph": {
-      "type": "local",
-      "command": [
-        "code-review-graph",
-        "serve"
-      ],
-      "enabled": false
-    },
-    "supabase": {
-      "type": "local",
-      "command":  [
-        "npx",
-        "-y",
-        "mcp-remote",
-        "https://mcp.supabase.com/mcp"
-      ],
-      "enabled": false
+    "servers": {
+      "code-review-graph": {
+        "type": "local",
+        "command": [
+          "code-review-graph",
+          "server"
+        ],
+        "disabled": true
+      },
+      "supabase": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "mcp-remote",
+          "https://mcp.supabase.com/mcp"
+        ],
+        "disabled": true
+      }
     }
   },
-  "plugin": [
+  "plugins": [
     "@ramtinj95/opencode-tokenscope@latest"
   ]
 }

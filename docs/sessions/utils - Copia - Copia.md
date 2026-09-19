@@ -8,18 +8,18 @@
 ### 2.1.1. comandos favoritos
 
 #### 2.1.1.1. rodar em servidor web local
-[web](https://opencode.ai/v2/docs/cli/web/)
+[web](https://opencode.ai/docs/pt-br/web/)
 
 no WSL
 
 ativar com senha
 ```bash
-opencode serve --hostname 0.0.0.0 --port 8888
+OPENCODE_SERVER_PASSWORD=123 opencode web --port 8888 --hostname 0.0.0.0
 ```
 
 conectar terminal no web frontend
 ```bash
-opencode --server http://localhost:8888
+OPENCODE_SERVER_PASSWORD=123 opencode attach http://localhost:8888
 ```
 
 desativar servidor na porta 8888
@@ -28,15 +28,16 @@ fuser -k 8888/tcp
 ```
 
 #### 2.1.1.2. exportar sessão
-[web](https://opencode.ai/v2/docs/api)
+[web](https://opencode.ai/docs/pt-br/cli/#export)
 
-Usando V2 API (`@opencode/client`):
-```bash
-# Verifique a API reference para endpoints de exportação
-# A API V2 possui contratos diferentes da V1
+no powershell
+```powershell
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+opencode export ses_f78536267ffeUn9BD2Hfc7YzfM | Out-File -FilePath .\sessao_exportada.json -Encoding utf8
 ```
 
-> ⚠️ `opencode export` não existe no V2. Use a API V2 ou `@opencode/client`.
+no WSL
+`LC_ALL=C.UTF-8 opencode export ses_f78536267ffeUn9BD2Hfc7YzfM > session.json`
 
 #### 2.1.1.3. obter modelos gemini da versao v1beta
 

@@ -1,18 +1,19 @@
 ---
 description: Lê arquivos .mhtml de documentação e extrai detalhes de endpoints e parâmetros
 mode: subagent
-permission:
-  read: allow
-  glob: allow
-  grep: allow
-  list: allow
-  write: allow
-  bash: deny
-  edit: deny
-  webfetch: deny
-  websearch: deny
-  question: allow
-  todowrite: allow
+permissions:
+  - {action: "read", resource: "*", effect: "allow"}
+  - {action: "glob", resource: "*", effect: "allow"}
+  - {action: "grep", resource: "*", effect: "allow"}
+  - {action: "list", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "shell", resource: "*", effect: "deny"}
+  - {action: "edit", resource: "*", effect: "deny"}
+  - {action: "webfetch", resource: "*", effect: "deny"}
+  - {action: "websearch", resource: "*", effect: "deny"}
+  - {action: "question", resource: "*", effect: "allow"}
+  - {action: "todowrite", resource: "*", effect: "allow"}
+
 ---
 You are a documentation researcher for the Meta API project.
 

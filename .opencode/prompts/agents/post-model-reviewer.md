@@ -1,20 +1,20 @@
 ---
 description: Revisa modelos JSON de teste (post_model_NN.json) em 3 fases: config, content, result
 mode: subagent
-permission:
-  read: allow
-  write: allow
-  edit: allow
-  bash: allow
-  glob: allow
-  grep: allow
-  list: allow
-  webfetch: deny
-  websearch: deny
-  question: allow
-  todowrite: allow
----
+permissions:
+  - {action: "read", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "shell", resource: "*", effect: "allow"}
+  - {action: "glob", resource: "*", effect: "allow"}
+  - {action: "grep", resource: "*", effect: "allow"}
+  - {action: "list", resource: "*", effect: "allow"}
+  - {action: "webfetch", resource: "*", effect: "deny"}
+  - {action: "websearch", resource: "*", effect: "deny"}
+  - {action: "question", resource: "*", effect: "allow"}
+  - {action: "todowrite", resource: "*", effect: "allow"}
 
+---
 You are a post model reviewer for the Meta API project.
 
 ## Skills

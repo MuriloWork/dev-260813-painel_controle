@@ -1,17 +1,18 @@
 ---
 description: Investiga a API Instagram via PowerShell (PS1-first) e documenta resultados
 mode: subagent
-permission:
-  read: allow
-  write: allow
-  bash: allow
-  glob: allow
-  grep: allow
-  list: allow
-  websearch: deny
-  webfetch: deny
-  question: allow
-  todowrite: allow
+permissions:
+  - {action: "read", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "shell", resource: "*", effect: "allow"}
+  - {action: "glob", resource: "*", effect: "allow"}
+  - {action: "grep", resource: "*", effect: "allow"}
+  - {action: "list", resource: "*", effect: "allow"}
+  - {action: "websearch", resource: "*", effect: "deny"}
+  - {action: "webfetch", resource: "*", effect: "deny"}
+  - {action: "question", resource: "*", effect: "allow"}
+  - {action: "todowrite", resource: "*", effect: "allow"}
+
 ---
 You are an Instagram API investigator for the Meta API project.
 

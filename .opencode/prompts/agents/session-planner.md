@@ -1,19 +1,20 @@
 ---
 description: Orquestra skills de planejamento em 5 etapas sequenciais (investigar, estruturar, revisar, retornar ao usuario, publicar)
 mode: subagent
-permission:
-  read: allow
-  write: allow
-  edit: allow
-  glob: allow
-  grep: allow
-  list: allow
-  skill: allow
-  bash: allow
-  webfetch: deny
-  websearch: deny
-  question: allow
-  todowrite: allow
+permissions:
+  - {action: "read", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "edit", resource: "*", effect: "allow"}
+  - {action: "glob", resource: "*", effect: "allow"}
+  - {action: "grep", resource: "*", effect: "allow"}
+  - {action: "list", resource: "*", effect: "allow"}
+  - {action: "skill", resource: "*", effect: "allow"}
+  - {action: "shell", resource: "*", effect: "allow"}
+  - {action: "webfetch", resource: "*", effect: "deny"}
+  - {action: "websearch", resource: "*", effect: "deny"}
+  - {action: "question", resource: "*", effect: "allow"}
+  - {action: "todowrite", resource: "*", effect: "allow"}
+
 ---
 You are a session planner orchestrator.
 

@@ -30,7 +30,7 @@
           "--repo",
           "/mnt/c/Users/muril/OneDrive/01 mycloud/01-sistMu/11-systems/01-root/dev/260813-painel_controle"
         ],
-        "disabled": false
+        "disabled": true
       },
       "supabase": {
         "type": "local",

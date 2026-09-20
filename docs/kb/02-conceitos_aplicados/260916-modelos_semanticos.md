@@ -353,6 +353,7 @@ A combinação **JSON-LD (Grafo/Dados) + YAML (Schema/Regras) + Markdown (Contex
 
 domínio: 
 ### 2.1.1. vocabulario 
+Lista de skos:Concept (OWL entidades RDF sujeito, objeto) Predicado default = skos:narrower. Demais predicados  indicados entre colchetes, ex.: [skos:inScheme].
 
 - **conceito**: dominio 
 	- **definição**: área de conhecimento, assunto, ~~camada/zona cognitiva~~, abrangência ~~de aplicação~~ 

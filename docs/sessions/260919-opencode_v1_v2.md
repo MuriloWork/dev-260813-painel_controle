@@ -151,27 +151,29 @@ Contém comandos V1:
 # 8. Ordem de Execução Recomendada
 
 1. **Backup completo** do repositório
-2. **Instalar V2** (substitui binário V1)
-3. **Migrar configs JSON** (Fase 2) — começar com `opencode.json`
-4. **Migrar plugins** (Fase 4) — instalar versão V2 do tokenScope
-5. **Migrar skills** (Fase 5) — mover diretórios
-6. **Migrar agent frontmatter** (Fase 3) — opcional, V2 traduz automaticamente
-7. **Atualizar docs** (Fase 6)
-8. **Testar**: modelos, credenciais, agentes, permissões, MCP servers, plugins
-9. **Migrar configs nativos V2** (opcional, último passo) — usar comando "Migrate my OpenCode configuration"
+2. Remover instalação V1 do pacote gerenciado
+3. **Instalar V2** (substitui binário V1)
+4. listar demais pendencias para finalizar atualização
+5. **Migrar configs JSON** (Fase 2) — começar com `opencode.json`
+6. **Migrar plugins** (Fase 4) — instalar versão V2 do tokenScope
+7. **Migrar skills** (Fase 5) — mover diretórios
+8. **Migrar agent frontmatter** (Fase 3) — opcional, V2 traduz automaticamente
+9. **Atualizar docs** (Fase 6)
+10. **Testar**: modelos, credenciais, agentes, permissões, MCP servers, plugins
+11. **Migrar configs nativos V2** (opcional, último passo) — usar comando "Migrate my OpenCode configuration"
 
 ---
 
 # 9. Riscos e Considerações
 
-| Risco | Mitigação |
-|-------|-----------|
-| Plugin V1 não funciona em V2 | Manter V1 setup em paralelo até plugin V2 funcionar |
-| `permission` V1 pode ter comportamento diferente em V2 (ordered array) | Testar permissões cuidadosamente após migração |
-| `mode: subagent` em agents — comportamento V2 pode diferir | Validar se agents continuam funcionando como esperado |
-| MCP `enabled` invertido para `disabled` — risco de inverter sentido | Revisar cada MCP server após migração |
-| `@ai-sdk/openai-compatible` pode ter API diferente no V2 | Verificar compatibilidade do provider |
-| 3 configs JSON podem conflitar (V1 + V2 mixed) | O V2 suporta mixed fields, mas validar warnings |
+| Risco                                                                  | Mitigação                                             |
+| ---------------------------------------------------------------------- | ----------------------------------------------------- |
+| Plugin V1 não funciona em V2                                           | Manter V1 setup em paralelo até plugin V2 funcionar   |
+| `permission` V1 pode ter comportamento diferente em V2 (ordered array) | Testar permissões cuidadosamente após migração        |
+| `mode: subagent` em agents — comportamento V2 pode diferir             | Validar se agents continuam funcionando como esperado |
+| MCP `enabled` invertido para `disabled` — risco de inverter sentido    | Revisar cada MCP server após migração                 |
+| `@ai-sdk/openai-compatible` pode ter API diferente no V2               | Verificar compatibilidade do provider                 |
+| 3 configs JSON podem conflitar (V1 + V2 mixed)                         | O V2 suporta mixed fields, mas validar warnings       |
 
 ---
 

@@ -216,6 +216,9 @@ Devido ao tipo de sistema
 	- CRM - Customer Relationship Management 
 	- Planner 
 
+## 2.3. arquitetura funcional vs física 
+
+Os blocos funcionais serão identificados pelo id template "FB-010101"
 # 3. Functional Requirements 
 
 ## 3.1. bloco KMS - Knowledge Management System (painel, section `sessions`)

@@ -26,6 +26,7 @@
 ### 2.1.1. opencode.json 
 ### 2.1.2. AGENTS.md 
 ## 2.2. context layer: project
+opencodeignore 
 ### 2.2.1. opencode.json 
 instructions, references, worktrees 
 ### 2.2.2. AGENTS.md 

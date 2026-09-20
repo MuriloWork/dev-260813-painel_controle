@@ -24,49 +24,162 @@
     "termMapping": {
       "excelTab": "terms",
       "exportOrder": [
-        { "name": "id", "xlsName": "id" },
-        { "name": "name", "xlsName": "name" },
-        { "name": "type", "xlsName": "type" },
-        { "name": "description", "xlsName": "description" },
-        { "name": "additionalInformation", "xlsName": "additionalInformation" },
-        { "name": "parent", "xlsName": "parent" },
-        { "name": "synonyms", "xlsName": "synonyms" }
+        {
+          "name": "id",
+          "xlsName": "id"
+        },
+        {
+          "name": "name",
+          "xlsName": "name"
+        },
+        {
+          "name": "type",
+          "xlsName": "type"
+        },
+        {
+          "name": "description",
+          "xlsName": "description"
+        },
+        {
+          "name": "additionalInformation",
+          "xlsName": "additionalInformation"
+        },
+        {
+          "name": "parent",
+          "xlsName": "parent"
+        },
+        {
+          "name": "synonyms",
+          "xlsName": "synonyms"
+        }
       ],
       "importOrder": [],
-      "exportTermTypes": ["term", "concept", "property", "group", "label", "conpoint", "label-size"],
+      "exportTermTypes": [
+        "term",
+        "concept",
+        "property",
+        "group",
+        "label",
+        "conpoint",
+        "label-size"
+      ],
       "mappings": [
-        { "id": "id", "name": "id", "desc": "Mandatory if using relations" },
-        { "id": "name", "name": "name", "desc": "Mandatory" },
-        { "id": "type", "name": "type", "desc": "Optional" },
-        { "id": "description", "name": "description", "desc": "" },
-        { "id": "additionalInformation", "name": "additionalInformation", "desc": "" },
-        { "id": "parent", "name": "parent", "desc": "(Term id) Parent term to create a group" },
-        { "id": "synonyms", "name": "synonyms", "desc": "Comma-separated alternative names" }
+        {
+          "id": "id",
+          "name": "id",
+          "desc": "Mandatory if using relations"
+        },
+        {
+          "id": "name",
+          "name": "name",
+          "desc": "Mandatory"
+        },
+        {
+          "id": "type",
+          "name": "type",
+          "desc": "Optional"
+        },
+        {
+          "id": "description",
+          "name": "description",
+          "desc": ""
+        },
+        {
+          "id": "additionalInformation",
+          "name": "additionalInformation",
+          "desc": ""
+        },
+        {
+          "id": "parent",
+          "name": "parent",
+          "desc": "(Term id) Parent term to create a group"
+        },
+        {
+          "id": "synonyms",
+          "name": "synonyms",
+          "desc": "Comma-separated alternative names"
+        }
       ]
     },
     "relationMapping": {
       "excelTab": "relations",
       "exportOrder": [
-        { "name": "id", "xlsName": "id" },
-        { "name": "name", "xlsName": "name" },
-        { "name": "description", "xlsName": "description" },
-        { "name": "additionalInformation", "xlsName": "additional information" },
-        { "name": "source", "xlsName": "source" },
-        { "name": "target", "xlsName": "target" },
-        { "name": "sourceId", "xlsName": "sourceId" },
-        { "name": "targetId", "xlsName": "targetId" }
+        {
+          "name": "id",
+          "xlsName": "id"
+        },
+        {
+          "name": "name",
+          "xlsName": "name"
+        },
+        {
+          "name": "description",
+          "xlsName": "description"
+        },
+        {
+          "name": "additionalInformation",
+          "xlsName": "additional information"
+        },
+        {
+          "name": "source",
+          "xlsName": "source"
+        },
+        {
+          "name": "target",
+          "xlsName": "target"
+        },
+        {
+          "name": "sourceId",
+          "xlsName": "sourceId"
+        },
+        {
+          "name": "targetId",
+          "xlsName": "targetId"
+        }
       ],
       "importOrder": [],
       "exportTermTypes": [],
       "mappings": [
-        { "id": "id", "name": "id", "desc": "" },
-        { "id": "name", "name": "name", "desc": "" },
-        { "id": "description", "name": "description", "desc": "" },
-        { "id": "additionalInformation", "name": "additional information", "desc": "" },
-        { "id": "source", "name": "source", "desc": "Source term name" },
-        { "id": "target", "name": "target", "desc": "Target term name" },
-        { "id": "sourceId", "name": "sourceId", "desc": "(Term id) Source term ID" },
-        { "id": "targetId", "name": "targetId", "desc": "(Term id) Target term ID" }
+        {
+          "id": "id",
+          "name": "id",
+          "desc": ""
+        },
+        {
+          "id": "name",
+          "name": "name",
+          "desc": ""
+        },
+        {
+          "id": "description",
+          "name": "description",
+          "desc": ""
+        },
+        {
+          "id": "additionalInformation",
+          "name": "additional information",
+          "desc": ""
+        },
+        {
+          "id": "source",
+          "name": "source",
+          "desc": "Source term name"
+        },
+        {
+          "id": "target",
+          "name": "target",
+          "desc": "Target term name"
+        },
+        {
+          "id": "sourceId",
+          "name": "sourceId",
+          "desc": "(Term id) Source term ID"
+        },
+        {
+          "id": "targetId",
+          "name": "targetId",
+          "desc": "(Term id) Target term ID"
+        }
       ]
     },
     "termImages": [],
@@ -101,7 +214,10 @@
         "showRelatedTerms": true
       }
     },
-    "semanticCheckDismissals": { "dismissals": [], "version": 1 },
+    "semanticCheckDismissals": {
+      "dismissals": [],
+      "version": 1
+    },
     "folder": ""
   },
   "data": {
@@ -118,7 +234,12 @@
         "displayType": "text",
         "weight": 3,
         "xFields": {},
-        "synonyms": ["repo", "codebase", "source control", "version control system"],
+        "synonyms": [
+          "repo",
+          "codebase",
+          "source control",
+          "version control system"
+        ],
         "x": 0,
         "y": 0,
         "style_borderColor": "#4A90D9",
@@ -145,7 +266,10 @@
         "displayType": "text",
         "weight": 2,
         "xFields": {},
-        "synonyms": ["content facet", "content type scheme"],
+        "synonyms": [
+          "content facet",
+          "content type scheme"
+        ],
         "x": -400,
         "y": -200,
         "style_borderColor": "#2E7D32",
@@ -172,7 +296,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["source code", "programming files"],
+        "synonyms": [
+          "source code",
+          "programming files"
+        ],
         "x": -500,
         "y": -280,
         "style_borderColor": "#808080",
@@ -199,7 +326,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["documentation", "knowledge base"],
+        "synonyms": [
+          "documentation",
+          "knowledge base"
+        ],
         "x": -500,
         "y": -220,
         "style_borderColor": "#808080",
@@ -226,7 +356,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["datasets", "configuration"],
+        "synonyms": [
+          "datasets",
+          "configuration"
+        ],
         "x": -500,
         "y": -160,
         "style_borderColor": "#808080",
@@ -253,7 +386,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["binaries", "packages"],
+        "synonyms": [
+          "binaries",
+          "packages"
+        ],
         "x": -500,
         "y": -100,
         "style_borderColor": "#808080",
@@ -280,7 +416,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["configuration files", "IaC"],
+        "synonyms": [
+          "configuration files",
+          "IaC"
+        ],
         "x": -500,
         "y": -40,
         "style_borderColor": "#808080",
@@ -307,7 +446,10 @@
         "displayType": "text",
         "weight": 2,
         "xFields": {},
-        "synonyms": ["structure facet", "structure scheme"],
+        "synonyms": [
+          "structure facet",
+          "structure scheme"
+        ],
         "x": -400,
         "y": 100,
         "style_borderColor": "#1565C0",
@@ -334,7 +476,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["directory", "path"],
+        "synonyms": [
+          "directory",
+          "path"
+        ],
         "x": -500,
         "y": 60,
         "style_borderColor": "#808080",
@@ -361,7 +506,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["source file", "artifact file"],
+        "synonyms": [
+          "source file",
+          "artifact file"
+        ],
         "x": -500,
         "y": 120,
         "style_borderColor": "#808080",
@@ -388,7 +536,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["feature branch", "dev branch"],
+        "synonyms": [
+          "feature branch",
+          "dev branch"
+        ],
         "x": -500,
         "y": 180,
         "style_borderColor": "#808080",
@@ -415,7 +566,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["version tag", "release tag"],
+        "synonyms": [
+          "version tag",
+          "release tag"
+        ],
         "x": -500,
         "y": 240,
         "style_borderColor": "#808080",
@@ -442,7 +596,10 @@
         "displayType": "text",
         "weight": 2,
         "xFields": {},
-        "synonyms": ["process facet", "process scheme"],
+        "synonyms": [
+          "process facet",
+          "process scheme"
+        ],
         "x": 400,
         "y": -200,
         "style_borderColor": "#E65100",
@@ -459,7 +616,7 @@
       },
       {
         "id": "f1a2b3c4-0004-0001-0000-000000000001",
-        "name": "Commissss",
+        "name": "Commitssss",
         "description": "A single snapshot of repository state at a point in time.",
         "additionalInformation": "skos:inScheme ProcessScheme | skos:broader repository",
         "has_position": true,
@@ -469,7 +626,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["revision", "changeset"],
+        "synonyms": [
+          "revision",
+          "changeset"
+        ],
         "x": 500,
         "y": -280,
         "style_borderColor": "#808080",
@@ -496,7 +656,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["integration", "branch merge"],
+        "synonyms": [
+          "integration",
+          "branch merge"
+        ],
         "x": 500,
         "y": -220,
         "style_borderColor": "#808080",
@@ -523,7 +686,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["version", "build"],
+        "synonyms": [
+          "version",
+          "build"
+        ],
         "x": 500,
         "y": -160,
         "style_borderColor": "#808080",
@@ -550,7 +716,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["checkout", "local copy"],
+        "synonyms": [
+          "checkout",
+          "local copy"
+        ],
         "x": 500,
         "y": -100,
         "style_borderColor": "#808080",
@@ -577,7 +746,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["merge request", "code review"],
+        "synonyms": [
+          "merge request",
+          "code review"
+        ],
         "x": 500,
         "y": -40,
         "style_borderColor": "#808080",
@@ -604,7 +776,10 @@
         "displayType": "text",
         "weight": 2,
         "xFields": {},
-        "synonyms": ["tool facet", "tool scheme"],
+        "synonyms": [
+          "tool facet",
+          "tool scheme"
+        ],
         "x": 400,
         "y": 100,
         "style_borderColor": "#6A1B9A",
@@ -631,7 +806,9 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["git"],
+        "synonyms": [
+          "git"
+        ],
         "x": 500,
         "y": 60,
         "style_borderColor": "#808080",
@@ -658,7 +835,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["Subversion", "Apache Subversion"],
+        "synonyms": [
+          "Subversion",
+          "Apache Subversion"
+        ],
         "x": 500,
         "y": 120,
         "style_borderColor": "#808080",
@@ -685,7 +865,9 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["Hg"],
+        "synonyms": [
+          "Hg"
+        ],
         "x": 500,
         "y": 180,
         "style_borderColor": "#808080",
@@ -712,7 +894,10 @@
         "displayType": "text",
         "weight": 2,
         "xFields": {},
-        "synonyms": ["scope facet", "scope scheme"],
+        "synonyms": [
+          "scope facet",
+          "scope scheme"
+        ],
         "x": 400,
         "y": 300,
         "style_borderColor": "#C62828",
@@ -739,7 +924,9 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["local only"],
+        "synonyms": [
+          "local only"
+        ],
         "x": 500,
         "y": 260,
         "style_borderColor": "#808080",
@@ -766,7 +953,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["hosted", "server"],
+        "synonyms": [
+          "hosted",
+          "server"
+        ],
         "x": 500,
         "y": 320,
         "style_borderColor": "#808080",
@@ -793,7 +983,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["restricted", "internal access"],
+        "synonyms": [
+          "restricted",
+          "internal access"
+        ],
         "x": 500,
         "y": 380,
         "style_borderColor": "#808080",
@@ -820,7 +1013,10 @@
         "displayType": "text",
         "weight": 1,
         "xFields": {},
-        "synonyms": ["open", "open source"],
+        "synonyms": [
+          "open",
+          "open source"
+        ],
         "x": 500,
         "y": 440,
         "style_borderColor": "#808080",

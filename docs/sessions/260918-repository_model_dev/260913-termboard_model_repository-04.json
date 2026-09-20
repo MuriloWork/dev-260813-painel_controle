@@ -459,7 +459,7 @@
       },
       {
         "id": "f1a2b3c4-0004-0001-0000-000000000001",
-        "name": "Commit",
+        "name": "Commits",
         "description": "A single snapshot of repository state at a point in time.",
         "additionalInformation": "skos:inScheme ProcessScheme | skos:broader repository",
         "has_position": true,
